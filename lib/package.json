@@ -20,6 +20,9 @@
 	"main": "dist/hexadrop.cjs.js",
 	"umd:main": "dist/hexadrop.umd.min.js",
 	"module": "dist/hexadrop.esm.js",
+	"files": [
+		"dist"
+	],
 	"peerDependencies": {
 		"uuid": "^8.3.2"
 	},
