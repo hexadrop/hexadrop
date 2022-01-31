@@ -35,13 +35,14 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-yarn-
 
+            - name: Install dependencies
+              if: steps.yarn-cache.outputs.cache-hit != 'true'
+              run: yarn install
+
             - name: Configure Git User
               run: |
                   git config --global user.email "development@mariomh.com"
                   git config --global user.name "$GITHUB_ACTOR"
-
-            - name: Install dependencies
-              run: yarn install
 
             - name: Create Release Pull Request or Publish to npm
               id: changesets
