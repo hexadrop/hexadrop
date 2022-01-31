@@ -6,9 +6,8 @@ dist-ssr
 .eslintcache
 tsconfig.tsbuildinfo
 
-# Yarn Zero Install
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
