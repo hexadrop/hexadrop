@@ -19,6 +19,6 @@
 		"resolveJsonModule": true,
 		"strictBindCallApply": true,
 		"isolatedModules": true,
-		"noFallthroughCasesInSwitch": true,
+		"noFallthroughCasesInSwitch": true
 	}
 }
