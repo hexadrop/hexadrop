@@ -1,5 +1,5 @@
 {
-	"name": "hexadrop",
+	"name": "hexadrop-root",
 	"version": "0.0.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
