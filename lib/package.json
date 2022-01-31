@@ -23,10 +23,14 @@
 	"files": [
 		"dist"
 	],
+	"scripts": {
+		"typecheck": "tsc --noEmit"
+	},
 	"peerDependencies": {
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
+		"@types/uuid": "8.3.4",
 		"uuid": "8.3.2"
 	},
 	"preconstruct": {
