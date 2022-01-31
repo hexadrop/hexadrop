@@ -22,12 +22,10 @@ jobs:
                   node-version: '16'
                   registry-url: 'https://registry.npmjs.org'
 
-
             - name: Cache
               uses: c-hive/gha-yarn-cache@v2
 
             - name: Install dependencies
-              #if: steps.yarn-cache.outputs.cache-hit != 'true'
               run: yarn install
 
             - name: Prettier
