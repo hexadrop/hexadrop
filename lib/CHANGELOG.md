@@ -1,5 +1,11 @@
 # hexadrop
 
+## 1.0.2
+
+### Patch Changes
+
+-   e9bfb1b: Added a method to add command to CommandHandler
+
 ## 1.0.1
 
 ### Patch Changes
