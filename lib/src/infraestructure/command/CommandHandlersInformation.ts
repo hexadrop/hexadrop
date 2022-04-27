@@ -17,6 +17,18 @@ export class CommandHandlersInformation {
 		return commandHandler;
 	}
 
+	public addCommandHandler(...handler: CommandHandler<Command>[]) {
+		handler.forEach(commandHandler => {
+			const arr: CommandCtor<Command>[] = [];
+			if (Array.isArray(commandHandler.subscribedTo())) {
+				(commandHandler.subscribedTo() as CommandCtor<Command>[]).forEach(c => arr.push(c));
+			} else {
+				arr.push(commandHandler.subscribedTo() as CommandCtor<Command>);
+			}
+			arr.forEach(c => this.commandHandlersMap.set(c, commandHandler));
+		});
+	}
+
 	private formatHandlers(
 		commandHandlers: Array<CommandHandler<Command>>
 	): Map<CommandCtor<Command>, CommandHandler<Command>> {
