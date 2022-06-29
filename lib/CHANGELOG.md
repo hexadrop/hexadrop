@@ -1,5 +1,11 @@
 # hexadrop
 
+## 1.0.3
+
+### Patch Changes
+
+-   66c0a17: Added addQueryHandler to QueryHandlersInformation
+
 ## 1.0.2
 
 ### Patch Changes
