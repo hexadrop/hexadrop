@@ -1,47 +1,74 @@
 name: Release
 
 on:
-    push:
-        branches: [main]
-    workflow_dispatch:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
+  codecheck:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Cache
+        uses: c-hive/gha-yarn-cache@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Prettier
+        run: yarn prettier
+
+      - name: Lint
+        run: yarn lint
+
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    needs: [ codecheck ]
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Git User
+        run: |
+          git config --global user.email "development@mariomh.com"
+          git config --global user.name "$GITHUB_ACTOR"
+
+      - name: Cache
+        uses: c-hive/gha-yarn-cache@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: yarn release
+          commit: 'chore: release'
+          title: 'Release'
+          setupGitUser: false
         env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-
-            - name: Setup .npmrc file for publish
-              uses: actions/setup-node@v2
-              with:
-                  node-version: '16'
-                  registry-url: 'https://registry.npmjs.org'
-
-            - name: Cache
-              uses: c-hive/gha-yarn-cache@v2
-
-            - name: Install dependencies
-              run: yarn install
-
-            - name: Configure Git User
-              run: |
-                  git config --global user.email "development@mariomh.com"
-                  git config --global user.name "$GITHUB_ACTOR"
-
-            - name: Create Release Pull Request or Publish to npm
-              id: changesets
-              uses: changesets/action@v1
-              with:
-                  publish: yarn release
-                  commit: 'chore: release'
-                  title: 'Release'
-                  setupGitUser: false
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
