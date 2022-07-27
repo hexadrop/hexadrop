@@ -1,13 +1,9 @@
 export * from './error';
+export * from './value-object';
+
 export * from './AggregateRoot';
 export * from './Nullable';
 export * from './Either';
-export * from './value-object/BooleanValueObject';
-export * from './value-object/DateValueObject';
-export * from './value-object/EnumValueObject';
-export * from './value-object/IdentifierValueObject';
-export * from './value-object/NumberValueObject';
-export * from './value-object/StringValueObject';
 export * from './cqrs/Command';
 export * from './cqrs/CommandBus';
 export * from './cqrs/CommandHandler';
