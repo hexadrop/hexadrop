@@ -44,14 +44,10 @@ export class Either<L, R> {
 		);
 	}
 
-	get(errorMessage?: string): R {
-		return this.getOrThrow(errorMessage);
-	}
-
-	getOrThrow(errorMessage?: string): R {
+	getRight(errorMessage?: string): R {
 		const throwFn = () => {
 			throw Error(
-				errorMessage ? errorMessage : 'An error has ocurred retrieving value: ' + JSON.stringify(this.value)
+				errorMessage ? errorMessage : 'The value is left: ' + JSON.stringify(this.value)
 			);
 		};
 
@@ -61,9 +57,11 @@ export class Either<L, R> {
 		);
 	}
 
-	getLeft(): L {
+	getLeft(errorMessage?: string): L {
 		const throwFn = () => {
-			throw Error('The value is right: ' + JSON.stringify(this.value));
+			throw Error(
+				errorMessage ? errorMessage : 'The value is right: ' + JSON.stringify(this.value)
+			);
 		};
 
 		return this.fold(
