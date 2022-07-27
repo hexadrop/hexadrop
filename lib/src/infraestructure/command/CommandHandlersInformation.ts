@@ -1,4 +1,5 @@
-import { Command, CommandCtor, CommandHandler, CommandNotRegisteredError } from '../../domain';
+import { Command, CommandCtor, CommandHandler } from '../../domain';
+import { CommandNotRegisteredError } from '../../domain/error/CommandNotRegisteredError';
 
 export class CommandHandlersInformation {
 	private commandHandlersMap: Map<CommandCtor<Command>, CommandHandler<Command>>;
@@ -11,7 +12,7 @@ export class CommandHandlersInformation {
 		const commandHandler = this.commandHandlersMap.get(command.constructor as CommandCtor<Command>);
 
 		if (!commandHandler) {
-			throw new CommandNotRegisteredError(command);
+			throw new CommandNotRegisteredError(command.constructor.name);
 		}
 
 		return commandHandler;

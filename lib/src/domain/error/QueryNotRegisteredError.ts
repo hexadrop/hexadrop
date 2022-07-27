@@ -1,9 +1,7 @@
-import { Query } from '../cqrs/Query';
-import { DomainError } from './DomainError';
+import { InvalidArgumentError } from './InvalidArgumentError';
 
-export class QueryNotRegisteredError<T extends Response> extends DomainError {
-	constructor(query: Query<T>) {
-		super(601, `The query <${query.constructor.name}> hasn't a query handler associated`);
-		Object.setPrototypeOf(this, QueryNotRegisteredError.prototype);
-	}
+export class QueryNotRegisteredError extends InvalidArgumentError {
+    constructor(query: string) {
+        super(`The query <${query}> hasn't a query handler associated`, 'QueryNotRegisteredError', 'HEX(400)');
+    }
 }

@@ -1,8 +1,10 @@
 import { DomainError } from './DomainError';
 
-export class InvalidArgumentError extends DomainError {
-	constructor(message: string) {
-		super(400, message);
-		Object.setPrototypeOf(this, InvalidArgumentError.prototype);
+export abstract class InvalidArgumentError extends DomainError {
+	protected constructor(
+		message: string,
+		name?: string,
+		code?: string) {
+		super(name || 'InvalidArgumentError', message, code);
 	}
 }

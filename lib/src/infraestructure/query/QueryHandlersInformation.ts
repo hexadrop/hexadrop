@@ -1,4 +1,5 @@
-import { DomainError, Query, QueryHandler, QueryNotRegisteredError, Response } from '../../domain';
+import { DomainError, Query, QueryHandler, Response } from '../../domain';
+import { QueryNotRegisteredError } from '../../domain/error/QueryNotRegisteredError';
 
 type MapKey = Query<Response> | string;
 type MapValue<R extends Response, Q extends Query<R>, E extends DomainError> = QueryHandler<R, Q, E>;
@@ -22,7 +23,7 @@ export class QueryHandlersInformation {
             this.queryHandlersMap.get(query.constructor) || this.queryHandlersMap.get(query.constructor.name);
 
         if (!queryHandler) {
-            throw new QueryNotRegisteredError(query);
+            throw new QueryNotRegisteredError(query.constructor.name);
         }
 
         return queryHandler as MapValue<R, Q, E>;
