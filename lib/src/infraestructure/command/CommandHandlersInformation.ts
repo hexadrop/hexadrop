@@ -1,50 +1,48 @@
-import { Command, CommandCtor, CommandHandler } from '../../domain';
+import { Command, CommandClass, CommandHandler } from '../../domain';
 import { CommandNotRegisteredError } from '../../domain/error/CommandNotRegisteredError';
 
 export class CommandHandlersInformation {
-	private commandHandlersMap: Map<CommandCtor<Command>, CommandHandler<Command>>;
+    private commandHandlersMap: Map<string, CommandHandler<Command>>;
 
-	constructor(commandHandlers: Array<CommandHandler<Command>>) {
-		this.commandHandlersMap = this.formatHandlers(commandHandlers);
-	}
+    constructor(...handlers: CommandHandler<Command>[]) {
+        this.commandHandlersMap = this.formatHandlers(...handlers);
+    }
 
-	public search(command: Command): CommandHandler<Command> {
-		const commandHandler = this.commandHandlersMap.get(command.constructor as CommandCtor<Command>);
+    public search(command: Command): CommandHandler<Command> {
+        const commandHandler = this.commandHandlersMap.get(command.commandName);
 
-		if (!commandHandler) {
-			throw new CommandNotRegisteredError(command.constructor.name);
-		}
+        if (!commandHandler) {
+            throw new CommandNotRegisteredError(command.commandName);
+        }
 
-		return commandHandler;
-	}
+        return commandHandler;
+    }
 
-	public addCommandHandler(...handler: CommandHandler<Command>[]) {
-		handler.forEach(commandHandler => {
-			const arr: CommandCtor<Command>[] = [];
-			if (Array.isArray(commandHandler.subscribedTo())) {
-				(commandHandler.subscribedTo() as CommandCtor<Command>[]).forEach(c => arr.push(c));
-			} else {
-				arr.push(commandHandler.subscribedTo() as CommandCtor<Command>);
-			}
-			arr.forEach(c => this.commandHandlersMap.set(c, commandHandler));
-		});
-	}
+    public addCommandHandler(...handler: CommandHandler<Command>[]) {
+        handler.forEach(commandHandler => {
+            const arr: CommandClass<Command>[] = [];
+            if (Array.isArray(commandHandler.subscribedTo())) {
+                (commandHandler.subscribedTo() as CommandClass<Command>[]).forEach(c => arr.push(c));
+            } else {
+                arr.push(commandHandler.subscribedTo() as CommandClass<Command>);
+            }
+            arr.forEach(c => this.commandHandlersMap.set(c.COMMAND_NAME, commandHandler));
+        });
+    }
 
-	private formatHandlers(
-		commandHandlers: Array<CommandHandler<Command>>
-	): Map<CommandCtor<Command>, CommandHandler<Command>> {
-		const handlersMap = new Map<CommandCtor<Command>, CommandHandler<Command>>();
+    private formatHandlers(...handlers: CommandHandler<Command>[]): Map<string, CommandHandler<Command>> {
+        const map = new Map<string, CommandHandler<Command>>();
 
-		commandHandlers.forEach(commandHandler => {
-			const arr: CommandCtor<Command>[] = [];
-			if (Array.isArray(commandHandler.subscribedTo())) {
-				(commandHandler.subscribedTo() as CommandCtor<Command>[]).forEach(c => arr.push(c));
-			} else {
-				arr.push(commandHandler.subscribedTo() as CommandCtor<Command>);
-			}
-			arr.forEach(c => handlersMap.set(c, commandHandler));
-		});
+        for (const handler of handlers) {
+            const arr: CommandClass<Command>[] = [];
+            if (Array.isArray(handler.subscribedTo())) {
+                (handler.subscribedTo() as CommandClass<Command>[]).forEach(c => arr.push(c));
+            } else {
+                arr.push(handler.subscribedTo() as CommandClass<Command>);
+            }
+            arr.forEach(c => map.set(c.COMMAND_NAME, handler));
+        }
 
-		return handlersMap;
-	}
+        return map;
+    }
 }

@@ -1,6 +1,5 @@
-import { InvalidErrorCodeError } from './InvalidErrorCodeError';
-
 const DOMAIN_ERROR_CODE = /[A-Z][A-Z][A-Z]\((\d{3}|\d{6})\)/;
+
 
 /**
  * The base class for all domain errors.
@@ -19,22 +18,36 @@ export abstract class DomainError extends Error {
     protected constructor(
         name: string,
         message: string,
-        readonly code?: string,
+        readonly code: string,
     ) {
         DomainError.allowedValues(code);
         super(message);
-        this.name = name;
+        this.name = name || 'DomainError';
     }
 
-    private static allowedValues(value?: string) {
-        if (!value) return;
-        if (!DOMAIN_ERROR_CODE.test(value)) {
+    private static allowedValues(code: string) {
+        if (!code) {
+            throw new EmptyErrorCodeError();
+        }
+        if (!DOMAIN_ERROR_CODE.test(code)) {
             throw new InvalidErrorCodeError();
         }
     }
 
-    get errorCode(): number | undefined {
-        const code = this.code?.substring(4).replace(')', '');
-        return !code || isNaN(+code) ? undefined : +code;
+    get errorCode(): number {
+        const code = this.code.substring(4).replace(')', '');
+        return +code;
+    }
+}
+
+export class InvalidErrorCodeError extends DomainError {
+    constructor() {
+        super('InvalidErrorCodeError', `DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]\((\d{3}|\d{6})\)/'`, 'HEX(400)');
+    }
+}
+
+export class EmptyErrorCodeError extends DomainError {
+    constructor() {
+        super('EmptyErrorCodeError', 'DomainError code can not be null or empty', 'HEX(400)');
     }
 }

@@ -1,9 +1,9 @@
-import { Command } from './Command';
+import { Either } from '../Either';
+import { DomainError } from '../error';
+import { Command, CommandClass } from './Command';
 
-export type CommandCtor<T> = new (...args: any[]) => T;
+export interface CommandHandler<T extends Command, E extends DomainError = DomainError> {
+    handle(command: T): Promise<Either<void, E>>;
 
-export interface CommandHandler<T extends Command> {
-	handle(command: T): Promise<void>;
-
-	subscribedTo(): CommandCtor<T> | CommandCtor<T>[];
+    subscribedTo(): CommandClass<T> | CommandClass<T>[];
 }

@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from './InvalidArgumentError';
 
-export class InvalidErrorCodeError extends InvalidArgumentError {
+export class InvalidIdentifierFormatError extends InvalidArgumentError {
     constructor(value: string) {
-        super(`<Identifier> does not allow the value <${value}>`, 'InvalidErrorCodeError', 'HEX(400)');
+        super(`<Identifier> does not allow the value '${value}'`, 'InvalidIdentifierFormatError', 'HEX(400)');
     }
 }
