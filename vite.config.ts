@@ -4,7 +4,7 @@ export default defineConfig({
 	test: {
 		include: ['**/*.{test,spec}.{ts,tsx}'],
 		coverage: {
-			reporter: ['cobertura', 'text'],
+			// reporter: ['cobertura', 'text'],
 			include: ['**/src/**/*.{ts,tsx}'],
 			exclude: ['**/src/**/index.{ts,tsx}'],
 			extension: '.ts',

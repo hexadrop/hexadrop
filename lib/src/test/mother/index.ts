@@ -1,5 +1,6 @@
 export * from './PasswordMother';
 export * from './BooleanMother';
+export * from './DateMother';
 export * from './EmailMother';
 export * from './MotherCreator';
 export * from './WordMother';
