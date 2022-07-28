@@ -41,7 +41,8 @@
 		"node": ">=18"
 	},
 	"resolutions": {
-		"minimist": "1.2.6"
+		"minimist": "1.2.6",
+		"terser": "^5.14.2"
 	},
 	"dependencies": {
 		"@babel/core": "7.18.9",
