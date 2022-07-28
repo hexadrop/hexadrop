@@ -2,16 +2,16 @@ import { InvalidIdentifierFormatError } from '../../../../src/domain/error/Inval
 import { WordMother } from '../../../../src/test';
 
 export class InvalidIdentifierFormatErrorMother {
-    static create(value: string): InvalidIdentifierFormatError {
-        return new InvalidIdentifierFormatError(value);
-    }
+	static create(value: string): InvalidIdentifierFormatError {
+		return new InvalidIdentifierFormatError(value);
+	}
 
-    static creator() {
-        return () => InvalidIdentifierFormatErrorMother.random();
-    }
+	static creator() {
+		return () => InvalidIdentifierFormatErrorMother.random();
+	}
 
-    static random() {
-        const word = WordMother.random();
-        return this.create(word);
-    }
+	static random() {
+		const word = WordMother.random();
+		return this.create(word);
+	}
 }

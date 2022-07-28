@@ -1,15 +1,15 @@
 import { InvalidErrorCodeError } from '../../../../src';
 
 export class InvalidErrorCodeErrorMother {
-    static create(): InvalidErrorCodeError {
-        return new InvalidErrorCodeError();
-    }
+	static create(): InvalidErrorCodeError {
+		return new InvalidErrorCodeError();
+	}
 
-    static creator() {
-        return () => InvalidErrorCodeErrorMother.random();
-    }
+	static creator() {
+		return () => InvalidErrorCodeErrorMother.random();
+	}
 
-    static random() {
-        return this.create();
-    }
+	static random() {
+		return this.create();
+	}
 }
