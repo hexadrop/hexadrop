@@ -1,8 +1,8 @@
-import { IdentifierValueObject } from '../value-object/IdentifierValueObject';
+import { IdentifierValueObject } from '../value-object';
 
 export abstract class DomainEvent<DTO> {
 	static EVENT_NAME: string;
-	static fromPrimitives: (...args: any[]) => any;
+	static fromPrimitives: <E extends DomainEvent<D>, D>(dto: D) => E;
 	readonly aggregateId: string;
 	readonly eventId: string;
 	readonly eventName: string;
@@ -29,7 +29,7 @@ export abstract class VoidDomainEvent extends DomainEvent<void> {
 		super(VoidDomainEvent.EVENT_NAME, '');
 		throw new Error(`Invalid event`);
 	}
-	toPrimitive(): any {
-		return undefined;
+	toPrimitive(): void {
+		return;
 	}
 }

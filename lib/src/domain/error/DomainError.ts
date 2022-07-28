@@ -39,7 +39,7 @@ export class InvalidErrorCodeError extends DomainError {
 	constructor() {
 		super(
 			'InvalidErrorCodeError',
-			`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]\((\d{3}|\d{6})\)/'`,
+			`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`,
 			'HEX(400)'
 		);
 	}

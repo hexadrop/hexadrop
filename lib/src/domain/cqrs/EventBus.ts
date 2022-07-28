@@ -1,7 +1,7 @@
 import { DomainEvent, DomainEventClass } from './DomainEvent';
 
 export interface EventBus {
-	publish(events: Array<DomainEvent<any>>): Promise<void> | void;
+	publish(events: Array<DomainEvent<unknown>>): Promise<void> | void;
 
 	subscribe<DTO, D extends DomainEvent<DTO>>(
 		event: DomainEventClass<DTO, D>,

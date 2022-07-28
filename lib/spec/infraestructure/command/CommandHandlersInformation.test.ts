@@ -51,7 +51,7 @@ class Command6 extends Command {
 }
 
 class Command1Handler implements CommandHandler<Command1> {
-	handle(command: Command1): Promise<Either<void, DomainError>> {
+	handle(): Promise<Either<void, DomainError>> {
 		return Promise.resolve(Either.left(undefined));
 	}
 
@@ -61,7 +61,7 @@ class Command1Handler implements CommandHandler<Command1> {
 }
 
 class Command23Handler implements CommandHandler<Command2 | Command3> {
-	handle(command: Command2 | Command3): Promise<Either<void, DomainError>> {
+	handle(): Promise<Either<void, DomainError>> {
 		return Promise.resolve(Either.left(undefined));
 	}
 
@@ -71,7 +71,7 @@ class Command23Handler implements CommandHandler<Command2 | Command3> {
 }
 
 class Command4Handler implements CommandHandler<Command4> {
-	handle(command: Command4): Promise<Either<void, DomainError>> {
+	handle(): Promise<Either<void, DomainError>> {
 		return Promise.resolve(Either.left(undefined));
 	}
 
@@ -81,7 +81,7 @@ class Command4Handler implements CommandHandler<Command4> {
 }
 
 class Command56Handler implements CommandHandler<Command5 | Command6> {
-	handle(command: Command5 | Command6): Promise<Either<void, DomainError>> {
+	handle(): Promise<Either<void, DomainError>> {
 		return Promise.resolve(Either.left(undefined));
 	}
 
