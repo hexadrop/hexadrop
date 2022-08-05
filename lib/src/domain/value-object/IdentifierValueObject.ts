@@ -5,19 +5,18 @@ import { StringValueObject } from './StringValueObject';
 const REGEXP = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export class IdentifierValueObject extends StringValueObject {
+	constructor(value: string) {
+		super(value);
+		IdentifierValueObject.ensureIsValidUuid(value);
+	}
 
-    constructor(value: string) {
-        super(value);
-        IdentifierValueObject.ensureIsValidUuid(value);
-    }
+	static random(): IdentifierValueObject {
+		return new IdentifierValueObject(v4());
+	}
 
-    static random(): IdentifierValueObject {
-        return new IdentifierValueObject(v4());
-    }
-
-    private static ensureIsValidUuid(id: string): void {
-        if (!REGEXP.test(id)) {
-            throw new InvalidIdentifierValueError(id);
-        }
-    }
+	private static ensureIsValidUuid(id: string): void {
+		if (!REGEXP.test(id)) {
+			throw new InvalidIdentifierValueError(id);
+		}
+	}
 }
