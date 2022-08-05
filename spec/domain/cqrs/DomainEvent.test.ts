@@ -1,11 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { DomainEvent, VoidDomainEvent } from '../../../src';
-
-class ExtendsVoidDomainEvent extends VoidDomainEvent {
-	constructor() {
-		super();
-	}
-}
+import { DomainEvent } from '../../../src';
 
 interface MockEventDTO {
 	id: string;
@@ -28,17 +22,6 @@ class MockEvent extends DomainEvent<MockEventDTO> {
 		};
 	}
 }
-
-describe('VoidDomainEvent', () => {
-	test('should exports VoidDomainEvent', () => {
-		expect(VoidDomainEvent).toBeDefined();
-		expect(VoidDomainEvent.EVENT_NAME).toBe('void');
-	});
-	test('should VoidDomainEvent can not be instantiate', () => {
-		const fn = () => new ExtendsVoidDomainEvent();
-		expect(fn).toThrow('Invalid event');
-	});
-});
 
 describe('DomainEvent', () => {
 	test('should instantiate', () => {

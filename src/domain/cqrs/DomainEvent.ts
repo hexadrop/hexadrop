@@ -30,14 +30,3 @@ export type DomainEventClass<D extends DomainEvent<DTO>, DTO = unknown> = {
 	EVENT_NAME: string;
 	fromPrimitives(dto: DTO): D;
 };
-
-export abstract class VoidDomainEvent extends DomainEvent<void> {
-	static readonly EVENT_NAME = 'void';
-	protected constructor() {
-		super(VoidDomainEvent.EVENT_NAME, '');
-		throw new Error(`Invalid event`);
-	}
-	toPrimitive(): void {
-		return;
-	}
-}
