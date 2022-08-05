@@ -13,6 +13,10 @@
       <excludeFolder url="file://$MODULE_DIR$/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/lib/memory" />
       <excludeFolder url="file://$MODULE_DIR$/lib/ploc" />
+      <excludeFolder url="file://$MODULE_DIR$/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/memory" />
+      <excludeFolder url="file://$MODULE_DIR$/ploc" />
+      <excludeFolder url="file://$MODULE_DIR$/test" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
