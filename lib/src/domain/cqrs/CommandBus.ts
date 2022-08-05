@@ -3,5 +3,5 @@ import { DomainError } from '../error';
 import { Command } from './Command';
 
 export interface CommandBus {
-	dispatch<C extends Command = Command, E extends DomainError = DomainError>(command: C): Promise<Either<void, E>>;
+	dispatch(command: Command): Either<void, DomainError> | Promise<Either<void, DomainError>>;
 }

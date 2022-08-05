@@ -1,43 +1,37 @@
-import { DomainError, Query, QueryHandler, Response } from '../../domain';
+import { Query, QueryHandler } from '../../domain';
 import { QueryNotRegisteredError } from '../../domain/error/QueryNotRegisteredError';
 
-type MapKey = Query<Response> | string;
-type MapValue<R extends Response, Q extends Query<R>, E extends DomainError> = QueryHandler<R, Q, E>;
+type MapValue<Q extends Query<R>, R = unknown> = QueryHandler<Q, R>;
 
 export class QueryHandlersInformation {
-	private queryHandlersMap: Map<MapKey, MapValue<Response, Query<Response>, DomainError>>;
+	private queryHandlersMap: Map<string, MapValue<Query>>;
 
-	constructor(queryHandlers: Array<MapValue<Response, Query<Response>, DomainError>>) {
+	constructor(queryHandlers: Array<MapValue<Query>>) {
 		this.queryHandlersMap = this.formatHandlers(queryHandlers);
 	}
 
-	public addQueryHandler(...handlers: Array<MapValue<Response, Query<Response>, DomainError>>) {
+	public addQueryHandler(...handlers: Array<MapValue<Query>>) {
 		handlers.forEach(handler => {
-			this.queryHandlersMap.set(handler.subscribedTo(), handler);
-			this.queryHandlersMap.set(handler.subscribedTo().name, handler);
+			this.queryHandlersMap.set(handler.subscribedTo().QUERY_NAME, handler);
 		});
 	}
 
-	public search<R extends Response, Q extends Query<R>, E extends DomainError>(query: Q): MapValue<R, Q, E> {
-		const queryHandler =
-			this.queryHandlersMap.get(query.constructor) || this.queryHandlersMap.get(query.constructor.name);
+	public search<Q extends Query<R>, R>(query: Q): MapValue<Q, R> {
+		const queryHandler = this.queryHandlersMap.get(query.queryName);
 
 		if (!queryHandler) {
 			throw new QueryNotRegisteredError(query.constructor.name);
 		}
 
-		return queryHandler as MapValue<R, Q, E>;
+		return queryHandler as MapValue<Q, R>;
 	}
 
-	private formatHandlers<R extends Response, Q extends Query<R>, E extends DomainError>(
-		queryHandlers: Array<MapValue<R, Q, E>>
-	): Map<MapKey, MapValue<R, Q, E>> {
-		const handlersMap = new Map<MapKey, MapValue<R, Q, E>>();
+	private formatHandlers<Q extends Query>(
+		queryHandlers: Array<MapValue<Q>>,
+	): Map<string, MapValue<Q>> {
+		const handlersMap = new Map<string, MapValue<Q>>();
 
-		queryHandlers.forEach(queryHandler => {
-			handlersMap.set(queryHandler.subscribedTo(), queryHandler);
-			handlersMap.set(queryHandler.subscribedTo().name, queryHandler);
-		});
+		queryHandlers.forEach(queryHandler => handlersMap.set(queryHandler.subscribedTo().QUERY_NAME, queryHandler));
 
 		return handlersMap;
 	}
