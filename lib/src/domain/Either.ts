@@ -4,13 +4,29 @@ type Right<R> = { kind: 'right'; rightValue: R };
 type EitherValue<L, R> = Left<L> | Right<R>;
 
 export class Either<L, R> {
-	private constructor(private readonly value: EitherValue<L, R>) {}
-
-	isLeft(): boolean {
-		return this.value.kind === 'left';
+	private constructor(private readonly value: EitherValue<L, R>) {
 	}
-	isRight(): boolean {
-		return this.value.kind === 'right';
+
+	static left<L, R>(value: L): Either<L, R> {
+		return new Either<L, R>({ kind: 'left', leftValue: value });
+	}
+
+	static right<L, R>(value: R): Either<L, R> {
+		return new Either<L, R>({ kind: 'right', rightValue: value });
+	}
+
+	flatMapLeft<T>(fn: (left: L) => Either<T, R>): Either<T, R> {
+		return this.fold(
+			leftValue => fn(leftValue),
+			rightValue => Either.right(rightValue),
+		);
+	}
+
+	flatMapRight<T>(fn: (right: R) => Either<L, T>): Either<L, T> {
+		return this.fold(
+			leftValue => Either.left(leftValue),
+			rightValue => fn(rightValue),
+		);
 	}
 
 	fold<T>(leftFn: (left: L) => T, rightFn: (right: R) => T): T {
@@ -22,25 +38,21 @@ export class Either<L, R> {
 		}
 	}
 
-	map<T>(fn: (r: R) => T): Either<L, T> {
-		return this.flatMap(r => Either.right(fn(r)));
-	}
+	getLeft(errorMessage?: string): L {
+		const throwFn = () => {
+			throw Error(errorMessage ? errorMessage : 'The value is right: ' + JSON.stringify(this.value));
+		};
 
-	flatMap<T>(fn: (right: R) => Either<L, T>): Either<L, T> {
 		return this.fold(
-			leftValue => Either.left(leftValue),
-			rightValue => fn(rightValue)
+			leftValue => leftValue,
+			() => throwFn(),
 		);
 	}
 
-	mapLeft<T>(fn: (l: L) => T): Either<T, R> {
-		return this.flatMapLeft(l => Either.left(fn(l)));
-	}
-
-	flatMapLeft<T>(fn: (left: L) => Either<T, R>): Either<T, R> {
+	getLeftOrElse(defaultValue: L): L {
 		return this.fold(
-			leftValue => fn(leftValue),
-			rightValue => Either.right(rightValue)
+			someValue => someValue,
+			() => defaultValue,
 		);
 	}
 
@@ -51,33 +63,30 @@ export class Either<L, R> {
 
 		return this.fold(
 			() => throwFn(),
-			rightValue => rightValue
+			rightValue => rightValue,
 		);
 	}
 
-	getLeft(errorMessage?: string): L {
-		const throwFn = () => {
-			throw Error(errorMessage ? errorMessage : 'The value is right: ' + JSON.stringify(this.value));
-		};
-
-		return this.fold(
-			leftValue => leftValue,
-			() => throwFn()
-		);
-	}
-
-	getOrElse(defaultValue: R): R {
+	getRightOrElse(defaultValue: R): R {
 		return this.fold(
 			() => defaultValue,
-			someValue => someValue
+			someValue => someValue,
 		);
 	}
 
-	static left<L, R>(value: L): Either<L, R> {
-		return new Either<L, R>({ kind: 'left', leftValue: value });
+	isLeft(): boolean {
+		return this.value.kind === 'left';
 	}
 
-	static right<L, R>(value: R): Either<L, R> {
-		return new Either<L, R>({ kind: 'right', rightValue: value });
+	isRight(): boolean {
+		return this.value.kind === 'right';
+	}
+
+	mapLeft<T>(fn: (l: L) => T): Either<T, R> {
+		return this.flatMapLeft(l => Either.left(fn(l)));
+	}
+
+	mapRight<T>(fn: (r: R) => T): Either<L, T> {
+		return this.flatMapRight(r => Either.right(fn(r)));
 	}
 }
