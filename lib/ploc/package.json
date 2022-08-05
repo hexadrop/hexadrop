@@ -1,0 +1,8 @@
+{
+	"main": "dist/hexadrop-ploc.cjs.js",
+	"module": "dist/hexadrop-ploc.esm.js",
+	"umd:main": "dist/hexadrop-ploc.umd.min.js",
+	"preconstruct": {
+		"umdName": "plocdrop"
+	}
+}

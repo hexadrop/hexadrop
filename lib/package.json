@@ -22,7 +22,9 @@
 	"module": "dist/hexadrop.esm.js",
 	"files": [
 		"dist",
-		"test"
+		"test",
+		"memory",
+		"ploc"
 	],
 	"scripts": {
 		"typecheck": "tsc --noEmit"
@@ -43,7 +45,9 @@
 		"umdName": "hexadrop",
 		"entrypoints": [
 			"index.ts",
-			"test.ts"
+			"test.ts",
+			"ploc.ts",
+			"memory.ts"
 		]
 	}
 }

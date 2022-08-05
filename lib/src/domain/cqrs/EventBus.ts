@@ -1,16 +1,15 @@
 import { DomainEvent, DomainEventClass } from './DomainEvent';
 
 export interface EventBus {
-	publish(events: Array<DomainEvent<unknown>>): Promise<void> | void;
+	publish(events: Array<DomainEvent>): Promise<void> | void;
 
-	subscribe<DTO, D extends DomainEvent<DTO>>(
-		event: DomainEventClass<DTO, D>,
-		callback: (dto: DTO) => Promise<void> | void,
-		topicName?: string
+	subscribe<D extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<D, DTO>,
+		callback: (dto: DTO) => Promise<void> | void
 	): void;
 
-	unsubscribe<DTO, D extends DomainEvent<DTO>>(
-		event: DomainEventClass<DTO, D>,
+	unsubscribe<D extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<D, DTO>,
 		callback: (dto: DTO) => Promise<void> | void
 	): void;
 }

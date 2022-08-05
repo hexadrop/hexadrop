@@ -71,7 +71,7 @@ describe('Either', () => {
 		expect(map.isRight()).toBeTruthy();
 		expect(map.getRight()).toBe(true)
 
-		const either2 = Either.left<number, boolean>(1);
+		const either2 = Either.left<number, string>(1);
 
 		const map2 = either2.flatMapLeft(v => Either.right(JSON.stringify(v)));
 
@@ -90,11 +90,11 @@ describe('Either', () => {
 
 		const either2 = Either.left<number, boolean>(1);
 
-		const map2 = either2.mapLeft(v => JSON.stringify(v) );
+		const map2 = either2.mapLeft(v => JSON.stringify(v));
 
-		expect(map2.isLeft()).toBeFalsy();
-		expect(map2.isRight()).toBeTruthy();
-		expect(map2.getRight()).toBe('1')
+		expect(map2.isLeft()).toBeTruthy();
+		expect(map2.isRight()).toBeFalsy();
+		expect(map2.getLeft()).toBe('1')
 	});
 	test('should getRight works as expected', () => {
 		const either = Either.right<number, boolean>(true);
@@ -118,7 +118,7 @@ describe('Either', () => {
 	});
 	test('should getLeftOrElse works as expected', () => {
 		const either = Either.left<number, boolean>(1);
-		expect(either.getLeftOrElse(true)).toBe(1)
+		expect(either.getLeftOrElse(2)).toBe(1)
 
 		const either2 = Either.right<number, boolean>(true);
 		expect(either2.getLeftOrElse(1)).toBe(1)
@@ -128,6 +128,6 @@ describe('Either', () => {
 		expect(either.getRightOrElse(true)).toBe(true)
 
 		const either2 = Either.right<number, boolean>(true);
-		expect(either2.getRightOrElse(1)).toBe(true)
+		expect(either2.getRightOrElse(false)).toBe(true)
 	});
 });

@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { Command, CommandClass, CommandHandler, CommandHandlersInformation, DomainError, Either } from '../../../src';
+import { Command, CommandClass, CommandHandler, DomainError, Either } from '../../../src';
 import { CommandNotRegisteredError } from '../../../src/domain/error/CommandNotRegisteredError';
+import { CommandHandlersInformation } from '../../../src/memory';
 
 class Command1 extends Command {
 	static readonly COMMAND_NAME = 'Command1';
