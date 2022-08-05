@@ -35,7 +35,8 @@
 		"test": "vitest",
 		"test:coverage": "vitest run --coverage",
 		"typecheck": "yarn workspaces foreach -piv run typecheck",
-		"version": "yarn changeset version && yarn install --mode update-lockfile"
+		"version": "yarn changeset version && yarn install --mode update-lockfile",
+		"webstorm-integration": "vitest --watch --reporter=dot --reporter=json --outputFile=.vitest-result.json"
 	},
 	"engines": {
 		"node": ">=18"
