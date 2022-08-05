@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { BooleanValueObject } from '../../../src';
 import { InvalidBooleanValueTypeError } from '../../../src/domain/error/InvalidBooleanValueTypeError';
 import { BooleanValueObjectMother } from './mother/BooleanValueObjectMother';
 

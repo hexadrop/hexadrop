@@ -15,8 +15,6 @@ src
 .yarnrc.yml
 babel.config.js
 tsconfig.json
-tsconfig.base.json
-tsconfig.spec.json
 tsconfig.tsbuildinfo
 vite.config.ts
 yarn.lock

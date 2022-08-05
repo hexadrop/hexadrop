@@ -1,7 +1,7 @@
 import { DomainEvent, VoidDomainEvent } from './cqrs/DomainEvent';
 
 export abstract class AggregateRoot<DTO = unknown, D extends DomainEvent<unknown> = VoidDomainEvent> {
-	static fromPrimitives: <E extends DomainEvent<D>, D>(dto: D) => E;
+	static fromPrimitives: (...args: any[]) => any;
 	private domainEvents: Array<D>;
 
 	protected constructor() {

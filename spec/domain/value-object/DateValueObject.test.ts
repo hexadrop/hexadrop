@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { DateValueObject } from '../../../src';
 import { InvalidDateValueTypeError } from '../../../src/domain/error/InvalidDateValueTypeError';
 import { DateMother } from '../../../src/test';
 import { DateValueObjectMother } from './mother/DateValueObjectMother';

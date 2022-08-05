@@ -1,6 +1,9 @@
 import { DomainEvent, DomainEventClass, EventBus, EventBusCallback } from '../../domain';
 
-type DomainEventClassTuple<E extends DomainEvent<DTO>, DTO = unknown> = [DomainEventClass<E, DTO>, EventBusCallback<DTO>];
+type DomainEventClassTuple<E extends DomainEvent<DTO>, DTO = unknown> = [
+	DomainEventClass<E, DTO>,
+	EventBusCallback<DTO>
+];
 
 export class InMemoryEventBus implements EventBus {
 	private readonly subscriptions: Map<string, EventBusCallback<any>[]>;
@@ -20,14 +23,17 @@ export class InMemoryEventBus implements EventBus {
 					new Promise<void>(r => {
 						eventBusCallback(e.toPrimitive());
 						r();
-					}),
+					})
 				);
 			}
 		}
 		await Promise.all(promises);
 	}
 
-	subscribe<D extends DomainEvent<DTO>, DTO = unknown>(event: DomainEventClass<D, DTO>, callback: EventBusCallback<DTO>): void {
+	subscribe<D extends DomainEvent<DTO>, DTO = unknown>(
+		event: DomainEventClass<D, DTO>,
+		callback: EventBusCallback<DTO>
+	): void {
 		const c = this.subscriptions.get(event.EVENT_NAME);
 		if (c) {
 			this.subscriptions.set(event.EVENT_NAME, [...c, callback]);
@@ -36,12 +42,15 @@ export class InMemoryEventBus implements EventBus {
 		}
 	}
 
-	unsubscribe<D extends DomainEvent<T>, T>(event: DomainEventClass<D, T>, eventBusCallback: (dto: T) => Promise<void> | void): void {
+	unsubscribe<D extends DomainEvent<T>, T>(
+		event: DomainEventClass<D, T>,
+		eventBusCallback: (dto: T) => Promise<void> | void
+	): void {
 		const c = this.subscriptions.get(event.EVENT_NAME);
 		if (c) {
 			this.subscriptions.set(
 				event.EVENT_NAME,
-				c.filter(e => e !== eventBusCallback),
+				c.filter(e => e !== eventBusCallback)
 			);
 		}
 	}

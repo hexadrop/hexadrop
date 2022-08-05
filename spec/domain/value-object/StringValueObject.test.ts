@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { StringValueObject } from '../../../src';
 import { InvalidStringValueError } from '../../../src/domain/error/InvalidStringValueError';
 import { InvalidStringValueTypeError } from '../../../src/domain/error/InvalidStringValueTypeError';
 import { StringValueObjectMother } from './mother/StringValueObjectMother';

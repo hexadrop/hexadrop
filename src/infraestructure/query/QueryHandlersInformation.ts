@@ -26,9 +26,7 @@ export class QueryHandlersInformation {
 		return queryHandler as MapValue<Q, R>;
 	}
 
-	private formatHandlers<Q extends Query>(
-		queryHandlers: Array<MapValue<Q>>,
-	): Map<string, MapValue<Q>> {
+	private formatHandlers<Q extends Query>(queryHandlers: Array<MapValue<Q>>): Map<string, MapValue<Q>> {
 		const handlersMap = new Map<string, MapValue<Q>>();
 
 		queryHandlers.forEach(queryHandler => handlersMap.set(queryHandler.subscribedTo().QUERY_NAME, queryHandler));

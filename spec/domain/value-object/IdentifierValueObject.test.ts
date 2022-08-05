@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { IdentifierValueObject } from '../../../src';
 import { InvalidIdentifierValueError } from '../../../src/domain/error/InvalidIdentifierValueError';
 import { IdentifierValueObjectMother } from './mother/IdentifierValueObjectMother';
 

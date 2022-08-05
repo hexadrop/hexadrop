@@ -19,13 +19,13 @@ describe('Either', () => {
 		const fold = either.fold(
 			v => v.message,
 			() => 'true'
-		)
+		);
 		expect(fold).toBe('true');
 		const either2 = Either.left<Error, boolean>(new Error('MSG'));
 		const fold2 = either2.fold(
 			v => v.message,
 			() => 'true'
-		)
+		);
 		expect(fold2).toBe('MSG');
 	});
 	test('should flatMapRight works as expected', () => {
@@ -35,7 +35,7 @@ describe('Either', () => {
 
 		expect(map.isLeft()).toBeFalsy();
 		expect(map.isRight()).toBeTruthy();
-		expect(map.getRight()).toBe("true")
+		expect(map.getRight()).toBe('true');
 
 		const either2 = Either.left<number, boolean>(1);
 
@@ -43,7 +43,7 @@ describe('Either', () => {
 
 		expect(map2.isLeft()).toBeTruthy();
 		expect(map2.isRight()).toBeFalsy();
-		expect(map2.getLeft()).toBe(1)
+		expect(map2.getLeft()).toBe(1);
 	});
 	test('should mapRight works as expected', () => {
 		const either = Either.right<number, boolean>(true);
@@ -52,7 +52,7 @@ describe('Either', () => {
 
 		expect(map.isLeft()).toBeFalsy();
 		expect(map.isRight()).toBeTruthy();
-		expect(map.getRight()).toBe("true")
+		expect(map.getRight()).toBe('true');
 
 		const either2 = Either.left<number, boolean>(1);
 
@@ -60,7 +60,7 @@ describe('Either', () => {
 
 		expect(map2.isLeft()).toBeTruthy();
 		expect(map2.isRight()).toBeFalsy();
-		expect(map2.getLeft()).toBe(1)
+		expect(map2.getLeft()).toBe(1);
 	});
 	test('should flatMapLeft works as expected', () => {
 		const either = Either.right<number, boolean>(true);
@@ -69,7 +69,7 @@ describe('Either', () => {
 
 		expect(map.isLeft()).toBeFalsy();
 		expect(map.isRight()).toBeTruthy();
-		expect(map.getRight()).toBe(true)
+		expect(map.getRight()).toBe(true);
 
 		const either2 = Either.left<number, string>(1);
 
@@ -77,7 +77,7 @@ describe('Either', () => {
 
 		expect(map2.isLeft()).toBeFalsy();
 		expect(map2.isRight()).toBeTruthy();
-		expect(map2.getRight()).toBe('1')
+		expect(map2.getRight()).toBe('1');
 	});
 	test('should mapLeft works as expected', () => {
 		const either = Either.right<number, boolean>(true);
@@ -86,7 +86,7 @@ describe('Either', () => {
 
 		expect(map.isLeft()).toBeFalsy();
 		expect(map.isRight()).toBeTruthy();
-		expect(map.getRight()).toBe(true)
+		expect(map.getRight()).toBe(true);
 
 		const either2 = Either.left<number, boolean>(1);
 
@@ -94,40 +94,40 @@ describe('Either', () => {
 
 		expect(map2.isLeft()).toBeTruthy();
 		expect(map2.isRight()).toBeFalsy();
-		expect(map2.getLeft()).toBe('1')
+		expect(map2.getLeft()).toBe('1');
 	});
 	test('should getRight works as expected', () => {
 		const either = Either.right<number, boolean>(true);
-		expect(either.getRight()).toBe(true)
+		expect(either.getRight()).toBe(true);
 
 		const either2 = Either.left<number, boolean>(1);
-		expect(() => either2.getRight()).toThrow('The value is left: {"kind":"left","leftValue":1}')
+		expect(() => either2.getRight()).toThrow('The value is left: {"kind":"left","leftValue":1}');
 
 		const either3 = Either.left<number, boolean>(1);
-		expect(() => either3.getRight('MSG')).toThrow('MSG')
+		expect(() => either3.getRight('MSG')).toThrow('MSG');
 	});
 	test('should getLeft works as expected', () => {
 		const either = Either.left<number, boolean>(1);
-		expect(either.getLeft()).toBe(1)
+		expect(either.getLeft()).toBe(1);
 
 		const either2 = Either.right<number, boolean>(true);
-		expect(() => either2.getLeft()).toThrow('The value is right: {"kind":"right","rightValue":true}')
+		expect(() => either2.getLeft()).toThrow('The value is right: {"kind":"right","rightValue":true}');
 
 		const either3 = Either.right<number, boolean>(true);
-		expect(() => either3.getLeft('MSG')).toThrow('MSG')
+		expect(() => either3.getLeft('MSG')).toThrow('MSG');
 	});
 	test('should getLeftOrElse works as expected', () => {
 		const either = Either.left<number, boolean>(1);
-		expect(either.getLeftOrElse(2)).toBe(1)
+		expect(either.getLeftOrElse(2)).toBe(1);
 
 		const either2 = Either.right<number, boolean>(true);
-		expect(either2.getLeftOrElse(1)).toBe(1)
+		expect(either2.getLeftOrElse(1)).toBe(1);
 	});
 	test('should getRightOrElse works as expected', () => {
 		const either = Either.left<number, boolean>(1);
-		expect(either.getRightOrElse(true)).toBe(true)
+		expect(either.getRightOrElse(true)).toBe(true);
 
 		const either2 = Either.right<number, boolean>(true);
-		expect(either2.getRightOrElse(false)).toBe(true)
+		expect(either2.getRightOrElse(false)).toBe(true);
 	});
 });

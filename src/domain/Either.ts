@@ -4,8 +4,7 @@ type Right<R> = { kind: 'right'; rightValue: R };
 type EitherValue<L, R> = Left<L> | Right<R>;
 
 export class Either<L, R> {
-	private constructor(private readonly value: EitherValue<L, R>) {
-	}
+	private constructor(private readonly value: EitherValue<L, R>) {}
 
 	static left<L, R>(value: L): Either<L, R> {
 		return new Either<L, R>({ kind: 'left', leftValue: value });
@@ -18,14 +17,14 @@ export class Either<L, R> {
 	flatMapLeft<T>(fn: (left: L) => Either<T, R>): Either<T, R> {
 		return this.fold(
 			leftValue => fn(leftValue),
-			rightValue => Either.right(rightValue),
+			rightValue => Either.right(rightValue)
 		);
 	}
 
 	flatMapRight<T>(fn: (right: R) => Either<L, T>): Either<L, T> {
 		return this.fold(
 			leftValue => Either.left(leftValue),
-			rightValue => fn(rightValue),
+			rightValue => fn(rightValue)
 		);
 	}
 
@@ -45,14 +44,14 @@ export class Either<L, R> {
 
 		return this.fold(
 			leftValue => leftValue,
-			() => throwFn(),
+			() => throwFn()
 		);
 	}
 
 	getLeftOrElse(defaultValue: L): L {
 		return this.fold(
 			someValue => someValue,
-			() => defaultValue,
+			() => defaultValue
 		);
 	}
 
@@ -63,14 +62,14 @@ export class Either<L, R> {
 
 		return this.fold(
 			() => throwFn(),
-			rightValue => rightValue,
+			rightValue => rightValue
 		);
 	}
 
 	getRightOrElse(defaultValue: R): R {
 		return this.fold(
 			() => defaultValue,
-			someValue => someValue,
+			someValue => someValue
 		);
 	}
 

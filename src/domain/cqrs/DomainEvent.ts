@@ -9,7 +9,13 @@ export abstract class DomainEvent<DTO = unknown> {
 	readonly relatedId?: string;
 	readonly occurredOn: Date;
 
-	protected constructor(eventName: string, aggregateId: string, eventId?: string, occurredOn?: Date, relatedId?: string) {
+	protected constructor(
+		eventName: string,
+		aggregateId: string,
+		eventId?: string,
+		occurredOn?: Date,
+		relatedId?: string
+	) {
 		this.aggregateId = aggregateId;
 		this.eventId = eventId || IdentifierValueObject.random().value;
 		this.occurredOn = occurredOn || new Date();

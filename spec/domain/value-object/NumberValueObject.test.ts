@@ -1,5 +1,4 @@
 import { describe, expect, test } from 'vitest';
-import { NumberValueObject } from '../../../src';
 import { InvalidNumberValueTypeError } from '../../../src/domain/error/InvalidNumberValueTypeError';
 import { NumberValueObjectMother } from './mother/NumberValueObjectMother';
 

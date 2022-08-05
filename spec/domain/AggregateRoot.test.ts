@@ -6,35 +6,33 @@ interface MockEventDTO {
 }
 
 class MockEvent extends DomainEvent<MockEventDTO> {
-
 	constructor(private readonly id: string) {
 		super('event', id);
 	}
 
 	toPrimitive(): MockEventDTO {
 		return {
-			id: this.id
+			id: this.id,
 		};
 	}
 }
 
 interface MockAggregateRootDTO {
-	value: string
+	value: string;
 }
 
 class MockAggregateRoot extends AggregateRoot<MockAggregateRootDTO, MockEvent> {
-
 	private constructor(private readonly value: string) {
 		super();
 	}
 
-	static fromPrimitives(value: string) {
-		return new MockAggregateRoot(value)
+	static fromPrimitives({ value }: MockAggregateRootDTO): MockAggregateRoot {
+		return new MockAggregateRoot(value);
 	}
 
 	toPrimitives(): MockAggregateRootDTO {
 		return {
-			value: this.value
+			value: this.value,
 		};
 	}
 }
@@ -44,7 +42,7 @@ describe('AggregateRoot', () => {
 		const event1 = new MockEvent('afa');
 		const event2 = new MockEvent('afa2');
 		const event3 = new MockEvent('afa3');
-		const entity = MockAggregateRoot.fromPrimitives('value');
+		const entity = MockAggregateRoot.fromPrimitives({value: 'value'});
 
 		entity.record(event1, event2);
 
@@ -61,8 +59,5 @@ describe('AggregateRoot', () => {
 		const pulled3 = entity.pullDomainEvents();
 
 		expect(pulled3).toStrictEqual([event3]);
-
-
-
 	});
 });
