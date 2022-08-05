@@ -1,8 +1,7 @@
 import { Either } from '../Either';
-import { DomainError } from '../error/DomainError';
+import { DomainError } from '../error';
 import { Query } from './Query';
-import { Response } from './Response';
 
 export interface QueryBus {
-	ask<R extends Response, E extends DomainError>(query: Query<R>): Promise<Either<R, E>>;
+	ask<Q extends Query<R>, R, E extends DomainError>(query: Q): Promise<Either<R, E>>;
 }

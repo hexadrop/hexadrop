@@ -12,6 +12,4 @@ export * from './cqrs/EventBus';
 export * from './cqrs/EventHandler';
 export * from './cqrs/Query';
 export * from './cqrs/QueryBus';
-export * from './cqrs/QueryFilter';
 export * from './cqrs/QueryHandler';
-export * from './cqrs/Response';
