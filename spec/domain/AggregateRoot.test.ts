@@ -42,7 +42,7 @@ describe('AggregateRoot', () => {
 		const event1 = new MockEvent('afa');
 		const event2 = new MockEvent('afa2');
 		const event3 = new MockEvent('afa3');
-		const entity = MockAggregateRoot.fromPrimitives({value: 'value'});
+		const entity = MockAggregateRoot.fromPrimitives({ value: 'value' });
 
 		entity.record(event1, event2);
 

@@ -1,6 +1,6 @@
 import { IdentifierValueObject } from '../value-object';
 
-export abstract class Query<T = unknown> {
+export abstract class Query {
 	static QUERY_NAME: string;
 	readonly queryId: string;
 	readonly queryName: string;
