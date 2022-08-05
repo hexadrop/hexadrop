@@ -27,7 +27,7 @@
 		"ploc"
 	],
 	"scripts": {
-		"build": "yarn typecheck && preconstruct build && yarn workspaces foreach -iv run build",
+		"build": "yarn typecheck && preconstruct build",
 		"build:watch": "preconstruct watch",
 		"lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
 		"lint:fix": "eslint --ext .ts,.tsx --ignore-path .gitignore --fix .",
@@ -68,7 +68,6 @@
 		"eslint": "8.21.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-prettier": "4.2.1",
-		"eslint-plugin-react": "7.30.1",
 		"husky": "8.0.1",
 		"lint-staged": "13.0.3",
 		"prettier": "2.7.1",
@@ -79,7 +78,7 @@
 	},
 	"lint-staged": {
 		"*.{ts,tsx}": "eslint --fix",
-		"*": "prettier --ignore-unknown --write ."
+		"*": "prettier --write"
 	},
 	"preconstruct": {
 		"umdName": "hexadrop",
