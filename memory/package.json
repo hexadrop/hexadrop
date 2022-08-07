@@ -1,8 +1,0 @@
-{
-	"main": "dist/hexadrop-memory.cjs.js",
-	"module": "dist/hexadrop-memory.esm.js",
-	"umd:main": "dist/hexadrop-memory.umd.min.js",
-	"preconstruct": {
-		"umdName": "memorydrop"
-	}
-}

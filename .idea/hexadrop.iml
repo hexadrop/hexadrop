@@ -17,6 +17,10 @@
       <excludeFolder url="file://$MODULE_DIR$/memory" />
       <excludeFolder url="file://$MODULE_DIR$/ploc" />
       <excludeFolder url="file://$MODULE_DIR$/test" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ploc/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,0 +1,33 @@
+{
+	"name": "@hexadrop/ploc",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"bugs": {
+		"url": "https://github.com/MarioMH8/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarioMH8/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"main": "dist/hexadrop-ploc.cjs.js",
+	"module": "dist/hexadrop-ploc.esm.js",
+	"umd:main": "dist/hexadrop-ploc.umd.min.js",
+	"types": "dist/hexadrop-ploc.cjs.d.ts",
+	"scripts": {
+		"typecheck": "tsc --noEmit"
+	},
+	"preconstruct": {
+		"umdName": "plocadrop"
+	}
+}
