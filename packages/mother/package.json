@@ -1,0 +1,36 @@
+{
+	"name": "@hexadrop/mother",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"bugs": {
+		"url": "https://github.com/MarioMH8/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarioMH8/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"main": "dist/hexadrop-mother.cjs.js",
+	"module": "dist/hexadrop-mother.esm.js",
+	"umd:main": "dist/hexadrop-mother.umd.min.js",
+	"types": "dist/hexadrop-mother.cjs.d.ts",
+	"scripts": {
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@faker-js/faker": "7.3.0"
+	},
+	"preconstruct": {
+		"umdName": "motherdrop"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": "@hexadrop/core",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"bugs": {
+		"url": "https://github.com/MarioMH8/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarioMH8/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"main": "dist/hexadrop-core.cjs.js",
+	"module": "dist/hexadrop-core.esm.js",
+	"umd:main": "dist/hexadrop-core.umd.min.js",
+	"types": "dist/hexadrop-core.cjs.d.ts",
+	"scripts": {
+		"typecheck": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"uuid": "^8"
+	},
+	"devDependencies": {
+		"@hexadrop/mother": "0.0.0",
+		"uuid": "8.3.2"
+	},
+	"preconstruct": {
+		"umdName": "hexadrop"
+	}
+}

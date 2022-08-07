@@ -1,5 +1,5 @@
 {
-	"name": "hexadrop-root",
+	"name": "hexadrop",
 	"version": "0.0.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
@@ -19,53 +19,68 @@
 	"license": "MIT",
 	"private": true,
 	"workspaces": [
-		"lib/"
+		"packages/*"
 	],
 	"scripts": {
-		"build": "yarn typecheck && yarn preconstruct build",
+		"build": "yarn typecheck && preconstruct build",
+		"build:watch": "preconstruct watch",
+		"dev": "preconstruct dev",
 		"lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
 		"lint:fix": "eslint --ext .ts,.tsx --ignore-path .gitignore --fix .",
 		"postinstall": "preconstruct dev && manypkg check",
 		"prepare": "husky install",
 		"prettier": "prettier --ignore-unknown --check .",
 		"prettier:fix": "prettier --ignore-unknown --write .",
-		"release": "yarn build && yarn changeset publish",
-		"typecheck": "yarn workspaces foreach run typecheck"
+		"publish": "yarn build && yarn changeset publish",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"typecheck": "yarn workspaces foreach -piv run typecheck",
+		"version": "yarn changeset version && yarn install --mode update-lockfile",
+		"webstorm-integration": "vitest --watch --reporter=dot --reporter=json --outputFile=.vitest-result.json"
 	},
-	"lint-staged": {
-		"*.{ts,tsx}": "eslint --fix",
-		"*": "prettier --ignore-unknown --write ."
+	"engines": {
+		"node": ">=18"
 	},
 	"resolutions": {
-		"minimist": "1.2.6"
+		"minimist": "1.2.6",
+		"terser": "^5.14.2"
 	},
 	"dependencies": {
-		"@babel/core": "7.18.6",
+		"@babel/core": "7.18.10",
 		"@babel/preset-typescript": "7.18.6",
-		"@changesets/cli": "^2.23.0",
+		"@changesets/cli": "2.24.2",
 		"@commitlint/cli": "17.0.3",
 		"@commitlint/config-conventional": "17.0.3",
 		"@manypkg/cli": "0.19.1",
-		"@preconstruct/cli": "2.1.5",
-		"@types/node": "16.11.41",
-		"@typescript-eslint/eslint-plugin": "5.30.0",
-		"@typescript-eslint/parser": "5.30.0",
-		"eslint": "8.18.0",
+		"@preconstruct/cli": "2.2.1",
+		"@types/node": "18.6.4",
+		"@types/uuid": "8.3.4",
+		"@typescript-eslint/eslint-plugin": "5.32.0",
+		"@typescript-eslint/parser": "5.32.0",
+		"c8": "7.12.0",
+		"eslint": "8.21.0",
 		"eslint-config-prettier": "8.5.0",
-		"eslint-plugin-prettier": "4.1.0",
-		"eslint-plugin-react": "7.30.1",
+		"eslint-plugin-prettier": "4.2.1",
 		"husky": "8.0.1",
 		"lint-staged": "13.0.3",
 		"prettier": "2.7.1",
-		"typescript": "4.7.4"
+		"typescript": "4.7.4",
+		"vite": "3.0.4",
+		"vitest": "0.21.0"
+	},
+	"lint-staged": {
+		"*.{ts,tsx}": "eslint --fix",
+		"*": "prettier --ignore-unknown --write"
 	},
 	"preconstruct": {
-		"packages": [
-			"lib/"
-		],
 		"globals": {
-			"uuid": "uuid"
-		}
+			"uuid": "uuid",
+			"@faker-js/faker": "Faker",
+			"eventemitter3": "EventEmitter3"
+		},
+		"packages": [
+			"packages/*"
+		]
 	},
-	"packageManager": "yarn@3.2.1"
+	"packageManager": "yarn@3.2.2"
 }

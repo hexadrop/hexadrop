@@ -1,0 +1,53 @@
+{
+	"name": "@hexadrop/in-memory-bus",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"bugs": {
+		"url": "https://github.com/MarioMH8/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MarioMH8/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist",
+		"queue"
+	],
+	"main": "dist/hexadrop-in-memory-bus.cjs.js",
+	"module": "dist/hexadrop-in-memory-bus.esm.js",
+	"umd:main": "dist/hexadrop-in-memory-bus.umd.min.js",
+	"types": "dist/hexadrop-in-memory-bus.cjs.d.ts",
+	"scripts": {
+		"typecheck": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@hexadrop/core": "^0",
+		"eventemitter3": "^4",
+		"uuid": "^8"
+	},
+	"dependencies": {
+		"p-queue": "7.3.0"
+	},
+	"devDependencies": {
+		"@hexadrop/core": "0.0.0",
+		"@hexadrop/mother": "0.0.0",
+		"delay": "5.0.0",
+		"eventemitter3": "^4",
+		"uuid": "8.3.2"
+	},
+	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"queue.ts"
+		],
+		"umdName": "memobus"
+	}
+}
