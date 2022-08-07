@@ -18,7 +18,8 @@
 	},
 	"license": "MIT",
 	"files": [
-		"dist"
+		"dist",
+		"queue"
 	],
 	"main": "dist/hexadrop-in-memory-bus.cjs.js",
 	"module": "dist/hexadrop-in-memory-bus.esm.js",
@@ -29,14 +30,24 @@
 	},
 	"peerDependencies": {
 		"@hexadrop/core": "^0",
+		"eventemitter3": "^4",
 		"uuid": "^8"
+	},
+	"dependencies": {
+		"p-queue": "7.3.0"
 	},
 	"devDependencies": {
 		"@hexadrop/core": "0.0.0",
 		"@hexadrop/mother": "0.0.0",
+		"delay": "5.0.0",
+		"eventemitter3": "^4",
 		"uuid": "8.3.2"
 	},
 	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"queue.ts"
+		],
 		"umdName": "memobus"
 	}
 }

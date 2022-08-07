@@ -75,7 +75,8 @@
 	"preconstruct": {
 		"globals": {
 			"uuid": "uuid",
-			"@faker-js/faker": "Faker"
+			"@faker-js/faker": "Faker",
+			"eventemitter3": "EventEmitter3"
 		},
 		"packages": [
 			"packages/*"

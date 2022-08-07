@@ -1,7 +1,8 @@
-import { describe, expect, test, vi } from 'vitest';
 import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
-import { InMemoryEventBus } from '../../../src';
+import delay from 'delay';
+import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation } from '../../../src/infraestructure/event/EventHandlersInformation';
+import { InMemoryQueuedEventBus } from '../../../src/queue';
 
 const handler1Spy = vi.fn<[unknown], void>(() => undefined);
 const handler2Spy = vi.fn<[unknown], void>(() => undefined);
@@ -15,8 +16,8 @@ interface Event1DTO {
 class Event1 extends DomainEvent<Event1DTO> {
 	static readonly EVENT_NAME = 'Event1';
 
-	constructor(eventId?: string, occurredOn?: Date, relatedId?: string) {
-		super(Event1.EVENT_NAME, 'id', eventId, occurredOn, relatedId);
+	constructor() {
+		super(Event1.EVENT_NAME, 'id');
 	}
 
 	toPrimitive(): Event1DTO {
@@ -65,7 +66,8 @@ class Event2 extends DomainEvent<Event2DTO> {
 }
 
 class Event2Handler implements EventHandler<Event2, Event2DTO> {
-	handle(event: Event2): void {
+	async handle(event: Event2): Promise<void> {
+		await delay(150);
 		return handler2Spy(event);
 	}
 
@@ -93,7 +95,8 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4): Promise<void> {
+	async handle(event: Event4): Promise<void> {
+		await delay(150);
 		return handler4Spy(event);
 	}
 
@@ -102,18 +105,22 @@ class Event4Handler implements EventHandler<Event4, Event4DTO> {
 	}
 }
 
-describe('InMemoryEventBus', () => {
+describe('InMemoryQueuedEventBus', () => {
 	test('should works as expected', async () => {
-		const date = new Date();
-		const event1 = new Event1('1', date);
+		const event1 = new Event1();
 		const event2 = new Event2();
 		const event4 = new Event4();
 		const handler1 = new Event1Handler();
 		const handler2 = new Event2Handler();
 		const handler3 = new Event3Handler();
 		const handler4 = new Event4Handler();
+
 		const info = new EventHandlersInformation(handler4);
-		const bus = new InMemoryEventBus(info);
+
+		new InMemoryQueuedEventBus(info);
+		const bus = new InMemoryQueuedEventBus(info, {
+			concurrency: 1,
+		});
 
 		bus.subscribe(handler1);
 

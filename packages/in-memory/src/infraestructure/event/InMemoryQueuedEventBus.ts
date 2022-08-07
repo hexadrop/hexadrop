@@ -1,24 +1,28 @@
 import { DomainEvent, EventBus, EventHandler } from '@hexadrop/core';
+import PQueue, { Options, QueueAddOptions } from 'p-queue';
+import PriorityQueue from 'p-queue/dist/priority-queue';
 import { EventHandlersInformation } from './EventHandlersInformation';
 
-export class InMemoryEventBus implements EventBus {
-	constructor(private readonly info: EventHandlersInformation) {}
+export class InMemoryQueuedEventBus implements EventBus {
+	private readonly q: PQueue;
+
+	constructor(
+		private readonly info: EventHandlersInformation,
+		queueOptions?: Omit<Options<PriorityQueue, QueueAddOptions>, 'autoStart'>
+	) {
+		const defaultOptions = {
+			autoStart: true,
+		};
+		const options = queueOptions ? { ...queueOptions, ...defaultOptions } : defaultOptions;
+		this.q = new PQueue(options);
+	}
 
 	async publish(...events: DomainEvent[]): Promise<void> {
 		const promises = [];
 		for (const e of events) {
 			const handlers = this.info.search(e);
 			for (const handler of handlers) {
-				promises.push(
-					new Promise<void>(r => {
-						const returnValue = handler.handle(e);
-						if (returnValue) {
-							returnValue.then(() => r());
-						} else {
-							r();
-						}
-					})
-				);
+				promises.push(this.q.add(() => handler.handle(e)));
 			}
 		}
 		await Promise.all(promises);

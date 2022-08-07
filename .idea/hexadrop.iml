@@ -21,6 +21,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/ploc/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/queue" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
