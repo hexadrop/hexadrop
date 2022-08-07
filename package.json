@@ -48,8 +48,10 @@
 		"minimist": "1.2.6",
 		"terser": "^5.14.2"
 	},
+	"optionalDependencies": {
+		"@faker-js/faker": "^7"
+	},
 	"peerDependencies": {
-		"@faker-js/faker": "^7",
 		"uuid": "^8"
 	},
 	"devDependencies": {

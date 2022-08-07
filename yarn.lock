@@ -3969,8 +3969,10 @@ __metadata:
     vite: 3.0.4
     vitest: 0.21.0
   peerDependencies:
-    "@faker-js/faker": ^7
     uuid: ^8
+  dependenciesMeta:
+    "@faker-js/faker":
+      optional: true
   languageName: unknown
   linkType: soft
 
