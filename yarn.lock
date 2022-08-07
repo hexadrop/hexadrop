@@ -1220,10 +1220,12 @@ __metadata:
     "@hexadrop/core": 0.0.0
     "@hexadrop/mother": 0.0.0
     delay: 5.0.0
+    eventemitter3: ^4
     p-queue: 7.3.0
     uuid: 8.3.2
   peerDependencies:
     "@hexadrop/core": ^0
+    eventemitter3: ^4
     uuid: ^8
   languageName: unknown
   linkType: soft
@@ -3793,7 +3795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.7":
+"eventemitter3@npm:^4, eventemitter3@npm:^4.0.7":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1875311c42fcfe9c707b2712c32664a245629b42bb0a5a84439762dd0fd637fc54d078155ea83c2af9e0323c9ac13687e03cfba79b03af9f40c89b4960099374
