@@ -1,28 +1,27 @@
-import { DomainEvent, DomainEventClass, EventBus, EventBusCallback } from '../../domain';
-
-type DomainEventClassTuple<E extends DomainEvent<DTO>, DTO = unknown> = [
-	DomainEventClass<E, DTO>,
-	EventBusCallback<DTO>
-];
+import { DomainEvent, EventBus, EventHandler } from '../../domain';
 
 export class InMemoryEventBus implements EventBus {
-	private readonly subscriptions: Map<string, EventBusCallback<any>[]>;
+	private readonly subscriptions: Map<string, EventHandler<any, unknown>[]>;
 
-	constructor(initialSubscription?: DomainEventClassTuple<DomainEvent>[]) {
-		this.subscriptions = new Map<string, EventBusCallback[]>();
-		initialSubscription?.forEach(([e, c]) => this.subscribe(e, c));
+	constructor(...initialSubscription: EventHandler<any, unknown>[]) {
+		this.subscriptions = new Map<string, EventHandler<any, unknown>[]>();
+		initialSubscription?.forEach(h => this.subscribe(h));
 	}
 
-	async publish<T>(events: Array<DomainEvent<T>>): Promise<void> {
+	async publish(...events: DomainEvent[]): Promise<void> {
 		const promises = [];
 		for (const e of events) {
-			const eventBusCallbacks = this.subscriptions.get(e.eventName);
-			if (!eventBusCallbacks) continue;
-			for (const eventBusCallback of eventBusCallbacks) {
+			const handlers = this.subscriptions.get(e.eventName);
+			if (!handlers) continue;
+			for (const handler of handlers) {
 				promises.push(
 					new Promise<void>(r => {
-						eventBusCallback(e.toPrimitive());
-						r();
+						const returnValue = handler.handle(e.toPrimitive());
+						if (returnValue) {
+							returnValue.then(() => r());
+						} else {
+							r();
+						}
 					})
 				);
 			}
@@ -30,27 +29,23 @@ export class InMemoryEventBus implements EventBus {
 		await Promise.all(promises);
 	}
 
-	subscribe<D extends DomainEvent<DTO>, DTO = unknown>(
-		event: DomainEventClass<D, DTO>,
-		callback: EventBusCallback<DTO>
-	): void {
+	subscribe<D extends DomainEvent<DTO>, DTO = unknown>(handler: EventHandler<D, DTO>): void {
+		const event = handler.subscribedTo();
 		const c = this.subscriptions.get(event.EVENT_NAME);
 		if (c) {
-			this.subscriptions.set(event.EVENT_NAME, [...c, callback]);
+			this.subscriptions.set(event.EVENT_NAME, [...c, handler]);
 		} else {
-			this.subscriptions.set(event.EVENT_NAME, [callback]);
+			this.subscriptions.set(event.EVENT_NAME, [handler]);
 		}
 	}
 
-	unsubscribe<D extends DomainEvent<T>, T>(
-		event: DomainEventClass<D, T>,
-		eventBusCallback: (dto: T) => Promise<void> | void
-	): void {
+	unsubscribe<D extends DomainEvent<T>, T>(handler: EventHandler<D, T>): void {
+		const event = handler.subscribedTo();
 		const c = this.subscriptions.get(event.EVENT_NAME);
 		if (c) {
 			this.subscriptions.set(
 				event.EVENT_NAME,
-				c.filter(e => e !== eventBusCallback)
+				c.filter(e => e !== handler)
 			);
 		}
 	}

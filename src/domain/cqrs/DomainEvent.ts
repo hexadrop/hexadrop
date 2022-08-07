@@ -29,4 +29,5 @@ export abstract class DomainEvent<DTO = unknown> {
 export type DomainEventClass<D extends DomainEvent<DTO>, DTO = unknown> = {
 	EVENT_NAME: string;
 	fromPrimitives(dto: DTO): D;
+	new (...args: unknown[]): D;
 };
