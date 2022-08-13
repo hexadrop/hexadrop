@@ -1202,11 +1202,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hexadrop/core@0.0.0, @hexadrop/core@workspace:packages/core":
+"@hexadrop/core@0.0.1-next.0, @hexadrop/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@hexadrop/core@workspace:packages/core"
   dependencies:
-    "@hexadrop/mother": 0.0.0
+    "@hexadrop/mother": 0.0.1-next.0
     uuid: 8.3.2
   peerDependencies:
     uuid: ^8
@@ -1217,20 +1217,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hexadrop/in-memory-bus@workspace:packages/in-memory"
   dependencies:
-    "@hexadrop/core": 0.0.0
-    "@hexadrop/mother": 0.0.0
+    "@hexadrop/core": 0.0.1-next.0
+    "@hexadrop/mother": 0.0.1-next.0
     delay: 5.0.0
     eventemitter3: ^4
     p-queue: 7.3.0
     uuid: 8.3.2
   peerDependencies:
-    "@hexadrop/core": ^0
+    "@hexadrop/core": ^0.0.1-next.0
     eventemitter3: ^4
     uuid: ^8
   languageName: unknown
   linkType: soft
 
-"@hexadrop/mother@0.0.0, @hexadrop/mother@workspace:packages/mother":
+"@hexadrop/mother@0.0.1-next.0, @hexadrop/mother@workspace:packages/mother":
   version: 0.0.0-use.local
   resolution: "@hexadrop/mother@workspace:packages/mother"
   dependencies:

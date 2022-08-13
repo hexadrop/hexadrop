@@ -7,5 +7,7 @@
     "@hexadrop/mother": "0.0.0",
     "@hexadrop/ploc": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "strange-dryers-deny"
+  ]
 }
