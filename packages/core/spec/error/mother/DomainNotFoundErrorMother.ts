@@ -2,8 +2,8 @@ import { UuidMother, WordMother } from '@hexadrop/mother';
 import { DomainNotFoundError } from '../../../src';
 
 export class DomainNotFoundErrorMother {
-	static create(domain: string, id: string, param?: string, code?: string): DomainNotFoundError {
-		return new DomainNotFoundError(domain, id, param, code);
+	static create(domain: string, id: string, param?: string, name?: string, code?: string): DomainNotFoundError {
+		return new DomainNotFoundError(domain, id, param, name, code);
 	}
 
 	static creator() {
@@ -21,7 +21,7 @@ export class DomainNotFoundErrorMother {
 		const domain = WordMother.random();
 		const id = UuidMother.random();
 		const param = WordMother.random();
-		return this.create(domain, id, param, code);
+		return this.create(domain, id, param, undefined, code);
 	}
 
 	static randomWithOutParam() {

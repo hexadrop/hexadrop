@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
--   5bffffd: Added mock implementations to @hexadrop/core/test entrypoint.
+-   5bffffd: Added mock implementations to `@hexadrop/core/test` entrypoint.
 
 ## 0.0.1-next.0
 
