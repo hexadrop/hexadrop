@@ -3,9 +3,9 @@ import { expect, vi } from 'vitest';
 import { InMemoryEventBus } from '../infraestructure';
 
 export class InMemoryMockEventBus extends InMemoryEventBus {
-	publishSpy = vi.fn();
-	subscribeSpy = vi.fn();
-	unsubscribeSpy = vi.fn();
+	publishSpy = vi.fn<DomainEvent[], void | Promise<void>>();
+	subscribeSpy = vi.fn<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
+	unsubscribeSpy = vi.fn<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
 
 	private static getDataFromDomainEvent(event: DomainEvent) {
 		const { eventId, occurredOn, ...attributes } = event;
@@ -73,16 +73,16 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 
 	async publish<T>(...events: DomainEvent[]): Promise<void> {
 		await this.publishSpy(...events);
-		await super.publish(...events);
+		return super.publish(...events);
 	}
 
-	subscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>) {
-		this.subscribeSpy(handler);
-		super.subscribe(handler);
+	async subscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
+		await this.subscribeSpy(handler);
+		return super.subscribe(handler);
 	}
 
-	unsubscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): void {
-		this.unsubscribeSpy(handler);
+	async unsubscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
+		await this.unsubscribeSpy(handler);
 		super.unsubscribe(handler);
 	}
 }

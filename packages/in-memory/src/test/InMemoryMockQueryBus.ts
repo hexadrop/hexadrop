@@ -3,7 +3,7 @@ import { expect, vi } from 'vitest';
 import { InMemoryQueryBus } from '../infraestructure';
 
 export class InMemoryMockQueryBus extends InMemoryQueryBus {
-	askSpy = vi.fn();
+	askSpy = vi.fn<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
 
 	async ask<Q extends Query, R>(query: Q): Promise<Either<R, DomainError>> {
 		await this.askSpy(query);

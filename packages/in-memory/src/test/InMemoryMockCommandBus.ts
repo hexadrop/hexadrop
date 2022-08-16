@@ -3,7 +3,7 @@ import { expect, vi } from 'vitest';
 import { InMemoryCommandBus } from '../infraestructure';
 
 export class InMemoryMockCommandBus extends InMemoryCommandBus {
-	dispatchSpy = vi.fn();
+	dispatchSpy = vi.fn<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
 
 	assertLastPublishedCommand(expectedCommand: Command) {
 		const spyCalls = this.dispatchSpy.mock.calls;
