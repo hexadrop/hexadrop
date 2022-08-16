@@ -15,5 +15,5 @@ export abstract class Query {
 
 export type QueryClass<D extends Query> = {
 	QUERY_NAME: string;
-	new (...args: unknown[]): D;
+	new (...args: any[]): D;
 };

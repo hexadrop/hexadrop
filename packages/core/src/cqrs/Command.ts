@@ -15,5 +15,5 @@ export abstract class Command {
 
 export type CommandClass<D extends Command> = {
 	COMMAND_NAME: string;
-	new (...args: unknown[]): D;
+	new (...args: any[]): D;
 };
