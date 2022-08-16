@@ -20,6 +20,10 @@ class Event1 extends DomainEvent<Event1DTO> {
 		super(Event1.EVENT_NAME, 'id');
 	}
 
+	static fromPrimitives() {
+		return new Event1();
+	}
+
 	toPrimitive(): Event1DTO {
 		return {
 			id: this.aggregateId,
@@ -58,6 +62,10 @@ class Event2 extends DomainEvent<Event2DTO> {
 		super(Event2.EVENT_NAME, 'id');
 	}
 
+	static fromPrimitives() {
+		return new Event2();
+	}
+
 	toPrimitive(): Event2DTO {
 		return {
 			id: this.aggregateId,
@@ -85,6 +93,10 @@ class Event4 extends DomainEvent<Event4DTO> {
 
 	constructor() {
 		super(Event4.EVENT_NAME, 'id');
+	}
+
+	static fromPrimitives() {
+		return new Event4();
 	}
 
 	toPrimitive(): Event4DTO {
