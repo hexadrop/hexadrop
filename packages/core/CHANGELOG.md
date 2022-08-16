@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.3
+
+### Patch Changes
+
+-   cac496a: fix `Query` and `Command` class signature
+
 ## 0.0.1-next.2
 
 ### Patch Changes
