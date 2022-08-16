@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/in-memory-bus",
-	"version": "0.0.1-next.0",
+	"version": "0.0.1-next.1",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -30,7 +30,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/core": "^0",
+		"@hexadrop/core": "^0.0.1-next.1",
 		"eventemitter3": "^4",
 		"uuid": "^8",
 		"vitest": "^0"
@@ -39,7 +39,7 @@
 		"p-queue": "7.3.0"
 	},
 	"devDependencies": {
-		"@hexadrop/core": "0.0.1-next.0",
+		"@hexadrop/core": "0.0.1-next.1",
 		"@hexadrop/mother": "0.0.1-next.0",
 		"delay": "5.0.0",
 		"eventemitter3": "4.0.7",
