@@ -4,8 +4,6 @@ import { EventHandlersInformation } from '../../../src';
 import { InMemoryMockEventBus } from '../../../src/test';
 
 const handler1Spy = vi.fn<[unknown], void>(() => undefined);
-const handler2Spy = vi.fn<[unknown], void>(() => undefined);
-const handler3Spy = vi.fn<[unknown], void>(() => undefined);
 const handler4Spy = vi.fn<[unknown], Promise<void>>(() => Promise.resolve());
 
 interface Event1DTO {
@@ -51,16 +49,6 @@ class Event2 extends DomainEvent<Event2DTO> {
 		return {
 			id: this.aggregateId,
 		};
-	}
-}
-
-class Event2Handler implements EventHandler<Event2, Event2DTO> {
-	handle(event: Event2): void {
-		return handler2Spy(event);
-	}
-
-	subscribedTo(): DomainEventClass<Event2> {
-		return Event2;
 	}
 }
 
