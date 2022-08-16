@@ -1,6 +1,8 @@
-import { Command, DomainError, Either } from '@hexadrop/core';
 import { expect, vi } from 'vitest';
+import { Command } from '../cqrs/Command';
 import { CommandBus } from '../cqrs/CommandBus';
+import { Either } from '../Either';
+import { DomainError } from '../error';
 
 export class MockCommandBus implements CommandBus {
 	dispatchSpy = vi.fn<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
