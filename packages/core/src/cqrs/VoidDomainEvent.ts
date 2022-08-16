@@ -1,5 +1,5 @@
 import { DomainEvent } from './DomainEvent';
-/* c8 ignore start */
+
 export abstract class VoidDomainEvent extends DomainEvent<void> {
 	static readonly EVENT_NAME = 'void';
 
@@ -12,4 +12,3 @@ export abstract class VoidDomainEvent extends DomainEvent<void> {
 		return;
 	}
 }
-/* c8 ignore stop */
