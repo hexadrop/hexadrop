@@ -22,6 +22,8 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/test/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/test" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
