@@ -18,7 +18,8 @@
 	},
 	"license": "MIT",
 	"files": [
-		"dist"
+		"dist",
+		"test"
 	],
 	"main": "dist/hexadrop-core.cjs.js",
 	"module": "dist/hexadrop-core.esm.js",
@@ -28,13 +29,22 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"uuid": "^8"
+		"uuid": "^8",
+		"vitest": "^0"
 	},
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.1-next.0",
-		"uuid": "8.3.2"
+		"uuid": "8.3.2",
+		"vitest": "0.22.0"
+	},
+	"optionalDependencies": {
+		"vitest": "0.22.0"
 	},
 	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"test.ts"
+		],
 		"umdName": "hexadrop"
 	}
 }

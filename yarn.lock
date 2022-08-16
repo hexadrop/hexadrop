@@ -1201,8 +1201,13 @@ __metadata:
   dependencies:
     "@hexadrop/mother": 0.0.1-next.0
     uuid: 8.3.2
+    vitest: 0.22.0
   peerDependencies:
     uuid: ^8
+    vitest: ^0
+  dependenciesMeta:
+    vitest:
+      optional: true
   languageName: unknown
   linkType: soft
 
