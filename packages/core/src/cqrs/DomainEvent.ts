@@ -1,8 +1,6 @@
 import { IdentifierValueObject } from '../value-object';
 
 export abstract class DomainEvent<DTO = unknown> {
-	static EVENT_NAME: string;
-	static fromPrimitives: (...args: any[]) => any;
 	readonly aggregateId: string;
 	readonly eventId: string;
 	readonly eventName: string;

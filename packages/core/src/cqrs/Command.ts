@@ -1,7 +1,6 @@
 import { IdentifierValueObject } from '../value-object';
 
 export abstract class Command {
-	static COMMAND_NAME: string;
 	readonly commandId: string;
 	readonly commandName: string;
 	readonly relatedId?: string;
