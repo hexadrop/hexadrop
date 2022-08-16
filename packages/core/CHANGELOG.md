@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.4
+
+### Patch Changes
+
+-   4058023: fix `Query`, `DomainEvent` and `Command` class definition.
+
 ## 0.0.1-next.3
 
 ### Patch Changes
