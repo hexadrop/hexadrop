@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.2
+
+### Patch Changes
+
+-   8eb245d: Add optional name and code parameters to `DomainNotFoundError` and `InvalidArgumentError`
+
 ## 0.0.1-next.1
 
 ### Patch Changes
