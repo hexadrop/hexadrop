@@ -48,25 +48,25 @@
 	"dependencies": {
 		"@babel/core": "7.18.10",
 		"@babel/preset-typescript": "7.18.6",
-		"@changesets/cli": "2.24.2",
+		"@changesets/cli": "2.24.3",
 		"@commitlint/cli": "17.0.3",
 		"@commitlint/config-conventional": "17.0.3",
 		"@manypkg/cli": "0.19.1",
 		"@preconstruct/cli": "2.2.1",
-		"@types/node": "18.6.4",
+		"@types/node": "18.7.5",
 		"@types/uuid": "8.3.4",
-		"@typescript-eslint/eslint-plugin": "5.32.0",
-		"@typescript-eslint/parser": "5.32.0",
-		"c8": "7.12.0",
-		"eslint": "8.21.0",
+		"@typescript-eslint/eslint-plugin": "5.33.1",
+		"@typescript-eslint/parser": "5.33.1",
+		"@vitest/coverage-istanbul": "0.22.0",
+		"eslint": "8.22.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-prettier": "4.2.1",
 		"husky": "8.0.1",
 		"lint-staged": "13.0.3",
 		"prettier": "2.7.1",
 		"typescript": "4.7.4",
-		"vite": "3.0.4",
-		"vitest": "0.21.0"
+		"vite": "3.0.8",
+		"vitest": "0.22.0"
 	},
 	"lint-staged": {
 		"*.{ts,tsx}": "eslint --fix",
@@ -76,7 +76,8 @@
 		"globals": {
 			"uuid": "uuid",
 			"@faker-js/faker": "Faker",
-			"eventemitter3": "EventEmitter3"
+			"eventemitter3": "EventEmitter3",
+			"vitest": "vitest"
 		},
 		"packages": [
 			"packages/*"

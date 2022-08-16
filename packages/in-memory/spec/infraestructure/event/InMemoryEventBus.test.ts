@@ -1,7 +1,6 @@
-import { describe, expect, test, vi } from 'vitest';
 import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
-import { InMemoryEventBus } from '../../../src';
-import { EventHandlersInformation } from '../../../src/infraestructure/event/EventHandlersInformation';
+import { describe, expect, test, vi } from 'vitest';
+import { EventHandlersInformation, InMemoryEventBus } from '../../../src';
 
 const handler1Spy = vi.fn<[unknown], void>(() => undefined);
 const handler2Spy = vi.fn<[unknown], void>(() => undefined);

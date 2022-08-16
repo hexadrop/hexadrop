@@ -1,7 +1,7 @@
 import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
 import delay from 'delay';
 import { describe, expect, test, vi } from 'vitest';
-import { EventHandlersInformation } from '../../../src/infraestructure/event/EventHandlersInformation';
+import { EventHandlersInformation } from '../../../src';
 import { InMemoryQueuedEventBus } from '../../../src/queue';
 
 const handler1Spy = vi.fn<[unknown], void>(() => undefined);
