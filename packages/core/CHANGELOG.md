@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.6
+
+### Patch Changes
+
+-   0781685: Changed vitest to sinon.js for stub fn
+
 ## 0.0.1-next.5
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.1-next.2
+
+### Patch Changes
+
+-   0781685: Changed vitest to sinon.js for stub fn
+-   Updated dependencies [0781685]
+    -   @hexadrop/core@0.0.1-next.6
+
 ## 0.0.1-next.1
 
 ### Patch Changes

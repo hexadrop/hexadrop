@@ -77,7 +77,8 @@
 			"uuid": "uuid",
 			"@faker-js/faker": "Faker",
 			"eventemitter3": "EventEmitter3",
-			"vitest": "vitest"
+			"vitest": "vitest",
+			"sinon": "sinon"
 		},
 		"packages": [
 			"packages/*"
