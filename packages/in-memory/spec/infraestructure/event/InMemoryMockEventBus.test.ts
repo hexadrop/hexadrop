@@ -1,5 +1,4 @@
-import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
-import { DomainError, Either } from '@hexadrop/core/src';
+import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '@hexadrop/core';
 import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation } from '../../../src';
 import { InMemoryMockEventBus } from '../../../src/test';
@@ -184,15 +183,16 @@ describe('InMemoryMockEventBus', () => {
 		const event1 = new Event1('1', date);
 		const event2 = new Event2();
 		const event4 = new Event4();
+		const event44 = new Event4();
 		const info = new EventHandlersInformation();
 		const bus = new InMemoryMockEventBus(info);
 
 		await bus.publish(event1);
 		await bus.publish(event2, event4);
 
-		expect(() => bus.assertLastPublishedEvents(event1, event2, event4)).toThrow();
+		expect(() => bus.assertLastPublishedEvents(event1, event2, event44)).toThrow();
 
-		expect(() => bus.assertLastPublishedEvents(event2, event4)).not.toThrow();
+		expect(() => bus.assertLastPublishedEvents(event2, event44)).not.toThrow();
 	});
 	test('should assertPublishedEvents works as expected', async () => {
 		const date = new Date();

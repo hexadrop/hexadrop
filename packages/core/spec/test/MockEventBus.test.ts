@@ -186,13 +186,14 @@ describe('MockEventBus', () => {
 		const event1 = new Event1('1', date);
 		const event2 = new Event2();
 		const event4 = new Event4();
+		const event44 = new Event4();
 		const bus = new MockEventBus();
 
 		await bus.publish(event1);
 		await bus.publish(event2, event4);
 
-		expect(() => bus.assertPublishedEvents(event1, event2, event4)).not.toThrow();
+		expect(() => bus.assertPublishedEvents(event1, event2, event44)).not.toThrow();
 
-		expect(() => bus.assertPublishedEvents(event2, event4)).toThrow();
+		expect(() => bus.assertPublishedEvents(event2, event44)).toThrow();
 	});
 });

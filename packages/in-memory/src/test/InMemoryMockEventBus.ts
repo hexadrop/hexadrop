@@ -7,6 +7,11 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 	subscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
 	unsubscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
 
+	private static getDataFromDomainEvent(event: DomainEvent) {
+		const { eventId, occurredOn, ...attributes } = event;
+		return attributes;
+	}
+
 	assertIsSubscribed<DTO, D extends DomainEvent<DTO>>(handler: EventHandler<D, unknown>) {
 		assert.called(this.subscribeSpy);
 		assert.calledWith(this.subscribeSpy, handler);
@@ -20,7 +25,12 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 	assertLastPublishedEvents(...expectedEvents: DomainEvent[]) {
 		assert.called(this.publishSpy);
 		const lastSpyCall = this.publishSpy.lastCall;
-		assert.calledWith(lastSpyCall, ...expectedEvents);
+		assert.match(lastSpyCall.args.length, expectedEvents.length);
+		const eventsArr = lastSpyCall.args;
+		assert.match(
+			eventsArr.map(e => InMemoryMockEventBus.getDataFromDomainEvent(e)),
+			expectedEvents.map(e => InMemoryMockEventBus.getDataFromDomainEvent(e))
+		);
 	}
 
 	assertNotPublishEvent() {
@@ -28,17 +38,16 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 	}
 
 	assertPublishedEvents(...expectedEvents: DomainEvent[]) {
-		const events = [...expectedEvents];
 		assert.called(this.publishSpy);
 		const eventsArr = this.publishSpy
 			.getCalls()
 			.map(c => c.args)
 			.flat();
 		assert.match(eventsArr.length, expectedEvents.length);
-		this.publishSpy.getCalls().forEach(c => {
-			const expected = events.splice(0, c.args.length);
-			assert.calledWith(c, ...expected);
-		});
+		assert.match(
+			eventsArr.map(e => InMemoryMockEventBus.getDataFromDomainEvent(e)),
+			expectedEvents.map(e => InMemoryMockEventBus.getDataFromDomainEvent(e))
+		);
 	}
 
 	assertSubscriptionsLength(length: number) {
