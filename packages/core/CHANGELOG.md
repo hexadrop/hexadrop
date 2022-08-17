@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.5
+
+### Patch Changes
+
+-   5ca666d: Add property to ValueObjects and changed error messages
+
 ## 0.0.1-next.4
 
 ### Patch Changes
