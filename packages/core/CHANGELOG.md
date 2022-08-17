@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.8
+
+### Patch Changes
+
+-   7f0d986: makes event handler return either like other handlers do
+
 ## 0.0.1-next.7
 
 ### Patch Changes

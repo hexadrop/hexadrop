@@ -1,13 +1,14 @@
 import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
+import { DomainError, Either } from '@hexadrop/core/src';
 import delay from 'delay';
 import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation } from '../../../src';
 import { InMemoryQueuedEventBus } from '../../../src/queue';
 
-const handler1Spy = vi.fn<[unknown], void>(() => undefined);
-const handler2Spy = vi.fn<[unknown], void>(() => undefined);
-const handler3Spy = vi.fn<[unknown], void>(() => undefined);
-const handler4Spy = vi.fn<[unknown], Promise<void>>(() => Promise.resolve());
+const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
+const handler2Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
+const handler3Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
+const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
 
 interface Event1DTO {
 	id: string;
@@ -32,7 +33,7 @@ class Event1 extends DomainEvent<Event1DTO> {
 }
 
 class Event1Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): void {
+	handle(event: Event1): Either<void, DomainError> {
 		return handler1Spy(event);
 	}
 
@@ -42,7 +43,7 @@ class Event1Handler implements EventHandler<Event1, Event1DTO> {
 }
 
 class Event3Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): void {
+	handle(event: Event1): Either<void, DomainError> {
 		return handler3Spy(event);
 	}
 
@@ -74,7 +75,7 @@ class Event2 extends DomainEvent<Event2DTO> {
 }
 
 class Event2Handler implements EventHandler<Event2, Event2DTO> {
-	async handle(event: Event2): Promise<void> {
+	async handle(event: Event2): Promise<Either<void, DomainError>> {
 		await delay(150);
 		return handler2Spy(event);
 	}
@@ -107,7 +108,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	async handle(event: Event4): Promise<void> {
+	async handle(event: Event4): Promise<Either<void, DomainError>> {
 		await delay(150);
 		return handler4Spy(event);
 	}
