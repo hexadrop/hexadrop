@@ -1,16 +1,21 @@
+import { EmptyDateValueError } from '../error/EmptyDateValueError';
 import { InvalidDateValueTypeError } from '../error/InvalidDateValueTypeError';
 
 export abstract class DateValueObject {
 	readonly value: Date;
 
-	protected constructor(value: Date) {
-		DateValueObject.notEmpty(value);
-		DateValueObject.allowedValue(value);
+	protected constructor(value: Date, property?: string) {
+		DateValueObject.notEmpty(value, property);
+		DateValueObject.allowedValue(value, property);
 		this.value = value;
 	}
 
-	toString(): string {
-		return this.value.toISOString();
+	private static allowedValue(value: unknown, property?: string) {
+		if (!(value instanceof Date)) throw new InvalidDateValueTypeError(property);
+	}
+
+	private static notEmpty(value: unknown, property?: string) {
+		if (value === null || value === undefined) throw new EmptyDateValueError(property);
 	}
 
 	isAfterThan(other: DateValueObject): boolean {
@@ -25,11 +30,7 @@ export abstract class DateValueObject {
 		return this.value.valueOf() === other.value.valueOf();
 	}
 
-	private static notEmpty(value: unknown) {
-		if (value === null || value === undefined) throw new InvalidDateValueTypeError();
-	}
-
-	private static allowedValue(value: unknown) {
-		if (!(value instanceof Date)) throw new InvalidDateValueTypeError();
+	toString(): string {
+		return this.value.toISOString();
 	}
 }

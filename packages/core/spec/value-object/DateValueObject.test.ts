@@ -1,5 +1,6 @@
 import { DateMother } from '@hexadrop/mother';
 import { describe, expect, test } from 'vitest';
+import { EmptyDateValueError } from '../../src/error/EmptyDateValueError';
 import { InvalidDateValueTypeError } from '../../src/error/InvalidDateValueTypeError';
 import { DateValueObjectMother } from './mother/DateValueObjectMother';
 
@@ -22,7 +23,7 @@ describe('DateValueObject', () => {
 	});
 	test('should throw an error if undefined', () => {
 		const fn = () => DateValueObjectMother.invalidWithUndefined();
-		expect(fn).toThrow(InvalidDateValueTypeError);
+		expect(fn).toThrow(EmptyDateValueError);
 	});
 	test('should throw an error if invalid type', () => {
 		const fn = () => DateValueObjectMother.invalidWithString();

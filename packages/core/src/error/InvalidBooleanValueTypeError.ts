@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from './InvalidArgumentError';
 
 export class InvalidBooleanValueTypeError extends InvalidArgumentError {
-	constructor() {
-		super(`A BooleanValueObject must only contains boolean values`, 'InvalidBooleanValueTypeError', 'HEX(400)');
+	constructor(property = 'BooleanValueObject') {
+		super(`${property} must only contains boolean values`, 'InvalidBooleanValueTypeError', 'HEX(400)');
 	}
 }

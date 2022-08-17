@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from './InvalidArgumentError';
 
 export class InvalidStringValueTypeError extends InvalidArgumentError {
-	constructor() {
-		super(`A StringValueObject must only contains string values`, 'InvalidStringValueTypeError', 'HEX(400)');
+	constructor(property = 'StringValueObject') {
+		super(`${property} must only contains string values`, 'InvalidStringValueTypeError', 'HEX(400)');
 	}
 }

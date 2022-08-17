@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+import { EmptyBooleanValueError } from '../../src/error/EmptyBooleanValueError';
 import { InvalidBooleanValueTypeError } from '../../src/error/InvalidBooleanValueTypeError';
 import { BooleanValueObjectMother } from './mother/BooleanValueObjectMother';
 
@@ -14,7 +15,7 @@ describe('BooleanValueObject', () => {
 	});
 	test('should throw an error if undefined', () => {
 		const fn = () => BooleanValueObjectMother.invalidWithUndefined();
-		expect(fn).toThrow(InvalidBooleanValueTypeError);
+		expect(fn).toThrow(EmptyBooleanValueError);
 	});
 	test('should throw an error if invalid type', () => {
 		const fn = () => BooleanValueObjectMother.invalidWithString();

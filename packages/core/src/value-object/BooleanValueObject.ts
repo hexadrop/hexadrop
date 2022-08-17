@@ -1,11 +1,12 @@
+import { EmptyBooleanValueError } from '../error/EmptyBooleanValueError';
 import { InvalidBooleanValueTypeError } from '../error/InvalidBooleanValueTypeError';
 
 export abstract class BooleanValueObject {
 	readonly value: boolean;
 
-	protected constructor(value: boolean) {
-		BooleanValueObject.notEmpty(value);
-		BooleanValueObject.allowedValue(value);
+	protected constructor(value: boolean, property?: string) {
+		BooleanValueObject.notEmpty(value, property);
+		BooleanValueObject.allowedValue(value, property);
 		this.value = value;
 	}
 
@@ -17,11 +18,11 @@ export abstract class BooleanValueObject {
 		return JSON.stringify(this.value);
 	}
 
-	private static notEmpty(value: unknown) {
-		if (value === null || value === undefined) throw new InvalidBooleanValueTypeError();
+	private static notEmpty(value: unknown, property?: string) {
+		if (value === null || value === undefined) throw new EmptyBooleanValueError(property);
 	}
 
-	private static allowedValue(value: unknown) {
-		if (typeof value !== 'boolean') throw new InvalidBooleanValueTypeError();
+	private static allowedValue(value: unknown, property?: string) {
+		if (typeof value !== 'boolean') throw new InvalidBooleanValueTypeError(property);
 	}
 }

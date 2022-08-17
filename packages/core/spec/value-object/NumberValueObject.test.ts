@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+import { EmptyNumberValueError } from '../../src/error/EmptyNumberValueError';
 import { InvalidNumberValueTypeError } from '../../src/error/InvalidNumberValueTypeError';
 import { NumberValueObjectMother } from './mother/NumberValueObjectMother';
 
@@ -17,7 +18,7 @@ describe('NumberValueObject', () => {
 	});
 	test('should throw an error if undefined', () => {
 		const fn = () => NumberValueObjectMother.invalidWithUndefined();
-		expect(fn).toThrow(InvalidNumberValueTypeError);
+		expect(fn).toThrow(EmptyNumberValueError);
 	});
 	test('should throw an error if invalid type', () => {
 		const fn = () => NumberValueObjectMother.invalidWithString();

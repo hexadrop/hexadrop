@@ -1,7 +1,7 @@
 import { InvalidArgumentError } from './InvalidArgumentError';
 
 export class InvalidDateValueTypeError extends InvalidArgumentError {
-	constructor() {
-		super(`A DateValueObject must only contains date values`, 'InvalidDateValueTypeError', 'HEX(400)');
+	constructor(property = 'DateValueObject') {
+		super(`${property} must only contains date values`, 'InvalidDateValueTypeError', 'HEX(400)');
 	}
 }

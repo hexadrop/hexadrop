@@ -1,10 +1,20 @@
+import { WordMother } from '@hexadrop/mother/src';
 import { describe, expect, test } from 'vitest';
 import { InvalidDateValueTypeErrorMother } from './mother/InvalidDateValueTypeErrorMother';
 
 describe('InvalidDateValueTypeError', () => {
-	test('should create from string', () => {
+	test('should create', () => {
 		const expectedError = InvalidDateValueTypeErrorMother.create();
-		expect(expectedError.message).toBe(`A DateValueObject must only contains date values`);
+		expect(expectedError.message).toBe(`DateValueObject must only contains date values`);
+		expect(expectedError.errorCode).toBe(400);
+		expect(expectedError.code).toBe('HEX(400)');
+		expect(expectedError.name).toBe('InvalidDateValueTypeError');
+		expect(expectedError.stack).toBeDefined();
+	});
+	test('should create from property', () => {
+		const property = WordMother.random();
+		const expectedError = InvalidDateValueTypeErrorMother.create(property);
+		expect(expectedError.message).toBe(`${property} must only contains date values`);
 		expect(expectedError.errorCode).toBe(400);
 		expect(expectedError.code).toBe('HEX(400)');
 		expect(expectedError.name).toBe('InvalidDateValueTypeError');

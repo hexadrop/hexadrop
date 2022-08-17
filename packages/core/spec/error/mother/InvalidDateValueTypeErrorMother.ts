@@ -1,8 +1,9 @@
+import { WordMother } from '@hexadrop/mother/src';
 import { InvalidDateValueTypeError } from '../../../src/error/InvalidDateValueTypeError';
 
 export class InvalidDateValueTypeErrorMother {
-	static create(): InvalidDateValueTypeError {
-		return new InvalidDateValueTypeError();
+	static create(property?: string): InvalidDateValueTypeError {
+		return new InvalidDateValueTypeError(property);
 	}
 
 	static creator() {
@@ -10,6 +11,11 @@ export class InvalidDateValueTypeErrorMother {
 	}
 
 	static random() {
+		const property = WordMother.random();
+		return this.create(property);
+	}
+
+	static randomWithNoProperty() {
 		return this.create();
 	}
 }
