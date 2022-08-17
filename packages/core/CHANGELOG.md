@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.9
+
+### Patch Changes
+
+-   fc620db: mock event bus event match
+
 ## 0.0.1-next.8
 
 ### Patch Changes
