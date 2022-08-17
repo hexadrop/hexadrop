@@ -28,13 +28,14 @@
 	"scripts": {
 		"typecheck": "tsc --noEmit"
 	},
+	"dependencies": {
+		"sinon": "14.0.0"
+	},
 	"peerDependencies": {
-		"sinon": "^14",
 		"uuid": "^8"
 	},
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.1-next.0",
-		"sinon": "14.0.0",
 		"uuid": "8.3.2"
 	},
 	"preconstruct": {

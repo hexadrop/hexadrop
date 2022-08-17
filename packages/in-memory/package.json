@@ -32,11 +32,11 @@
 	"peerDependencies": {
 		"@hexadrop/core": "^0.0.1-next.6",
 		"eventemitter3": "^4",
-		"sinon": "^14",
 		"uuid": "^8"
 	},
 	"dependencies": {
-		"p-queue": "7.3.0"
+		"p-queue": "7.3.0",
+		"sinon": "14.0.0"
 	},
 	"devDependencies": {
 		"@hexadrop/core": "0.0.1-next.6",
@@ -44,7 +44,6 @@
 		"@types/sinon": "10.0.13",
 		"delay": "5.0.0",
 		"eventemitter3": "4.0.7",
-		"sinon": "14.0.0",
 		"uuid": "8.3.2"
 	},
 	"preconstruct": {

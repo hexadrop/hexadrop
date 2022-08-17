@@ -1203,7 +1203,6 @@ __metadata:
     sinon: 14.0.0
     uuid: 8.3.2
   peerDependencies:
-    sinon: ^14
     uuid: ^8
   languageName: unknown
   linkType: soft
@@ -1223,7 +1222,6 @@ __metadata:
   peerDependencies:
     "@hexadrop/core": ^0.0.1-next.6
     eventemitter3: ^4
-    sinon: ^14
     uuid: ^8
   languageName: unknown
   linkType: soft
