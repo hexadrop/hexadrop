@@ -1,5 +1,13 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.1-next.3
+
+### Patch Changes
+
+-   6298ef2: Change dependency type of sinon
+-   Updated dependencies [6298ef2]
+    -   @hexadrop/core@0.0.1-next.7
+
 ## 0.0.1-next.2
 
 ### Patch Changes

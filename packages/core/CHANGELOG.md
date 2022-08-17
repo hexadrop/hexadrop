@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.7
+
+### Patch Changes
+
+-   6298ef2: Change dependency type of sinon
+
 ## 0.0.1-next.6
 
 ### Patch Changes

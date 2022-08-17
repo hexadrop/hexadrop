@@ -8,6 +8,7 @@
     "@hexadrop/ploc": "0.0.0"
   },
   "changesets": [
+    "bright-seas-wash",
     "cold-ghosts-burn",
     "heavy-bags-tan",
     "heavy-impalas-vanish",
