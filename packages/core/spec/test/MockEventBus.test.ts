@@ -1,4 +1,4 @@
-import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
+import { DomainEvent, DomainEventClass, EventHandler } from '../../src';
 import { describe, expect, test, vi } from 'vitest';
 import { MockEventBus } from '../../src/test';
 

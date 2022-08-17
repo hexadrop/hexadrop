@@ -29,16 +29,13 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"uuid": "^8",
-		"vitest": "^0"
+		"sinon": "^14",
+		"uuid": "^8"
 	},
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.1-next.0",
-		"uuid": "8.3.2",
-		"vitest": "0.22.0"
-	},
-	"optionalDependencies": {
-		"vitest": "0.22.0"
+		"sinon": "14.0.0",
+		"uuid": "8.3.2"
 	},
 	"preconstruct": {
 		"entrypoints": [

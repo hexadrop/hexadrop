@@ -1,37 +1,26 @@
-import { expect, vi } from 'vitest';
+import { assert, stub } from 'sinon';
 import { Command } from '../cqrs/Command';
 import { CommandBus } from '../cqrs/CommandBus';
 import { Either } from '../Either';
 import { DomainError } from '../error';
 
 export class MockCommandBus implements CommandBus {
-	dispatchSpy = vi.fn<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
+	dispatchSpy = stub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
 
-	assertLastPublishedCommand(expectedCommand: Command) {
-		const spyCalls = this.dispatchSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const lastSpyCall = spyCalls[spyCalls.length - 1];
-		const lastCommand = lastSpyCall[0];
-
-		expect(expectedCommand).toMatchObject(lastCommand);
+	assertDispatchedCommands(...expectedCommands: Command[]) {
+		assert.called(this.dispatchSpy);
+		assert.callCount(this.dispatchSpy, expectedCommands.length);
+		this.dispatchSpy.getCalls().forEach((c, i) => assert.calledWith(c, expectedCommands[i]));
 	}
 
-	assertNotPublishedCommand() {
-		const publishSpyCalls = this.dispatchSpy.mock.calls;
-
-		expect(publishSpyCalls.length).toBe(0);
+	assertLastDispatchedCommand(expectedCommand: Command) {
+		assert.called(this.dispatchSpy);
+		const lastSpyCall = this.dispatchSpy.lastCall;
+		assert.calledWith(lastSpyCall, expectedCommand);
 	}
 
-	assertPublishedCommands(...expectedCommands: Command[]) {
-		const spyCalls = this.dispatchSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const lastPublishedCommands = spyCalls.map(call => call[0]) as Command[];
-
-		expect(expectedCommands).toMatchObject(lastPublishedCommands);
+	assertNotDispatchedCommand() {
+		assert.notCalled(this.dispatchSpy);
 	}
 
 	dispatch(command: Command): Either<void, DomainError> | Promise<Either<void, DomainError>> {

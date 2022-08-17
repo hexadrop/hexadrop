@@ -1,5 +1,5 @@
-import { Query } from '@hexadrop/core';
 import { describe, expect, test } from 'vitest';
+import { Query } from '../../src';
 import { MockQueryBus } from '../../src/test';
 
 class Query1 extends Query {

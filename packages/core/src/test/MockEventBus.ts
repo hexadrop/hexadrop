@@ -1,75 +1,53 @@
-import { expect, vi } from 'vitest';
+import { assert, stub } from 'sinon';
 import { DomainEvent } from '../cqrs/DomainEvent';
 import { EventBus } from '../cqrs/EventBus';
 import { EventHandler } from '../cqrs/EventHandler';
 
 export class MockEventBus implements EventBus {
-	publishSpy = vi.fn<DomainEvent[], void | Promise<void>>();
-	subscribeSpy = vi.fn<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
-	unsubscribeSpy = vi.fn<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
-
-	private static getDataFromDomainEvent(event: DomainEvent) {
-		const { eventId, occurredOn, ...attributes } = event;
-		return attributes;
-	}
+	publishSpy = stub<DomainEvent[], void | Promise<void>>();
+	subscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
+	unsubscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
 
 	assertIsSubscribed<DTO, D extends DomainEvent<DTO>>(handler: EventHandler<D, unknown>) {
-		const spyCalls = this.subscribeSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const handlers = spyCalls.map(c => c[0]) as EventHandler<D, unknown>[];
-		expect(handlers.some(h => h.constructor.name === handler.constructor.name)).toBeTruthy();
+		assert.called(this.subscribeSpy);
+		assert.calledWith(this.subscribeSpy, handler);
 	}
 
 	assertIsUnsubscribed<DTO, D extends DomainEvent<DTO>>(handler: EventHandler<D, unknown>) {
-		const spyCalls = this.unsubscribeSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const handlers = spyCalls.map(c => c[0]) as EventHandler<D, unknown>[];
-		expect(handlers.some(h => h.constructor.name === handler.constructor.name)).toBeTruthy();
+		assert.called(this.unsubscribeSpy);
+		assert.calledWith(this.unsubscribeSpy, handler);
 	}
 
 	assertLastPublishedEvents(...expectedEvents: DomainEvent[]) {
-		const spyCalls = this.publishSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const lastSpyCall = spyCalls[spyCalls.length - 1];
-
-		const lastPublishedEventsData = lastSpyCall.map(c => MockEventBus.getDataFromDomainEvent(c));
-		const expectedEventsData = expectedEvents.map(c => MockEventBus.getDataFromDomainEvent(c));
-
-		expect(lastPublishedEventsData).toMatchObject(expectedEventsData);
+		assert.called(this.publishSpy);
+		const lastSpyCall = this.publishSpy.lastCall;
+		assert.calledWith(lastSpyCall, ...expectedEvents);
 	}
 
 	assertNotPublishEvent() {
-		const spyCalls = this.publishSpy.mock.calls;
-		expect(spyCalls.length).toBe(0);
+		assert.notCalled(this.publishSpy);
 	}
 
 	assertPublishedEvents(...expectedEvents: DomainEvent[]) {
-		const spyCalls = this.publishSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const publishedEvents = spyCalls.flat() as DomainEvent[];
-
-		const publishedEventsData = publishedEvents.map(e => MockEventBus.getDataFromDomainEvent(e));
-		const expectedEventsData = expectedEvents.map(e => MockEventBus.getDataFromDomainEvent(e));
-
-		expect(expectedEventsData).toMatchObject(publishedEventsData);
+		const events = [...expectedEvents];
+		assert.called(this.publishSpy);
+		const eventsArr = this.publishSpy
+			.getCalls()
+			.map(c => c.args)
+			.flat();
+		assert.match(eventsArr.length, expectedEvents.length);
+		this.publishSpy.getCalls().forEach(c => {
+			const expected = events.splice(0, c.args.length);
+			assert.calledWith(c, ...expected);
+		});
 	}
 
 	assertSubscriptionsLength(length: number) {
-		const spyCalls = this.subscribeSpy.mock.calls;
-		expect(spyCalls.length).toBe(length);
+		assert.callCount(this.subscribeSpy, length);
 	}
 
 	assertUnsubscriptionLength(length: number) {
-		const spyCalls = this.unsubscribeSpy.mock.calls;
-		expect(spyCalls.length).toBe(length);
+		assert.callCount(this.unsubscribeSpy, length);
 	}
 
 	publish(...events: DomainEvent[]): Promise<void> | void {

@@ -1,9 +1,9 @@
 import { DomainError, Either, Query } from '@hexadrop/core';
-import { expect, vi } from 'vitest';
+import { assert, stub } from 'sinon';
 import { InMemoryQueryBus } from '../infraestructure';
 
 export class InMemoryMockQueryBus extends InMemoryQueryBus {
-	askSpy = vi.fn<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+	askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
 
 	async ask<Q extends Query, R>(query: Q): Promise<Either<R, DomainError>> {
 		await this.askSpy(query);
@@ -11,29 +11,18 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 	}
 
 	assertAskedQueries(...expectedQueries: Query[]) {
-		const spyCalls = this.askSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const lastAskedQueries = spyCalls.map(call => call[0]) as Query[];
-
-		expect(expectedQueries).toMatchObject(lastAskedQueries);
+		assert.called(this.askSpy);
+		assert.callCount(this.askSpy, expectedQueries.length);
+		this.askSpy.getCalls().forEach((c, i) => assert.calledWith(c, expectedQueries[i]));
 	}
 
 	assertLastAskedQuery(expectedQuery: Query) {
-		const spyCalls = this.askSpy.mock.calls;
-
-		expect(spyCalls.length).toBeGreaterThan(0);
-
-		const lastSpyCall = spyCalls[spyCalls.length - 1];
-		const lastQuery = lastSpyCall[0];
-
-		expect(expectedQuery).toMatchObject(lastQuery);
+		assert.called(this.askSpy);
+		const lastSpyCall = this.askSpy.lastCall;
+		assert.calledWith(lastSpyCall, expectedQuery);
 	}
 
 	assertNotAskedQuery() {
-		const askSpyCalls = this.askSpy.mock.calls;
-
-		expect(askSpyCalls.length).toBe(0);
+		assert.notCalled(this.askSpy);
 	}
 }
