@@ -10,12 +10,12 @@ export class InMemoryEventBus implements EventBus {
 			const handlers = this.info.search(e);
 			for (const handler of handlers) {
 				promises.push(
-					new Promise<void>(r => {
+					new Promise<void>((resolve, reject) => {
 						const returnValue = handler.handle(e);
-						if (returnValue) {
-							returnValue.then(() => r());
+						if (returnValue instanceof Promise) {
+							returnValue.then(e => (e.isRight() ? reject(e.getRight()) : resolve()));
 						} else {
-							r();
+							returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
 						}
 					})
 				);

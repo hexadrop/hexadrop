@@ -1,10 +1,11 @@
 import { DomainEvent, DomainEventClass, EventHandler } from '@hexadrop/core';
+import { DomainError, Either } from '@hexadrop/core/src';
 import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation } from '../../../src';
 import { InMemoryMockEventBus } from '../../../src/test';
 
-const handler1Spy = vi.fn<[unknown], void>(() => undefined);
-const handler4Spy = vi.fn<[unknown], Promise<void>>(() => Promise.resolve());
+const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
+const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
 
 interface Event1DTO {
 	id: string;
@@ -29,7 +30,7 @@ class Event1 extends DomainEvent<Event1DTO> {
 }
 
 class Event1Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): void {
+	handle(event: Event1): Either<void, DomainError> {
 		return handler1Spy(event);
 	}
 
@@ -83,7 +84,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4): Promise<void> {
+	handle(event: Event4): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 
