@@ -1,4 +1,4 @@
-import { WordMother } from '@hexadrop/mother/src';
+import { WordMother } from '@hexadrop/mother';
 import { InvalidNumberValueTypeError } from '../../../src/error/InvalidNumberValueTypeError';
 
 export class InvalidNumberValueTypeErrorMother {

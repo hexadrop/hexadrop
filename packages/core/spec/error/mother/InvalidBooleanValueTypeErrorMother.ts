@@ -1,4 +1,4 @@
-import { WordMother } from '@hexadrop/mother/src';
+import { WordMother } from '@hexadrop/mother';
 import { InvalidBooleanValueTypeError } from '../../../src/error/InvalidBooleanValueTypeError';
 
 export class InvalidBooleanValueTypeErrorMother {
