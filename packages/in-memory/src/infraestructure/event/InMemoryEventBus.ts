@@ -1,5 +1,5 @@
-import { DomainEvent, EventBus, EventHandler } from '@hexadrop/core';
-import { EventHandlersInformation } from './EventHandlersInformation';
+import type { DomainEvent, EventBus, EventHandler } from '@hexadrop/core';
+import type { EventHandlersInformation } from './EventHandlersInformation';
 
 export class InMemoryEventBus implements EventBus {
 	constructor(private readonly info: EventHandlersInformation) {}

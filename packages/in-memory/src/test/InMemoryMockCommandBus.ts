@@ -1,4 +1,4 @@
-import { Command, DomainError, Either } from '@hexadrop/core';
+import type { Command, DomainError, Either } from '@hexadrop/core';
 import { assert, stub } from 'sinon';
 import { InMemoryCommandBus } from '../infraestructure';
 
@@ -21,7 +21,7 @@ export class InMemoryMockCommandBus extends InMemoryCommandBus {
 		assert.notCalled(this.dispatchSpy);
 	}
 
-	async dispatch(command: Command): Promise<Either<void, DomainError>> {
+	override async dispatch(command: Command): Promise<Either<void, DomainError>> {
 		await this.dispatchSpy(command);
 		return super.dispatch(command);
 	}

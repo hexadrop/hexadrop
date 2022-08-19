@@ -3,7 +3,7 @@ import { IdentifierValueObject } from '../value-object';
 export abstract class Command {
 	readonly commandId: string;
 	readonly commandName: string;
-	readonly relatedId?: string;
+	readonly relatedId: string | undefined;
 
 	protected constructor(commandName: string, commandId?: string, relatedId?: string) {
 		this.commandId = commandId || IdentifierValueObject.random().value;

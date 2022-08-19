@@ -1,5 +1,5 @@
-import { Command, CommandBus, DomainError, Either } from '@hexadrop/core';
-import { CommandHandlersInformation } from './CommandHandlersInformation';
+import type { Command, CommandBus, DomainError, Either } from '@hexadrop/core';
+import type { CommandHandlersInformation } from './CommandHandlersInformation';
 
 export class InMemoryCommandBus implements CommandBus {
 	constructor(private readonly info: CommandHandlersInformation) {}

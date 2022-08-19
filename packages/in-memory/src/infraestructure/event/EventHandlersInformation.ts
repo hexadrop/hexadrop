@@ -1,4 +1,4 @@
-import { DomainEvent, EventHandler } from '@hexadrop/core';
+import type { DomainEvent, EventHandler } from '@hexadrop/core';
 
 export class EventHandlersInformation {
 	private readonly subscriptions: Map<string, EventHandler<any, unknown>[]>;

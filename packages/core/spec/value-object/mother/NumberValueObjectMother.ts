@@ -1,5 +1,5 @@
-import { NumberValueObject } from '../../../src';
 import { IntegerMother } from '@hexadrop/mother';
+import { NumberValueObject } from '../../../src';
 
 export class FakeNumberValueObject extends NumberValueObject {
 	constructor(value: number) {
@@ -30,16 +30,16 @@ export class NumberValueObjectMother {
 		return () => NumberValueObjectMother.random();
 	}
 
-	static random() {
-		const value = IntegerMother.random();
-		return this.create(value);
-	}
-
 	static invalidWithString() {
 		return new InvalidStringNumberValueObject();
 	}
 
 	static invalidWithUndefined() {
 		return new UndefinedStringNumberValueObject();
+	}
+
+	static random() {
+		const value = IntegerMother.random();
+		return this.create(value);
 	}
 }

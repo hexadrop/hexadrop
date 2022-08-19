@@ -26,7 +26,7 @@ class MockAggregateRoot extends AggregateRoot<MockAggregateRootDTO, MockEvent> {
 		super();
 	}
 
-	static fromPrimitives({ value }: MockAggregateRootDTO): MockAggregateRoot {
+	static override fromPrimitives({ value }: MockAggregateRootDTO): MockAggregateRoot {
 		return new MockAggregateRoot(value);
 	}
 

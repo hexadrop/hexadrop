@@ -1,8 +1,8 @@
 import { assert, stub } from 'sinon';
-import { Query } from '../cqrs/Query';
-import { QueryBus } from '../cqrs/QueryBus';
-import { Either } from '../Either';
-import { DomainError } from '../error';
+import type { Query } from '../cqrs/Query';
+import type { QueryBus } from '../cqrs/QueryBus';
+import type { Either } from '../Either';
+import type { DomainError } from '../error';
 
 export class MockQueryBus implements QueryBus {
 	askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();

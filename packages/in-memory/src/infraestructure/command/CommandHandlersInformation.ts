@@ -1,4 +1,4 @@
-import { Command, CommandClass, CommandHandler } from '@hexadrop/core';
+import type { Command, CommandClass, CommandHandler } from '@hexadrop/core';
 import { CommandNotRegisteredError } from '../../error';
 
 export class CommandHandlersInformation {

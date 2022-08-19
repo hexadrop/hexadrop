@@ -4,7 +4,7 @@ export abstract class DomainEvent<DTO = unknown> {
 	readonly aggregateId: string;
 	readonly eventId: string;
 	readonly eventName: string;
-	readonly relatedId?: string;
+	readonly relatedId: string | undefined;
 	readonly occurredOn: Date;
 
 	protected constructor(

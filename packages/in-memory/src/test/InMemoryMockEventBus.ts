@@ -1,4 +1,4 @@
-import { DomainEvent, EventHandler } from '@hexadrop/core';
+import type { DomainEvent, EventHandler } from '@hexadrop/core';
 import { assert, stub } from 'sinon';
 import { InMemoryEventBus } from '../infraestructure';
 
@@ -58,17 +58,17 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 		assert.callCount(this.unsubscribeSpy, length);
 	}
 
-	async publish(...events: DomainEvent[]): Promise<void> {
+	override async publish(...events: DomainEvent[]): Promise<void> {
 		await this.publishSpy(...events);
 		return super.publish(...events);
 	}
 
-	async subscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
+	override async subscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
 		await this.subscribeSpy(handler);
 		return super.subscribe(handler);
 	}
 
-	async unsubscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
+	override async unsubscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
 		await this.unsubscribeSpy(handler);
 		super.unsubscribe(handler);
 	}

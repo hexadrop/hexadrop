@@ -1,7 +1,7 @@
 import { assert, stub } from 'sinon';
-import { DomainEvent } from '../cqrs/DomainEvent';
-import { EventBus } from '../cqrs/EventBus';
-import { EventHandler } from '../cqrs/EventHandler';
+import type { DomainEvent } from '../cqrs/DomainEvent';
+import type { EventBus } from '../cqrs/EventBus';
+import type { EventHandler } from '../cqrs/EventHandler';
 
 export class MockEventBus implements EventBus {
 	publishSpy = stub<DomainEvent[], void | Promise<void>>();

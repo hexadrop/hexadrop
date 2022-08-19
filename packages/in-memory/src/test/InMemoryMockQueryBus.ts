@@ -1,11 +1,11 @@
-import { DomainError, Either, Query } from '@hexadrop/core';
+import type { DomainError, Either, Query } from '@hexadrop/core';
 import { assert, stub } from 'sinon';
 import { InMemoryQueryBus } from '../infraestructure';
 
 export class InMemoryMockQueryBus extends InMemoryQueryBus {
 	askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
 
-	async ask<Q extends Query, R>(query: Q): Promise<Either<R, DomainError>> {
+	override async ask<Q extends Query, R>(query: Q): Promise<Either<R, DomainError>> {
 		await this.askSpy(query);
 		return super.ask(query);
 	}

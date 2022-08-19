@@ -31,25 +31,21 @@
 	},
 	"peerDependencies": {
 		"@hexadrop/core": "^0.0.1-next.9",
-		"eventemitter3": "^4",
 		"uuid": "^8"
 	},
 	"dependencies": {
-		"p-queue": "7.3.0",
 		"sinon": "14.0.0"
 	},
 	"devDependencies": {
 		"@hexadrop/core": "0.0.1-next.9",
 		"@hexadrop/mother": "0.0.1-next.0",
 		"@types/sinon": "10.0.13",
-		"delay": "5.0.0",
-		"eventemitter3": "4.0.7",
-		"uuid": "8.3.2"
+		"uuid": "8.3.2",
+		"vitest": "0.22.1"
 	},
 	"preconstruct": {
 		"entrypoints": [
 			"index.ts",
-			"queue.ts",
 			"test.ts"
 		],
 		"umdName": "memobus"

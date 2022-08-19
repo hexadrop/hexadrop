@@ -1,8 +1,0 @@
-{
-	"main": "dist/hexadrop-in-memory-bus-queue.cjs.js",
-	"module": "dist/hexadrop-in-memory-bus-queue.esm.js",
-	"umd:main": "dist/hexadrop-in-memory-bus-queue.umd.min.js",
-	"preconstruct": {
-		"umdName": "qmemobus"
-	}
-}

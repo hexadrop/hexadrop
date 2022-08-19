@@ -1,4 +1,4 @@
-import { Query, QueryHandler } from '@hexadrop/core';
+import type { Query, QueryHandler } from '@hexadrop/core';
 import { QueryNotRegisteredError } from '../../error';
 
 type MapValue<Q extends Query, R = unknown> = QueryHandler<Q, R>;

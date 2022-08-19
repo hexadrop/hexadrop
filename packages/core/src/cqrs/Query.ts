@@ -3,7 +3,7 @@ import { IdentifierValueObject } from '../value-object';
 export abstract class Query {
 	readonly queryId: string;
 	readonly queryName: string;
-	readonly relatedId?: string;
+	readonly relatedId: string | undefined;
 
 	protected constructor(queryName: string, queryId?: string, relatedId?: string) {
 		this.queryId = queryId || IdentifierValueObject.random().value;

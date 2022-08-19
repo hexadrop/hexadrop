@@ -1,5 +1,5 @@
-import { DomainError, Either, Query, QueryBus } from '@hexadrop/core';
-import { QueryHandlersInformation } from './QueryHandlersInformation';
+import type { DomainError, Either, Query, QueryBus } from '@hexadrop/core';
+import type { QueryHandlersInformation } from './QueryHandlersInformation';
 
 export class InMemoryQueryBus implements QueryBus {
 	constructor(private readonly map: QueryHandlersInformation) {}

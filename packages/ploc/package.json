@@ -27,6 +27,9 @@
 	"scripts": {
 		"typecheck": "tsc --noEmit"
 	},
+	"devDependencies": {
+		"vitest": "0.22.1"
+	},
 	"preconstruct": {
 		"umdName": "plocadrop"
 	}

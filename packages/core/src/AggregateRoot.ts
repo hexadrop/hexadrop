@@ -1,5 +1,5 @@
-import { DomainEvent } from './cqrs/DomainEvent';
-import { VoidDomainEvent } from './cqrs/VoidDomainEvent';
+import type { DomainEvent } from './cqrs/DomainEvent';
+import type { VoidDomainEvent } from './cqrs/VoidDomainEvent';
 
 export abstract class AggregateRoot<DTO = unknown, D extends DomainEvent = VoidDomainEvent> {
 	static fromPrimitives: (...args: any[]) => any;

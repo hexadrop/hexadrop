@@ -1,8 +1,8 @@
 import { assert, stub } from 'sinon';
-import { Command } from '../cqrs/Command';
-import { CommandBus } from '../cqrs/CommandBus';
-import { Either } from '../Either';
-import { DomainError } from '../error';
+import type { Command } from '../cqrs/Command';
+import type { CommandBus } from '../cqrs/CommandBus';
+import type { Either } from '../Either';
+import type { DomainError } from '../error';
 
 export class MockCommandBus implements CommandBus {
 	dispatchSpy = stub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();

@@ -26,6 +26,12 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/test" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test" />
+      <excludePattern pattern=".*" />
+      <excludePattern pattern="LICENSE" />
+      <excludePattern pattern="tsconfig.*" />
+      <excludePattern pattern="vite.*" />
+      <excludePattern pattern="babel.*" />
+      <excludePattern pattern="*.lock" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

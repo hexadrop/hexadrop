@@ -1,5 +1,5 @@
-import { DomainEvent } from './DomainEvent';
-import { EventHandler } from './EventHandler';
+import type { DomainEvent } from './DomainEvent';
+import type { EventHandler } from './EventHandler';
 
 export interface EventBus {
 	publish(...events: DomainEvent[]): Promise<void> | void;
