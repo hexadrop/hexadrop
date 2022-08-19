@@ -38,13 +38,6 @@
 		"version": "yarn changeset version && yarn install --mode update-lockfile",
 		"webstorm-integration": "vitest --watch --reporter=dot --reporter=json --outputFile=.vitest-result.json"
 	},
-	"engines": {
-		"node": ">=18"
-	},
-	"resolutions": {
-		"minimist": "1.2.6",
-		"terser": "^5.14.2"
-	},
 	"dependencies": {
 		"@babel/core": "7.18.10",
 		"@babel/preset-typescript": "7.18.6",
@@ -68,21 +61,32 @@
 		"vite": "3.0.8",
 		"vitest": "0.22.0"
 	},
+	"resolutions": {
+		"minimist": "1.2.6",
+		"terser": "^5.14.2"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"volta": {
+		"node": "16.17.0",
+		"yarn": "1.22.19"
+	},
+	"packageManager": "yarn@3.2.2",
 	"lint-staged": {
 		"*.{ts,tsx}": "eslint --fix",
 		"*": "prettier --ignore-unknown --write"
 	},
 	"preconstruct": {
 		"globals": {
-			"uuid": "uuid",
 			"@faker-js/faker": "Faker",
 			"eventemitter3": "EventEmitter3",
-			"vitest": "vitest",
-			"sinon": "sinon"
+			"sinon": "sinon",
+			"uuid": "uuid",
+			"vitest": "vitest"
 		},
 		"packages": [
 			"packages/*"
 		]
-	},
-	"packageManager": "yarn@3.2.2"
+	}
 }
