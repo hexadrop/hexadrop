@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.10
+
+### Patch Changes
+
+-   0dc6bd4: Add null to `Nullable` type
+
 ## 0.0.1-next.9
 
 ### Patch Changes
