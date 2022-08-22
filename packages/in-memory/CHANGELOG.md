@@ -1,5 +1,11 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.1-next.6
+
+### Patch Changes
+
+-   ae71809: remove queue export
+
 ## 0.0.1-next.5
 
 ### Patch Changes
