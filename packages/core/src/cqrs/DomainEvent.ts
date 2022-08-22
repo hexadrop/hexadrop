@@ -1,18 +1,19 @@
+import type { Nullable } from '../Nullable';
 import { IdentifierValueObject } from '../value-object';
 
 export abstract class DomainEvent<DTO = unknown> {
 	readonly aggregateId: string;
 	readonly eventId: string;
 	readonly eventName: string;
-	readonly relatedId: string | undefined;
 	readonly occurredOn: Date;
+	readonly relatedId: Nullable<string>;
 
 	protected constructor(
 		eventName: string,
 		aggregateId: string,
-		eventId?: string,
-		occurredOn?: Date,
-		relatedId?: string
+		eventId?: Nullable<string>,
+		occurredOn?: Nullable<Date>,
+		relatedId?: Nullable<string>
 	) {
 		this.aggregateId = aggregateId;
 		this.eventId = eventId || IdentifierValueObject.random().value;
