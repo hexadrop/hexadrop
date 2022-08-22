@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.11
+
+### Patch Changes
+
+-   341add5: fix `DomainEvent` nullable properties
+
 ## 0.0.1-next.10
 
 ### Patch Changes

@@ -30,14 +30,14 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/core": "^0.0.1-next.10",
+		"@hexadrop/core": "^0.0.1-next.11",
 		"uuid": "^8"
 	},
 	"dependencies": {
 		"sinon": "14.0.0"
 	},
 	"devDependencies": {
-		"@hexadrop/core": "0.0.1-next.10",
+		"@hexadrop/core": "0.0.1-next.11",
 		"@hexadrop/mother": "0.0.1-next.0",
 		"@types/sinon": "10.0.13",
 		"uuid": "8.3.2",
