@@ -84,6 +84,7 @@
 	"preconstruct": {
 		"globals": {
 			"@faker-js/faker": "Faker",
+			"@hexadrop/core": "hexadrop",
 			"sinon": "sinon",
 			"uuid": "uuid",
 			"vitest": "vitest"
