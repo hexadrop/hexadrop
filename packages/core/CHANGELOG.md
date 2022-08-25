@@ -1,5 +1,11 @@
 # @hexadrop/core
 
+## 0.0.1-next.12
+
+### Patch Changes
+
+-   ac5c18c: Add old implementation of subscribe in even bus
+
 ## 0.0.1-next.11
 
 ### Patch Changes
