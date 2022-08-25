@@ -1,9 +1,8 @@
-import type { Either } from '../Either';
-import type { DomainError } from '../error';
 import type { DomainEvent, DomainEventClass } from './DomainEvent';
+import type { EventBusCallback } from './EventBus';
 
 export interface EventHandler<T extends DomainEvent<DTO>, DTO> {
-	handle(event: T): Either<void, DomainError> | Promise<Either<void, DomainError>>;
+	handle: EventBusCallback<DTO>;
 
 	subscribedTo(): DomainEventClass<T, DTO>;
 }

@@ -1,4 +1,5 @@
 import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '@hexadrop/core';
+import type { EventBus } from '@hexadrop/core/src';
 import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation, InMemoryEventBus } from '../../../src';
 
@@ -25,7 +26,7 @@ class Event1 extends DomainEvent<Event1DTO> {
 	static readonly EVENT_NAME = 'Event1';
 
 	constructor(eventId?: string, occurredOn?: Date, relatedId?: string) {
-		super(Event1.EVENT_NAME, 'id', eventId, occurredOn, relatedId);
+		super(Event1.EVENT_NAME, '1', eventId, occurredOn, relatedId);
 	}
 
 	static fromPrimitives() {
@@ -40,17 +41,17 @@ class Event1 extends DomainEvent<Event1DTO> {
 }
 
 class Event1Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): Either<void, DomainError> {
+	handle(event: Event1DTO) {
 		return handler1Spy(event);
 	}
 
-	subscribedTo(): DomainEventClass<Event1> {
+	subscribedTo(): DomainEventClass<Event1, Event1DTO> {
 		return Event1;
 	}
 }
 
 class Event3Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): Either<void, DomainError> {
+	handle(event: Event1DTO): Either<void, DomainError> {
 		return handler3Spy(event);
 	}
 
@@ -82,7 +83,7 @@ class Event2 extends DomainEvent<Event2DTO> {
 }
 
 class Event2Handler implements EventHandler<Event2, Event2DTO> {
-	handle(event: Event2): Either<void, DomainError> {
+	handle(event: Event2DTO): Either<void, DomainError> {
 		return handler2Spy(event);
 	}
 
@@ -114,7 +115,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4): Promise<Either<void, DomainError>> {
+	handle(event: Event4DTO): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 
@@ -146,7 +147,7 @@ class Event5 extends DomainEvent<Event5DTO> {
 }
 
 class Event5Handler implements EventHandler<Event5, Event5DTO> {
-	handle(event: Event5): Either<void, DomainError> {
+	handle(event: Event5DTO): Either<void, DomainError> {
 		return handler5Spy(event);
 	}
 
@@ -178,7 +179,7 @@ class Event6 extends DomainEvent<Event6DTO> {
 }
 
 class Event6Handler implements EventHandler<Event6, Event6DTO> {
-	handle(event: Event6): Promise<Either<void, DomainError>> {
+	handle(event: Event6DTO): Promise<Either<void, DomainError>> {
 		return handler6Spy(event);
 	}
 
@@ -189,8 +190,8 @@ class Event6Handler implements EventHandler<Event6, Event6DTO> {
 
 describe('InMemoryEventBus', () => {
 	test('should works as expected', async () => {
-		const date = new Date();
-		const event1 = new Event1('1', date);
+		const event1 = new Event1();
+		const dto: Event1DTO = { id: '1' };
 		const event2 = new Event2();
 		const event4 = new Event4();
 		const event5 = new Event5();
@@ -202,13 +203,13 @@ describe('InMemoryEventBus', () => {
 		const handler5 = new Event5Handler();
 		const handler6 = new Event6Handler();
 		const info = new EventHandlersInformation(handler4, handler5, handler6);
-		const bus = new InMemoryEventBus(info);
+		const bus: EventBus = new InMemoryEventBus(info);
 
 		bus.subscribe(handler1);
 
 		await bus.publish(event1, event2);
 
-		expect(handler1Spy).toHaveBeenCalledWith(event1);
+		expect(handler1Spy).toHaveBeenCalledWith(dto);
 		expect(handler2Spy).toHaveBeenCalledTimes(0);
 		expect(handler3Spy).toHaveBeenCalledTimes(0);
 		expect(handler4Spy).toHaveBeenCalledTimes(0);

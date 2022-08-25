@@ -1,4 +1,4 @@
-import type { DomainEvent, EventBus, EventHandler } from '@hexadrop/core';
+import type { DomainEvent, DomainEventClass, EventBus, EventBusCallback, EventHandler, Nullable } from '@hexadrop/core';
 import type { EventHandlersInformation } from './EventHandlersInformation';
 
 export class InMemoryEventBus implements EventBus {
@@ -11,7 +11,7 @@ export class InMemoryEventBus implements EventBus {
 			for (const handler of handlers) {
 				promises.push(
 					new Promise<void>((resolve, reject) => {
-						const returnValue = handler.handle(e);
+						const returnValue = handler(e.toPrimitive());
 						if (returnValue instanceof Promise) {
 							returnValue.then(e => (e.isRight() ? reject(e.getRight()) : resolve()));
 						} else {
@@ -24,11 +24,27 @@ export class InMemoryEventBus implements EventBus {
 		await Promise.all(promises);
 	}
 
-	subscribe<D extends DomainEvent<DTO>, DTO = unknown>(handler: EventHandler<D, DTO>): void {
-		this.info.addEventHandler(handler);
+	subscribe<Event extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<Event, DTO> | EventHandler<Event, DTO>,
+		callback?: Nullable<EventBusCallback<DTO>>
+	): Promise<void> | void {
+		if (callback) {
+			const e = event as DomainEventClass<Event, DTO>;
+			this.info.addCallBack(e, callback);
+		} else {
+			this.info.addEventHandler(event as EventHandler<Event, DTO>);
+		}
 	}
 
-	unsubscribe<D extends DomainEvent<T>, T>(handler: EventHandler<D, T>): void {
-		this.info.removeEventHandler(handler);
+	unsubscribe<Event extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<Event, DTO> | EventHandler<Event, DTO>,
+		callback?: Nullable<EventBusCallback<DTO>>
+	): Promise<void> | void {
+		if (callback) {
+			const e = event as DomainEventClass<Event, DTO>;
+			this.info.removeCallBack(e, callback);
+		} else {
+			this.info.removeEventHandler(event as EventHandler<Event, DTO>);
+		}
 	}
 }

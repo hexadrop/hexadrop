@@ -1,23 +1,29 @@
-import type { DomainEvent, EventHandler } from '@hexadrop/core';
+import type { DomainEvent, DomainEventClass, EventBusCallback, EventHandler, Nullable } from '@hexadrop/core';
 import { assert, stub } from 'sinon';
 import { InMemoryEventBus } from '../infraestructure';
 
 export class InMemoryMockEventBus extends InMemoryEventBus {
 	publishSpy = stub<DomainEvent[], void | Promise<void>>();
-	subscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
-	unsubscribeSpy = stub<[EventHandler<DomainEvent, unknown>], void | Promise<void>>();
+	subscribeSpy = stub<
+		[DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>, Nullable<EventBusCallback<any>>],
+		void | Promise<void>
+	>();
+	unsubscribeSpy = stub<
+		[DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>, Nullable<EventBusCallback<any>>],
+		void | Promise<void>
+	>();
 
 	private static getDataFromDomainEvent(event: DomainEvent) {
 		const { eventId, occurredOn, ...attributes } = event;
 		return attributes;
 	}
 
-	assertIsSubscribed<DTO, D extends DomainEvent<DTO>>(handler: EventHandler<D, unknown>) {
+	assertIsSubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>) {
 		assert.called(this.subscribeSpy);
 		assert.calledWith(this.subscribeSpy, handler);
 	}
 
-	assertIsUnsubscribed<DTO, D extends DomainEvent<DTO>>(handler: EventHandler<D, unknown>) {
+	assertIsUnsubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>) {
 		assert.called(this.unsubscribeSpy);
 		assert.calledWith(this.unsubscribeSpy, handler);
 	}
@@ -63,13 +69,19 @@ export class InMemoryMockEventBus extends InMemoryEventBus {
 		return super.publish(...events);
 	}
 
-	override async subscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
-		await this.subscribeSpy(handler);
-		return super.subscribe(handler);
+	override async subscribe<Event extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<Event, DTO> | EventHandler<Event, DTO>,
+		callback?: Nullable<EventBusCallback<DTO>>
+	): Promise<void> {
+		await this.subscribeSpy(event, callback);
+		return super.subscribe(event, callback);
 	}
 
-	override async unsubscribe<D extends DomainEvent>(handler: EventHandler<D, unknown>): Promise<void> {
-		await this.unsubscribeSpy(handler);
-		super.unsubscribe(handler);
+	override async unsubscribe<Event extends DomainEvent<DTO>, DTO>(
+		event: DomainEventClass<Event, DTO> | EventHandler<Event, DTO>,
+		callback?: Nullable<EventBusCallback<DTO>>
+	): Promise<void> {
+		await this.unsubscribeSpy(event, callback);
+		return super.unsubscribe(event, callback);
 	}
 }

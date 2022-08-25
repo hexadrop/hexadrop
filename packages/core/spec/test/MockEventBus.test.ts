@@ -28,7 +28,7 @@ class Event1 extends DomainEvent<Event1DTO> {
 }
 
 class Event1Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1): Either<void, DomainError> {
+	handle(event: Event1DTO): Either<void, DomainError> {
 		return handler1Spy(event);
 	}
 
@@ -78,7 +78,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4): Promise<Either<void, DomainError>> {
+	handle(event: Event4DTO): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 
