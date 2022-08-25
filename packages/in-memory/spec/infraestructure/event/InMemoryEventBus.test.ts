@@ -1,22 +1,44 @@
 import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '@hexadrop/core';
-import type { EventBus } from '@hexadrop/core/src';
 import { describe, expect, test, vi } from 'vitest';
 import { EventHandlersInformation, InMemoryEventBus } from '../../../src';
 
 class HandlerError extends DomainError {
 	constructor() {
-		super('Handler3Error', 'msg', 'HEX(123)');
+		super('Handler3Error', 'msg mondongo', 'HEX(123)');
 	}
 }
 
-const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
-const handler2Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
-const handler3Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
-const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
-const handler5Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.right(new HandlerError()));
-const handler6Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() =>
+const handler1Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.left(undefined));
+const handler2Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.left(undefined));
+const handler3Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.left(undefined));
+const handler4Spy = vi.fn<[object], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
+const handler5Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.right(new HandlerError()));
+const handler6Spy = vi.fn<[object], Promise<Either<void, DomainError>>>(() =>
 	Promise.resolve(Either.right(new HandlerError()))
 );
+
+const callback1Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.left(undefined));
+const callback2Spy = vi.fn<[object], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
+const callback7Spy = vi.fn<[object], Either<void, DomainError>>(() => Either.right(new HandlerError()));
+const callback8Spy = vi.fn<[object], Promise<Either<void, DomainError>>>(() =>
+	Promise.resolve(Either.right(new HandlerError()))
+);
+
+function callback1(event: object) {
+	return callback1Spy(event);
+}
+
+function callback2(event: object) {
+	return callback2Spy(event);
+}
+
+function callback7(event: object) {
+	return callback7Spy(event);
+}
+
+function callback8(event: object) {
+	return callback8Spy(event);
+}
 
 interface Event1DTO {
 	id: string;
@@ -188,6 +210,50 @@ class Event6Handler implements EventHandler<Event6, Event6DTO> {
 	}
 }
 
+interface Event7DTO {
+	id: string;
+}
+
+class Event7 extends DomainEvent<Event7DTO> {
+	static readonly EVENT_NAME = 'Event7';
+
+	constructor() {
+		super(Event7.EVENT_NAME, 'id');
+	}
+
+	static fromPrimitives() {
+		return new Event7();
+	}
+
+	toPrimitive(): Event7DTO {
+		return {
+			id: this.aggregateId,
+		};
+	}
+}
+
+interface Event8DTO {
+	id: string;
+}
+
+class Event8 extends DomainEvent<Event8DTO> {
+	static readonly EVENT_NAME = 'Event8';
+
+	constructor() {
+		super(Event8.EVENT_NAME, 'id');
+	}
+
+	static fromPrimitives() {
+		return new Event8();
+	}
+
+	toPrimitive(): Event8DTO {
+		return {
+			id: this.aggregateId,
+		};
+	}
+}
+
 describe('InMemoryEventBus', () => {
 	test('should works as expected', async () => {
 		const event1 = new Event1();
@@ -196,6 +262,8 @@ describe('InMemoryEventBus', () => {
 		const event4 = new Event4();
 		const event5 = new Event5();
 		const event6 = new Event6();
+		const event7 = new Event7();
+		const event8 = new Event8();
 		const handler1 = new Event1Handler();
 		const handler2 = new Event2Handler();
 		const handler3 = new Event3Handler();
@@ -203,9 +271,10 @@ describe('InMemoryEventBus', () => {
 		const handler5 = new Event5Handler();
 		const handler6 = new Event6Handler();
 		const info = new EventHandlersInformation(handler4, handler5, handler6);
-		const bus: EventBus = new InMemoryEventBus(info);
+		const bus = new InMemoryEventBus(info);
 
 		bus.subscribe(handler1);
+		bus.subscribe(Event1, callback1);
 
 		await bus.publish(event1, event2);
 
@@ -214,7 +283,13 @@ describe('InMemoryEventBus', () => {
 		expect(handler3Spy).toHaveBeenCalledTimes(0);
 		expect(handler4Spy).toHaveBeenCalledTimes(0);
 
+		expect(callback1Spy).toHaveBeenCalledWith(dto);
+		expect(callback2Spy).toHaveBeenCalledTimes(0);
+		expect(callback7Spy).toHaveBeenCalledTimes(0);
+		expect(callback8Spy).toHaveBeenCalledTimes(0);
+
 		bus.unsubscribe(handler1);
+		bus.unsubscribe(Event1, callback1);
 
 		await bus.publish(event1, event2);
 
@@ -223,9 +298,19 @@ describe('InMemoryEventBus', () => {
 		expect(handler3Spy).toHaveBeenCalledTimes(0);
 		expect(handler4Spy).toHaveBeenCalledTimes(0);
 
+		expect(callback1Spy).toHaveBeenCalledTimes(1);
+		expect(callback2Spy).toHaveBeenCalledTimes(0);
+		expect(callback7Spy).toHaveBeenCalledTimes(0);
+		expect(callback8Spy).toHaveBeenCalledTimes(0);
+
 		bus.subscribe(handler1);
 		bus.subscribe(handler2);
 		bus.subscribe(handler3);
+
+		bus.subscribe(Event1, callback1);
+		bus.subscribe(Event2, callback2);
+		bus.subscribe(Event7, callback7);
+		bus.subscribe(Event8, callback8);
 
 		await bus.publish(event1, event2, event4);
 
@@ -234,10 +319,21 @@ describe('InMemoryEventBus', () => {
 		expect(handler3Spy).toHaveBeenCalledTimes(1);
 		expect(handler4Spy).toHaveBeenCalledTimes(1);
 
+		expect(callback1Spy).toHaveBeenCalledTimes(2);
+		expect(callback2Spy).toHaveBeenCalledTimes(1);
+		expect(callback7Spy).toHaveBeenCalledTimes(0);
+		expect(callback8Spy).toHaveBeenCalledTimes(0);
+
 		const rejection5 = await expect(() => bus.publish(event5)).rejects;
 		rejection5.toThrow(HandlerError);
 
 		const rejection6 = await expect(() => bus.publish(event6)).rejects;
 		rejection6.toThrow(HandlerError);
+
+		const rejection7 = await expect(() => bus.publish(event7)).rejects;
+		rejection7.toThrow(HandlerError);
+
+		const rejection8 = await expect(() => bus.publish(event8)).rejects;
+		rejection8.toThrow(HandlerError);
 	});
 });
