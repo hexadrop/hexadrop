@@ -1,25 +1,51 @@
 import type { DomainError, Either, Query } from '@hexadrop/core';
+import type { SinonStub } from 'sinon';
 import { assert, stub } from 'sinon';
-import { InMemoryQueryBus } from '../infraestructure';
+import { InMemoryQueryBus, QueryHandlersInformation } from '../infraestructure';
 
 export class InMemoryMockQueryBus extends InMemoryQueryBus {
-	askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+	readonly askSpy: SinonStub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>;
+
+	constructor(info: QueryHandlersInformation) {
+		super(info);
+		this.askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+	}
+
+	private static getDataFromQuery(command: Query) {
+		const { queryId, ...attributes } = command;
+		return attributes;
+	}
 
 	override async ask<Q extends Query, R>(query: Q): Promise<Either<R, DomainError>> {
 		await this.askSpy(query);
 		return super.ask(query);
 	}
 
+	askRejects(error: Error) {
+		this.askSpy.rejects(error);
+	}
+
 	assertAskedQueries(...expectedQueries: Query[]) {
 		assert.called(this.askSpy);
-		assert.callCount(this.askSpy, expectedQueries.length);
-		this.askSpy.getCalls().forEach((c, i) => assert.calledWith(c, expectedQueries[i]));
+		const eventsArr = this.askSpy
+			.getCalls()
+			.map(c => c.args)
+			.flat();
+		assert.match(eventsArr.length, expectedQueries.length);
+		assert.match(
+			eventsArr.map(e => InMemoryMockQueryBus.getDataFromQuery(e)),
+			expectedQueries.map(e => InMemoryMockQueryBus.getDataFromQuery(e))
+		);
 	}
 
 	assertLastAskedQuery(expectedQuery: Query) {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
-		assert.calledWith(lastSpyCall, expectedQuery);
+		const eventsArr = lastSpyCall.args;
+		assert.match(
+			InMemoryMockQueryBus.getDataFromQuery(eventsArr[0]),
+			InMemoryMockQueryBus.getDataFromQuery(expectedQuery)
+		);
 	}
 
 	assertNotAskedQuery() {

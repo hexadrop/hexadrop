@@ -1,11 +1,21 @@
 import { assert, stub } from 'sinon';
+import type { SinonStub } from 'sinon';
 import type { Query } from '../cqrs/Query';
 import type { QueryBus } from '../cqrs/QueryBus';
 import type { Either } from '../Either';
 import type { DomainError } from '../error';
 
 export class MockQueryBus implements QueryBus {
-	askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+	readonly askSpy: SinonStub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>;
+
+	constructor() {
+		this.askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+	}
+
+	private static getDataFromQuery(command: Query) {
+		const { queryId, ...attributes } = command;
+		return attributes;
+	}
 
 	ask<Q extends Query, R>(query: Q): Either<R, DomainError> | Promise<Either<R, DomainError>> {
 		return this.askSpy(query);
@@ -13,17 +23,29 @@ export class MockQueryBus implements QueryBus {
 
 	assertAskedQueries(...expectedQueries: Query[]) {
 		assert.called(this.askSpy);
-		assert.callCount(this.askSpy, expectedQueries.length);
-		this.askSpy.getCalls().forEach((c, i) => assert.calledWith(c, expectedQueries[i]));
+		const eventsArr = this.askSpy
+			.getCalls()
+			.map(c => c.args)
+			.flat();
+		assert.match(eventsArr.length, expectedQueries.length);
+		assert.match(
+			eventsArr.map(e => MockQueryBus.getDataFromQuery(e)),
+			expectedQueries.map(e => MockQueryBus.getDataFromQuery(e))
+		);
 	}
 
 	assertLastAskedQuery(expectedQuery: Query) {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
-		assert.calledWith(lastSpyCall, expectedQuery);
+		const eventsArr = lastSpyCall.args;
+		assert.match(MockQueryBus.getDataFromQuery(eventsArr[0]), MockQueryBus.getDataFromQuery(expectedQuery));
 	}
 
 	assertNotAskedQuery() {
 		assert.notCalled(this.askSpy);
+	}
+
+	askRejects(error: Error) {
+		this.askSpy.rejects(error);
 	}
 }

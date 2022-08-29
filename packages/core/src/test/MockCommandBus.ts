@@ -1,22 +1,42 @@
-import { assert, stub } from 'sinon';
+import { assert, SinonStub, stub } from 'sinon';
 import type { Command } from '../cqrs/Command';
 import type { CommandBus } from '../cqrs/CommandBus';
 import type { Either } from '../Either';
 import type { DomainError } from '../error';
 
 export class MockCommandBus implements CommandBus {
-	dispatchSpy = stub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
+	readonly dispatchSpy: SinonStub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>;
+
+	constructor() {
+		this.dispatchSpy = stub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
+	}
+
+	private static getDataFromCommand(command: Command) {
+		const { commandId, ...attributes } = command;
+		return attributes;
+	}
 
 	assertDispatchedCommands(...expectedCommands: Command[]) {
 		assert.called(this.dispatchSpy);
-		assert.callCount(this.dispatchSpy, expectedCommands.length);
-		this.dispatchSpy.getCalls().forEach((c, i) => assert.calledWith(c, expectedCommands[i]));
+		const eventsArr = this.dispatchSpy
+			.getCalls()
+			.map(c => c.args)
+			.flat();
+		assert.match(eventsArr.length, expectedCommands.length);
+		assert.match(
+			eventsArr.map(e => MockCommandBus.getDataFromCommand(e)),
+			expectedCommands.map(e => MockCommandBus.getDataFromCommand(e))
+		);
 	}
 
 	assertLastDispatchedCommand(expectedCommand: Command) {
 		assert.called(this.dispatchSpy);
 		const lastSpyCall = this.dispatchSpy.lastCall;
-		assert.calledWith(lastSpyCall, expectedCommand);
+		const eventsArr = lastSpyCall.args;
+		assert.match(
+			MockCommandBus.getDataFromCommand(eventsArr[0]),
+			MockCommandBus.getDataFromCommand(expectedCommand)
+		);
 	}
 
 	assertNotDispatchedCommand() {
@@ -25,5 +45,9 @@ export class MockCommandBus implements CommandBus {
 
 	dispatch(command: Command): Either<void, DomainError> | Promise<Either<void, DomainError>> {
 		return this.dispatchSpy(command);
+	}
+
+	dispatchRejects(error: Error) {
+		this.dispatchSpy.rejects(error);
 	}
 }
