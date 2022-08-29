@@ -1,5 +1,13 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.1-next.9
+
+### Patch Changes
+
+-   2f4ae9c: add mock helpers
+-   Updated dependencies [2f4ae9c]
+    -   @hexadrop/core@0.0.1-next.14
+
 ## 0.0.1-next.8
 
 ### Patch Changes
