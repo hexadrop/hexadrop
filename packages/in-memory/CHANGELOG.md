@@ -1,5 +1,13 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.1-next.8
+
+### Patch Changes
+
+-   df5d611: add mock helpers
+-   Updated dependencies [df5d611]
+    -   @hexadrop/core@0.0.1-next.13
+
 ## 0.0.1-next.7
 
 ### Patch Changes

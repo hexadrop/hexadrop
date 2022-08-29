@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/core",
-	"version": "0.0.1-next.12",
+	"version": "0.0.1-next.13",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
