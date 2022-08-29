@@ -25,6 +25,10 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 		this.askSpy.rejects(error);
 	}
 
+	askResolve(value: Either<any, DomainError>) {
+		this.askSpy.resolves(value);
+	}
+
 	assertAskedQueries(...expectedQueries: Query[]) {
 		assert.called(this.askSpy);
 		const eventsArr = this.askSpy

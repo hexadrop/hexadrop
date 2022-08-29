@@ -50,4 +50,8 @@ export class MockCommandBus implements CommandBus {
 	dispatchRejects(error: Error) {
 		this.dispatchSpy.rejects(error);
 	}
+
+	askResolve(value: Either<any, DomainError>) {
+		this.dispatchSpy.resolves(value);
+	}
 }

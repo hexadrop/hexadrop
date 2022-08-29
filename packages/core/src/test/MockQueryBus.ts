@@ -48,4 +48,8 @@ export class MockQueryBus implements QueryBus {
 	askRejects(error: Error) {
 		this.askSpy.rejects(error);
 	}
+
+	askResolve(value: Either<any, DomainError>) {
+		this.askSpy.resolves(value);
+	}
 }
