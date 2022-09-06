@@ -8,8 +8,8 @@ class CustomError extends DomainError {
 	}
 }
 
-const handler1Spy = vi.fn<[], Either<string, DomainError>>(() => Either<void, DomainError>.left('Hello'));
-const handler2Spy = vi.fn<[], Either<string, DomainError>>(() => Either<void, DomainError>.right(new CustomError()));
+const handler1Spy = vi.fn<[], Either<string, DomainError>>(() => Either.left('Hello'));
+const handler2Spy = vi.fn<[], Either<string, DomainError>>(() => Either.right(new CustomError()));
 
 class Query1 extends Query {
 	static readonly QUERY_NAME = 'Query1';

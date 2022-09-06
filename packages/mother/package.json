@@ -28,10 +28,10 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@faker-js/faker": "7.4.0"
+		"@faker-js/faker": "7.5.0"
 	},
 	"devDependencies": {
-		"vitest": "0.22.1"
+		"vitest": "0.23.1"
 	},
 	"preconstruct": {
 		"umdName": "motherdrop"

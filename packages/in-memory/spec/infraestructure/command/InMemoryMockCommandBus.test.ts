@@ -9,8 +9,8 @@ class CustomError extends DomainError {
 	}
 }
 
-const handler1Spy = vi.fn<[], Either<void, DomainError>>(() => Either<void, DomainError>.left(undefined));
-const handler2Spy = vi.fn<[], Either<void, DomainError>>(() => Either<void, DomainError>.right(new CustomError()));
+const handler1Spy = vi.fn<[], Either<void, DomainError>>(() => Either.left(undefined));
+const handler2Spy = vi.fn<[], Either<void, DomainError>>(() => Either.right(new CustomError()));
 
 class Command1 extends Command {
 	static readonly COMMAND_NAME = 'Command1';
