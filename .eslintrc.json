@@ -1,9 +1,4 @@
 {
-	"env": {
-		"browser": true,
-		"es2021": true
-	},
-	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -13,7 +8,12 @@
 		"sourceType": "module"
 	},
 	"plugins": ["@typescript-eslint"],
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	"rules": {
-		"@typescript-eslint/ban-ts-comment": "off"
+		"@typescript-eslint/ban-ts-comment": "warn"
+	},
+	"env": {
+		"browser": true,
+		"es2021": true
 	}
 }

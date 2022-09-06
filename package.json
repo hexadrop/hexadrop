@@ -29,8 +29,6 @@
 		"lint:fix": "eslint --ext .ts,.tsx --ignore-path .gitignore --fix .",
 		"postinstall": "preconstruct dev && manypkg check",
 		"prepare": "husky install",
-		"prettier": "prettier --ignore-unknown --check .",
-		"prettier:fix": "prettier --ignore-unknown --write .",
 		"publish": "yarn build && yarn changeset publish",
 		"test": "vitest",
 		"test:coverage": "vitest run --coverage",
@@ -78,8 +76,7 @@
 	},
 	"packageManager": "yarn@3.2.2",
 	"lint-staged": {
-		"*": "yarn prettier:fix",
-		"*.{ts,tsx}": "yarn lint:fix"
+		"*.{ts,tsx,json,.md}": "yarn lint:fix"
 	},
 	"preconstruct": {
 		"globals": {
