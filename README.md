@@ -1,13 +1,13 @@
 # Hexadrop
 
-Hexadrop es un conjunto de opinionadas librerias que te permite implementar
-de manera facil un proyecto utilizando DDD y arquitectura hexagonal.
+Hexadrop es un conjunto de opinionadas librerías que te permite implementar
+de manera fácil un proyecto utilizando DDD y arquitectura hexagonal.
 
-Actualmente existen las siguientes librerias:
+Actualmente, existen las siguientes librerías:
 
 -   [@hexadrop/core](./packages/core): Es la dependencia principal del proyecto.
-    Exporta una clase de la que tendra que extender todas nuestras entidaded de dominio; asi
-    como otras utilidaded y value objects.
+    Exporta una clase de la que tendrá que extender todas nuestras entidades de dominio, asi
+    como otras utilidades y value objects.
 
 -   [@hexadrop/in-memory](./packages/in-memory): Contiene varias implementaciones en memoria
     del `CommandBus`, `QueryBus` y `EventBus`.
