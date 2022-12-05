@@ -62,7 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@manypkg/cli", "npm:0.19.1"],\
             ["@preconstruct/cli", "npm:2.2.1"],\
             ["@tsconfig/node16-strictest-esm", "npm:1.0.3"],\
-            ["@types/node", "npm:18.7.15"],\
+            ["@types/node", "npm:18.11.11"],\
             ["@typescript-eslint/eslint-plugin", "virtual:51211e0b69d7d7728c66ac6a2f550ccee5f84ff719fc6c85d3b6a5ccbd843c61e290321de78861634efadd05c6b9a6564bbb98668d8bb2b7500762f29e5c36dd#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:51211e0b69d7d7728c66ac6a2f550ccee5f84ff719fc6c85d3b6a5ccbd843c61e290321de78861634efadd05c6b9a6564bbb98668d8bb2b7500762f29e5c36dd#npm:5.36.2"],\
             ["@vitest/coverage-istanbul", "npm:0.23.1"],\
@@ -1987,10 +1987,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:18.7.15", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-18.7.15-3b77ff6bd6-1435fc7fe4.zip/node_modules/@types/node/",\
+        ["npm:18.11.11", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.11.11-e5325451ab-c4b1176a8f.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:18.7.15"]\
+            ["@types/node", "npm:18.11.11"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -5290,7 +5290,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@manypkg/cli", "npm:0.19.1"],\
             ["@preconstruct/cli", "npm:2.2.1"],\
             ["@tsconfig/node16-strictest-esm", "npm:1.0.3"],\
-            ["@types/node", "npm:18.7.15"],\
+            ["@types/node", "npm:18.11.11"],\
             ["@typescript-eslint/eslint-plugin", "virtual:51211e0b69d7d7728c66ac6a2f550ccee5f84ff719fc6c85d3b6a5ccbd843c61e290321de78861634efadd05c6b9a6564bbb98668d8bb2b7500762f29e5c36dd#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:51211e0b69d7d7728c66ac6a2f550ccee5f84ff719fc6c85d3b6a5ccbd843c61e290321de78861634efadd05c6b9a6564bbb98668d8bb2b7500762f29e5c36dd#npm:5.36.2"],\
             ["@vitest/coverage-istanbul", "npm:0.23.1"],\
