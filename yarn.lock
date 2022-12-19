@@ -981,11 +981,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hexadrop/core@0.0.1-next.14, @hexadrop/core@workspace:packages/core":
+"@hexadrop/core@0.0.1, @hexadrop/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@hexadrop/core@workspace:packages/core"
   dependencies:
-    "@hexadrop/mother": 0.0.1-next.0
+    "@hexadrop/mother": 0.0.1
     "@types/sinon": 10.0.13
     "@types/uuid": 8.3.4
     sinon: 14.0.0
@@ -998,17 +998,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hexadrop/in-memory-bus@workspace:packages/in-memory"
   dependencies:
-    "@hexadrop/core": 0.0.1-next.14
-    "@hexadrop/mother": 0.0.1-next.0
+    "@hexadrop/core": 0.0.1
+    "@hexadrop/mother": 0.0.1
     "@types/sinon": 10.0.13
     sinon: 14.0.0
     vitest: 0.23.1
   peerDependencies:
-    "@hexadrop/core": ^0.0.1-next.14
+    "@hexadrop/core": ^0.0.1
   languageName: unknown
   linkType: soft
 
-"@hexadrop/mother@0.0.1-next.0, @hexadrop/mother@workspace:packages/mother":
+"@hexadrop/mother@0.0.1, @hexadrop/mother@workspace:packages/mother":
   version: 0.0.0-use.local
   resolution: "@hexadrop/mother@workspace:packages/mother"
   dependencies:
@@ -1596,10 +1596,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.7.15":
-  version: 18.7.15
-  resolution: "@types/node@npm:18.7.15"
-  checksum: 1435fc7fe44744467a3ba8ace646455be228516530dbb3db64a03cca6abcfdc5ba2e48a3eafc71f25f836d2ca871132361c58a5e760237a53674cb09151147d9
+"@types/node@npm:18.11.17":
+  version: 18.11.17
+  resolution: "@types/node@npm:18.11.17"
+  checksum: 1933afd068d5c75c068c6c4df6d10edb3b0b2bb6503d544e2f0496ac007c90596e6a5e284a8ef032451bc16f871b7e46719d7d2bea60e9b25d13a77d52161cac
   languageName: node
   linkType: hard
 
@@ -4524,7 +4524,7 @@ __metadata:
     "@manypkg/cli": 0.19.1
     "@preconstruct/cli": 2.2.1
     "@tsconfig/node16-strictest-esm": ^1.0.3
-    "@types/node": 18.7.15
+    "@types/node": 18.11.17
     "@typescript-eslint/eslint-plugin": 5.36.2
     "@typescript-eslint/parser": 5.36.2
     "@vitest/coverage-istanbul": 0.23.1
