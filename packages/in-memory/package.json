@@ -33,7 +33,7 @@
 		"@hexadrop/core": "^0.0.1"
 	},
 	"dependencies": {
-		"sinon": "14.0.0"
+		"sinon": "15.0.1"
 	},
 	"devDependencies": {
 		"@hexadrop/core": "0.0.1",

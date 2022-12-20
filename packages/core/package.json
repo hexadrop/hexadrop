@@ -29,7 +29,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"sinon": "14.0.0",
+		"sinon": "15.0.1",
 		"uuid": "9.0.0"
 	},
 	"devDependencies": {
