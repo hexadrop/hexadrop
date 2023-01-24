@@ -21,7 +21,7 @@ class MockPloc extends Ploc<PlocState> {
 }
 
 describe('Ploc', () => {
-	test('should works as expected', async () => {
+	test('should works as expected', () => {
 		const spy = vi.fn<[PlocState], void>();
 		const subscription = (state: PlocState) => spy(state);
 		const ploc = new MockPloc({

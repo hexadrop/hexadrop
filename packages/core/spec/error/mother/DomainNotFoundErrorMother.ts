@@ -13,11 +13,7 @@ export class DomainNotFoundErrorMother {
 		return new DomainNotFoundError(domain, id, param, name, code);
 	}
 
-	static creator() {
-		return () => DomainNotFoundErrorMother.random();
-	}
-
-	static random() {
+	static random(): DomainNotFoundError {
 		const domain = WordMother.random();
 		const id = UuidMother.random();
 		const param = WordMother.random();
@@ -25,7 +21,7 @@ export class DomainNotFoundErrorMother {
 		return this.create(domain, id, param);
 	}
 
-	static randomWithCode(code: string) {
+	static randomWithCode(code: string): DomainNotFoundError {
 		const domain = WordMother.random();
 		const id = UuidMother.random();
 		const param = WordMother.random();
@@ -33,7 +29,7 @@ export class DomainNotFoundErrorMother {
 		return this.create(domain, id, param, undefined, code);
 	}
 
-	static randomWithOutParam() {
+	static randomWithOutParam(): DomainNotFoundError {
 		const domain = WordMother.random();
 		const id = UuidMother.random();
 

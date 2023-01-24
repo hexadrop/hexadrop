@@ -282,8 +282,8 @@ describe('InMemoryEventBus', () => {
 		const info = new EventHandlersInformation(handler4, handler5, handler6);
 		const bus = new InMemoryEventBus(info);
 
-		bus.subscribe(handler1);
-		bus.subscribe(Event1, callback1);
+		await bus.subscribe(handler1);
+		await bus.subscribe(Event1, callback1);
 
 		await bus.publish(event1, event2);
 
@@ -297,8 +297,8 @@ describe('InMemoryEventBus', () => {
 		expect(callback7Spy).toHaveBeenCalledTimes(0);
 		expect(callback8Spy).toHaveBeenCalledTimes(0);
 
-		bus.unsubscribe(handler1);
-		bus.unsubscribe(Event1, callback1);
+		await bus.unsubscribe(handler1);
+		await bus.unsubscribe(Event1, callback1);
 
 		await bus.publish(event1, event2);
 
@@ -312,14 +312,14 @@ describe('InMemoryEventBus', () => {
 		expect(callback7Spy).toHaveBeenCalledTimes(0);
 		expect(callback8Spy).toHaveBeenCalledTimes(0);
 
-		bus.subscribe(handler1);
-		bus.subscribe(handler2);
-		bus.subscribe(handler3);
+		await bus.subscribe(handler1);
+		await bus.subscribe(handler2);
+		await bus.subscribe(handler3);
 
-		bus.subscribe(Event1, callback1);
-		bus.subscribe(Event2, callback2);
-		bus.subscribe(Event7, callback7);
-		bus.subscribe(Event8, callback8);
+		await bus.subscribe(Event1, callback1);
+		await bus.subscribe(Event2, callback2);
+		await bus.subscribe(Event7, callback7);
+		await bus.subscribe(Event8, callback8);
 
 		await bus.publish(event1, event2, event4);
 
@@ -333,16 +333,16 @@ describe('InMemoryEventBus', () => {
 		expect(callback7Spy).toHaveBeenCalledTimes(0);
 		expect(callback8Spy).toHaveBeenCalledTimes(0);
 
-		const rejection5 = await expect(() => bus.publish(event5)).rejects;
-		rejection5.toThrow(HandlerError);
+		const rejection5 = expect(() => bus.publish(event5)).rejects;
+		await rejection5.toThrow(HandlerError);
 
-		const rejection6 = await expect(() => bus.publish(event6)).rejects;
-		rejection6.toThrow(HandlerError);
+		const rejection6 = expect(() => bus.publish(event6)).rejects;
+		await rejection6.toThrow(HandlerError);
 
-		const rejection7 = await expect(() => bus.publish(event7)).rejects;
-		rejection7.toThrow(HandlerError);
+		const rejection7 = expect(() => bus.publish(event7)).rejects;
+		await rejection7.toThrow(HandlerError);
 
-		const rejection8 = await expect(() => bus.publish(event8)).rejects;
-		rejection8.toThrow(HandlerError);
+		const rejection8 = expect(() => bus.publish(event8)).rejects;
+		await rejection8.toThrow(HandlerError);
 	});
 });

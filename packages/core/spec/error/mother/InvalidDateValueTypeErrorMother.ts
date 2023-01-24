@@ -7,17 +7,13 @@ export class InvalidDateValueTypeErrorMother {
 		return new InvalidDateValueTypeError(property);
 	}
 
-	static creator() {
-		return () => InvalidDateValueTypeErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidDateValueTypeError {
 		const property = WordMother.random();
 
 		return this.create(property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): InvalidDateValueTypeError {
 		return this.create();
 	}
 }

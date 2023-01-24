@@ -7,18 +7,14 @@ export class InvalidIdentifierValueErrorMother {
 		return new InvalidIdentifierValueError(property, value);
 	}
 
-	static creator() {
-		return () => InvalidIdentifierValueErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidIdentifierValueError {
 		const value = WordMother.random();
 		const property = WordMother.random();
 
 		return this.create(value, property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): InvalidIdentifierValueError {
 		const value = WordMother.random();
 
 		return this.create(value);

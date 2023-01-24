@@ -16,8 +16,8 @@ export abstract class DomainEvent<DTO = unknown> {
 		relatedId?: Nullable<string>
 	) {
 		this.aggregateId = aggregateId;
-		this.eventId = eventId || IdentifierValueObject.random().value;
-		this.occurredOn = occurredOn || new Date();
+		this.eventId = eventId ?? IdentifierValueObject.random().value;
+		this.occurredOn = occurredOn ?? new Date();
 		this.eventName = eventName;
 		this.relatedId = relatedId;
 	}
@@ -27,6 +27,6 @@ export abstract class DomainEvent<DTO = unknown> {
 
 export type DomainEventClass<D extends DomainEvent<DTO>, DTO = unknown> = {
 	EVENT_NAME: string;
-	fromPrimitives(dto: DTO): D;
 	new (...args: any[]): D;
+	fromPrimitives(dto: DTO): D;
 };

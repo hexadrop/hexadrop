@@ -13,11 +13,7 @@ export class InvalidArgumentErrorMother {
 		return new ExtendsInvalidArgumentError(message, name, code);
 	}
 
-	static creator() {
-		return () => InvalidArgumentErrorMother.random();
-	}
-
-	static random() {
+	static random(): ExtendsInvalidArgumentError {
 		const message = WordMother.random();
 		const name = WordMother.random();
 

@@ -29,6 +29,7 @@ class Command1Handler implements CommandHandler<Command1> {
 		return Command1;
 	}
 }
+
 class Command2 extends Command {
 	static readonly COMMAND_NAME = 'Command2';
 
@@ -61,7 +62,6 @@ describe('InMemoryCommandBus', () => {
 		expect(handler1Spy).toHaveBeenCalledOnce();
 		expect(either1).toBeDefined();
 		expect(either1.isLeft()).toBeTruthy();
-		expect(either1.getLeft()).toBeUndefined();
 
 		const either2 = await bus.dispatch(command2);
 

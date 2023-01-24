@@ -21,7 +21,9 @@ export class InMemoryEventBus implements EventBus {
 					new Promise<void>((resolve, reject) => {
 						const returnValue = handler(e.toPrimitive());
 						if (returnValue instanceof Promise) {
-							returnValue.then(e => (e.isRight() ? reject(e.getRight()) : resolve()));
+							void returnValue.then(e =>
+								e.isRight() ? reject(e.getRight()) : resolve()
+							);
 						} else {
 							returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
 						}

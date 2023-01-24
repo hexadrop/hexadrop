@@ -7,11 +7,7 @@ export class QueryNotRegisteredErrorMother {
 		return new QueryNotRegisteredError(query);
 	}
 
-	static creator() {
-		return () => QueryNotRegisteredErrorMother.random();
-	}
-
-	static random() {
+	static random(): QueryNotRegisteredError {
 		const query = WordMother.random();
 
 		return this.create(query);

@@ -16,7 +16,7 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 	}
 
 	private static getDataFromQuery(command: Query) {
-		const { queryId, ...attributes } = command;
+		const { queryId: _q, ...attributes } = command;
 
 		return attributes;
 	}
@@ -27,15 +27,15 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 		return super.ask(query);
 	}
 
-	askRejects(error: Error) {
+	askRejects(error: Error): void {
 		this.askSpy.rejects(error);
 	}
 
-	askResolve(value: Either<any, DomainError>) {
+	askResolve(value: Either<any, DomainError>): void {
 		this.askSpy.resolves(value);
 	}
 
-	assertAskedQueries(...expectedQueries: Query[]) {
+	assertAskedQueries(...expectedQueries: Query[]): void {
 		assert.called(this.askSpy);
 		const eventsArr = this.askSpy
 			.getCalls()
@@ -48,7 +48,7 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 		);
 	}
 
-	assertLastAskedQuery(expectedQuery: Query) {
+	assertLastAskedQuery(expectedQuery: Query): void {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
@@ -58,7 +58,7 @@ export class InMemoryMockQueryBus extends InMemoryQueryBus {
 		);
 	}
 
-	assertNotAskedQuery() {
+	assertNotAskedQuery(): void {
 		assert.notCalled(this.askSpy);
 	}
 }

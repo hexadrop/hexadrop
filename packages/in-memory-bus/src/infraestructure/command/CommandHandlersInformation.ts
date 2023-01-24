@@ -9,17 +9,19 @@ export class CommandHandlersInformation {
 		this.commandHandlersMap = this.formatHandlers(...handlers);
 	}
 
-	public addCommandHandler(...handler: CommandHandler<Command>[]) {
+	public addCommandHandler(...handler: CommandHandler<Command>[]): void {
 		handler.forEach(commandHandler => {
 			const arr: CommandClass<Command>[] = [];
 			if (Array.isArray(commandHandler.subscribedTo())) {
-				(commandHandler.subscribedTo() as CommandClass<Command>[]).forEach(c =>
-					arr.push(c)
-				);
+				(commandHandler.subscribedTo() as CommandClass<Command>[]).forEach(c => {
+					arr.push(c);
+				});
 			} else {
 				arr.push(commandHandler.subscribedTo() as CommandClass<Command>);
 			}
-			arr.forEach(c => this.commandHandlersMap.set(c.COMMAND_NAME, commandHandler));
+			arr.forEach(c => {
+				this.commandHandlersMap.set(c.COMMAND_NAME, commandHandler);
+			});
 		});
 	}
 
@@ -41,11 +43,15 @@ export class CommandHandlersInformation {
 		for (const handler of handlers) {
 			const arr: CommandClass<Command>[] = [];
 			if (Array.isArray(handler.subscribedTo())) {
-				(handler.subscribedTo() as CommandClass<Command>[]).forEach(c => arr.push(c));
+				(handler.subscribedTo() as CommandClass<Command>[]).forEach(c => {
+					arr.push(c);
+				});
 			} else {
 				arr.push(handler.subscribedTo() as CommandClass<Command>);
 			}
-			arr.forEach(c => map.set(c.COMMAND_NAME, handler));
+			arr.forEach(c => {
+				map.set(c.COMMAND_NAME, handler);
+			});
 		}
 
 		return map;

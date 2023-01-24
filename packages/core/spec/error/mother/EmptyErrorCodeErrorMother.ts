@@ -5,11 +5,7 @@ export class EmptyErrorCodeErrorMother {
 		return new EmptyErrorCodeError();
 	}
 
-	static creator() {
-		return () => EmptyErrorCodeErrorMother.random();
-	}
-
-	static random() {
+	static random(): EmptyErrorCodeError {
 		return this.create();
 	}
 }

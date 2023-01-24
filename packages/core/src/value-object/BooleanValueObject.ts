@@ -10,12 +10,10 @@ export abstract class BooleanValueObject {
 		this.value = value;
 	}
 
-	isEqualsTo(other: BooleanValueObject): boolean {
-		return this.value === other.value;
-	}
-
-	toString(): string {
-		return JSON.stringify(this.value);
+	private static allowedValue(value: unknown, property?: string) {
+		if (typeof value !== 'boolean') {
+			throw new InvalidBooleanValueTypeError(property);
+		}
 	}
 
 	private static notEmpty(value: unknown, property?: string) {
@@ -24,9 +22,11 @@ export abstract class BooleanValueObject {
 		}
 	}
 
-	private static allowedValue(value: unknown, property?: string) {
-		if (typeof value !== 'boolean') {
-			throw new InvalidBooleanValueTypeError(property);
-		}
+	isEqualsTo(other: BooleanValueObject): boolean {
+		return this.value === other.value;
+	}
+
+	toString(): string {
+		return JSON.stringify(this.value);
 	}
 }

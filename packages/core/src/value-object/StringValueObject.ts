@@ -13,20 +13,6 @@ export abstract class StringValueObject<S extends string = string> {
 		this.value = value;
 	}
 
-	isEqualsTo(other: StringValueObject): boolean {
-		return this.value === other.value;
-	}
-
-	toString(): string {
-		return this.value;
-	}
-
-	private static notEmpty(value: unknown, property?: string) {
-		if (value === null || value === undefined || value === '') {
-			throw new EmptyStringValueError(property);
-		}
-	}
-
 	private static allowedType(value: unknown, property?: string) {
 		if (typeof value !== 'string') {
 			throw new InvalidStringValueTypeError(property);
@@ -37,5 +23,19 @@ export abstract class StringValueObject<S extends string = string> {
 		if (values && !values.includes(value)) {
 			throw new InvalidStringValueError(property, value);
 		}
+	}
+
+	private static notEmpty(value: unknown, property?: string) {
+		if (value === null || value === undefined || value === '') {
+			throw new EmptyStringValueError(property);
+		}
+	}
+
+	isEqualsTo(other: StringValueObject): boolean {
+		return this.value === other.value;
+	}
+
+	toString(): string {
+		return this.value;
 	}
 }

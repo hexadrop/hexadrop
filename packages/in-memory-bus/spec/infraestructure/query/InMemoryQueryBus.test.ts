@@ -29,6 +29,7 @@ class Query1Handler implements QueryHandler<Query1, string> {
 		return Query1;
 	}
 }
+
 class Query2 extends Query {
 	static readonly QUERY_NAME = 'Query2';
 

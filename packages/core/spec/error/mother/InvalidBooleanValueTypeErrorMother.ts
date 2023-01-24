@@ -7,17 +7,13 @@ export class InvalidBooleanValueTypeErrorMother {
 		return new InvalidBooleanValueTypeError(property);
 	}
 
-	static creator() {
-		return () => InvalidBooleanValueTypeErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidBooleanValueTypeError {
 		const property = WordMother.random();
 
 		return this.create(property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): InvalidBooleanValueTypeError {
 		return this.create();
 	}
 }

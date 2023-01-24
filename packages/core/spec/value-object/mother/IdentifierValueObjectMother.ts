@@ -7,17 +7,13 @@ export class IdentifierValueObjectMother {
 		return new IdentifierValueObject(value);
 	}
 
-	static creator() {
-		return () => IdentifierValueObjectMother.random();
+	static invalid(): IdentifierValueObject {
+		return this.create('s');
 	}
 
-	static random() {
+	static random(): IdentifierValueObject {
 		const value = UuidMother.random();
 
 		return this.create(value);
-	}
-
-	static invalid() {
-		return this.create('s');
 	}
 }

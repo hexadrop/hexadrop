@@ -15,18 +15,9 @@ export abstract class DomainError extends Error {
 	 *    For example FNL(123) or RPA(435678)
 	 */
 	protected constructor(name: string, message: string, readonly code: string) {
-		DomainError.allowedValues(code);
+		allowedValues(code);
 		super(message);
 		this.name = name || 'DomainError';
-	}
-
-	private static allowedValues(code: string) {
-		if (!code) {
-			throw new EmptyErrorCodeError();
-		}
-		if (!DOMAIN_ERROR_CODE.test(code)) {
-			throw new InvalidErrorCodeError();
-		}
 	}
 
 	get errorCode(): number {
@@ -49,5 +40,14 @@ export class InvalidErrorCodeError extends DomainError {
 export class EmptyErrorCodeError extends DomainError {
 	constructor() {
 		super('EmptyErrorCodeError', 'DomainError code can not be null or empty', 'HEX(400)');
+	}
+}
+
+function allowedValues(code: string) {
+	if (!code) {
+		throw new EmptyErrorCodeError();
+	}
+	if (!DOMAIN_ERROR_CODE.test(code)) {
+		throw new InvalidErrorCodeError();
 	}
 }

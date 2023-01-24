@@ -18,7 +18,17 @@ export class InMemoryMockCommandBus extends InMemoryCommandBus {
 		>();
 	}
 
-	assertDispatchedCommands(...expectedCommands: Command[]) {
+	private static getDataFromCommand(command: Command) {
+		const { commandId: _c, ...attributes } = command;
+
+		return attributes;
+	}
+
+	askResolve(value: Either<any, DomainError>): void {
+		this.dispatchSpy.resolves(value);
+	}
+
+	assertDispatchedCommands(...expectedCommands: Command[]): void {
 		assert.called(this.dispatchSpy);
 		const eventsArr = this.dispatchSpy
 			.getCalls()
@@ -31,7 +41,7 @@ export class InMemoryMockCommandBus extends InMemoryCommandBus {
 		);
 	}
 
-	assertLastDispatchedCommand(expectedCommand: Command) {
+	assertLastDispatchedCommand(expectedCommand: Command): void {
 		assert.called(this.dispatchSpy);
 		const lastSpyCall = this.dispatchSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
@@ -41,7 +51,7 @@ export class InMemoryMockCommandBus extends InMemoryCommandBus {
 		);
 	}
 
-	assertNotDispatchedCommand() {
+	assertNotDispatchedCommand(): void {
 		assert.notCalled(this.dispatchSpy);
 	}
 
@@ -51,17 +61,7 @@ export class InMemoryMockCommandBus extends InMemoryCommandBus {
 		return super.dispatch(command);
 	}
 
-	private static getDataFromCommand(command: Command) {
-		const { commandId, ...attributes } = command;
-
-		return attributes;
-	}
-
-	dispatchRejects(error: Error) {
+	dispatchRejects(error: Error): void {
 		this.dispatchSpy.rejects(error);
-	}
-
-	askResolve(value: Either<any, DomainError>) {
-		this.dispatchSpy.resolves(value);
 	}
 }

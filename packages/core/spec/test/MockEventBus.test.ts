@@ -99,12 +99,12 @@ describe('MockEventBus', () => {
 		expect(() => bus.assertIsSubscribed(handler1)).toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
 
-		bus.subscribe(handler1);
+		await bus.subscribe(handler1);
 
 		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
 
-		bus.subscribe(handler4);
+		await bus.subscribe(handler4);
 
 		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).not.toThrow();
@@ -116,11 +116,11 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 
-		bus.subscribe(handler1);
+		await bus.subscribe(handler1);
 
 		expect(() => bus.assertSubscriptionsLength(1)).not.toThrow();
 
-		bus.subscribe(handler4);
+		await bus.subscribe(handler4);
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 		expect(() => bus.assertSubscriptionsLength(2)).not.toThrow();
@@ -133,12 +133,12 @@ describe('MockEventBus', () => {
 		expect(() => bus.assertIsUnsubscribed(handler1)).toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
 
-		bus.unsubscribe(handler1);
+		await bus.unsubscribe(handler1);
 
 		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
 
-		bus.unsubscribe(handler4);
+		await bus.unsubscribe(handler4);
 
 		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).not.toThrow();
@@ -150,11 +150,11 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 
-		bus.unsubscribe(handler1);
+		await bus.unsubscribe(handler1);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).not.toThrow();
 
-		bus.unsubscribe(handler4);
+		await bus.unsubscribe(handler4);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 		expect(() => bus.assertUnsubscriptionLength(2)).not.toThrow();

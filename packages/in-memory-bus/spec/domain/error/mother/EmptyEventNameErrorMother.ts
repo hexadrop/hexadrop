@@ -7,11 +7,7 @@ export class EmptyEventNameErrorMother {
 		return new EmptyEventNameError(command);
 	}
 
-	static creator() {
-		return () => EmptyEventNameErrorMother.random();
-	}
-
-	static random() {
+	static random(): EmptyEventNameError {
 		const word = WordMother.random();
 
 		return this.create(word);

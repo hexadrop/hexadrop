@@ -24,22 +24,22 @@ export class MockEventBus implements EventBus {
 	>();
 
 	private static getDataFromDomainEvent(event: DomainEvent) {
-		const { eventId, occurredOn, ...attributes } = event;
+		const { eventId: _e, occurredOn: _o, ...attributes } = event;
 
 		return attributes;
 	}
 
-	assertIsSubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>) {
+	assertIsSubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>): void {
 		assert.called(this.subscribeSpy);
 		assert.calledWith(this.subscribeSpy, handler);
 	}
 
-	assertIsUnsubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>) {
+	assertIsUnsubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>): void {
 		assert.called(this.unsubscribeSpy);
 		assert.calledWith(this.unsubscribeSpy, handler);
 	}
 
-	assertLastPublishedEvents(...expectedEvents: DomainEvent[]) {
+	assertLastPublishedEvents(...expectedEvents: DomainEvent[]): void {
 		assert.called(this.publishSpy);
 		const lastSpyCall = this.publishSpy.lastCall;
 		assert.match(lastSpyCall.args.length, expectedEvents.length);
@@ -50,11 +50,11 @@ export class MockEventBus implements EventBus {
 		);
 	}
 
-	assertNotPublishEvent() {
+	assertNotPublishEvent(): void {
 		assert.notCalled(this.publishSpy);
 	}
 
-	assertPublishedEvents(...expectedEvents: DomainEvent[]) {
+	assertPublishedEvents(...expectedEvents: DomainEvent[]): void {
 		assert.called(this.publishSpy);
 		const eventsArr = this.publishSpy
 			.getCalls()
@@ -67,11 +67,11 @@ export class MockEventBus implements EventBus {
 		);
 	}
 
-	assertSubscriptionsLength(length: number) {
+	assertSubscriptionsLength(length: number): void {
 		assert.callCount(this.subscribeSpy, length);
 	}
 
-	assertUnsubscriptionLength(length: number) {
+	assertUnsubscriptionLength(length: number): void {
 		assert.callCount(this.unsubscribeSpy, length);
 	}
 

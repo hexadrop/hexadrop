@@ -11,7 +11,7 @@ export class QueryHandlersInformation {
 		this.queryHandlersMap = this.formatHandlers(queryHandlers);
 	}
 
-	public addQueryHandler(...handlers: Array<MapValue<Query>>) {
+	public addQueryHandler(...handlers: Array<MapValue<Query>>): void {
 		handlers.forEach(h => {
 			this.queryHandlersMap.set(h.subscribedTo().QUERY_NAME, h);
 		});
@@ -32,9 +32,9 @@ export class QueryHandlersInformation {
 	): Map<string, MapValue<Q>> {
 		const handlersMap = new Map<string, MapValue<Q>>();
 
-		queryHandlers.forEach(queryHandler =>
-			handlersMap.set(queryHandler.subscribedTo().QUERY_NAME, queryHandler)
-		);
+		queryHandlers.forEach(queryHandler => {
+			handlersMap.set(queryHandler.subscribedTo().QUERY_NAME, queryHandler);
+		});
 
 		return handlersMap;
 	}

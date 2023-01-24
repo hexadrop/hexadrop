@@ -7,18 +7,14 @@ export class InvalidStringValueErrorMother {
 		return new InvalidStringValueError(property, value);
 	}
 
-	static creator() {
-		return () => InvalidStringValueErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidStringValueError {
 		const value = WordMother.random();
 		const property = WordMother.random();
 
 		return this.create(value, property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): InvalidStringValueError {
 		const value = WordMother.random();
 
 		return this.create(value);

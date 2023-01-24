@@ -7,17 +7,13 @@ export class EmptyStringValueErrorMother {
 		return new EmptyStringValueError(property);
 	}
 
-	static creator() {
-		return () => EmptyStringValueErrorMother.random();
-	}
-
-	static random() {
+	static random(): EmptyStringValueError {
 		const property = WordMother.random();
 
 		return this.create(property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): EmptyStringValueError {
 		return this.create();
 	}
 }

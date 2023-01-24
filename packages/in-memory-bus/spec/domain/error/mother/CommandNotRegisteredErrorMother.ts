@@ -7,11 +7,7 @@ export class CommandNotRegisteredErrorMother {
 		return new CommandNotRegisteredError(command);
 	}
 
-	static creator() {
-		return () => CommandNotRegisteredErrorMother.random();
-	}
-
-	static random() {
+	static random(): CommandNotRegisteredError {
 		const word = WordMother.random();
 
 		return this.create(word);

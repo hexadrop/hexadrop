@@ -10,8 +10,8 @@ describe('QueryNotRegisteredError', () => {
 		expect(expectedError.message).toBe(
 			`The query '${query}' hasn't a query handler associated`
 		);
-		expect(expectedError.errorCode).toBe(400);
-		expect(expectedError.code).toBe('HEX(400)');
+		expect(expectedError.errorCode).toBe(500);
+		expect(expectedError.code).toBe('HEX(500)');
 		expect(expectedError.name).toBe('QueryNotRegisteredError');
 		expect(expectedError.stack).toBeDefined();
 	});

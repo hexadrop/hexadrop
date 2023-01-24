@@ -1,11 +1,13 @@
 import type { DomainEvent, DomainEventClass, EventBusCallback, EventHandler } from '@hexadrop/core';
 
 export class EventHandlersInformation {
-	private readonly subscriptions: Map<string, EventBusCallback<any>[]>;
+	private readonly subscriptions: Map<string, EventBusCallback[]>;
 
 	constructor(...handlers: EventHandler<any, any>[]) {
-		this.subscriptions = new Map<string, EventBusCallback<any>[]>();
-		handlers.forEach(h => this.addEventHandler(h));
+		this.subscriptions = new Map<string, EventBusCallback[]>();
+		handlers.forEach(h => {
+			this.addEventHandler(h);
+		});
 	}
 
 	addCallBack<D extends DomainEvent<DTO>, DTO>(

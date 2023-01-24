@@ -41,23 +41,23 @@ export class UndefinedNameError extends DomainError {
 }
 
 export class InvalidDomainErrorMother {
-	static emptyErrorCode() {
+	static emptyErrorCode(): EmptyErrorCodeError {
 		return new EmptyErrorCodeError();
 	}
 
-	static undefinedErrorCode() {
-		return new UndefinedErrorCodeError();
-	}
-
-	static invalidErrorCode() {
-		return new InvalidErrorCodeError();
-	}
-
-	static emptyName() {
+	static emptyName(): EmptyErrorCodeError {
 		return new EmptyNameError();
 	}
 
-	static undefinedName() {
+	static invalidErrorCode(): EmptyErrorCodeError {
+		return new InvalidErrorCodeError();
+	}
+
+	static undefinedErrorCode(): EmptyErrorCodeError {
+		return new UndefinedErrorCodeError();
+	}
+
+	static undefinedName(): EmptyErrorCodeError {
 		return new UndefinedNameError();
 	}
 }

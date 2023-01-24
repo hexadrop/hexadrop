@@ -19,12 +19,16 @@ export class MockCommandBus implements CommandBus {
 	}
 
 	private static getDataFromCommand(command: Command) {
-		const { commandId, ...attributes } = command;
+		const { commandId: _c, ...attributes } = command;
 
 		return attributes;
 	}
 
-	assertDispatchedCommands(...expectedCommands: Command[]) {
+	askResolve(value: Either<any, DomainError>): void {
+		this.dispatchSpy.resolves(value);
+	}
+
+	assertDispatchedCommands(...expectedCommands: Command[]): void {
 		assert.called(this.dispatchSpy);
 		const eventsArr = this.dispatchSpy
 			.getCalls()
@@ -37,7 +41,7 @@ export class MockCommandBus implements CommandBus {
 		);
 	}
 
-	assertLastDispatchedCommand(expectedCommand: Command) {
+	assertLastDispatchedCommand(expectedCommand: Command): void {
 		assert.called(this.dispatchSpy);
 		const lastSpyCall = this.dispatchSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
@@ -47,7 +51,7 @@ export class MockCommandBus implements CommandBus {
 		);
 	}
 
-	assertNotDispatchedCommand() {
+	assertNotDispatchedCommand(): void {
 		assert.notCalled(this.dispatchSpy);
 	}
 
@@ -55,11 +59,7 @@ export class MockCommandBus implements CommandBus {
 		return this.dispatchSpy(command);
 	}
 
-	dispatchRejects(error: Error) {
+	dispatchRejects(error: Error): void {
 		this.dispatchSpy.rejects(error);
-	}
-
-	askResolve(value: Either<any, DomainError>) {
-		this.dispatchSpy.resolves(value);
 	}
 }
