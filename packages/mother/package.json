@@ -37,6 +37,6 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@faker-js/faker": "7.5.0"
+		"@faker-js/faker": "7.6.0"
 	}
 }
