@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { SerialNumberMother } from '../src';
 
 describe('SerialNumberMother', () => {

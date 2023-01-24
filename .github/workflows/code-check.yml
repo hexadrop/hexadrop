@@ -1,0 +1,47 @@
+name: Code check & test
+
+on:
+    pull_request:
+        branches: [ main ]
+        types: [ opened, synchronize ]
+
+jobs:
+    code-check:
+        name: Code check
+        runs-on: ubuntu-latest
+        permissions:
+            contents: 'read'
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+
+            -   name: Setup Volta
+                uses: volta-cli/action@v4
+
+            -   name: Install dependencies
+                run: yarn install --immutable
+
+            -   name: Lint
+                run: yarn lint
+
+            -   name: Type check
+                run: yarn typecheck
+    test:
+        name: Test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: 'read'
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+
+            -   name: Setup Volta
+                uses: volta-cli/action@v4
+                with:
+                    node-version: ${{ matrix.version }}
+
+            -   name: Install dependencies
+                run: yarn install --immutable
+
+            -   name: Test
+                run: yarn test

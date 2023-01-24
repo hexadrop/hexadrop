@@ -1,18 +1,26 @@
 import { assert, SinonStub, stub } from 'sinon';
+
 import type { Command } from '../cqrs/Command';
 import type { CommandBus } from '../cqrs/CommandBus';
 import type { Either } from '../Either';
 import type { DomainError } from '../error';
 
 export class MockCommandBus implements CommandBus {
-	readonly dispatchSpy: SinonStub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>;
+	readonly dispatchSpy: SinonStub<
+		[Command],
+		Either<void, DomainError> | Promise<Either<void, DomainError>>
+	>;
 
 	constructor() {
-		this.dispatchSpy = stub<[Command], Either<void, DomainError> | Promise<Either<void, DomainError>>>();
+		this.dispatchSpy = stub<
+			[Command],
+			Either<void, DomainError> | Promise<Either<void, DomainError>>
+		>();
 	}
 
 	private static getDataFromCommand(command: Command) {
 		const { commandId, ...attributes } = command;
+
 		return attributes;
 	}
 

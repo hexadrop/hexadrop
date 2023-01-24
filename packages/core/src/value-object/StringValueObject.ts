@@ -22,14 +22,20 @@ export abstract class StringValueObject<S extends string = string> {
 	}
 
 	private static notEmpty(value: unknown, property?: string) {
-		if (value === null || value === undefined || value === '') throw new EmptyStringValueError(property);
+		if (value === null || value === undefined || value === '') {
+			throw new EmptyStringValueError(property);
+		}
 	}
 
 	private static allowedType(value: unknown, property?: string) {
-		if (typeof value !== 'string') throw new InvalidStringValueTypeError(property);
+		if (typeof value !== 'string') {
+			throw new InvalidStringValueTypeError(property);
+		}
 	}
 
 	private static allowedValues(value: string, values?: string[], property?: string) {
-		if (values && !values.includes(value)) throw new InvalidStringValueError(property, value);
+		if (values && !values.includes(value)) {
+			throw new InvalidStringValueError(property, value);
+		}
 	}
 }

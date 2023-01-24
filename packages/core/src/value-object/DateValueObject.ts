@@ -11,11 +11,15 @@ export abstract class DateValueObject {
 	}
 
 	private static allowedValue(value: unknown, property?: string) {
-		if (!(value instanceof Date)) throw new InvalidDateValueTypeError(property);
+		if (!(value instanceof Date)) {
+			throw new InvalidDateValueTypeError(property);
+		}
 	}
 
 	private static notEmpty(value: unknown, property?: string) {
-		if (value === null || value === undefined) throw new EmptyDateValueError(property);
+		if (value === null || value === undefined) {
+			throw new EmptyDateValueError(property);
+		}
 	}
 
 	isAfterThan(other: DateValueObject): boolean {

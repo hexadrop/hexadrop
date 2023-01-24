@@ -19,10 +19,14 @@ export abstract class BooleanValueObject {
 	}
 
 	private static notEmpty(value: unknown, property?: string) {
-		if (value === null || value === undefined) throw new EmptyBooleanValueError(property);
+		if (value === null || value === undefined) {
+			throw new EmptyBooleanValueError(property);
+		}
 	}
 
 	private static allowedValue(value: unknown, property?: string) {
-		if (typeof value !== 'boolean') throw new InvalidBooleanValueTypeError(property);
+		if (typeof value !== 'boolean') {
+			throw new InvalidBooleanValueTypeError(property);
+		}
 	}
 }

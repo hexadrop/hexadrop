@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { UsernameMother } from '../src';
 
 describe('UsernameMother', () => {

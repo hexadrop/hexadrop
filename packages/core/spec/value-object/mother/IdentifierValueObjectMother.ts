@@ -1,5 +1,6 @@
-import { IdentifierValueObject } from '../../../src';
 import { UuidMother } from '@hexadrop/mother';
+
+import { IdentifierValueObject } from '../../../src';
 
 export class IdentifierValueObjectMother {
 	static create(value: string): IdentifierValueObject {
@@ -12,6 +13,7 @@ export class IdentifierValueObjectMother {
 
 	static random() {
 		const value = UuidMother.random();
+
 		return this.create(value);
 	}
 

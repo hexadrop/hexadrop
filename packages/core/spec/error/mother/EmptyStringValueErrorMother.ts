@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { EmptyStringValueError } from '../../../src/error/EmptyStringValueError';
 
 export class EmptyStringValueErrorMother {
@@ -12,6 +13,7 @@ export class EmptyStringValueErrorMother {
 
 	static random() {
 		const property = WordMother.random();
+
 		return this.create(property);
 	}
 

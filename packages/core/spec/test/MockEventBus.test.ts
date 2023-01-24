@@ -1,9 +1,12 @@
-import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '../../src';
 import { describe, expect, test, vi } from 'vitest';
+
+import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '../../src';
 import { MockEventBus } from '../../src/test';
 
 const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
-const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
+const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() =>
+	Promise.resolve(Either.left(undefined))
+);
 
 interface Event1DTO {
 	id: string;
@@ -78,7 +81,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4DTO): Promise<Either<void, DomainError>> {
+	async handle(event: Event4DTO): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 

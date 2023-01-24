@@ -1,5 +1,6 @@
-import { BooleanValueObject } from '../../../src';
 import { BooleanMother } from '@hexadrop/mother';
+
+import { BooleanValueObject } from '../../../src';
 
 export class FakeBooleanValueObject extends BooleanValueObject {
 	constructor(value: boolean) {
@@ -32,6 +33,7 @@ export class BooleanValueObjectMother {
 
 	static random() {
 		const value = BooleanMother.random();
+
 		return this.create(value);
 	}
 

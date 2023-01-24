@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { VoidDomainEvent } from '../../src/cqrs/VoidDomainEvent';
 
 class ExtendsVoidDomainEvent extends VoidDomainEvent {

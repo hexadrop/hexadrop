@@ -31,6 +31,7 @@ export abstract class DomainError extends Error {
 
 	get errorCode(): number {
 		const code = this.code.substring(4).replace(')', '');
+
 		return +code;
 	}
 }

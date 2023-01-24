@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { Query } from '../../src';
 import { MockQueryBus } from '../../src/test';
 

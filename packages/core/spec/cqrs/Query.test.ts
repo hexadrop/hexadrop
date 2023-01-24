@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { Query } from '../../src';
 
 class MockQuery extends Query {

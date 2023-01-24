@@ -1,12 +1,16 @@
-import { assert, stub } from 'sinon';
 import type { SinonStub } from 'sinon';
+import { assert, stub } from 'sinon';
+
 import type { Query } from '../cqrs/Query';
 import type { QueryBus } from '../cqrs/QueryBus';
 import type { Either } from '../Either';
 import type { DomainError } from '../error';
 
 export class MockQueryBus implements QueryBus {
-	readonly askSpy: SinonStub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>;
+	readonly askSpy: SinonStub<
+		[Query],
+		Either<any, DomainError> | Promise<Either<any, DomainError>>
+	>;
 
 	constructor() {
 		this.askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
@@ -14,6 +18,7 @@ export class MockQueryBus implements QueryBus {
 
 	private static getDataFromQuery(command: Query) {
 		const { queryId, ...attributes } = command;
+
 		return attributes;
 	}
 
@@ -38,7 +43,10 @@ export class MockQueryBus implements QueryBus {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
-		assert.match(MockQueryBus.getDataFromQuery(eventsArr[0]), MockQueryBus.getDataFromQuery(expectedQuery));
+		assert.match(
+			MockQueryBus.getDataFromQuery(eventsArr[0]),
+			MockQueryBus.getDataFromQuery(expectedQuery)
+		);
 	}
 
 	assertNotAskedQuery() {

@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { InvalidIdentifierValueError } from '../../src/error/InvalidIdentifierValueError';
 import { IdentifierValueObjectMother } from './mother/IdentifierValueObjectMother';
 

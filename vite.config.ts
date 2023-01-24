@@ -1,13 +1,6 @@
-import { defineConfig, UserConfigExport } from 'vite';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-	test: {
-		include: ['**/*.{test,spec}.{ts,tsx}'],
-		coverage: {
-			provider: 'istanbul',
-			include: ['**/src/**/*.{ts,tsx}'],
-			exclude: ['**/spec/**/*.ts'],
-			extension: '.ts',
-		},
-	},
-} as UserConfigExport);
+	plugins: [tsconfigPaths()],
+});

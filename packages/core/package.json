@@ -8,41 +8,46 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"homepage": "https://github.com/hexatool/hexadrop",
 	"bugs": {
-		"url": "https://github.com/MarioMH8/hexadrop/issues"
+		"url": "https://github.com/hexatool/hexadrop/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MarioMH8/hexadrop"
+		"url": "https://github.com/hexatool/hexadrop"
 	},
 	"license": "MIT",
 	"files": [
-		"dist",
-		"test"
+		"dist"
 	],
-	"main": "dist/hexadrop-core.cjs.js",
-	"module": "dist/hexadrop-core.esm.js",
+	"module": "./dist/hexadrop-core.mjs",
 	"umd:main": "dist/hexadrop-core.umd.min.js",
-	"types": "dist/hexadrop-core.cjs.d.ts",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/hexadrop-core.mjs"
+		},
+		"./test": {
+			"types": "./dist/test.d.ts",
+			"default": "./dist/hexadrop-core-test.mjs"
+		}
+	},
 	"scripts": {
+		"build": "vite build && vite build --config vite.config.umd.ts",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix .",
+		"test": "vitest run --no-isolate",
+		"test:coverage": "vitest run --no-isolate --coverage",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"sinon": "14.0.0",
+		"sinon": "15.0.1",
 		"uuid": "9.0.0"
 	},
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.1",
 		"@types/sinon": "10.0.13",
-		"@types/uuid": "8.3.4",
-		"vitest": "0.23.1"
-	},
-	"preconstruct": {
-		"entrypoints": [
-			"index.ts",
-			"test.ts"
-		],
-		"umdName": "hexadrop"
+		"@types/uuid": "9.0.0"
 	}
 }

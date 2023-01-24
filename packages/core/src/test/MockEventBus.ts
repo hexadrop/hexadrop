@@ -1,22 +1,31 @@
 import { assert, stub } from 'sinon';
+
 import type { DomainEvent, DomainEventClass } from '../cqrs/DomainEvent';
 import type { EventBus, EventBusCallback } from '../cqrs/EventBus';
 import type { EventHandler } from '../cqrs/EventHandler';
 import type { Nullable } from '../Nullable';
 
 export class MockEventBus implements EventBus {
-	publishSpy = stub<DomainEvent[], void | Promise<void>>();
+	publishSpy = stub<DomainEvent[], Promise<void> | void>();
 	subscribeSpy = stub<
-		[DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>, Nullable<EventBusCallback<DomainEvent>>],
-		void | Promise<void>
+		[
+			DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
+			Nullable<EventBusCallback<DomainEvent>>
+		],
+		Promise<void> | void
 	>();
+
 	unsubscribeSpy = stub<
-		[DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>, Nullable<EventBusCallback<DomainEvent>>],
-		void | Promise<void>
+		[
+			DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
+			Nullable<EventBusCallback<DomainEvent>>
+		],
+		Promise<void> | void
 	>();
 
 	private static getDataFromDomainEvent(event: DomainEvent) {
 		const { eventId, occurredOn, ...attributes } = event;
+
 		return attributes;
 	}
 

@@ -2,7 +2,7 @@ type Subscription<S> = (state: S) => void;
 
 export abstract class Ploc<S> {
 	private internalState: S;
-	private listeners: Subscription<S>[];
+	private readonly listeners: Subscription<S>[];
 
 	protected constructor(initialState: S) {
 		this.internalState = initialState;

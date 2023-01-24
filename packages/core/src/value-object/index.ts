@@ -1,5 +1,5 @@
-export * from './StringValueObject';
+export * from './BooleanValueObject';
 export * from './DateValueObject';
 export * from './IdentifierValueObject';
-export * from './BooleanValueObject';
 export * from './NumberValueObject';
+export * from './StringValueObject';

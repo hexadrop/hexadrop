@@ -8,29 +8,33 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"homepage": "https://github.com/hexatool/hexadrop",
 	"bugs": {
-		"url": "https://github.com/MarioMH8/hexadrop/issues"
+		"url": "https://github.com/hexatool/hexadrop/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MarioMH8/hexadrop"
+		"url": "https://github.com/hexatool/hexadrop"
 	},
 	"license": "MIT",
 	"files": [
 		"dist"
 	],
-	"main": "dist/hexadrop-ploc.cjs.js",
-	"module": "dist/hexadrop-ploc.esm.js",
+	"module": "./dist/hexadrop-ploc.mjs",
 	"umd:main": "dist/hexadrop-ploc.umd.min.js",
-	"types": "dist/hexadrop-ploc.cjs.d.ts",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/hexadrop-ploc.mjs"
+		}
+	},
 	"scripts": {
+		"build": "vite build",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix .",
+		"test": "vitest run --no-isolate",
+		"test:coverage": "vitest run --no-isolate --coverage",
 		"typecheck": "tsc --noEmit"
-	},
-	"devDependencies": {
-		"vitest": "0.23.1"
-	},
-	"preconstruct": {
-		"umdName": "plocadrop"
 	}
 }

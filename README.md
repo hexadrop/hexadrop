@@ -9,7 +9,7 @@ Actualmente, existen las siguientes librerías:
     Exporta una clase de la que tendrá que extender todas nuestras entidades de dominio, asi
     como otras utilidades y value objects.
 
--   [@hexadrop/in-memory](./packages/in-memory): Contiene varias implementaciones en memoria
+-   [@hexadrop/in-memory](./packages/in-memory-bus): Contiene varias implementaciones en memoria
     del `CommandBus`, `QueryBus` y `EventBus`.
 
 -   [@hexadrop/mother](./packages/mother): Exportan varias clases `Mother` lista para ser

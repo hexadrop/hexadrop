@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { InvalidErrorCodeErrorMother } from './mother/InvalidErrorCodeErrorMother';
 
 describe('InvalidErrorCodeError', () => {

@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { InvalidBooleanValueTypeError } from '../../../src/error/InvalidBooleanValueTypeError';
 
 export class InvalidBooleanValueTypeErrorMother {
@@ -12,6 +13,7 @@ export class InvalidBooleanValueTypeErrorMother {
 
 	static random() {
 		const property = WordMother.random();
+
 		return this.create(property);
 	}
 

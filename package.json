@@ -8,13 +8,13 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"homepage": "https://github.com/hexatool/hexadrop",
 	"bugs": {
-		"url": "https://github.com/MarioMH8/hexadrop/issues"
+		"url": "https://github.com/hexatool/hexadrop/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MarioMH8/hexadrop"
+		"url": "https://github.com/hexatool/hexadrop"
 	},
 	"license": "MIT",
 	"private": true,
@@ -22,76 +22,30 @@
 		"packages/*"
 	],
 	"scripts": {
-		"build": "yarn typecheck && preconstruct build",
-		"build:watch": "preconstruct watch",
-		"dev": "preconstruct dev",
-		"lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
-		"lint:fix": "eslint --ext .ts,.tsx --ignore-path .gitignore --fix .",
-		"postinstall": "preconstruct dev && manypkg check",
-		"prepare": "husky install",
-		"publish": "yarn build && yarn changeset publish",
-		"test": "vitest",
-		"test:coverage": "vitest run --coverage",
-		"typecheck": "yarn workspaces foreach -piv run typecheck",
-		"version": "yarn changeset version && yarn install --mode update-lockfile",
-		"webstorm-integration": "vitest --watch --reporter=dot --reporter=json --outputFile=.vitest-result.json"
+		"build": "yarn workspaces foreach -pv run build",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix .",
+		"publish": "changeset publish",
+		"test": "vitest run --no-isolate",
+		"test:coverage": "vitest run --no-isolate --coverage",
+		"typecheck": "yarn workspaces foreach -pv run typecheck",
+		"version": "changeset version && $npm_execpath install"
 	},
 	"dependencies": {
-		"@babel/core": "7.19.0",
-		"@babel/plugin-transform-modules-commonjs": "7.18.6",
-		"@babel/preset-typescript": "7.18.6",
-		"@changesets/cli": "2.24.4",
-		"@commitlint/cli": "17.1.2",
-		"@commitlint/config-conventional": "17.1.0",
-		"@manypkg/cli": "0.19.1",
-		"@preconstruct/cli": "2.2.1",
-		"@tsconfig/node16-strictest-esm": "^1.0.3",
-		"@types/node": "18.7.15",
-		"@typescript-eslint/eslint-plugin": "5.36.2",
-		"@typescript-eslint/parser": "5.36.2",
-		"@vitest/coverage-istanbul": "0.23.1",
-		"eslint": "8.23.0",
-		"eslint-config-prettier": "8.5.0",
-		"eslint-plugin-prettier": "4.2.1",
-		"husky": "8.0.1",
-		"lint-staged": "13.0.3",
-		"pirates": "4.0.5",
-		"prettier": "2.7.1",
-		"source-map-support": "0.5.21",
-		"typescript": "4.8.2",
-		"vite": "3.1.0",
-		"vitest": "0.23.1"
-	},
-	"resolutions": {
-		"glob-parent": "^6.0.0",
-		"got": "^11.8.5",
-		"terser": "^5.14.2"
-	},
-	"engines": {
-		"node": ">=16"
+		"@changesets/cli": "2.26.0",
+		"@hexatool/eslint-config-typescript": "1.0.3",
+		"@hexatool/tsconfig": "18.0.0",
+		"@types/node": "18.11.18",
+		"eslint": "8.32.0",
+		"typescript": "4.9.4",
+		"vite": "4.0.4",
+		"vite-plugin-dts": "1.7.1",
+		"vite-tsconfig-paths": "4.0.5",
+		"vitest": "0.28.1"
 	},
 	"volta": {
-		"node": "16.17.0",
-		"yarn": "1.22.19"
+		"node": "18.13.0",
+		"yarn": "3.3.1"
 	},
-	"packageManager": "yarn@3.2.3",
-	"lint-staged": {
-		"*.{ts,tsx,json,.md}": "yarn lint:fix"
-	},
-	"preconstruct": {
-		"globals": {
-			"@faker-js/faker": "Faker",
-			"@hexadrop/core": "hexadrop",
-			"sinon": "sinon",
-			"vitest": "vitest"
-		},
-		"packages": [
-			"packages/*"
-		]
-	},
-	"dependenciesMeta": {
-		"@tsconfig/node16-strictest-esm@1.0.3": {
-			"unplugged": true
-		}
-	}
+	"packageManager": "yarn@3.3.1"
 }

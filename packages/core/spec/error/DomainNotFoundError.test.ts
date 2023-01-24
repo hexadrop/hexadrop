@@ -1,5 +1,6 @@
 import { UuidMother } from '@hexadrop/mother';
 import { describe, expect, test } from 'vitest';
+
 import { DomainNotFoundErrorMother } from './mother/DomainNotFoundErrorMother';
 
 describe('DomainNotFoundError', () => {
@@ -28,7 +29,13 @@ describe('DomainNotFoundError', () => {
 		const domain = 'User';
 		const id = UuidMother.random();
 		const param = 'code';
-		const expectedError = DomainNotFoundErrorMother.create(domain, id, param, undefined, 'HEX(500404)');
+		const expectedError = DomainNotFoundErrorMother.create(
+			domain,
+			id,
+			param,
+			undefined,
+			'HEX(500404)'
+		);
 		expect(expectedError.message).toBe(`${domain} with ${param} '${id}' was not found`);
 		expect(expectedError.errorCode).toBe(500404);
 		expect(expectedError.code).toBe('HEX(500404)');

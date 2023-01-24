@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { EmptyBooleanValueError } from '../../src/error/EmptyBooleanValueError';
 import { InvalidBooleanValueTypeError } from '../../src/error/InvalidBooleanValueTypeError';
 import { BooleanValueObjectMother } from './mother/BooleanValueObjectMother';

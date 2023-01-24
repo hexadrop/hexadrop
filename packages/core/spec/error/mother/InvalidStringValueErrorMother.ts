@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { InvalidStringValueError } from '../../../src/error/InvalidStringValueError';
 
 export class InvalidStringValueErrorMother {
@@ -13,11 +14,13 @@ export class InvalidStringValueErrorMother {
 	static random() {
 		const value = WordMother.random();
 		const property = WordMother.random();
+
 		return this.create(value, property);
 	}
 
 	static randomWithNoProperty() {
 		const value = WordMother.random();
+
 		return this.create(value);
 	}
 }

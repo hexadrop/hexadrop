@@ -1,4 +1,5 @@
 import { IntegerMother } from '@hexadrop/mother';
+
 import { NumberValueObject } from '../../../src';
 
 export class FakeNumberValueObject extends NumberValueObject {
@@ -40,6 +41,7 @@ export class NumberValueObjectMother {
 
 	static random() {
 		const value = IntegerMother.random();
+
 		return this.create(value);
 	}
 }
