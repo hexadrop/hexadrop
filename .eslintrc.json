@@ -1,19 +1,38 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
+	"extends": [
+		"@hexatool/eslint-config-typescript"
+	],
+	"overrides": [
+		{
+			"files": [
+				"**/spec/**/*.ts",
+				"**/spec/**/*.tsx"
+			],
+			"parserOptions": {
+				"project": [
+					"./tsconfig.json"
+				]
+			},
+			"rules": {
+				"@typescript-eslint/ban-ts-comment": "warn",
+				"@typescript-eslint/no-useless-constructor": "warn",
+				"import/no-unresolved": "off"
+			}
 		},
-		"ecmaVersion": 12,
-		"sourceType": "module"
-	},
-	"plugins": ["@typescript-eslint"],
-	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-	"rules": {
-		"@typescript-eslint/ban-ts-comment": "warn"
-	},
-	"env": {
-		"browser": true,
-		"es2021": true
-	}
+		{
+			"files": [
+				"*.ts",
+				"*.tsx"
+			],
+			"parserOptions": {
+				"project": [
+					"./tsconfig.json"
+				]
+			},
+			"rules": {
+				"import/no-unresolved": "off",
+				"no-use-before-define": "warn"
+			}
+		}
+	]
 }

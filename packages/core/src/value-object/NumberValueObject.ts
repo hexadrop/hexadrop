@@ -11,11 +11,15 @@ export abstract class NumberValueObject {
 	}
 
 	private static allowedValue(value: unknown, property?: string) {
-		if (typeof value !== 'number') throw new InvalidNumberValueTypeError(property);
+		if (typeof value !== 'number') {
+			throw new InvalidNumberValueTypeError(property);
+		}
 	}
 
 	private static notEmpty(value: unknown, property?: string) {
-		if (value === null || value === undefined) throw new EmptyNumberValueError(property);
+		if (value === null || value === undefined) {
+			throw new EmptyNumberValueError(property);
+		}
 	}
 
 	isBiggerThan(other: NumberValueObject): boolean {

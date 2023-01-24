@@ -2,7 +2,7 @@ type Subscription<S> = (state: S) => void;
 
 export abstract class Ploc<S> {
 	private internalState: S;
-	private listeners: Subscription<S>[];
+	private readonly listeners: Subscription<S>[];
 
 	protected constructor(initialState: S) {
 		this.internalState = initialState;
@@ -13,14 +13,6 @@ export abstract class Ploc<S> {
 		return this.internalState;
 	}
 
-	protected changeState(state: S): void {
-		this.internalState = state;
-
-		if (this.listeners.length > 0) {
-			this.listeners.forEach(listener => listener(this.state));
-		}
-	}
-
 	subscribe(listener: Subscription<S>): void {
 		this.listeners.push(listener);
 	}
@@ -29,6 +21,16 @@ export abstract class Ploc<S> {
 		const index = this.listeners.indexOf(listener);
 		if (index > -1) {
 			this.listeners.splice(index, 1);
+		}
+	}
+
+	protected changeState(state: S): void {
+		this.internalState = state;
+
+		if (this.listeners.length > 0) {
+			this.listeners.forEach(listener => {
+				listener(this.state);
+			});
 		}
 	}
 }

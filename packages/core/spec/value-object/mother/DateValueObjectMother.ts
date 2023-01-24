@@ -1,5 +1,6 @@
-import { DateValueObject } from '../../../src';
 import { DateMother } from '@hexadrop/mother';
+
+import { DateValueObject } from '../../../src';
 
 export class FakeDateValueObject extends DateValueObject {
 	constructor(value: Date) {
@@ -26,20 +27,17 @@ export class DateValueObjectMother {
 		return new FakeDateValueObject(value);
 	}
 
-	static creator() {
-		return () => DateValueObjectMother.random();
-	}
-
-	static random() {
-		const value = DateMother.recent();
-		return this.create(value);
-	}
-
-	static invalidWithString() {
+	static invalidWithString(): DateValueObject {
 		return new InvalidStringDateValueObject();
 	}
 
-	static invalidWithUndefined() {
+	static invalidWithUndefined(): DateValueObject {
 		return new UndefinedStringDateValueObject();
+	}
+
+	static random(): DateValueObject {
+		const value = DateMother.recent();
+
+		return this.create(value);
 	}
 }

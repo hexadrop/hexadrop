@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { EmptyBooleanValueError } from '../../../src/error/EmptyBooleanValueError';
 
 export class EmptyBooleanValueErrorMother {
@@ -6,16 +7,13 @@ export class EmptyBooleanValueErrorMother {
 		return new EmptyBooleanValueError(property);
 	}
 
-	static creator() {
-		return () => EmptyBooleanValueErrorMother.random();
-	}
-
-	static random() {
+	static random(): EmptyBooleanValueError {
 		const property = WordMother.random();
+
 		return this.create(property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): EmptyBooleanValueError {
 		return this.create();
 	}
 }

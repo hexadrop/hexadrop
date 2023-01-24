@@ -39,7 +39,9 @@ export class Either<L, R> {
 
 	getLeft(errorMessage?: string): L {
 		const throwFn = () => {
-			throw Error(errorMessage ? errorMessage : 'The value is right: ' + JSON.stringify(this.value));
+			throw Error(
+				errorMessage ? errorMessage : `The value is right: ${JSON.stringify(this.value)}`
+			);
 		};
 
 		return this.fold(
@@ -57,7 +59,9 @@ export class Either<L, R> {
 
 	getRight(errorMessage?: string): R {
 		const throwFn = () => {
-			throw Error(errorMessage ? errorMessage : 'The value is left: ' + JSON.stringify(this.value));
+			throw Error(
+				errorMessage ? errorMessage : `The value is left: ${JSON.stringify(this.value)}`
+			);
 		};
 
 		return this.fold(

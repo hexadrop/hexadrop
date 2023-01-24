@@ -1,19 +1,24 @@
-import { assert, stub } from 'sinon';
 import type { SinonStub } from 'sinon';
+import { assert, stub } from 'sinon';
+
 import type { Query } from '../cqrs/Query';
 import type { QueryBus } from '../cqrs/QueryBus';
 import type { Either } from '../Either';
 import type { DomainError } from '../error';
 
 export class MockQueryBus implements QueryBus {
-	readonly askSpy: SinonStub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>;
+	readonly askSpy: SinonStub<
+		[Query],
+		Either<any, DomainError> | Promise<Either<any, DomainError>>
+	>;
 
 	constructor() {
 		this.askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
 	}
 
 	private static getDataFromQuery(command: Query) {
-		const { queryId, ...attributes } = command;
+		const { queryId: _q, ...attributes } = command;
+
 		return attributes;
 	}
 
@@ -21,7 +26,15 @@ export class MockQueryBus implements QueryBus {
 		return this.askSpy(query);
 	}
 
-	assertAskedQueries(...expectedQueries: Query[]) {
+	askRejects(error: Error): void {
+		this.askSpy.rejects(error);
+	}
+
+	askResolve(value: Either<any, DomainError>): void {
+		this.askSpy.resolves(value);
+	}
+
+	assertAskedQueries(...expectedQueries: Query[]): void {
 		assert.called(this.askSpy);
 		const eventsArr = this.askSpy
 			.getCalls()
@@ -34,22 +47,17 @@ export class MockQueryBus implements QueryBus {
 		);
 	}
 
-	assertLastAskedQuery(expectedQuery: Query) {
+	assertLastAskedQuery(expectedQuery: Query): void {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
-		assert.match(MockQueryBus.getDataFromQuery(eventsArr[0]), MockQueryBus.getDataFromQuery(expectedQuery));
+		assert.match(
+			MockQueryBus.getDataFromQuery(eventsArr[0]),
+			MockQueryBus.getDataFromQuery(expectedQuery)
+		);
 	}
 
-	assertNotAskedQuery() {
+	assertNotAskedQuery(): void {
 		assert.notCalled(this.askSpy);
-	}
-
-	askRejects(error: Error) {
-		this.askSpy.rejects(error);
-	}
-
-	askResolve(value: Either<any, DomainError>) {
-		this.askSpy.resolves(value);
 	}
 }

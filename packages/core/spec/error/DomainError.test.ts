@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { EmptyErrorCodeError, InvalidErrorCodeError } from '../../src';
 import { InvalidDomainErrorMother } from './mother/InvalidDomainErrorMother';
 

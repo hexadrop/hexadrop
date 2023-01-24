@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { Either } from '../src';
 
 describe('Either', () => {
@@ -101,7 +102,9 @@ describe('Either', () => {
 		expect(either.getRight()).toBe(true);
 
 		const either2 = Either.left<number, boolean>(1);
-		expect(() => either2.getRight()).toThrow('The value is left: {"kind":"left","leftValue":1}');
+		expect(() => either2.getRight()).toThrow(
+			'The value is left: {"kind":"left","leftValue":1}'
+		);
 
 		const either3 = Either.left<number, boolean>(1);
 		expect(() => either3.getRight('MSG')).toThrow('MSG');
@@ -111,7 +114,9 @@ describe('Either', () => {
 		expect(either.getLeft()).toBe(1);
 
 		const either2 = Either.right<number, boolean>(true);
-		expect(() => either2.getLeft()).toThrow('The value is right: {"kind":"right","rightValue":true}');
+		expect(() => either2.getLeft()).toThrow(
+			'The value is right: {"kind":"right","rightValue":true}'
+		);
 
 		const either3 = Either.right<number, boolean>(true);
 		expect(() => either3.getLeft('MSG')).toThrow('MSG');

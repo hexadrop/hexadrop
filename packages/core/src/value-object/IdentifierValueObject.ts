@@ -1,4 +1,5 @@
 import { v4 } from 'uuid';
+
 import { InvalidIdentifierValueError } from '../error/InvalidIdentifierValueError';
 import { StringValueObject } from './StringValueObject';
 

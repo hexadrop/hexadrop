@@ -19,11 +19,11 @@
       <excludeFolder url="file://$MODULE_DIR$/test" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/ploc/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/queue" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/test/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory/test" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test" />
       <excludePattern pattern=".*" />

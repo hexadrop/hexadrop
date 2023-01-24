@@ -5,11 +5,7 @@ export class InvalidErrorCodeErrorMother {
 		return new InvalidErrorCodeError();
 	}
 
-	static creator() {
-		return () => InvalidErrorCodeErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidErrorCodeError {
 		return this.create();
 	}
 }

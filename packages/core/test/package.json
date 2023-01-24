@@ -1,8 +1,0 @@
-{
-	"main": "dist/hexadrop-core-test.cjs.js",
-	"module": "dist/hexadrop-core-test.esm.js",
-	"umd:main": "dist/hexadrop-core-test.umd.min.js",
-	"preconstruct": {
-		"umdName": "testadrop"
-	}
-}

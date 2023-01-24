@@ -1,5 +1,6 @@
 import { WordMother } from '@hexadrop/mother';
 import { describe, expect, test } from 'vitest';
+
 import { InvalidArgumentErrorMother } from './mother/InvalidArgumentErrorMother';
 
 describe('InvalidArgumentError', () => {

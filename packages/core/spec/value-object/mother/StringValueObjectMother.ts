@@ -1,5 +1,6 @@
-import { StringValueObject } from '../../../src';
 import { WordMother } from '@hexadrop/mother';
+
+import { StringValueObject } from '../../../src';
 
 export class FakeStringValueObject extends StringValueObject {
 	constructor(value: string) {
@@ -14,7 +15,7 @@ export class InvalidNumberStringValueObject extends StringValueObject {
 	}
 }
 
-export class InvalidStringValueObject extends StringValueObject<'sandia' | 'pera'> {
+export class InvalidStringValueObject extends StringValueObject<'pera' | 'sandia'> {
 	constructor() {
 		// @ts-ignore
 		super('melon', ['sandia', 'pera']);
@@ -33,24 +34,21 @@ export class StringValueObjectMother {
 		return new FakeStringValueObject(value);
 	}
 
-	static creator() {
-		return () => StringValueObjectMother.random();
+	static invalidValue(): StringValueObject {
+		return new InvalidStringValueObject();
 	}
 
-	static random() {
-		const value = WordMother.random();
-		return this.create(value);
-	}
-
-	static invalidWithNumber() {
+	static invalidWithNumber(): StringValueObject {
 		return new InvalidNumberStringValueObject();
 	}
 
-	static invalidWithUndefined() {
+	static invalidWithUndefined(): StringValueObject {
 		return new UndefinedStringStringValueObject();
 	}
 
-	static invalidValue() {
-		return new InvalidStringValueObject();
+	static random(): StringValueObject {
+		const value = WordMother.random();
+
+		return this.create(value);
 	}
 }

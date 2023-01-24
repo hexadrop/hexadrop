@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { InvalidStringValueTypeError } from '../../../src/error/InvalidStringValueTypeError';
 
 export class InvalidStringValueTypeErrorMother {
@@ -6,16 +7,13 @@ export class InvalidStringValueTypeErrorMother {
 		return new InvalidStringValueTypeError(property);
 	}
 
-	static creator() {
-		return () => InvalidStringValueTypeErrorMother.random();
-	}
-
-	static random() {
+	static random(): InvalidStringValueTypeError {
 		const property = WordMother.random();
+
 		return this.create(property);
 	}
 
-	static randomWithNoProperty() {
+	static randomWithNoProperty(): InvalidStringValueTypeError {
 		return this.create();
 	}
 }

@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
 import { WordMother } from '@hexadrop/mother';
+import { describe, expect, test } from 'vitest';
+
 import { EmptyNumberValueErrorMother } from './mother/EmptyNumberValueErrorMother';
 
 describe('EmptyNumberValueError', () => {

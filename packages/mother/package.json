@@ -8,32 +8,35 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/MarioMH8/hexadrop",
+	"homepage": "https://github.com/hexatool/hexadrop",
 	"bugs": {
-		"url": "https://github.com/MarioMH8/hexadrop/issues"
+		"url": "https://github.com/hexatool/hexadrop/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MarioMH8/hexadrop"
+		"url": "https://github.com/hexatool/hexadrop"
 	},
 	"license": "MIT",
 	"files": [
 		"dist"
 	],
-	"main": "dist/hexadrop-mother.cjs.js",
-	"module": "dist/hexadrop-mother.esm.js",
-	"umd:main": "dist/hexadrop-mother.umd.min.js",
-	"types": "dist/hexadrop-mother.cjs.d.ts",
+	"module": "./dist/hexadrop-mother.mjs",
+	"types": "./dist/hexadrop-mother.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/hexadrop-mother.d.ts",
+			"default": "./dist/hexadrop-mother.mjs"
+		}
+	},
 	"scripts": {
+		"build": "vite build",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix .",
+		"test": "vitest run --no-isolate",
+		"test:coverage": "vitest run --no-isolate --coverage",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@faker-js/faker": "7.5.0"
-	},
-	"devDependencies": {
-		"vitest": "0.23.1"
-	},
-	"preconstruct": {
-		"umdName": "motherdrop"
 	}
 }

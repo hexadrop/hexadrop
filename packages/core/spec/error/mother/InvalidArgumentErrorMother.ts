@@ -1,4 +1,5 @@
 import { WordMother } from '@hexadrop/mother';
+
 import { InvalidArgumentError } from '../../../src';
 
 class ExtendsInvalidArgumentError extends InvalidArgumentError {
@@ -12,13 +13,10 @@ export class InvalidArgumentErrorMother {
 		return new ExtendsInvalidArgumentError(message, name, code);
 	}
 
-	static creator() {
-		return () => InvalidArgumentErrorMother.random();
-	}
-
-	static random() {
+	static random(): ExtendsInvalidArgumentError {
 		const message = WordMother.random();
 		const name = WordMother.random();
+
 		return this.create(message, name, 'TST(400)');
 	}
 }

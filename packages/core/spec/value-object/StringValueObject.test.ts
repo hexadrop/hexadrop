@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { EmptyStringValueError } from '../../src/error/EmptyStringValueError';
 import { InvalidStringValueError } from '../../src/error/InvalidStringValueError';
 import { InvalidStringValueTypeError } from '../../src/error/InvalidStringValueTypeError';

@@ -1,3 +1,14 @@
 {
-	"extends": "./.yarn/unplugged/@tsconfig-node16-strictest-esm-npm-1.0.3-417a88ee8b/node_modules/@tsconfig/node16-strictest-esm/tsconfig.json"
+	"extends": "@hexatool/tsconfig",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@hexadrop/*/test": [
+				"packages/*/src/test"
+			],
+			"@hexadrop/*": [
+				"packages/*/src"
+			]
+		}
+	}
 }

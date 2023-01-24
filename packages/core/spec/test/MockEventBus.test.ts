@@ -1,9 +1,12 @@
-import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '../../src';
 import { describe, expect, test, vi } from 'vitest';
+
+import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '../../src';
 import { MockEventBus } from '../../src/test';
 
 const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
-const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() => Promise.resolve(Either.left(undefined)));
+const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() =>
+	Promise.resolve(Either.left(undefined))
+);
 
 interface Event1DTO {
 	id: string;
@@ -78,7 +81,7 @@ class Event4 extends DomainEvent<Event4DTO> {
 }
 
 class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	handle(event: Event4DTO): Promise<Either<void, DomainError>> {
+	async handle(event: Event4DTO): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 
@@ -96,12 +99,12 @@ describe('MockEventBus', () => {
 		expect(() => bus.assertIsSubscribed(handler1)).toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
 
-		bus.subscribe(handler1);
+		await bus.subscribe(handler1);
 
 		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
 
-		bus.subscribe(handler4);
+		await bus.subscribe(handler4);
 
 		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsSubscribed(handler4)).not.toThrow();
@@ -113,11 +116,11 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 
-		bus.subscribe(handler1);
+		await bus.subscribe(handler1);
 
 		expect(() => bus.assertSubscriptionsLength(1)).not.toThrow();
 
-		bus.subscribe(handler4);
+		await bus.subscribe(handler4);
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 		expect(() => bus.assertSubscriptionsLength(2)).not.toThrow();
@@ -130,12 +133,12 @@ describe('MockEventBus', () => {
 		expect(() => bus.assertIsUnsubscribed(handler1)).toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
 
-		bus.unsubscribe(handler1);
+		await bus.unsubscribe(handler1);
 
 		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
 
-		bus.unsubscribe(handler4);
+		await bus.unsubscribe(handler4);
 
 		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
 		expect(() => bus.assertIsUnsubscribed(handler4)).not.toThrow();
@@ -147,11 +150,11 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 
-		bus.unsubscribe(handler1);
+		await bus.unsubscribe(handler1);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).not.toThrow();
 
-		bus.unsubscribe(handler4);
+		await bus.unsubscribe(handler4);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 		expect(() => bus.assertUnsubscriptionLength(2)).not.toThrow();

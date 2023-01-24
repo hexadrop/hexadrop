@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { Command } from '../../src';
 import { MockCommandBus } from '../../src/test';
 

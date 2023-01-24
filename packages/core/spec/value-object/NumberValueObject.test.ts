@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+
 import { EmptyNumberValueError } from '../../src/error/EmptyNumberValueError';
 import { InvalidNumberValueTypeError } from '../../src/error/InvalidNumberValueTypeError';
 import { NumberValueObjectMother } from './mother/NumberValueObjectMother';
