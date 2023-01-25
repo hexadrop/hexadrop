@@ -19,19 +19,20 @@
       <excludeFolder url="file://$MODULE_DIR$/test" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/ploc/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/queue" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/core/test" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/queue" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test/dist" />
       <excludePattern pattern=".*" />
       <excludePattern pattern="LICENSE" />
       <excludePattern pattern="tsconfig.*" />
       <excludePattern pattern="vite.*" />
       <excludePattern pattern="babel.*" />
       <excludePattern pattern="*.lock" />
+      <excludePattern pattern="renovate.json" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
