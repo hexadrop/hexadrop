@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/core",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -46,7 +46,7 @@
 		"uuid": "9.0.0"
 	},
 	"devDependencies": {
-		"@hexadrop/mother": "0.0.1",
+		"@hexadrop/mother": "0.0.2",
 		"@types/sinon": "10.0.13",
 		"@types/uuid": "9.0.0"
 	}
