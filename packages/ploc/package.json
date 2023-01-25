@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/ploc",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
