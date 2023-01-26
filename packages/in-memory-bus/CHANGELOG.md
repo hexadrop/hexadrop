@@ -1,5 +1,15 @@
 # @hexadrop/in-memory-bus
 
+## 0.0.4
+
+### Patch Changes
+
+- 6a58953: Fix TypeScript declarations
+- 6a58953: Added field `typesVersions` to package.json
+- Updated dependencies [6a58953]
+- Updated dependencies [6a58953]
+  - @hexadrop/core@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
