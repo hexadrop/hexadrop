@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/in-memory-bus",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -35,7 +35,9 @@
 	},
 	"typesVersions": {
 		"*": {
-			"test": ["dist/test.d.ts"]
+			"test": [
+				"dist/test.d.ts"
+			]
 		}
 	},
 	"scripts": {
@@ -47,13 +49,13 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/core": "^0.0.3"
+		"@hexadrop/core": "^0.0.4"
 	},
 	"dependencies": {
 		"sinon": "15.0.1"
 	},
 	"devDependencies": {
-		"@hexadrop/core": "0.0.3",
+		"@hexadrop/core": "0.0.4",
 		"@hexadrop/mother": "0.0.2",
 		"@types/sinon": "10.0.13"
 	}
