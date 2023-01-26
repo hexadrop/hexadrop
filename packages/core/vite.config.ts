@@ -19,7 +19,7 @@ export default defineConfig({
 	plugins: [
 		dts({
 			skipDiagnostics: true,
-			rollupTypes: true,
+			insertTypesEntry: true,
 		}),
 		externalize(),
 		tsconfigPaths(),
