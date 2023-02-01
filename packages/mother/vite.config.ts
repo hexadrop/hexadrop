@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-import externalize from '../../vite.plugin.external';
 
 export default defineConfig({
 	build: {
@@ -20,7 +19,7 @@ export default defineConfig({
 			skipDiagnostics: true,
 			rollupTypes: true,
 		}),
-		externalize(),
+		externalizeDeps(),
 		tsconfigPaths(),
 	],
 });

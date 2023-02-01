@@ -3124,6 +3124,7 @@ __metadata:
     typescript: 4.9.5
     vite: 4.0.4
     vite-plugin-dts: 1.7.2
+    vite-plugin-externalize-deps: 0.5.0
     vite-tsconfig-paths: 4.0.5
     vitest: 0.28.3
   languageName: unknown
@@ -5576,6 +5577,15 @@ __metadata:
   peerDependencies:
     vite: ">=2.9.0"
   checksum: 2445cc131481eddcac8fdff7feabf49018cabf745b0f1e955b45c9ce98313e5e7d9e9bb838af78577866404ed9070d915b4b6bc80c9f6eb91ec95608ce456f2d
+  languageName: node
+  linkType: hard
+
+"vite-plugin-externalize-deps@npm:0.5.0":
+  version: 0.5.0
+  resolution: "vite-plugin-externalize-deps@npm:0.5.0"
+  peerDependencies:
+    vite: ^2.0.0 || ^3.0.0 || ^4.0.0
+  checksum: e4ceca99280a2d473f1814bf73df578febc396fe8622fc465c4b96e559a4076316043ecaed13a7dc40993d840f9200cf7681454e10af0e4a18ec26797b1cae7b
   languageName: node
   linkType: hard
 

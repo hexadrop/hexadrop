@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-import externalize from '../../vite.plugin.external';
 
 export default defineConfig({
 	build: {
@@ -23,5 +22,5 @@ export default defineConfig({
 			},
 		},
 	},
-	plugins: [externalize(), tsconfigPaths()],
+	plugins: [externalizeDeps(), tsconfigPaths()],
 });
