@@ -1,1 +1,0 @@
-# @hexadrop/in-memory-bus
