@@ -33,20 +33,20 @@
 	},
 	"dependencies": {
 		"@changesets/cli": "2.26.0",
-		"@hexatool/eslint-config-typescript": "1.0.4",
+		"@hexatool/eslint-config-typescript": "1.0.5",
 		"@hexatool/tsconfig": "18.0.0",
-		"@types/node": "18.11.18",
+		"@types/node": "18.13.0",
 		"eslint": "8.33.0",
 		"typescript": "4.9.5",
-		"vite": "4.0.4",
+		"vite": "4.1.1",
 		"vite-plugin-dts": "1.7.2",
 		"vite-plugin-externalize-deps": "0.5.0",
 		"vite-tsconfig-paths": "4.0.5",
-		"vitest": "0.28.3"
+		"vitest": "0.28.4"
 	},
 	"volta": {
-		"node": "18.13.0",
-		"yarn": "3.4.0"
+		"node": "18.14.0",
+		"yarn": "3.4.1"
 	},
-	"packageManager": "yarn@3.4.0"
+	"packageManager": "yarn@3.4.1"
 }
