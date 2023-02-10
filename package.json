@@ -35,7 +35,7 @@
 		"@changesets/cli": "2.26.0",
 		"@hexatool/eslint-config-typescript": "1.0.4",
 		"@hexatool/tsconfig": "18.0.0",
-		"@types/node": "18.11.18",
+		"@types/node": "18.13.0",
 		"eslint": "8.33.0",
 		"typescript": "4.9.5",
 		"vite": "4.0.4",
@@ -45,7 +45,7 @@
 		"vitest": "0.28.3"
 	},
 	"volta": {
-		"node": "18.13.0",
+		"node": "18.14.0",
 		"yarn": "3.4.0"
 	},
 	"packageManager": "yarn@3.4.0"
