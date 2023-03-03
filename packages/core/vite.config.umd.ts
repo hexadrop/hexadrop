@@ -22,5 +22,7 @@ export default defineConfig({
 			},
 		},
 	},
-	plugins: [externalizeDeps(), tsconfigPaths()],
+	plugins: [externalizeDeps({
+		deps: false
+	}), tsconfigPaths()],
 });
