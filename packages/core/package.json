@@ -55,6 +55,6 @@
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.2",
 		"@types/sinon": "10.0.13",
-		"@types/uuid": "9.0.0"
+		"@types/uuid": "9.0.1"
 	}
 }
