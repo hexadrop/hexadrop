@@ -49,12 +49,12 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"sinon": "15.0.1",
+		"sinon": "15.0.4",
 		"uuid": "9.0.0"
 	},
 	"devDependencies": {
 		"@hexadrop/mother": "0.0.2",
-		"@types/sinon": "10.0.13",
+		"@types/sinon": "10.0.14",
 		"@types/uuid": "9.0.1"
 	}
 }

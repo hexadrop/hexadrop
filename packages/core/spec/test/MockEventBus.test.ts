@@ -1,6 +1,7 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '../../src';
+import type { DomainEventClass, EventHandler } from '../../src';
+import { DomainError, DomainEvent, Either } from '../../src';
 import { MockEventBus } from '../../src/test';
 
 const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));

@@ -52,11 +52,11 @@
 		"@hexadrop/core": "^0.0.6"
 	},
 	"dependencies": {
-		"sinon": "15.0.1"
+		"sinon": "15.0.4"
 	},
 	"devDependencies": {
 		"@hexadrop/core": "0.0.6",
 		"@hexadrop/mother": "0.0.2",
-		"@types/sinon": "10.0.13"
+		"@types/sinon": "10.0.14"
 	}
 }

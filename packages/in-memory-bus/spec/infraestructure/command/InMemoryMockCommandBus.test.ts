@@ -1,4 +1,5 @@
-import { Command, CommandClass, CommandHandler, DomainError, Either } from '@hexadrop/core';
+import type { CommandClass, CommandHandler } from '@hexadrop/core';
+import { Command, DomainError, Either } from '@hexadrop/core';
 import { describe, expect, test, vi } from 'vitest';
 
 import { CommandHandlersInformation } from '../../../src';

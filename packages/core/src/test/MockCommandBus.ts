@@ -1,4 +1,5 @@
-import { assert, SinonStub, stub } from 'sinon';
+import type { SinonStub } from 'sinon';
+import { assert, stub } from 'sinon';
 
 import type { Command } from '../cqrs/Command';
 import type { CommandBus } from '../cqrs/CommandBus';

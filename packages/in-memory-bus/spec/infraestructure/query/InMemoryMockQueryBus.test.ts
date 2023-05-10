@@ -1,4 +1,5 @@
-import { DomainError, Either, Query, QueryClass, QueryHandler } from '@hexadrop/core';
+import type { QueryClass, QueryHandler } from '@hexadrop/core';
+import { DomainError, Either, Query } from '@hexadrop/core';
 import { describe, expect, test, vi } from 'vitest';
 
 import { QueryHandlersInformation } from '../../../src';

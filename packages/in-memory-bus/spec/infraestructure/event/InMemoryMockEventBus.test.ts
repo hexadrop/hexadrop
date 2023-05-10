@@ -1,4 +1,5 @@
-import { DomainError, DomainEvent, DomainEventClass, Either, EventHandler } from '@hexadrop/core';
+import type { DomainEventClass, EventHandler } from '@hexadrop/core';
+import { DomainError, DomainEvent, Either } from '@hexadrop/core';
 import { describe, expect, test, vi } from 'vitest';
 
 import { EventHandlersInformation } from '../../../src';
