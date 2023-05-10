@@ -15,7 +15,6 @@
 			},
 			"rules": {
 				"@typescript-eslint/ban-ts-comment": "warn",
-				"@typescript-eslint/no-useless-constructor": "warn",
 				"import/no-unresolved": "off"
 			}
 		},

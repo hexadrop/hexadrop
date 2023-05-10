@@ -6,7 +6,7 @@ export abstract class Command {
 	readonly relatedId: string | undefined;
 
 	protected constructor(commandName: string, commandId?: string, relatedId?: string) {
-		this.commandId = commandId ?? IdentifierValueObject.random().value;
+		this.commandId = commandId ?? IdentifierValueObject.random();
 		this.commandName = commandName;
 		this.relatedId = relatedId;
 	}

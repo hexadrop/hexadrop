@@ -2,11 +2,7 @@ import { WordMother } from '@hexadrop/mother';
 
 import { StringValueObject } from '../../../src';
 
-export class FakeStringValueObject extends StringValueObject {
-	constructor(value: string) {
-		super(value);
-	}
-}
+export class FakeStringValueObject extends StringValueObject {}
 
 export class InvalidNumberStringValueObject extends StringValueObject {
 	constructor() {

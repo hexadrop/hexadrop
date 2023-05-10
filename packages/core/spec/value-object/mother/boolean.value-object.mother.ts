@@ -2,11 +2,7 @@ import { BooleanMother } from '@hexadrop/mother';
 
 import { BooleanValueObject } from '../../../src';
 
-export class FakeBooleanValueObject extends BooleanValueObject {
-	constructor(value: boolean) {
-		super(value);
-	}
-}
+export class FakeBooleanValueObject extends BooleanValueObject {}
 
 export class InvalidStringBooleanValueObject extends BooleanValueObject {
 	constructor() {

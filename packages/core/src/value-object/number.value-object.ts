@@ -4,7 +4,7 @@ import { InvalidNumberValueTypeError } from '../error/invalid-number-value-type.
 export abstract class NumberValueObject {
 	readonly value: number;
 
-	protected constructor(value: number, property?: string) {
+	constructor(value: number, property?: string) {
 		NumberValueObject.notEmpty(value, property);
 		NumberValueObject.allowedValue(value, property);
 		this.value = value;

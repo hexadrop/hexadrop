@@ -2,11 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { VoidDomainEvent } from '../../src/cqrs/void.domain-event';
 
-class ExtendsVoidDomainEvent extends VoidDomainEvent {
-	constructor() {
-		super();
-	}
-}
+class ExtendsVoidDomainEvent extends VoidDomainEvent {}
 
 describe('VoidDomainEvent', () => {
 	test('should exports VoidDomainEvent', () => {

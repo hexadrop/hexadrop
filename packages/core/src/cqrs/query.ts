@@ -6,7 +6,7 @@ export abstract class Query {
 	readonly relatedId: string | undefined;
 
 	protected constructor(queryName: string, queryId?: string, relatedId?: string) {
-		this.queryId = queryId ?? IdentifierValueObject.random().value;
+		this.queryId = queryId ?? IdentifierValueObject.random();
 		this.queryName = queryName;
 		this.relatedId = relatedId;
 	}

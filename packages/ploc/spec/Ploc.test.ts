@@ -8,10 +8,6 @@ interface PlocState {
 }
 
 class MockPloc extends Ploc<PlocState> {
-	constructor(initialState: PlocState) {
-		super(initialState);
-	}
-
 	increment() {
 		this.changeState({
 			...this.state,

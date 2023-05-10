@@ -4,7 +4,7 @@ import { InvalidBooleanValueTypeError } from '../error/invalid-boolean-value-typ
 export abstract class BooleanValueObject {
 	readonly value: boolean;
 
-	protected constructor(value: boolean, property?: string) {
+	constructor(value: boolean, property?: string) {
 		BooleanValueObject.notEmpty(value, property);
 		BooleanValueObject.allowedValue(value, property);
 		this.value = value;

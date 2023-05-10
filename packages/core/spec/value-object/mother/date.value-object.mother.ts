@@ -2,11 +2,7 @@ import { DateMother } from '@hexadrop/mother';
 
 import { DateValueObject } from '../../../src';
 
-export class FakeDateValueObject extends DateValueObject {
-	constructor(value: Date) {
-		super(value);
-	}
-}
+export class FakeDateValueObject extends DateValueObject {}
 
 export class InvalidStringDateValueObject extends DateValueObject {
 	constructor() {

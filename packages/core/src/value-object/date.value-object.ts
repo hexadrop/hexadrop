@@ -4,7 +4,7 @@ import { InvalidDateValueTypeError } from '../error/invalid-date-value-type.erro
 export abstract class DateValueObject {
 	readonly value: Date;
 
-	protected constructor(value: Date, property?: string) {
+	constructor(value: Date, property?: string) {
 		DateValueObject.notEmpty(value, property);
 		DateValueObject.allowedValue(value, property);
 		this.value = value;

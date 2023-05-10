@@ -2,9 +2,11 @@ import { UuidMother } from '@hexadrop/mother';
 
 import { IdentifierValueObject } from '../../../src';
 
+class ExtendsIdentifierValueObject extends IdentifierValueObject {}
+
 export class IdentifierValueObjectMother {
 	static create(value: string): IdentifierValueObject {
-		return new IdentifierValueObject(value);
+		return new ExtendsIdentifierValueObject(value);
 	}
 
 	static invalid(): IdentifierValueObject {

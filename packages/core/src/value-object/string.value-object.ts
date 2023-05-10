@@ -5,8 +5,8 @@ import { InvalidStringValueTypeError } from '../error/invalid-string-value-type.
 export abstract class StringValueObject<S extends string = string> {
 	readonly value: S;
 
-	protected constructor(value: S, allowedValues?: S[], property?: string);
-	protected constructor(value: S, allowedValues?: undefined, property?: string) {
+	constructor(value: S, allowedValues?: S[], property?: string);
+	constructor(value: S, allowedValues?: undefined, property?: string) {
 		StringValueObject.notEmpty(value, property);
 		StringValueObject.allowedType(value, property);
 		StringValueObject.allowedValues(value, allowedValues, property);

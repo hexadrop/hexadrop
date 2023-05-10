@@ -16,7 +16,7 @@ export abstract class DomainEvent<DTO = unknown> {
 		relatedId?: Nullable<string>
 	) {
 		this.aggregateId = aggregateId;
-		this.eventId = eventId ?? IdentifierValueObject.random().value;
+		this.eventId = eventId ?? IdentifierValueObject.random();
 		this.occurredOn = occurredOn ?? new Date();
 		this.eventName = eventName;
 		this.relatedId = relatedId;

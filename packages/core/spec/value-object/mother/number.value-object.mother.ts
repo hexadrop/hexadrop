@@ -2,11 +2,7 @@ import { IntegerMother } from '@hexadrop/mother';
 
 import { NumberValueObject } from '../../../src';
 
-export class FakeNumberValueObject extends NumberValueObject {
-	constructor(value: number) {
-		super(value);
-	}
-}
+export class FakeNumberValueObject extends NumberValueObject {}
 
 export class InvalidStringNumberValueObject extends NumberValueObject {
 	constructor() {

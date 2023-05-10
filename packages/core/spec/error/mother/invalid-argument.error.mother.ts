@@ -2,11 +2,7 @@ import { WordMother } from '@hexadrop/mother';
 
 import { InvalidArgumentError } from '../../../src';
 
-class ExtendsInvalidArgumentError extends InvalidArgumentError {
-	constructor(message: string, name?: string, code?: string) {
-		super(message, name, code);
-	}
-}
+class ExtendsInvalidArgumentError extends InvalidArgumentError {}
 
 export class InvalidArgumentErrorMother {
 	static create(message: string, name?: string, code?: string): ExtendsInvalidArgumentError {
