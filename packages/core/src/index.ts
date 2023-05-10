@@ -8,7 +8,6 @@ export * from './cqrs/event-handler';
 export * from './cqrs/query';
 export * from './cqrs/query-bus';
 export * from './cqrs/query-handler';
-export * from './either';
 export * from './error';
-export * from './nullable';
+export * from './types';
 export * from './value-object';
