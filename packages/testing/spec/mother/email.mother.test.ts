@@ -1,10 +1,9 @@
+import { EmailMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
 
-import { WordMother } from '../src';
-
-describe('WordMother', () => {
+describe('EmailMother', () => {
 	test('should works as expected', () => {
-		const value = WordMother.random();
+		const value = EmailMother.random();
 		expect(value).toBeDefined();
 		expect(typeof value).toBe('string');
 	});

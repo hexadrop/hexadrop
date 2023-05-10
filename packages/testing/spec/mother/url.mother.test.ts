@@ -1,10 +1,9 @@
+import { UrlMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
 
-import { PasswordMother } from '../src';
-
-describe('PasswordMother', () => {
+describe('URLMother', () => {
 	test('should works as expected', () => {
-		const value = PasswordMother.random();
+		const value = UrlMother.random();
 		expect(value).toBeDefined();
 		expect(typeof value).toBe('string');
 	});

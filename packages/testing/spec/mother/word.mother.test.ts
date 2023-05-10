@@ -1,10 +1,9 @@
+import { WordMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
 
-import { UuidMother } from '../src';
-
-describe('UuidMother', () => {
+describe('WordMother', () => {
 	test('should works as expected', () => {
-		const value = UuidMother.random();
+		const value = WordMother.random();
 		expect(value).toBeDefined();
 		expect(typeof value).toBe('string');
 	});

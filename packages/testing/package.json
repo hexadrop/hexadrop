@@ -1,6 +1,6 @@
 {
-	"name": "@hexadrop/mother",
-	"version": "0.0.2",
+	"name": "@hexadrop/testing",
+	"version": "0.0.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -20,20 +20,13 @@
 	"files": [
 		"dist"
 	],
-	"module": "./dist/hexadrop-mother.mjs",
-	"types": "./dist/hexadrop-mother.d.ts",
+	"type": "module",
 	"exports": {
-		".": {
-			"types": "./dist/hexadrop-mother.d.ts",
-			"default": "./dist/hexadrop-mother.mjs"
-		}
+		"types": "./dist/hexadrop-testing.d.ts",
+		"default": "./dist/hexadrop-testing.mjs"
 	},
 	"scripts": {
 		"build": "vite build",
-		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
-		"test": "vitest run --no-isolate",
-		"test:coverage": "vitest run --no-isolate --coverage",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
