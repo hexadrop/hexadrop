@@ -1,1 +1,1 @@
-export * from './Ploc';
+export * from './in-memory.ploc';

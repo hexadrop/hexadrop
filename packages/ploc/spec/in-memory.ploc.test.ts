@@ -1,13 +1,13 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import { Ploc } from '../src';
+import { InMemoryPloc } from '../src';
 
 interface PlocState {
 	kind: 'LoadedState';
 	value: number;
 }
 
-class MockPloc extends Ploc<PlocState> {
+class CounterInMemoryPloc extends InMemoryPloc<PlocState> {
 	increment() {
 		this.changeState({
 			...this.state,
@@ -16,11 +16,11 @@ class MockPloc extends Ploc<PlocState> {
 	}
 }
 
-describe('Ploc', () => {
+describe('InMemoryPloc', () => {
 	test('should works as expected', () => {
 		const spy = vi.fn<[PlocState], void>();
 		const subscription = (state: PlocState) => spy(state);
-		const ploc = new MockPloc({
+		const ploc = new CounterInMemoryPloc({
 			kind: 'LoadedState',
 			value: 0,
 		});
