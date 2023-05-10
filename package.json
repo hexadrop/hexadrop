@@ -45,8 +45,8 @@
 		"vitest": "0.31.0"
 	},
 	"volta": {
-		"node": "18.14.2",
-		"yarn": "3.4.1"
+		"node": "20.1.0",
+		"yarn": "3.5.0"
 	},
-	"packageManager": "yarn@3.4.1"
+	"packageManager": "yarn@3.5.0"
 }
