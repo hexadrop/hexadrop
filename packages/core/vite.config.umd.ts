@@ -14,13 +14,6 @@ export default defineConfig({
 		minify: true,
 		sourcemap: false,
 		emptyOutDir: false,
-		rollupOptions: {
-			output: {
-				globals: {
-					uuid: 'uuid',
-				},
-			},
-		},
 	},
 	plugins: [
 		externalizeDeps({
