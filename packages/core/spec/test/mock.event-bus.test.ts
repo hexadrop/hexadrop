@@ -1,7 +1,8 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import type { DomainEventClass, EventHandler } from '../../src';
+import type { DomainEventClass, DomainEventParams } from '../../src';
 import { DomainError, DomainEvent, Either } from '../../src';
+import type { UseCase } from '../../src/cqrs/use-case';
 import { MockEventBus } from '../../src/test';
 
 const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
@@ -9,80 +10,44 @@ const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() =>
 	Promise.resolve(Either.left(undefined))
 );
 
-interface Event1DTO {
-	id: string;
-}
+class Event1 extends DomainEvent {
+	static override EVENT_NAME = 'Event1';
+	readonly foo: string;
 
-class Event1 extends DomainEvent<Event1DTO> {
-	static readonly EVENT_NAME = 'Event1';
-
-	constructor(eventId?: string, occurredOn?: Date, relatedId?: string) {
-		super(Event1.EVENT_NAME, 'id', eventId, occurredOn, relatedId);
-	}
-
-	static fromPrimitives() {
-		return new Event1();
-	}
-
-	toPrimitive(): Event1DTO {
-		return {
-			id: this.aggregateId,
-		};
+	constructor({ aggregateId, eventId, occurredOn, relatedId, foo }: DomainEventParams<Event1>) {
+		super(Event1.EVENT_NAME, aggregateId, eventId, occurredOn, relatedId);
+		this.foo = foo;
 	}
 }
 
-class Event1Handler implements EventHandler<Event1, Event1DTO> {
-	handle(event: Event1DTO): Either<void, DomainError> {
+class Event1Handler implements UseCase<Event1> {
+	run(event: Event1): Either<void, DomainError> {
 		return handler1Spy(event);
 	}
+}
 
-	subscribedTo(): DomainEventClass<Event1> {
-		return Event1;
+class Event2 extends DomainEvent {
+	static override EVENT_NAME = 'Event2';
+	readonly bar: string;
+
+	constructor({ aggregateId, eventId, occurredOn, relatedId, bar }: DomainEventParams<Event2>) {
+		super(Event2.EVENT_NAME, aggregateId, eventId, occurredOn, relatedId);
+		this.bar = bar;
 	}
 }
 
-interface Event2DTO {
-	id: string;
-}
+class Event4 extends DomainEvent {
+	static override EVENT_NAME = 'Event4';
+	readonly buzz: string;
 
-class Event2 extends DomainEvent<Event2DTO> {
-	static readonly EVENT_NAME = 'Event2';
-
-	constructor() {
-		super(Event2.EVENT_NAME, 'id');
-	}
-
-	toPrimitive(): Event2DTO {
-		return {
-			id: this.aggregateId,
-		};
+	constructor({ aggregateId, eventId, occurredOn, relatedId, buzz }: DomainEventParams<Event4>) {
+		super(Event4.EVENT_NAME, aggregateId, eventId, occurredOn, relatedId);
+		this.buzz = buzz;
 	}
 }
 
-interface Event4DTO {
-	id: string;
-}
-
-class Event4 extends DomainEvent<Event4DTO> {
-	static readonly EVENT_NAME = 'Event4';
-
-	constructor() {
-		super(Event4.EVENT_NAME, 'id');
-	}
-
-	static fromPrimitives() {
-		return new Event4();
-	}
-
-	toPrimitive(): Event4DTO {
-		return {
-			id: this.aggregateId,
-		};
-	}
-}
-
-class Event4Handler implements EventHandler<Event4, Event4DTO> {
-	async handle(event: Event4DTO): Promise<Either<void, DomainError>> {
+class Event4Handler implements UseCase<Event4> {
+	async run(event: Event4): Promise<Either<void, DomainError>> {
 		return handler4Spy(event);
 	}
 
@@ -97,18 +62,18 @@ describe('MockEventBus', () => {
 		const handler4 = new Event4Handler();
 		const bus = new MockEventBus();
 
-		expect(() => bus.assertIsSubscribed(handler1)).toThrow();
-		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
+		expect(() => bus.assertIsSubscribed(Event1, handler1)).toThrow();
+		expect(() => bus.assertIsSubscribed(Event4, handler4)).toThrow();
 
-		await bus.subscribe(handler1);
+		await bus.subscribe(Event1, handler1);
 
-		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
-		expect(() => bus.assertIsSubscribed(handler4)).toThrow();
+		expect(() => bus.assertIsSubscribed(Event1, handler1)).not.toThrow();
+		expect(() => bus.assertIsSubscribed(Event4, handler4)).toThrow();
 
-		await bus.subscribe(handler4);
+		await bus.subscribe(Event4, handler4);
 
-		expect(() => bus.assertIsSubscribed(handler1)).not.toThrow();
-		expect(() => bus.assertIsSubscribed(handler4)).not.toThrow();
+		expect(() => bus.assertIsSubscribed(Event1, handler1)).not.toThrow();
+		expect(() => bus.assertIsSubscribed(Event4, handler4)).not.toThrow();
 	});
 	test('should assertSubscriptionsLength works as expected', async () => {
 		const handler1 = new Event1Handler();
@@ -117,11 +82,11 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 
-		await bus.subscribe(handler1);
+		await bus.subscribe(Event1, handler1);
 
 		expect(() => bus.assertSubscriptionsLength(1)).not.toThrow();
 
-		await bus.subscribe(handler4);
+		await bus.subscribe(Event4, handler4);
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 		expect(() => bus.assertSubscriptionsLength(2)).not.toThrow();
@@ -131,18 +96,18 @@ describe('MockEventBus', () => {
 		const handler4 = new Event4Handler();
 		const bus = new MockEventBus();
 
-		expect(() => bus.assertIsUnsubscribed(handler1)).toThrow();
-		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event1, handler1)).toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event4, handler4)).toThrow();
 
-		await bus.unsubscribe(handler1);
+		await bus.unsubscribe(Event1, handler1);
 
-		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
-		expect(() => bus.assertIsUnsubscribed(handler4)).toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event1, handler1)).not.toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event4, handler4)).toThrow();
 
-		await bus.unsubscribe(handler4);
+		await bus.unsubscribe(Event4, handler4);
 
-		expect(() => bus.assertIsUnsubscribed(handler1)).not.toThrow();
-		expect(() => bus.assertIsUnsubscribed(handler4)).not.toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event1, handler1)).not.toThrow();
+		expect(() => bus.assertIsUnsubscribed(Event4, handler4)).not.toThrow();
 	});
 	test('should assertUnsubscriptionLength works as expected', async () => {
 		const handler1 = new Event1Handler();
@@ -151,18 +116,22 @@ describe('MockEventBus', () => {
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 
-		await bus.unsubscribe(handler1);
+		await bus.unsubscribe(Event1, handler1);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).not.toThrow();
 
-		await bus.unsubscribe(handler4);
+		await bus.unsubscribe(Event4, handler4);
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 		expect(() => bus.assertUnsubscriptionLength(2)).not.toThrow();
 	});
 	test('should assertNotPublishEvent works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1('1', date);
+		const event1 = new Event1({
+			aggregateId: 'id',
+			foo: 'foo',
+			occurredOn: date,
+		});
 		const bus = new MockEventBus();
 
 		expect(() => bus.assertNotPublishEvent()).not.toThrow();
@@ -173,9 +142,19 @@ describe('MockEventBus', () => {
 	});
 	test('should assertLastPublishedEvents works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1('1', date);
-		const event2 = new Event2();
-		const event4 = new Event4();
+		const event1 = new Event1({
+			aggregateId: 'id',
+			foo: 'foo',
+			occurredOn: date,
+		});
+		const event2 = new Event2({
+			aggregateId: 'id2',
+			bar: 'bar',
+		});
+		const event4 = new Event4({
+			aggregateId: 'id3',
+			buzz: 'buzz',
+		});
 		const bus = new MockEventBus();
 
 		await bus.publish(event1);
@@ -187,10 +166,23 @@ describe('MockEventBus', () => {
 	});
 	test('should assertPublishedEvents works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1('1', date);
-		const event2 = new Event2();
-		const event4 = new Event4();
-		const event44 = new Event4();
+		const event1 = new Event1({
+			aggregateId: 'id',
+			foo: 'foo',
+			occurredOn: date,
+		});
+		const event2 = new Event2({
+			aggregateId: 'id2',
+			bar: 'bar',
+		});
+		const event4 = new Event4({
+			aggregateId: 'id3',
+			buzz: 'buzz',
+		});
+		const event44 = new Event4({
+			aggregateId: 'id3',
+			buzz: 'buzz',
+		});
 		const bus = new MockEventBus();
 
 		await bus.publish(event1);

@@ -1,24 +1,23 @@
 import type { DomainEvent } from './cqrs/domain-event';
-import type { VoidDomainEvent } from './cqrs/void.domain-event';
+import type { Primitives } from './types';
 
-export abstract class AggregateRoot<DTO = unknown, D extends DomainEvent = VoidDomainEvent> {
-	static fromPrimitives: (...args: any[]) => any;
-	private domainEvents: Array<D>;
+export abstract class AggregateRoot {
+	private domainEvents: Array<DomainEvent>;
 
 	protected constructor() {
 		this.domainEvents = [];
 	}
 
-	pullDomainEvents(): Array<D> {
+	pullDomainEvents(): Array<DomainEvent> {
 		const domainEvents = this.domainEvents.slice();
 		this.domainEvents = [];
 
 		return domainEvents;
 	}
 
-	record(...event: D[]): void {
+	record(...event: DomainEvent[]): void {
 		this.domainEvents.push(...event);
 	}
 
-	abstract toPrimitives(): DTO;
+	abstract toPrimitives(): Primitives<unknown>;
 }

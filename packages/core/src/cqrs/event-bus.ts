@@ -1,29 +1,31 @@
-import type { Either } from '../either';
 import type { DomainError } from '../error';
+import type { Either } from '../types';
 import type { DomainEvent, DomainEventClass } from './domain-event';
-import type { EventHandler } from './event-handler';
+import type { UseCase } from './use-case';
 
-export type EventBusCallback<DTO = any> = (
-	event: DTO
+export type EventBusCallback<Event extends DomainEvent> = (
+	event: Event
 ) => Either<void, DomainError> | Promise<Either<void, DomainError>>;
 
 export interface EventBus {
 	publish(...events: DomainEvent[]): Promise<void> | void;
 
-	subscribe<Event extends DomainEvent<DTO>, DTO>(
-		eventHandler: EventHandler<Event, DTO>
+	subscribe<Event extends DomainEvent>(
+		event: DomainEventClass<Event>,
+		useCase: UseCase<Event>
 	): Promise<void> | void;
 
-	subscribe<Event extends DomainEvent<DTO>, DTO>(
+	subscribe<Event extends DomainEvent>(
 		event: DomainEventClass<Event>,
 		callback: EventBusCallback<Event>
 	): Promise<void> | void;
 
-	unsubscribe<Event extends DomainEvent<DTO>, DTO>(
-		handler: EventHandler<Event, DTO>
+	unsubscribe<Event extends DomainEvent>(
+		event: DomainEventClass<Event>,
+		useCase: UseCase<Event>
 	): Promise<void> | void;
 
-	unsubscribe<Event extends DomainEvent<DTO>, DTO>(
+	unsubscribe<Event extends DomainEvent>(
 		event: DomainEventClass<Event>,
 		callback: EventBusCallback<Event>
 	): Promise<void> | void;

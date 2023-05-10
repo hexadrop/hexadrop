@@ -2,8 +2,8 @@ import { describe, expect, test } from 'vitest';
 
 import { Query } from '../../src';
 
-class MockQuery extends Query {
-	static QUERY_NAME = 'query';
+class MockQuery extends Query<object> {
+	static override QUERY_NAME = 'query';
 
 	constructor(queryId?: string, relatedId?: string) {
 		super(MockQuery.QUERY_NAME, queryId, relatedId);

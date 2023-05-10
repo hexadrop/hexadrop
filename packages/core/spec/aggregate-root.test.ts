@@ -1,37 +1,22 @@
 import { describe, expect, test } from 'vitest';
 
+import type { Primitives } from '../src';
 import { AggregateRoot, DomainEvent } from '../src';
 
-interface MockEventDTO {
-	id: string;
-}
-
-class MockEvent extends DomainEvent<MockEventDTO> {
-	constructor(private readonly id: string) {
+class MockEvent extends DomainEvent {
+	constructor(id: string) {
 		super('event', id);
 	}
-
-	toPrimitive(): MockEventDTO {
-		return {
-			id: this.id,
-		};
-	}
 }
 
-interface MockAggregateRootDTO {
-	value: string;
-}
-
-class MockAggregateRoot extends AggregateRoot<MockAggregateRootDTO, MockEvent> {
-	private constructor(private readonly value: string) {
+class MockAggregateRoot extends AggregateRoot {
+	readonly value: string;
+	constructor(primitives: Primitives<MockAggregateRoot>) {
 		super();
+		this.value = primitives.value;
 	}
 
-	static override fromPrimitives({ value }: MockAggregateRootDTO): MockAggregateRoot {
-		return new MockAggregateRoot(value);
-	}
-
-	toPrimitives(): MockAggregateRootDTO {
+	override toPrimitives(): Primitives<MockAggregateRoot> {
 		return {
 			value: this.value,
 		};
@@ -43,7 +28,7 @@ describe('AggregateRoot', () => {
 		const event1 = new MockEvent('afa');
 		const event2 = new MockEvent('afa2');
 		const event3 = new MockEvent('afa3');
-		const entity = MockAggregateRoot.fromPrimitives({ value: 'value' });
+		const entity = new MockAggregateRoot({ value: 'value' });
 
 		entity.record(event1, event2);
 

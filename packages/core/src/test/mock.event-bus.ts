@@ -2,24 +2,17 @@ import { assert, stub } from 'sinon';
 
 import type { DomainEvent, DomainEventClass } from '../cqrs/domain-event';
 import type { EventBus, EventBusCallback } from '../cqrs/event-bus';
-import type { EventHandler } from '../cqrs/event-handler';
-import type { Nullable } from '../nullable';
+import type { UseCase } from '../cqrs/use-case';
 
 export class MockEventBus implements EventBus {
 	publishSpy = stub<DomainEvent[], Promise<void> | void>();
 	subscribeSpy = stub<
-		[
-			DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
-			Nullable<EventBusCallback<DomainEvent>>
-		],
+		[DomainEventClass<any>, EventBusCallback<any> | UseCase<any>],
 		Promise<void> | void
 	>();
 
 	unsubscribeSpy = stub<
-		[
-			DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
-			Nullable<EventBusCallback<DomainEvent>>
-		],
+		[DomainEventClass<any>, EventBusCallback<any> | UseCase<any>],
 		Promise<void> | void
 	>();
 
@@ -29,14 +22,20 @@ export class MockEventBus implements EventBus {
 		return attributes;
 	}
 
-	assertIsSubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>): void {
+	assertIsSubscribed<D extends DomainEvent>(
+		clazz: DomainEventClass<D>,
+		handler: UseCase<D>
+	): void {
 		assert.called(this.subscribeSpy);
-		assert.calledWith(this.subscribeSpy, handler);
+		assert.calledWith(this.subscribeSpy, clazz, handler);
 	}
 
-	assertIsUnsubscribed<D extends DomainEvent<DTO>, DTO>(handler: EventHandler<D, DTO>): void {
+	assertIsUnsubscribed<D extends DomainEvent>(
+		clazz: DomainEventClass<D>,
+		handler: UseCase<D>
+	): void {
 		assert.called(this.unsubscribeSpy);
-		assert.calledWith(this.unsubscribeSpy, handler);
+		assert.calledWith(this.unsubscribeSpy, clazz, handler);
 	}
 
 	assertLastPublishedEvents(...expectedEvents: DomainEvent[]): void {
@@ -79,17 +78,17 @@ export class MockEventBus implements EventBus {
 		return this.publishSpy(...events);
 	}
 
-	subscribe(
-		event: DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
-		callback?: Nullable<EventBusCallback<DomainEvent>>
+	subscribe<D extends DomainEvent>(
+		event: DomainEventClass<D>,
+		useCaseOrCallback: EventBusCallback<D> | UseCase<D>
 	): Promise<void> | void {
-		return this.subscribeSpy(event, callback);
+		return this.subscribeSpy(event, useCaseOrCallback);
 	}
 
-	unsubscribe(
-		event: DomainEventClass<DomainEvent> | EventHandler<DomainEvent, any>,
-		callback?: Nullable<EventBusCallback<DomainEvent>>
+	unsubscribe<D extends DomainEvent>(
+		event: DomainEventClass<D>,
+		useCaseOrCallback: EventBusCallback<D> | UseCase<D>
 	): Promise<void> | void {
-		return this.unsubscribeSpy(event, callback);
+		return this.unsubscribeSpy(event, useCaseOrCallback);
 	}
 }

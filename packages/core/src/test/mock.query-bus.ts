@@ -1,28 +1,50 @@
 import type { SinonStub } from 'sinon';
 import { assert, stub } from 'sinon';
 
-import type { Query } from '../cqrs/query';
-import type { QueryBus } from '../cqrs/query-bus';
-import type { Either } from '../either';
+import type { Query, QueryClass } from '../cqrs/query';
+import type { QueryBus, QueryBusCallback } from '../cqrs/query-bus';
+import type { UseCase } from '../cqrs/use-case';
 import type { DomainError } from '../error';
+import type { Either } from '../types';
 
 export class MockQueryBus implements QueryBus {
 	readonly askSpy: SinonStub<
-		[Query],
+		[Query<any>],
 		Either<any, DomainError> | Promise<Either<any, DomainError>>
 	>;
 
+	readonly registerSpy: SinonStub<
+		[QueryClass<unknown, any>, QueryBusCallback<unknown, any> | UseCase<any>],
+		void
+	>;
+
+	readonly unregisterSpy: SinonStub<
+		[QueryClass<unknown, any>, QueryBusCallback<unknown, any> | UseCase<any>],
+		void
+	>;
+
 	constructor() {
-		this.askSpy = stub<[Query], Either<any, DomainError> | Promise<Either<any, DomainError>>>();
+		this.askSpy = stub<
+			[Query<any>],
+			Either<any, DomainError> | Promise<Either<any, DomainError>>
+		>();
+		this.registerSpy = stub<
+			[QueryClass<unknown, any>, QueryBusCallback<unknown, any> | UseCase<any>],
+			void
+		>();
+		this.unregisterSpy = stub<
+			[QueryClass<unknown, any>, QueryBusCallback<unknown, any> | UseCase<any>],
+			void
+		>();
 	}
 
-	private static getDataFromQuery(command: Query) {
-		const { queryId: _q, ...attributes } = command;
+	private static getDataFromQuery<R, Q extends Query<R>>(query: Q) {
+		const { queryId: _q, ...attributes } = query;
 
 		return attributes;
 	}
 
-	ask<Q extends Query, R>(query: Q): Either<R, DomainError> | Promise<Either<R, DomainError>> {
+	ask<R>(query: Query<R>): Either<R, DomainError> | Promise<Either<R, DomainError>> {
 		return this.askSpy(query);
 	}
 
@@ -30,11 +52,11 @@ export class MockQueryBus implements QueryBus {
 		this.askSpy.rejects(error);
 	}
 
-	askResolve(value: Either<any, DomainError>): void {
+	askResolve(value: Either<unknown, DomainError>): void {
 		this.askSpy.resolves(value);
 	}
 
-	assertAskedQueries(...expectedQueries: Query[]): void {
+	assertAskedQueries(...expectedQueries: Query<unknown>[]): void {
 		assert.called(this.askSpy);
 		const eventsArr = this.askSpy
 			.getCalls()
@@ -47,7 +69,7 @@ export class MockQueryBus implements QueryBus {
 		);
 	}
 
-	assertLastAskedQuery(expectedQuery: Query): void {
+	assertLastAskedQuery(expectedQuery: Query<unknown>): void {
 		assert.called(this.askSpy);
 		const lastSpyCall = this.askSpy.lastCall;
 		const eventsArr = lastSpyCall.args;
@@ -59,5 +81,19 @@ export class MockQueryBus implements QueryBus {
 
 	assertNotAskedQuery(): void {
 		assert.notCalled(this.askSpy);
+	}
+
+	register<R, C extends Query<R>>(
+		query: QueryClass<R, C>,
+		callback: QueryBusCallback<R, C> | UseCase<C>
+	): void {
+		this.registerSpy(query, callback);
+	}
+
+	unregister<R, C extends Query<R>>(
+		query: QueryClass<R, C>,
+		callback: QueryBusCallback<R, C> | UseCase<C>
+	): void {
+		this.unregisterSpy(query, callback);
 	}
 }

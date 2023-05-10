@@ -1,10 +1,11 @@
 import type { SinonStub } from 'sinon';
 import { assert, stub } from 'sinon';
 
-import type { Command } from '../cqrs/command';
-import type { CommandBus } from '../cqrs/command-bus';
-import type { Either } from '../either';
+import type { Command, CommandClass } from '../cqrs/command';
+import type { CommandBus, CommandBusCallback } from '../cqrs/command-bus';
+import type { UseCase } from '../cqrs/use-case';
 import type { DomainError } from '../error';
+import type { Either } from '../types';
 
 export class MockCommandBus implements CommandBus {
 	readonly dispatchSpy: SinonStub<
@@ -12,10 +13,28 @@ export class MockCommandBus implements CommandBus {
 		Either<void, DomainError> | Promise<Either<void, DomainError>>
 	>;
 
+	readonly registerSpy: SinonStub<
+		[CommandClass<any>, CommandBusCallback<any> | UseCase<any>],
+		void
+	>;
+
+	readonly unregisterSpy: SinonStub<
+		[CommandClass<any>, CommandBusCallback<any> | UseCase<any>],
+		void
+	>;
+
 	constructor() {
 		this.dispatchSpy = stub<
 			[Command],
 			Either<void, DomainError> | Promise<Either<void, DomainError>>
+		>();
+		this.registerSpy = stub<
+			[CommandClass<any>, CommandBusCallback<any> | UseCase<any>],
+			void
+		>();
+		this.unregisterSpy = stub<
+			[CommandClass<any>, CommandBusCallback<any> | UseCase<any>],
+			void
 		>();
 	}
 
@@ -62,5 +81,19 @@ export class MockCommandBus implements CommandBus {
 
 	dispatchRejects(error: Error): void {
 		this.dispatchSpy.rejects(error);
+	}
+
+	register<C extends Command>(
+		command: CommandClass<C>,
+		callback: CommandBusCallback<C> | UseCase<C>
+	): void {
+		this.registerSpy(command, callback);
+	}
+
+	unregister<C extends Command>(
+		command: CommandClass<C>,
+		callback: CommandBusCallback<C> | UseCase<C>
+	): void {
+		this.unregisterSpy(command, callback);
 	}
 }

@@ -1,6 +1,8 @@
-import { IdentifierValueObject } from '../value-object';
+import type { Clazz } from '@hexadrop/core';
+import { IdentifierValueObject } from '@hexadrop/core';
 
 export abstract class Command {
+	static COMMAND_NAME: string;
 	readonly commandId: string;
 	readonly commandName: string;
 	readonly relatedId: string | undefined;
@@ -12,7 +14,6 @@ export abstract class Command {
 	}
 }
 
-export type CommandClass<D extends Command> = {
+export type CommandClass<C extends Command> = Clazz<C> & {
 	COMMAND_NAME: string;
-	new (...args: any[]): D;
 };

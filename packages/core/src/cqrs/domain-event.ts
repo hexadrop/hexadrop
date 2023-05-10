@@ -1,14 +1,15 @@
-import type { Nullable } from '../nullable';
-import { IdentifierValueObject } from '../value-object';
+import type { Clazz, Nullable, Primitives } from '@hexadrop/core';
+import { IdentifierValueObject } from '@hexadrop/core';
 
-export abstract class DomainEvent<DTO = unknown> {
+export abstract class DomainEvent {
+	static EVENT_NAME: string;
 	readonly aggregateId: string;
 	readonly eventId: string;
 	readonly eventName: string;
 	readonly occurredOn: Date;
 	readonly relatedId: Nullable<string>;
 
-	protected constructor(
+	constructor(
 		eventName: string,
 		aggregateId: string,
 		eventId?: Nullable<string>,
@@ -21,12 +22,15 @@ export abstract class DomainEvent<DTO = unknown> {
 		this.eventName = eventName;
 		this.relatedId = relatedId;
 	}
-
-	abstract toPrimitive(): DTO;
 }
 
-export type DomainEventClass<D extends DomainEvent<DTO>, DTO = unknown> = {
+export type DomainEventClass<D extends DomainEvent> = Clazz<D> & {
 	EVENT_NAME: string;
-	new (...args: any[]): D;
-	fromPrimitives(dto: DTO): D;
 };
+
+export type DomainEventParams<D extends DomainEvent> = Omit<
+	Primitives<D>,
+	'aggregateId' | 'eventId' | 'eventName' | 'occurredOn' | 'relatedId'
+> &
+	Partial<Pick<D, 'eventId' | 'occurredOn' | 'relatedId'>> &
+	Pick<D, 'aggregateId'>;
