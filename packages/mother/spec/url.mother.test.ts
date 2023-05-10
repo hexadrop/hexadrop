@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 
-import { SerialNumberMother } from '../src';
+import { UrlMother } from '../src';
 
-describe('SerialNumberMother', () => {
+describe('URLMother', () => {
 	test('should works as expected', () => {
-		const value = SerialNumberMother.random();
+		const value = UrlMother.random();
 		expect(value).toBeDefined();
 		expect(typeof value).toBe('string');
 	});

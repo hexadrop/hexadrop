@@ -1,4 +1,4 @@
-import { MotherCreator } from './MotherCreator';
+import { MotherCreator } from './mother.creator';
 
 export class IntegerMother {
 	static random(min?: number, max?: number): number {
