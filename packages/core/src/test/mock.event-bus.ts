@@ -1,8 +1,6 @@
 import { assert, stub } from 'sinon';
 
-import type { DomainEvent, DomainEventClass } from '../cqrs/domain-event';
-import type { EventBus, EventBusCallback } from '../cqrs/event-bus';
-import type { UseCase } from '../cqrs/use-case';
+import type { DomainEvent, DomainEventClass, EventBus, EventBusCallback, UseCase } from '../cqrs';
 
 export class MockEventBus implements EventBus {
 	publishSpy = stub<DomainEvent[], Promise<void> | void>();

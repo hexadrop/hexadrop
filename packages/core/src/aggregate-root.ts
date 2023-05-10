@@ -1,4 +1,4 @@
-import type { DomainEvent } from './cqrs/domain-event';
+import type { DomainEvent } from './cqrs';
 import type { Primitives } from './types';
 
 export abstract class AggregateRoot {

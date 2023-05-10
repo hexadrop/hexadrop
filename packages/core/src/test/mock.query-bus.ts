@@ -1,9 +1,7 @@
 import type { SinonStub } from 'sinon';
 import { assert, stub } from 'sinon';
 
-import type { Query, QueryClass } from '../cqrs/query';
-import type { QueryBus, QueryBusCallback } from '../cqrs/query-bus';
-import type { UseCase } from '../cqrs/use-case';
+import type { Query, QueryBus, QueryBusCallback, QueryClass, UseCase } from '../cqrs';
 import type { DomainError } from '../error';
 import type { Either } from '../types';
 
