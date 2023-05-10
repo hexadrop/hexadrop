@@ -1,3 +1,3 @@
-export * from './DomainError';
-export * from './DomainNotFoundError';
-export * from './InvalidArgumentError';
+export * from './domain.error';
+export * from './domain-not-found.error';
+export * from './invalid-argument.error';
