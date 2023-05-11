@@ -1,6 +1,5 @@
+import { WordMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
-
-import { WordMother } from '../../src';
 
 describe('WordMother', () => {
 	test('should works as expected', () => {

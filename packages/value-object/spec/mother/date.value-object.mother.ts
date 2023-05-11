@@ -1,6 +1,5 @@
 import { DateMother } from '@hexadrop/testing';
-
-import { DateValueObject } from '../../src';
+import { DateValueObject } from '@hexadrop/value-object';
 
 export class FakeDateValueObject extends DateValueObject {}
 

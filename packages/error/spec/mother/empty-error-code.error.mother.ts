@@ -1,4 +1,4 @@
-import { EmptyErrorCodeError } from '../../src';
+import { EmptyErrorCodeError } from '@hexadrop/error';
 
 export class EmptyErrorCodeErrorMother {
 	static create(): EmptyErrorCodeError {

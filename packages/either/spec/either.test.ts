@@ -1,6 +1,5 @@
+import { Either } from '@hexadrop/either';
 import { describe, expect, test } from 'vitest';
-
-import { Either } from '../src';
 
 describe('Either', () => {
 	test('should isLeft works as expected', () => {

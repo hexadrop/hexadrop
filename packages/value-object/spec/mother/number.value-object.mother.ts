@@ -1,6 +1,5 @@
 import { IntegerMother } from '@hexadrop/testing';
-
-import { NumberValueObject } from '../../src';
+import { NumberValueObject } from '@hexadrop/value-object';
 
 export class FakeNumberValueObject extends NumberValueObject {}
 

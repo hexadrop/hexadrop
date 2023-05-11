@@ -1,6 +1,6 @@
+import { EmptyBooleanValueError, InvalidBooleanValueTypeError } from '@hexadrop/value-object';
 import { describe, expect, test } from 'vitest';
 
-import { EmptyBooleanValueError, InvalidBooleanValueTypeError } from '../src';
 import { BooleanValueObjectMother } from './mother/boolean.value-object.mother';
 
 describe('BooleanValueObject', () => {

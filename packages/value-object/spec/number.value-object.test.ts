@@ -1,6 +1,6 @@
+import { EmptyNumberValueError, InvalidNumberValueTypeError } from '@hexadrop/value-object';
 import { describe, expect, test } from 'vitest';
 
-import { EmptyNumberValueError, InvalidNumberValueTypeError } from '../src';
 import { NumberValueObjectMother } from './mother/number.value-object.mother';
 
 describe('NumberValueObject', () => {

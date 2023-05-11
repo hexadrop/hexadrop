@@ -1,6 +1,6 @@
+import { EmptyErrorCodeError, InvalidErrorCodeError } from '@hexadrop/error';
 import { describe, expect, test } from 'vitest';
 
-import { EmptyErrorCodeError, InvalidErrorCodeError } from '../src';
 import { InvalidDomainErrorMother } from './mother';
 
 describe('DomainError', () => {

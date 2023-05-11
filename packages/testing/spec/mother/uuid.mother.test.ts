@@ -1,6 +1,5 @@
+import { UuidMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
-
-import { UuidMother } from '../../src';
 
 describe('UuidMother', () => {
 	test('should works as expected', () => {

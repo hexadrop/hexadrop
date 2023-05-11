@@ -1,6 +1,5 @@
+import { PasswordMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
-
-import { PasswordMother } from '../../src';
 
 describe('PasswordMother', () => {
 	test('should works as expected', () => {

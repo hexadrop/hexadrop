@@ -1,6 +1,5 @@
 import { BooleanMother } from '@hexadrop/testing';
-
-import { BooleanValueObject } from '../../src';
+import { BooleanValueObject } from '@hexadrop/value-object';
 
 export class FakeBooleanValueObject extends BooleanValueObject {}
 

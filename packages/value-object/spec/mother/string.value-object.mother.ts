@@ -1,6 +1,5 @@
 import { WordMother } from '@hexadrop/testing';
-
-import { StringValueObject } from '../../src';
+import { StringValueObject } from '@hexadrop/value-object';
 
 export class FakeStringValueObject extends StringValueObject {}
 

@@ -1,10 +1,10 @@
-import { describe, expect, test } from 'vitest';
-
 import {
 	EmptyStringValueError,
 	InvalidStringValueError,
 	InvalidStringValueTypeError,
-} from '../src';
+} from '@hexadrop/value-object';
+import { describe, expect, test } from 'vitest';
+
 import { StringValueObjectMother } from './mother/string.value-object.mother';
 
 describe('StringValueObject', () => {

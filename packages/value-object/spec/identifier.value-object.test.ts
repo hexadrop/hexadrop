@@ -1,6 +1,6 @@
+import { InvalidIdentifierValueError } from '@hexadrop/value-object';
 import { describe, expect, test } from 'vitest';
 
-import { InvalidIdentifierValueError } from '../src';
 import { IdentifierValueObjectMother } from './mother/identifier.value-object.mother';
 
 describe('IdentifierValueObject', () => {

@@ -1,6 +1,5 @@
+import { DateMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
-
-import { DateMother } from '../../src';
 
 describe('DateMother', () => {
 	test('should recent works as expected', () => {

@@ -1,6 +1,5 @@
+import { UsernameMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
-
-import { UsernameMother } from '../../src';
 
 describe('UsernameMother', () => {
 	test('should works as expected', () => {

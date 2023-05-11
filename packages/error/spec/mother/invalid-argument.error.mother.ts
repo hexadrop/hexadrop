@@ -1,6 +1,5 @@
+import { InvalidArgumentError } from '@hexadrop/error';
 import { WordMother } from '@hexadrop/testing';
-
-import { InvalidArgumentError } from '../../src';
 
 class ExtendsInvalidArgumentError extends InvalidArgumentError {}
 
