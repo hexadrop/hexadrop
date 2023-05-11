@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/testing",
-	"version": "0.0.0",
+	"version": "1.0.0-beta.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -44,14 +44,14 @@
 		"sinon": "15.0.4"
 	},
 	"peerDependencies": {
-		"@hexadrop/bus": "^0",
-		"@hexadrop/either": "^0",
-		"@hexadrop/error": "^0"
+		"@hexadrop/bus": "^1.0.0-beta.0",
+		"@hexadrop/either": "^1.0.0-beta.0",
+		"@hexadrop/error": "^1.0.0-beta.0"
 	},
 	"devDependencies": {
-		"@hexadrop/bus": "0.0.0",
-		"@hexadrop/either": "0.0.0",
-		"@hexadrop/error": "0.0.0",
+		"@hexadrop/bus": "1.0.0-beta.0",
+		"@hexadrop/either": "1.0.0-beta.0",
+		"@hexadrop/error": "1.0.0-beta.0",
 		"@types/sinon": "10.0.14"
 	}
 }
