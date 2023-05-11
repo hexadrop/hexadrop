@@ -1,4 +1,4 @@
-import { DomainError } from '@hexadrop/error';
+import { DomainError } from '../../src';
 
 export class EmptyErrorCodeError extends DomainError {
 	constructor() {

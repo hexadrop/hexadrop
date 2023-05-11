@@ -1,4 +1,4 @@
-import { InvalidErrorCodeError } from '@hexadrop/error';
+import { InvalidErrorCodeError } from '../../src';
 
 export class InvalidErrorCodeErrorMother {
 	static create(): InvalidErrorCodeError {

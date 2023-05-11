@@ -1,7 +1,8 @@
 import { Query } from '@hexadrop/bus';
-import { MockQueryBus } from '@hexadrop/testing';
 import type { Clazz } from '@hexadrop/types';
 import { describe, expect, test } from 'vitest';
+
+import { MockQueryBus } from '../../src';
 
 class Query1Response {
 	constructor(readonly foo: string) {}

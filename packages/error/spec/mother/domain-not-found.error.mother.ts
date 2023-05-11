@@ -1,5 +1,6 @@
-import { DomainNotFoundError } from '@hexadrop/error';
 import { UuidMother, WordMother } from '@hexadrop/testing';
+
+import { DomainNotFoundError } from '../../src';
 
 export class DomainNotFoundErrorMother {
 	static create(

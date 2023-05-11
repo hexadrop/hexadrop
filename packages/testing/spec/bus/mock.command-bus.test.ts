@@ -1,6 +1,7 @@
 import { Command } from '@hexadrop/bus';
-import { MockCommandBus } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
+
+import { MockCommandBus } from '../../src';
 
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';

@@ -2,8 +2,9 @@ import type { DomainEventClass, DomainEventParams, Handler } from '@hexadrop/bus
 import { DomainEvent } from '@hexadrop/bus';
 import { Either } from '@hexadrop/either';
 import { DomainError } from '@hexadrop/error';
-import { MockEventBus } from '@hexadrop/testing';
 import { describe, expect, test, vi } from 'vitest';
+
+import { MockEventBus } from '../../src';
 
 const handler1Spy = vi.fn<[unknown], Either<void, DomainError>>(() => Either.left(undefined));
 const handler4Spy = vi.fn<[unknown], Promise<Either<void, DomainError>>>(() =>

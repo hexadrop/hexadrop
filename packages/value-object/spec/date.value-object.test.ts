@@ -1,7 +1,7 @@
 import { DateMother } from '@hexadrop/testing';
-import { EmptyDateValueError, InvalidDateValueTypeError } from '@hexadrop/value-object';
 import { describe, expect, test } from 'vitest';
 
+import { EmptyDateValueError, InvalidDateValueTypeError } from '../src';
 import { DateValueObjectMother } from './mother/date.value-object.mother';
 
 describe('DateValueObject', () => {

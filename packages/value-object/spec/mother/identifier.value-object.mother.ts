@@ -1,5 +1,6 @@
 import { UuidMother } from '@hexadrop/testing';
-import { IdentifierValueObject } from '@hexadrop/value-object';
+
+import { IdentifierValueObject } from '../../src';
 
 class ExtendsIdentifierValueObject extends IdentifierValueObject {}
 

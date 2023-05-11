@@ -1,5 +1,6 @@
-import { IntegerMother } from '@hexadrop/testing';
 import { describe, expect, test } from 'vitest';
+
+import { IntegerMother } from '../../src';
 
 describe('IntegerMother', () => {
 	test('should works as expected', () => {
