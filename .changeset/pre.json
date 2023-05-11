@@ -12,6 +12,7 @@
     "@hexadrop/value-object": "0.0.0"
   },
   "changesets": [
+    "thick-fishes-shave",
     "warm-jars-glow"
   ]
 }

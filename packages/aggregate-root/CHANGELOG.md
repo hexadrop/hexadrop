@@ -1,5 +1,14 @@
 # @hexadrop/aggregate-root
 
+## 1.0.0-beta.1
+
+### Patch Changes
+
+- 384c7b4: Fix `package.json` fields
+- Updated dependencies [384c7b4]
+  - @hexadrop/types@1.0.0-beta.1
+  - @hexadrop/bus@1.0.0-beta.1
+
 ## 1.0.0-beta.0
 
 ### Major Changes
