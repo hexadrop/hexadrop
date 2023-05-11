@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/bus",
-	"version": "0.0.0",
+	"version": "1.0.0-beta.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -32,13 +32,13 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/either": "^0",
-		"@hexadrop/error": "^0",
-		"@hexadrop/types": "^0"
+		"@hexadrop/either": "^1.0.0-beta.0",
+		"@hexadrop/error": "^1.0.0-beta.0",
+		"@hexadrop/types": "^1.0.0-beta.0"
 	},
 	"devDependencies": {
-		"@hexadrop/either": "0.0.0",
-		"@hexadrop/error": "0.0.0",
-		"@hexadrop/types": "0.0.0"
+		"@hexadrop/either": "1.0.0-beta.0",
+		"@hexadrop/error": "1.0.0-beta.0",
+		"@hexadrop/types": "1.0.0-beta.0"
 	}
 }
