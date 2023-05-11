@@ -21,10 +21,20 @@
 		"dist"
 	],
 	"type": "module",
+	"module": "./dist/hexadrop-either.mjs",
+	"umd:main": "./dist/hexadrop-either.umd.min.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		"types": "./dist/index.d.ts",
-		"umd:main": "./dist/hexadrop-either.umd.min.js",
+		"browser": "./dist/hexadrop-either.umd.min.js",
 		"default": "./dist/hexadrop-either.mjs"
+	},
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/index.d.ts"
+			]
+		}
 	},
 	"scripts": {
 		"build": "vite build && vite build --config vite.config.umd.ts",

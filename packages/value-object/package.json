@@ -21,10 +21,20 @@
 		"dist"
 	],
 	"type": "module",
+	"module": "./dist/hexadrop-value-object.mjs",
+	"umd:main": "./dist/hexadrop-value-object.umd.min.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		"types": "./dist/index.d.ts",
 		"browser": "./dist/hexadrop-value-object.umd.min.js",
 		"default": "./dist/hexadrop-value-object.mjs"
+	},
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/index.d.ts"
+			]
+		}
 	},
 	"scripts": {
 		"build": "vite build && vite build --config vite.config.umd.ts",

@@ -21,18 +21,37 @@
 		"dist"
 	],
 	"type": "module",
+	"module": "./dist/hexadrop-ploc.mjs",
+	"umd:main": "./dist/hexadrop-ploc.umd.min.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
+			"browser": "./dist/hexadrop-ploc.umd.min.js",
 			"default": "./dist/hexadrop-ploc.mjs"
 		},
 		"./memory": {
 			"types": "./dist/memory.d.ts",
+			"browser": "./dist/hexadrop-ploc-memory.umd.min.js",
 			"default": "./dist/hexadrop-ploc-memory.mjs"
 		},
 		"./react": {
 			"types": "./dist/react.d.ts",
+			"browser": "./dist/hexadrop-ploc-react.umd.min.js",
 			"default": "./dist/hexadrop-ploc-react.mjs"
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/index.d.ts"
+			],
+			"memory": [
+				"./dist/memory.d.ts"
+			],
+			"react": [
+				"./dist/react.d.ts"
+			]
 		}
 	},
 	"scripts": {
