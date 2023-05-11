@@ -17,7 +17,7 @@ export default defineConfig({
 	plugins: [
 		dts({
 			skipDiagnostics: true,
-			entryRoot: 'src'
+			entryRoot: 'src',
 		}),
 		externalizeDeps(),
 		tsconfigPaths(),
