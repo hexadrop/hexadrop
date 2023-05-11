@@ -1,0 +1,44 @@
+{
+	"name": "@hexadrop/value-object",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		"types": "./dist/index.d.ts",
+		"browser": "./dist/hexadrop-value-object.umd.min.js",
+		"default": "./dist/hexadrop-value-object.mjs"
+	},
+	"scripts": {
+		"build": "vite build && vite build --config vite.config.umd.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"uuid": "9.0.0"
+	},
+	"peerDependencies": {
+		"@hexadrop/error": "^0"
+	},
+	"devDependencies": {
+		"@hexadrop/error": "0.0.0",
+		"@hexadrop/testing": "0.0.0",
+		"@types/uuid": "9.0.1"
+	}
+}

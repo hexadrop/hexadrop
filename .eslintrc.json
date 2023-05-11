@@ -29,6 +29,7 @@
 				]
 			},
 			"rules": {
+				"@typescript-eslint/unbound-method": "warn",
 				"import/no-unresolved": "off",
 				"no-use-before-define": "warn"
 			}

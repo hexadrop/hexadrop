@@ -30,6 +30,18 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@faker-js/faker": "7.6.0"
+		"@faker-js/faker": "7.6.0",
+		"sinon": "15.0.4"
+	},
+	"peerDependencies": {
+		"@hexadrop/bus": "^0",
+		"@hexadrop/either": "^0",
+		"@hexadrop/error": "^0"
+	},
+	"devDependencies": {
+		"@hexadrop/bus": "0.0.0",
+		"@hexadrop/either": "0.0.0",
+		"@hexadrop/error": "0.0.0",
+		"@types/sinon": "10.0.14"
 	}
 }

@@ -1,0 +1,32 @@
+{
+	"name": "@hexadrop/types",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		"types": "./dist/hexadrop-types.d.ts",
+		"default": "./dist/hexadrop-types.mjs"
+	},
+	"scripts": {
+		"build": "vite build",
+		"typecheck": "tsc --noEmit"
+	}
+}

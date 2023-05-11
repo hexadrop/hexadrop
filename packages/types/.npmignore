@@ -1,0 +1,3 @@
+.eslintignore
+tsconfig.json
+vite.config.ts

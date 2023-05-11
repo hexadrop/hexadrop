@@ -6,6 +6,12 @@
 			"@hexadrop/*/test": [
 				"packages/*/src/test"
 			],
+			"@hexadrop/*/memory": [
+				"packages/*/src/memory"
+			],
+			"@hexadrop/*/react": [
+				"packages/*/src/react"
+			],
 			"@hexadrop/*": [
 				"packages/*/src"
 			]

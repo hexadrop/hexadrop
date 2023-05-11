@@ -8,8 +8,8 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['es'],
-			fileName: () => `hexadrop-mother.mjs`,
-			entry: ['src/index.ts'],
+			fileName: `hexadrop-testing.mjs`,
+			entry: 'src/index.ts',
 		},
 		minify: false,
 		sourcemap: false,
@@ -17,7 +17,7 @@ export default defineConfig({
 	plugins: [
 		dts({
 			skipDiagnostics: true,
-			rollupTypes: true,
+			entryRoot: 'src'
 		}),
 		externalizeDeps(),
 		tsconfigPaths(),

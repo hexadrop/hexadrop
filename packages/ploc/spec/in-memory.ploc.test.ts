@@ -1,6 +1,5 @@
+import { InMemoryPloc } from '@hexadrop/ploc/memory';
 import { describe, expect, test, vi } from 'vitest';
-
-import { InMemoryPloc } from '../src';
 
 interface PlocState {
 	kind: 'LoadedState';
