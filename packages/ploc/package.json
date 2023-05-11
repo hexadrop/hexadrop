@@ -20,21 +20,35 @@
 	"files": [
 		"dist"
 	],
-	"module": "./dist/hexadrop-ploc.mjs",
-	"umd:main": "dist/hexadrop-ploc.umd.min.js",
-	"types": "./dist/index.d.ts",
+	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
 			"default": "./dist/hexadrop-ploc.mjs"
+		},
+		"./memory": {
+			"types": "./dist/memory.d.ts",
+			"default": "./dist/hexadrop-ploc-memory.mjs"
+		},
+		"./react": {
+			"types": "./dist/react.d.ts",
+			"default": "./dist/hexadrop-ploc-react.mjs"
 		}
 	},
 	"scripts": {
-		"build": "vite build",
-		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
-		"test": "vitest run --no-isolate",
-		"test:coverage": "vitest run --no-isolate --coverage",
+		"build": "vite build && vite build --config vite.config.umd.ts && vite build --config vite.config.umd.memory.ts && vite build --config vite.config.umd.react.ts",
 		"typecheck": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"react": ">= 16"
+	},
+	"peerDependenciesMeta": {
+		"react": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@types/react": "18.2.6",
+		"react": "18.2.0"
 	}
 }

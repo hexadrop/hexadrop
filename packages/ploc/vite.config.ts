@@ -7,10 +7,9 @@ export default defineConfig({
 	build: {
 		target: 'ESNext',
 		lib: {
-			formats: ['es', 'umd'],
-			fileName: format => `hexadrop-ploc.${format === 'es' ? 'mjs' : 'umd.min.js'}`,
-			entry: ['src/index.ts'],
-			name: 'plocadrop',
+			formats: ['es'],
+			fileName: (_, m) => `hexadrop-ploc${m === 'index' ? '' : `-${m}`}.mjs`,
+			entry: ['src/index.ts', 'src/memory.ts', 'src/react.ts'],
 		},
 		minify: false,
 		sourcemap: false,
@@ -18,7 +17,7 @@ export default defineConfig({
 	plugins: [
 		dts({
 			skipDiagnostics: true,
-			rollupTypes: true,
+			entryRoot: 'src',
 		}),
 		externalizeDeps(),
 		tsconfigPaths(),

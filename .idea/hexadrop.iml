@@ -3,36 +3,16 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/lib/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/.yarn" />
-      <excludeFolder url="file://$MODULE_DIR$/.husky" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/.github" />
-      <excludeFolder url="file://$MODULE_DIR$/.changeset" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/test" />
-      <excludeFolder url="file://$MODULE_DIR$/coverage" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/memory" />
-      <excludeFolder url="file://$MODULE_DIR$/lib/ploc" />
-      <excludeFolder url="file://$MODULE_DIR$/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/memory" />
-      <excludeFolder url="file://$MODULE_DIR$/ploc" />
-      <excludeFolder url="file://$MODULE_DIR$/test" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/core/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/ploc/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/mother/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/core/test/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/core/test" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/queue" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/in-memory-bus/test/dist" />
       <excludePattern pattern=".*" />
       <excludePattern pattern="LICENSE" />
       <excludePattern pattern="tsconfig.*" />
       <excludePattern pattern="vite.*" />
+      <excludePattern pattern="vitest.*" />
       <excludePattern pattern="babel.*" />
       <excludePattern pattern="*.lock" />
       <excludePattern pattern="renovate.json" />
+      <excludePattern pattern="coverage" />
+      <excludePattern pattern="dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

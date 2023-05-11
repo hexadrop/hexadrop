@@ -1,0 +1,15 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@hexadrop/aggregate-root": "0.0.0",
+    "@hexadrop/bus": "0.0.0",
+    "@hexadrop/either": "0.0.0",
+    "@hexadrop/error": "0.0.0",
+    "@hexadrop/ploc": "0.0.2",
+    "@hexadrop/testing": "0.0.0",
+    "@hexadrop/types": "0.0.0",
+    "@hexadrop/value-object": "0.0.0"
+  },
+  "changesets": []
+}

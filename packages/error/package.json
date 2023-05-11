@@ -1,0 +1,36 @@
+{
+	"name": "@hexadrop/error",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		"types": "./dist/test.d.ts",
+		"browser": "./dist/hexadrop-error.umd.min.js",
+		"default": "./dist/hexadrop-error-test.mjs"
+	},
+	"scripts": {
+		"build": "vite build && vite build --config vite.config.umd.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@hexadrop/testing": "0.0.0"
+	}
+}

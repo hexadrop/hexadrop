@@ -15,7 +15,6 @@
 			},
 			"rules": {
 				"@typescript-eslint/ban-ts-comment": "warn",
-				"@typescript-eslint/no-useless-constructor": "warn",
 				"import/no-unresolved": "off"
 			}
 		},
@@ -30,6 +29,7 @@
 				]
 			},
 			"rules": {
+				"@typescript-eslint/unbound-method": "warn",
 				"import/no-unresolved": "off",
 				"no-use-before-define": "warn"
 			}

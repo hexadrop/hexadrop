@@ -1,0 +1,47 @@
+{
+	"name": "@hexadrop/testing",
+	"version": "0.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		"types": "./dist/hexadrop-testing.d.ts",
+		"default": "./dist/hexadrop-testing.mjs"
+	},
+	"scripts": {
+		"build": "vite build",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@faker-js/faker": "7.6.0",
+		"sinon": "15.0.4"
+	},
+	"peerDependencies": {
+		"@hexadrop/bus": "^0",
+		"@hexadrop/either": "^0",
+		"@hexadrop/error": "^0"
+	},
+	"devDependencies": {
+		"@hexadrop/bus": "0.0.0",
+		"@hexadrop/either": "0.0.0",
+		"@hexadrop/error": "0.0.0",
+		"@types/sinon": "10.0.14"
+	}
+}
