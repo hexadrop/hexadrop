@@ -7,18 +7,18 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['umd'],
-			fileName: () => `hexadrop-ploc-react.umd.min.js`,
-			entry: 'src/react.ts',
+			fileName: () => `hexadrop-bus-memory.umd.min.js`,
+			entry: 'src/memory.ts',
 			name: 'hexadrop',
 		},
-
 		minify: true,
 		sourcemap: false,
 		emptyOutDir: false,
 		rollupOptions: {
 			output: {
 				globals: {
-					"react": "React"
+					"@hexadrop/either": "hexadrop",
+					"@hexadrop/error": "hexadrop",
 				}
 			}
 		}

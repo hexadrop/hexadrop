@@ -43,9 +43,6 @@
 	},
 	"typesVersions": {
 		"*": {
-			"*": [
-				"./dist/index.d.ts"
-			],
 			"memory": [
 				"./dist/memory.d.ts"
 			],
@@ -55,8 +52,11 @@
 		}
 	},
 	"scripts": {
-		"build": "vite build && vite build --config vite.config.umd.ts && vite build --config vite.config.umd.memory.ts && vite build --config vite.config.umd.react.ts",
-		"prepare": "vite build && vite build --config vite.config.umd.ts && vite build --config vite.config.umd.memory.ts && vite build --config vite.config.umd.react.ts",
+		"build": "yarn build:esm && yarn build:umd && yarn build:umd:memory && yarn build:umd:react",
+		"build:esm": "vite build",
+		"build:umd": "vite build --config vite.config.umd.ts",
+		"build:umd:memory": "vite build --config vite.config.umd.memory.ts",
+		"build:umd:react": "vite build --config vite.config.umd.react.ts",
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {

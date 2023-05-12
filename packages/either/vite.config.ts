@@ -8,7 +8,7 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['es'],
-			fileName: `hexadrop-either.mjs`,
+			fileName: () => `hexadrop-either.mjs`,
 			entry: 'src/index.ts',
 		},
 		minify: false,

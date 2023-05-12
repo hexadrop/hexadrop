@@ -7,7 +7,7 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['umd'],
-			fileName: `hexadrop-ploc-memory.umd.min.js`,
+			fileName: () => `hexadrop-ploc-memory.umd.min.js`,
 			entry: 'src/memory.ts',
 			name: 'hexadrop',
 		},

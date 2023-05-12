@@ -24,19 +24,14 @@
 	"module": "./dist/hexadrop-types.mjs",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"types": "./dist/hexadrop-types.d.ts",
-		"default": "./dist/hexadrop-types.mjs"
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/index.d.ts"
-			]
+		".": {
+			"types": "./dist/hexadrop-types.d.ts",
+			"default": "./dist/hexadrop-types.mjs"
 		}
 	},
 	"scripts": {
 		"build": "vite build",
-		"prepare": "vite build",
+		"prepare": "yarn build",
 		"typecheck": "tsc --noEmit"
 	}
 }

@@ -8,7 +8,7 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['es'],
-			fileName: `hexadrop-testing.mjs`,
+			fileName: () => `hexadrop-testing.mjs`,
 			entry: 'src/index.ts',
 		},
 		minify: false,

@@ -8,8 +8,8 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['es'],
-			fileName: `hexadrop-bus.mjs`,
-			entry: 'src/index.ts',
+			fileName: (_, e) => `hexadrop-bus${e === 'index' ? '' : `-${e}`}.mjs`,
+			entry: ['src/index.ts', 'src/memory.ts'],
 		},
 		minify: false,
 		sourcemap: false,

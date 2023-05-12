@@ -8,7 +8,7 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['es'],
-			fileName: (_, m) => `hexadrop-ploc${m === 'index' ? '' : `-${m}`}.mjs`,
+			fileName: (_, e) => `hexadrop-ploc${e === 'index' ? '' : `-${e}`}.mjs`,
 			entry: ['src/index.ts', 'src/memory.ts', 'src/react.ts'],
 		},
 		minify: false,

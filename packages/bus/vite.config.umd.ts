@@ -7,13 +7,21 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['umd'],
-			fileName: `hexadrop-bus.umd.min.js`,
+			fileName: () => `hexadrop-bus.umd.min.js`,
 			entry: 'src/index.ts',
 			name: 'hexadrop',
 		},
 		minify: true,
 		sourcemap: false,
 		emptyOutDir: false,
+		rollupOptions: {
+			output: {
+				globals: {
+					"@hexadrop/either": "hexadrop",
+					"@hexadrop/error": "hexadrop",
+				}
+			}
+		}
 	},
 	plugins: [externalizeDeps(), tsconfigPaths()],
 });

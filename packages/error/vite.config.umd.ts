@@ -7,7 +7,7 @@ export default defineConfig({
 		target: 'ESNext',
 		lib: {
 			formats: ['umd'],
-			fileName: `hexadrop-error.umd.min.js`,
+			fileName: () => `hexadrop-error.umd.min.js`,
 			entry: 'src/index.ts',
 			name: 'hexadrop',
 		},

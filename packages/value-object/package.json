@@ -25,20 +25,17 @@
 	"umd:main": "./dist/hexadrop-value-object.umd.min.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"types": "./dist/index.d.ts",
-		"browser": "./dist/hexadrop-value-object.umd.min.js",
-		"default": "./dist/hexadrop-value-object.mjs"
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/index.d.ts"
-			]
+		".": {
+			"types": "./dist/index.d.ts",
+			"browser": "./dist/hexadrop-value-object.umd.min.js",
+			"default": "./dist/hexadrop-value-object.mjs"
 		}
 	},
 	"scripts": {
-		"build": "vite build && vite build --config vite.config.umd.ts",
-		"prepare": "vite build && vite build --config vite.config.umd.ts",
+		"build": "yarn build:esm && yarn build:umd",
+		"build:esm": "vite build",
+		"build:umd": "vite build --config vite.config.umd.ts",
+		"prepare": "yarn build",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {

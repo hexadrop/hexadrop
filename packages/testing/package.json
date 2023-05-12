@@ -24,14 +24,9 @@
 	"module": "./dist/hexadrop-error.mjs",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"types": "./dist/hexadrop-testing.d.ts",
-		"default": "./dist/hexadrop-testing.mjs"
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/index.d.ts"
-			]
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/hexadrop-testing.mjs"
 		}
 	},
 	"scripts": {
