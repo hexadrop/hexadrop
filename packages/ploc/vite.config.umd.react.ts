@@ -18,10 +18,10 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				globals: {
-					"react": "React"
-				}
-			}
-		}
+					react: 'React',
+				},
+			},
+		},
 	},
 	plugins: [externalizeDeps(), tsconfigPaths()],
 });

@@ -17,10 +17,10 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				globals: {
-					"@hexadrop/error": "hexadrop"
-				}
-			}
-		}
+					'@hexadrop/error': 'hexadrop',
+				},
+			},
+		},
 	},
-	plugins: [externalizeDeps({deps: false}), tsconfigPaths()],
+	plugins: [externalizeDeps({ deps: false }), tsconfigPaths()],
 });

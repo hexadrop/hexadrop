@@ -17,11 +17,11 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				globals: {
-					"@hexadrop/either": "hexadrop",
-					"@hexadrop/error": "hexadrop",
-				}
-			}
-		}
+					'@hexadrop/either': 'hexadrop',
+					'@hexadrop/error': 'hexadrop',
+				},
+			},
+		},
 	},
 	plugins: [externalizeDeps(), tsconfigPaths()],
 });
