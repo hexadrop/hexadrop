@@ -1,5 +1,11 @@
 # @hexadrop/error
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- 75df933: Fix `package.json` fields
+
 ## 1.0.0-beta.1
 
 ### Patch Changes

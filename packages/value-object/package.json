@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/value-object",
-	"version": "1.0.0-beta.1",
+	"version": "1.0.0-beta.2",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -42,11 +42,11 @@
 		"uuid": "9.0.0"
 	},
 	"peerDependencies": {
-		"@hexadrop/error": "^1.0.0-beta.1"
+		"@hexadrop/error": "^1.0.0-beta.2"
 	},
 	"devDependencies": {
-		"@hexadrop/error": "1.0.0-beta.1",
-		"@hexadrop/testing": "1.0.0-beta.1",
+		"@hexadrop/error": "1.0.0-beta.2",
+		"@hexadrop/testing": "1.0.0-beta.2",
 		"@types/uuid": "9.0.1"
 	}
 }
