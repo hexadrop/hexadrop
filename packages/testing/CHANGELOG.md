@@ -1,5 +1,12 @@
 # @hexadrop/testing
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- 1887d86: Update `@faker-js/faker` versions to v8
+  - @hexadrop/error@1.0.0-beta.2
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
