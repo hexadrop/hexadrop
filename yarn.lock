@@ -704,10 +704,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:7.6.0":
-  version: 7.6.0
-  resolution: "@faker-js/faker@npm:7.6.0"
-  checksum: 942af6221774e8c98a0eb6bc75265e05fb81a941170377666c3439aab9495dd321d6beedc5406f07e6ad44262b3e43c20961f666d116ad150b78e7437dd1bb2b
+"@faker-js/faker@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@faker-js/faker@npm:8.0.0"
+  checksum: ace60f719fb649199369d50f0095bb65f94d30dcd474daf179cb7ec490fdc63a63f0ac47ef810c21e94d462762421141153d3da9f4df5f952017da24eaa84f23
   languageName: node
   linkType: hard
 
@@ -776,7 +776,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hexadrop/testing@workspace:packages/testing"
   dependencies:
-    "@faker-js/faker": 7.6.0
+    "@faker-js/faker": 8.0.0
     "@hexadrop/bus": 1.0.0-beta.2
     "@hexadrop/either": 1.0.0-beta.2
     "@hexadrop/error": 1.0.0-beta.2
@@ -1251,10 +1251,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.1.2":
+"@types/node@npm:*":
   version: 20.1.2
   resolution: "@types/node@npm:20.1.2"
   checksum: 9bb2cf0a846e60cc06c44a5622c1998d8373c8675b24d11c86845a29f32c60f5bca9627f2a2535640f902be3dbcc60f126a895abe8e10f12e1467ae3deaba56d
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:20.1.3":
+  version: 20.1.3
+  resolution: "@types/node@npm:20.1.3"
+  checksum: abdb593f662a079715b4e9df0c706822e49814dd641fa5a6226ab73fb931cbfc9cfd5df92e09c13dbc90dbc8fce680d29cb735b88899d661481d93e09a8df2be
   languageName: node
   linkType: hard
 
@@ -3308,7 +3315,7 @@ __metadata:
     "@changesets/cli": 2.26.1
     "@hexatool/eslint-config-typescript": 1.0.9
     "@hexatool/tsconfig": 20.0.0
-    "@types/node": 20.1.2
+    "@types/node": 20.1.3
     "@vitest/coverage-c8": 0.31.0
     eslint: 8.40.0
     typescript: 5.0.4

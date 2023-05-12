@@ -3,15 +3,15 @@ import { MotherCreator } from './mother.creator';
 export class IntegerMother {
 	static random(min?: number, max?: number): number {
 		if (max && min) {
-			return MotherCreator.random().datatype.number({ max, min });
+			return MotherCreator.random().number.int({ max, min });
 		}
 		if (max) {
-			return MotherCreator.random().datatype.number({ max });
+			return MotherCreator.random().number.int({ max });
 		}
 		if (min) {
-			return MotherCreator.random().datatype.number({ min });
+			return MotherCreator.random().number.int({ min });
 		}
 
-		return MotherCreator.random().datatype.number();
+		return MotherCreator.random().number.int();
 	}
 }
