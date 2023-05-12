@@ -754,7 +754,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hexadrop/error@workspace:packages/error"
   dependencies:
-    "@hexadrop/testing": 1.0.0-beta.2
+    "@hexadrop/testing": 1.0.0-beta.3
   languageName: unknown
   linkType: soft
 
@@ -772,7 +772,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hexadrop/testing@1.0.0-beta.2, @hexadrop/testing@workspace:packages/testing":
+"@hexadrop/testing@1.0.0-beta.3, @hexadrop/testing@workspace:packages/testing":
   version: 0.0.0-use.local
   resolution: "@hexadrop/testing@workspace:packages/testing"
   dependencies:
@@ -800,7 +800,7 @@ __metadata:
   resolution: "@hexadrop/value-object@workspace:packages/value-object"
   dependencies:
     "@hexadrop/error": 1.0.0-beta.2
-    "@hexadrop/testing": 1.0.0-beta.2
+    "@hexadrop/testing": 1.0.0-beta.3
     "@types/uuid": 9.0.1
     uuid: 9.0.0
   peerDependencies:

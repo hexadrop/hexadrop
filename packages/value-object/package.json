@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {
 		"@hexadrop/error": "1.0.0-beta.2",
-		"@hexadrop/testing": "1.0.0-beta.2",
+		"@hexadrop/testing": "1.0.0-beta.3",
 		"@types/uuid": "9.0.1"
 	}
 }
