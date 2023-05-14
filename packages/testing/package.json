@@ -47,6 +47,6 @@
 		"@hexadrop/bus": "1.0.0-beta.2",
 		"@hexadrop/either": "1.0.0-beta.2",
 		"@hexadrop/error": "1.0.0-beta.2",
-		"@types/sinon": "10.0.14"
+		"@types/sinon": "10.0.15"
 	}
 }
