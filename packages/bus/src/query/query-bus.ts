@@ -11,11 +11,11 @@ export type QueryBusCallback<Response = unknown, Q extends Query<Response> = Que
 export interface QueryBus {
 	ask<R>(query: Query<R>): Either<R, DomainError> | Promise<Either<R, DomainError>>;
 
-	register<R, C extends Query<R>>(query: QueryClass<R, C>, useCase: Handler<C>): void;
+	register<R, Q extends Query<R>>(query: QueryClass<R, Q>, useCase: Handler<Q, R>): void;
 
-	register<R, C extends Query<R>>(
-		query: QueryClass<R, C>,
-		callback: QueryBusCallback<R, C>
+	register<R, Q extends Query<R>>(
+		query: QueryClass<R, Q>,
+		callback: QueryBusCallback<R, Q>
 	): void;
 
 	unregister<R, C extends Query<R>>(query: QueryClass<R, C>): void;
