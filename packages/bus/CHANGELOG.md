@@ -1,5 +1,11 @@
 # @hexadrop/bus
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- f178d1e: Change `register` method overload
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
