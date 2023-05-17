@@ -57,6 +57,7 @@
 		"build:umd": "vite build --config vite.config.umd.ts",
 		"build:umd:memory": "vite build --config vite.config.umd.memory.ts",
 		"build:umd:react": "vite build --config vite.config.umd.react.ts",
+		"prepare": "yarn build",
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
