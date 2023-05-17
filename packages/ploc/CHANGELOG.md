@@ -1,5 +1,11 @@
 # @hexadrop/ploc
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- 8761863: Fix build
+
 ## 1.0.0-beta.2
 
 ### Patch Changes
