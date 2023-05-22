@@ -36,7 +36,7 @@
 	},
 	"dependencies": {
 		"@faker-js/faker": "8.0.0",
-		"sinon": "15.0.4"
+		"sinon": "15.1.0"
 	},
 	"peerDependencies": {
 		"@hexadrop/bus": "^1.0.0-beta.3",
