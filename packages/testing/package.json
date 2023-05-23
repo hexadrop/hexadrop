@@ -35,7 +35,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@faker-js/faker": "8.0.0",
+		"@faker-js/faker": "8.0.1",
 		"sinon": "15.1.0"
 	},
 	"peerDependencies": {
