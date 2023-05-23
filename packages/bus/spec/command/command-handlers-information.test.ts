@@ -53,8 +53,18 @@ class Command6 extends Command {
 	}
 }
 
+class Service {
+	hello(): string {
+		return 'world';
+	}
+}
+
 class Command1Handler implements Handler<Command1> {
+	constructor(private readonly service: Service) {}
+
 	async run(): Promise<Either<void, DomainError>> {
+		this.service.hello();
+
 		return Promise.resolve(Either.left(undefined));
 	}
 }
@@ -66,7 +76,10 @@ class Command23Handler implements Handler<Command2 | Command3> {
 }
 
 class Command4Handler implements Handler<Command4> {
+	constructor(private readonly service: Service) {}
 	async run(): Promise<Either<void, DomainError>> {
+		this.service.hello();
+
 		return Promise.resolve(Either.left(undefined));
 	}
 }
@@ -86,9 +99,11 @@ describe('HandlersInformation', () => {
 		const c5 = new Command5();
 		const c6 = new Command6();
 
-		const expectedCommand1Handler = new Command1Handler();
+		const s = new Service();
+
+		const expectedCommand1Handler = new Command1Handler(s);
 		const expectedCommand23Handler = new Command23Handler();
-		const expectedCommand4Handler = new Command4Handler();
+		const expectedCommand4Handler = new Command4Handler(s);
 		const expectedCommand56Handler = new Command56Handler();
 
 		const map: Map<string, CommandBusCallback[]> = new Map();

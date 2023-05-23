@@ -17,8 +17,7 @@ export class QueryHandlersInformation {
 		handler: Handler<Q, R> | QueryBusCallback<R, Q>
 	): void {
 		if ('run' in handler) {
-			// this.queryHandlersMap.set(query.QUERY_NAME, handler.run.bind(handler));
-			this.queryHandlersMap.set(query.QUERY_NAME, handler.run);
+			this.queryHandlersMap.set(query.QUERY_NAME, handler.run.bind(handler));
 		} else {
 			this.queryHandlersMap.set(query.QUERY_NAME, handler);
 		}
