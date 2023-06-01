@@ -40,10 +40,10 @@
 	},
 	"peerDependencies": {
 		"@hexadrop/bus": "^1.0.0",
-		"@hexadrop/types": "^1.0.1"
+		"@hexadrop/types": "^1.0.2"
 	},
 	"devDependencies": {
 		"@hexadrop/bus": "1.0.0",
-		"@hexadrop/types": "1.0.1"
+		"@hexadrop/types": "1.0.2"
 	}
 }

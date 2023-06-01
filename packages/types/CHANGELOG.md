@@ -1,5 +1,11 @@
 # @hexadrop/types
 
+## 1.0.2
+
+### Patch Changes
+
+- b3e23e3: Fix `NestedNonNullable` type
+
 ## 1.0.1
 
 ### Patch Changes
