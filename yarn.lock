@@ -723,10 +723,10 @@ __metadata:
   resolution: "@hexadrop/aggregate-root@workspace:packages/aggregate-root"
   dependencies:
     "@hexadrop/bus": 1.0.0
-    "@hexadrop/types": 1.0.0
+    "@hexadrop/types": 1.0.1
   peerDependencies:
     "@hexadrop/bus": ^1.0.0
-    "@hexadrop/types": ^1.0.0
+    "@hexadrop/types": ^1.0.1
   languageName: unknown
   linkType: soft
 
@@ -736,11 +736,11 @@ __metadata:
   dependencies:
     "@hexadrop/either": 1.0.0
     "@hexadrop/error": 1.0.0
-    "@hexadrop/types": 1.0.0
+    "@hexadrop/types": 1.0.1
   peerDependencies:
     "@hexadrop/either": ^1.0.0
     "@hexadrop/error": ^1.0.0
-    "@hexadrop/types": ^1.0.0
+    "@hexadrop/types": ^1.0.1
   languageName: unknown
   linkType: soft
 
@@ -789,7 +789,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hexadrop/types@1.0.0, @hexadrop/types@workspace:packages/types":
+"@hexadrop/types@1.0.1, @hexadrop/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@hexadrop/types@workspace:packages/types"
   languageName: unknown

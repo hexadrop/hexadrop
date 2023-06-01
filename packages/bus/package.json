@@ -54,11 +54,11 @@
 	"peerDependencies": {
 		"@hexadrop/either": "^1.0.0",
 		"@hexadrop/error": "^1.0.0",
-		"@hexadrop/types": "^1.0.0"
+		"@hexadrop/types": "^1.0.1"
 	},
 	"devDependencies": {
 		"@hexadrop/either": "1.0.0",
 		"@hexadrop/error": "1.0.0",
-		"@hexadrop/types": "1.0.0"
+		"@hexadrop/types": "1.0.1"
 	}
 }
