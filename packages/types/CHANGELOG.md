@@ -1,5 +1,11 @@
 # @hexadrop/types
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- 438e853: Add `PartialNullable` type
+
 ## 1.0.0-beta.2
 
 ### Patch Changes

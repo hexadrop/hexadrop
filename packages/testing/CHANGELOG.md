@@ -1,5 +1,15 @@
 # @hexadrop/testing
 
+## 1.0.0-beta.4
+
+### Patch Changes
+
+- 82296c1: update dependency @faker-js/faker to v8.0.1
+- 3ff5375: update dependency sinon to v15.1.0
+- Updated dependencies [3e9a164]
+  - @hexadrop/bus@1.0.0-beta.4
+  - @hexadrop/error@1.0.0-beta.2
+
 ## 1.0.0-beta.3
 
 ### Patch Changes
