@@ -1,5 +1,11 @@
 # @hexadrop/either
 
+## 1.0.1
+
+### Patch Changes
+
+- bc938ad: Fix `typesVersions` field of package.json
+
 ## 1.0.0
 
 ### Major Changes

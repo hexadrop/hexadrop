@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/error",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -46,6 +46,6 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@hexadrop/testing": "1.0.0"
+		"@hexadrop/testing": "1.0.1"
 	}
 }

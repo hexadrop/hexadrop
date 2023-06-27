@@ -1,5 +1,13 @@
 # @hexadrop/value-object
 
+## 1.0.1
+
+### Patch Changes
+
+- bc938ad: Fix `typesVersions` field of package.json
+- Updated dependencies [bc938ad]
+  - @hexadrop/error@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

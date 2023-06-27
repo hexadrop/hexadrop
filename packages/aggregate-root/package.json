@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/aggregate-root",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -46,11 +46,11 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/bus": "^1.0.0",
-		"@hexadrop/types": "^1.0.2"
+		"@hexadrop/bus": "^1.0.1",
+		"@hexadrop/types": "^1.0.3"
 	},
 	"devDependencies": {
-		"@hexadrop/bus": "1.0.0",
-		"@hexadrop/types": "1.0.2"
+		"@hexadrop/bus": "1.0.1",
+		"@hexadrop/types": "1.0.3"
 	}
 }

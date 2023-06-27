@@ -1,5 +1,14 @@
 # @hexadrop/aggregate-root
 
+## 1.0.1
+
+### Patch Changes
+
+- bc938ad: Fix `typesVersions` field of package.json
+- Updated dependencies [bc938ad]
+  - @hexadrop/types@1.0.3
+  - @hexadrop/bus@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

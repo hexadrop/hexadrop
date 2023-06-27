@@ -1,5 +1,11 @@
 # @hexadrop/types
 
+## 1.0.3
+
+### Patch Changes
+
+- bc938ad: Fix `typesVersions` field of package.json
+
 ## 1.0.2
 
 ### Patch Changes
