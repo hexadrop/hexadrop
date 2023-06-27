@@ -31,6 +31,13 @@
 			"default": "./dist/hexadrop-value-object.mjs"
 		}
 	},
+	"typesVersions": {
+		"*": {
+			".": [
+				"./dist/index.d.ts"
+			]
+		}
+	},
 	"scripts": {
 		"build": "yarn build:esm && yarn build:umd",
 		"build:esm": "vite build",

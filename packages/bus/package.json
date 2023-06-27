@@ -38,6 +38,9 @@
 	},
 	"typesVersions": {
 		"*": {
+			".": [
+				"./dist/index.d.ts"
+			],
 			"memory": [
 				"./dist/memory.d.ts"
 			]

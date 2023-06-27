@@ -29,6 +29,13 @@
 			"default": "./dist/hexadrop-testing.mjs"
 		}
 	},
+	"typesVersions": {
+		"*": {
+			".": [
+				"./dist/index.d.ts"
+			]
+		}
+	},
 	"scripts": {
 		"build": "vite build",
 		"prepare": "yarn build",
