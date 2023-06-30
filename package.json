@@ -41,7 +41,7 @@
 		"typescript": "5.1.6",
 		"vite": "4.3.9",
 		"vite-plugin-dts": "2.3.0",
-		"vite-plugin-externalize-deps": "0.6.0",
+		"vite-plugin-externalize-deps": "0.7.0",
 		"vite-tsconfig-paths": "4.2.0",
 		"vitest": "0.32.2"
 	},
