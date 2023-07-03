@@ -1,5 +1,11 @@
 # @hexadrop/bus
 
+## 1.0.3
+
+### Patch Changes
+
+- 5f009a8: Fix error handling
+
 ## 1.0.2
 
 ### Patch Changes
