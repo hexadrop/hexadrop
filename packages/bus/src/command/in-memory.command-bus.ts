@@ -21,9 +21,9 @@ export class InMemoryCommandBus implements CommandBus {
 					try {
 						const returnValue = handler(command);
 						if (returnValue instanceof Promise) {
-							void returnValue.then(e =>
-								e.isRight() ? reject(e.getRight()) : resolve()
-							);
+							void returnValue
+								.then(e => (e.isRight() ? reject(e.getRight()) : resolve()))
+								.catch(e => reject(e));
 						} else {
 							returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
 						}
