@@ -46,11 +46,11 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"@hexadrop/bus": "^1.0.1",
+		"@hexadrop/bus": "^1.0.2",
 		"@hexadrop/types": "^1.0.3"
 	},
 	"devDependencies": {
-		"@hexadrop/bus": "1.0.1",
+		"@hexadrop/bus": "1.0.2",
 		"@hexadrop/types": "1.0.3"
 	}
 }

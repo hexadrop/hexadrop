@@ -722,15 +722,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@hexadrop/aggregate-root@workspace:packages/aggregate-root"
   dependencies:
-    "@hexadrop/bus": 1.0.1
+    "@hexadrop/bus": 1.0.2
     "@hexadrop/types": 1.0.3
   peerDependencies:
-    "@hexadrop/bus": ^1.0.1
+    "@hexadrop/bus": ^1.0.2
     "@hexadrop/types": ^1.0.3
   languageName: unknown
   linkType: soft
 
-"@hexadrop/bus@1.0.1, @hexadrop/bus@workspace:packages/bus":
+"@hexadrop/bus@1.0.2, @hexadrop/bus@workspace:packages/bus":
   version: 0.0.0-use.local
   resolution: "@hexadrop/bus@workspace:packages/bus"
   dependencies:
@@ -777,13 +777,13 @@ __metadata:
   resolution: "@hexadrop/testing@workspace:packages/testing"
   dependencies:
     "@faker-js/faker": 8.0.2
-    "@hexadrop/bus": 1.0.1
+    "@hexadrop/bus": 1.0.2
     "@hexadrop/either": 1.0.1
     "@hexadrop/error": 1.0.1
     "@types/sinon": 10.0.15
     sinon: 15.2.0
   peerDependencies:
-    "@hexadrop/bus": ^1.0.1
+    "@hexadrop/bus": ^1.0.2
     "@hexadrop/either": ^1.0.1
     "@hexadrop/error": ^1.0.1
   languageName: unknown
