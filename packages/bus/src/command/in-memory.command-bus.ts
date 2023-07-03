@@ -18,13 +18,17 @@ export class InMemoryCommandBus implements CommandBus {
 		for (const handler of callbacks) {
 			promises.push(
 				new Promise<void>((resolve, reject) => {
-					const returnValue = handler(command);
-					if (returnValue instanceof Promise) {
-						void returnValue.then(e =>
-							e.isRight() ? reject(e.getRight()) : resolve()
-						);
-					} else {
-						returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
+					try {
+						const returnValue = handler(command);
+						if (returnValue instanceof Promise) {
+							void returnValue.then(e =>
+								e.isRight() ? reject(e.getRight()) : resolve()
+							);
+						} else {
+							returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
+						}
+					} catch (e) {
+						reject(e);
 					}
 				})
 			);
