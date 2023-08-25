@@ -43,7 +43,7 @@
 		"vite-plugin-dts": "3.5.2",
 		"vite-plugin-externalize-deps": "0.7.0",
 		"vite-tsconfig-paths": "4.2.0",
-		"vitest": "0.34.2"
+		"vitest": "0.34.3"
 	},
 	"volta": {
 		"node": "20.5.1",
