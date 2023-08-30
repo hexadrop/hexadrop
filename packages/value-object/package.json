@@ -54,6 +54,6 @@
 	"devDependencies": {
 		"@hexadrop/error": "1.0.1",
 		"@hexadrop/testing": "1.0.1",
-		"@types/uuid": "9.0.2"
+		"@types/uuid": "9.0.3"
 	}
 }
