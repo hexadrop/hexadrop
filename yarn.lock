@@ -778,7 +778,7 @@ __metadata:
     "@hexadrop/bus": 1.0.3
     "@hexadrop/either": 1.0.1
     "@hexadrop/error": 1.0.1
-    "@types/sinon": 10.0.18
+    "@types/sinon": 10.0.19
     sinon: 15.2.0
   peerDependencies:
     "@hexadrop/bus": ^1.0.3
@@ -1316,12 +1316,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sinon@npm:10.0.18":
-  version: 10.0.18
-  resolution: "@types/sinon@npm:10.0.18"
+"@types/sinon@npm:10.0.19":
+  version: 10.0.19
+  resolution: "@types/sinon@npm:10.0.19"
   dependencies:
     "@types/sinonjs__fake-timers": "*"
-  checksum: 29c1539cfe45a15e7c76b17a6ad83db08be3abea6a06240f7fb4f6c6bccce19acb3ec97730b5082ea70b9baaf397cb902361f7e8a9656a1eb45f210f12ecd8dd
+  checksum: 79cab4cfc618a37a11e519795a297aa641b30eb05e2d2c7a9b03f40845b54ef631af80bddbef3e57dcd4be6c67bd78dce5210ea9860617d870f1d365c78468b6
   languageName: node
   linkType: hard
 
