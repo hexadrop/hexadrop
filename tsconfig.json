@@ -1,6 +1,21 @@
 {
 	"extends": "@hexatool/tsconfig",
 	"compilerOptions": {
+		// Add Bun type definitions
+		"types": ["bun-types"],
+
+		// Enable latest features
+		"lib": ["ESNext"],
+		"module": "esnext",
+		"target": "esnext",
+
+		// If TS 5.x+
+		"moduleResolution": "bundler",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"moduleDetection": "force",
+
+
 		"baseUrl": ".",
 		"paths": {
 			"@hexadrop/*/test": [
@@ -16,5 +31,6 @@
 				"packages/*/src"
 			]
 		}
-	}
+	},
+	"exclude": ["dist", "node_modules"]
 }
