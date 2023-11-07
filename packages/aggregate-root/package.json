@@ -21,29 +21,31 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-aggregate-root.mjs",
-	"umd:main": "./dist/hexadrop-aggregate-root.umd.min.js",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"browser": "./dist/hexadrop-aggregate-root.umd.min.js",
-			"default": "./dist/hexadrop-aggregate-root.mjs"
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			},
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
-			".": [
+			"*": [
 				"./dist/index.d.ts"
 			]
 		}
 	},
 	"scripts": {
-		"build": "yarn build:esm && yarn build:umd",
-		"build:esm": "vite build",
-		"build:umd": "vite build --config vite.config.umd.ts",
-		"prepare": "yarn build",
-		"typecheck": "tsc --noEmit"
+		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
 		"@hexadrop/bus": "^1.0.3",

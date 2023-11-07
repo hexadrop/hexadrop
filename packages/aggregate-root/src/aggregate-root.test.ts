@@ -1,7 +1,8 @@
-import { AggregateRoot } from '@hexadrop/aggregate-root';
 import { DomainEvent } from '@hexadrop/bus';
 import type { Primitives } from '@hexadrop/types';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'bun:test';
+
+import AggregateRoot from './aggregate-root';
 
 class MockEvent extends DomainEvent {
 	constructor(id: string) {
