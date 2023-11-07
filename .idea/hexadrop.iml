@@ -2,18 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <excludePattern pattern=".*" />
-      <excludePattern pattern="LICENSE" />
-      <excludePattern pattern="tsconfig.*" />
-      <excludePattern pattern="vite.*" />
-      <excludePattern pattern="vitest.*" />
-      <excludePattern pattern="babel.*" />
-      <excludePattern pattern="*.lock" />
-      <excludePattern pattern="renovate.json" />
-      <excludePattern pattern="coverage" />
-      <excludePattern pattern="dist" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
