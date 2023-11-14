@@ -13,10 +13,10 @@ type ValueObjectValue<T> = T extends PrimitiveTypes
 	? T
 	: T extends { value: infer U }
 	? U
-	: T extends Array<{ value: infer U }>
+	: T extends { value: infer U }[]
 	? U[]
-	: T extends Array<infer U>
-	? Array<ValueObjectValue<U>>
+	: T extends (infer U)[]
+	? ValueObjectValue<U>[]
 	: T extends { [K in keyof Properties<T>]: unknown }
 	? { [K in keyof Properties<T>]: ValueObjectValue<Properties<T>[K]> }
 	: never;
@@ -24,3 +24,5 @@ type ValueObjectValue<T> = T extends PrimitiveTypes
 export type Primitives<T> = {
 	[key in keyof Properties<T>]: ValueObjectValue<T[key]>;
 };
+
+export {};
