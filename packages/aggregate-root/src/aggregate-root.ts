@@ -1,5 +1,5 @@
 import { DomainEvent } from '@hexadrop/bus';
-import type { Primitives } from '@hexadrop/types';
+import type { Primitives } from '@hexadrop/types/primitives';
 
 export default abstract class AggregateRoot {
 	private domainEvents: DomainEvent[];

@@ -1,5 +1,5 @@
 import { DomainEvent } from '@hexadrop/bus';
-import type { Primitives } from '@hexadrop/types';
+import type { Primitives } from '@hexadrop/types/primitives';
 import { describe, expect, test } from 'bun:test';
 
 import AggregateRoot from './aggregate-root';
