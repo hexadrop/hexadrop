@@ -37,8 +37,6 @@
 		}
 	},
 	"scripts": {
-		"build": "vite build",
-		"prepare": "yarn build",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {

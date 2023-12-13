@@ -1,22 +1,29 @@
 {
 	"extends": "@hexatool/tsconfig",
 	"compilerOptions": {
-		// Add Bun type definitions
-		"types": ["bun-types"],
-
+		"baseUrl": ".",
 		// Enable latest features
-		"lib": ["ESNext"],
+		"lib": ["dom", "ESNext"],
 		"module": "esnext",
 		"target": "esnext",
 
 		// If TS 5.x+
 		"moduleResolution": "bundler",
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
 		"moduleDetection": "force",
 
+		// React
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
 
-		"baseUrl": ".",
+		// JSON
+		"resolveJsonModule": true,
+
+		// Annotations
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+
+		"esModuleInterop": true,
+
 		"paths": {
 			"@hexadrop/*/test": [
 				"packages/*/src/test"
