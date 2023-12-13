@@ -28,6 +28,9 @@
 		"types": ["bun-types"],
 
 		"paths": {
+			"@hexadrop/types/*": [
+				"packages/types/src/*"
+			],
 			"@hexadrop/*/test": [
 				"packages/*/src/test"
 			],
