@@ -24,6 +24,9 @@
 
 		"esModuleInterop": true,
 
+		// Bun
+		"types": ["bun-types"],
+
 		"paths": {
 			"@hexadrop/*/test": [
 				"packages/*/src/test"
