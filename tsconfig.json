@@ -28,17 +28,14 @@
 		"types": ["bun-types"],
 
 		"paths": {
-			"@hexadrop/types/*": [
+			"@hexadrop/error/*": [
 				"packages/types/src/*"
 			],
-			"@hexadrop/*/test": [
-				"packages/*/src/test"
+			"@hexadrop/event/*": [
+				"packages/types/src/*"
 			],
-			"@hexadrop/*/memory": [
-				"packages/*/src/memory"
-			],
-			"@hexadrop/*/react": [
-				"packages/*/src/react"
+			"@hexadrop/types/*": [
+				"packages/types/src/*"
 			],
 			"@hexadrop/*": [
 				"packages/*/src"
