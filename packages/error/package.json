@@ -21,20 +21,37 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-error.mjs",
-	"umd:main": "./dist/hexadrop-error.umd.min.js",
-	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"browser": "./dist/hexadrop-error.umd.min.js",
-			"default": "./dist/hexadrop-error.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		},
+		"./invalid-argument": {
+			"import": {
+				"types": "./dist/invalid-argument.d.ts",
+				"default": "./dist/invalid-argument.js"
+			}
+		},
+		"./not-found": {
+			"import": {
+				"types": "./dist/not-found.d.ts",
+				"default": "./dist/not-found.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
 			".": [
 				"./dist/index.d.ts"
+			],
+			"./invalid-argument": [
+				"./dist/invalid-argument.d.ts"
+			],
+			"./not-found": [
+				"./dist/not-found.d.ts"
 			]
 		}
 	},

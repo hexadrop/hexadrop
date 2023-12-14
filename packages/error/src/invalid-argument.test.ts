@@ -1,7 +1,7 @@
 import { WordMother } from '@hexadrop/testing';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'bun:test';
 
-import { InvalidArgumentErrorMother } from './mother';
+import InvalidArgumentErrorMother from './invalid-argument.mother';
 
 describe('InvalidArgumentError', () => {
 	test('should create from message', () => {

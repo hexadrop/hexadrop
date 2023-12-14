@@ -1,38 +1,38 @@
-import { DomainError } from '@hexadrop/error';
+import DomainError from './domain-error';
 
-export class EmptyErrorCodeError extends DomainError {
+class EmptyErrorCodeError extends DomainError {
 	constructor() {
 		super('EmptyErrorCodeError', 'empty error message', '');
 	}
 }
 
-export class UndefinedErrorCodeError extends DomainError {
+class UndefinedErrorCodeError extends DomainError {
 	constructor() {
 		super(
 			'UndefinedErrorCodeError',
 			'undefined error message',
-			// @ts-ignore
+			// @ts-expect-error Expect not undefined
 			undefined
 		);
 	}
 }
 
-export class InvalidErrorCodeError extends DomainError {
+class InvalidErrorCodeError extends DomainError {
 	constructor() {
 		super('UndefinedErrorCodeError', 'undefined error message', 'asfkj');
 	}
 }
 
-export class EmptyNameError extends DomainError {
+class EmptyNameError extends DomainError {
 	constructor() {
 		super('', 'undefined error message', 'HEX(400)');
 	}
 }
 
-export class UndefinedNameError extends DomainError {
+class UndefinedNameError extends DomainError {
 	constructor() {
 		super(
-			// @ts-ignore
+			// @ts-expect-error Expect not undefined
 			undefined,
 			'undefined error message',
 			'HEX(400)'
@@ -40,7 +40,7 @@ export class UndefinedNameError extends DomainError {
 	}
 }
 
-export class InvalidDomainErrorMother {
+export default class InvalidDomainErrorMother {
 	static emptyErrorCode(): EmptyErrorCodeError {
 		return new EmptyErrorCodeError();
 	}
