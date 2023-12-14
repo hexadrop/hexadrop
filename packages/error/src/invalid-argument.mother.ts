@@ -1,4 +1,4 @@
-import { WordMother } from '@hexadrop/testing';
+import { faker } from '@faker-js/faker';
 
 import InvalidArgumentError from './invalid-argument';
 
@@ -8,8 +8,8 @@ export default class InvalidArgumentErrorMother {
 	}
 
 	static random(): InvalidArgumentError {
-		const message = WordMother.random();
-		const name = WordMother.random();
+		const message = faker.lorem.word();
+		const name = faker.lorem.word();
 
 		return this.create(message, name, 'TST(400)');
 	}

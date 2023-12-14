@@ -1,6 +1,6 @@
-import { EmptyBooleanValueError, InvalidBooleanValueTypeError } from './error';
+import { EmptyBooleanValueError, InvalidBooleanValueTypeError } from './boolean.value-object.error';
 
-export abstract class BooleanValueObject {
+export default abstract class BooleanValueObject {
 	readonly value: boolean;
 
 	constructor(value: boolean, property?: string) {

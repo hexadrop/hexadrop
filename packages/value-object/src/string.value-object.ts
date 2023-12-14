@@ -2,9 +2,9 @@ import {
 	EmptyStringValueError,
 	InvalidStringValueError,
 	InvalidStringValueTypeError,
-} from './error';
+} from './string.value-object.error';
 
-export abstract class StringValueObject<S extends string = string> {
+export default abstract class StringValueObject<S extends string = string> {
 	readonly value: S;
 
 	constructor(value: S, allowedValues?: S[], property?: string);

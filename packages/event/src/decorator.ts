@@ -1,5 +1,3 @@
-import '@abraham/reflection';
-
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 

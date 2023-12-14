@@ -29,16 +29,16 @@
 				"default": "./dist/index.js"
 			}
 		},
+		"./bus": {
+			"import": {
+				"types": "./dist/bus.d.ts",
+				"default": "./dist/bus.js"
+			}
+		},
 		"./decorator": {
 			"import": {
 				"types": "./dist/decorator.d.ts",
 				"default": "./dist/decorator.js"
-			}
-		},
-		"./bus": {
-			"import": {
-				"types": "./dist/event-bus.d.ts",
-				"default": "./dist/event-bus.js"
 			}
 		}
 	},
@@ -47,11 +47,11 @@
 			"*": [
 				"./dist/index.d.ts"
 			],
+			"./bus": [
+				"./dist/bus.d.ts"
+			],
 			"./decorator": [
 				"./dist/decorator.d.ts"
-			],
-			"./bus": [
-				"./dist/event-bus.d.ts"
 			]
 		}
 	},
@@ -63,6 +63,11 @@
 		"@hexadrop/types": "^1.0.3",
 		"@hexadrop/either": "^1.0.1",
 		"@hexadrop/error": "^1.0.1"
+	},
+	"peerDependenciesMeta": {
+		"@abraham/reflection": {
+			"optional": true
+		}
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",

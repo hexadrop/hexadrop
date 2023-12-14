@@ -1,11 +1,11 @@
-import { WordMother } from '@hexadrop/testing';
+import { faker } from '@faker-js/faker';
 import { describe, expect, test } from 'bun:test';
 
 import InvalidArgumentErrorMother from './invalid-argument.mother';
 
 describe('InvalidArgumentError', () => {
 	test('should create from message', () => {
-		const message = WordMother.random();
+		const message = faker.lorem.word();
 		const expectedError = InvalidArgumentErrorMother.create(message);
 		expect(expectedError.message).toBe(message);
 		expect(expectedError.errorCode).toBe(400);
@@ -14,8 +14,8 @@ describe('InvalidArgumentError', () => {
 		expect(expectedError.stack).toBeDefined();
 	});
 	test('should create from message and name', () => {
-		const message = WordMother.random();
-		const name = WordMother.random();
+		const message = faker.lorem.word();
+		const name = faker.lorem.word();
 		const expectedError = InvalidArgumentErrorMother.create(message, name);
 		expect(expectedError.message).toBe(message);
 		expect(expectedError.errorCode).toBe(400);
@@ -24,8 +24,8 @@ describe('InvalidArgumentError', () => {
 		expect(expectedError.stack).toBeDefined();
 	});
 	test('should create from message, name and code', () => {
-		const message = WordMother.random();
-		const name = WordMother.random();
+		const message = faker.lorem.word();
+		const name = faker.lorem.word();
 		const code = 'TTT(123)';
 		const expectedError = InvalidArgumentErrorMother.create(message, name, code);
 		expect(expectedError.message).toBe(message);

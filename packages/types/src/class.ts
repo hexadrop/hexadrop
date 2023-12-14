@@ -3,4 +3,4 @@ export type Class<CtorArgs extends any[] = any[], InstanceType = unknown, Static
 ) => InstanceType) &
 	StaticType;
 
-export {}
+export {};

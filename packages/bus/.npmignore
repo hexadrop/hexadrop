@@ -1,5 +1,0 @@
-.eslintignore
-tsconfig.json
-vite.config.ts
-vite.config.umd.ts
-vite.config.umd.memory.ts

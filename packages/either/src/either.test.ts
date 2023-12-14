@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { Either } from './index';
+import Either from './either';
 
 describe('Either', () => {
 	test('should isLeft works as expected', () => {

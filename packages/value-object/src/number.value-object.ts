@@ -1,6 +1,6 @@
-import { EmptyNumberValueError, InvalidNumberValueTypeError } from './error';
+import { EmptyNumberValueError, InvalidNumberValueTypeError } from './number.value-object.error';
 
-export abstract class NumberValueObject {
+export default abstract class NumberValueObject {
 	readonly value: number;
 
 	constructor(value: number, property?: string) {

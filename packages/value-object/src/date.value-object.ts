@@ -1,6 +1,6 @@
-import { EmptyDateValueError, InvalidDateValueTypeError } from './error';
+import { EmptyDateValueError, InvalidDateValueTypeError } from './date.value-object.error';
 
-export abstract class DateValueObject {
+export default class DateValueObject {
 	readonly value: Date;
 
 	constructor(value: Date, property?: string) {

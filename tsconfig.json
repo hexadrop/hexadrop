@@ -29,13 +29,22 @@
 
 		"paths": {
 			"@hexadrop/error/*": [
-				"packages/types/src/*"
+				"packages/error/src/*"
 			],
 			"@hexadrop/event/*": [
 				"packages/types/src/*"
 			],
 			"@hexadrop/types/*": [
 				"packages/types/src/*"
+			],
+			"@hexadrop/either": [
+				"packages/either/src"
+			],
+			"@hexadrop/error": [
+				"packages/error/src"
+			],
+			"@hexadrop/event": [
+				"packages/event/src"
 			],
 			"@hexadrop/*": [
 				"packages/*/src"

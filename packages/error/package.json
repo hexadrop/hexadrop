@@ -57,8 +57,5 @@
 	},
 	"scripts": {
 		"typecheck": "tsc --noEmit"
-	},
-	"devDependencies": {
-		"@hexadrop/testing": "1.0.1"
 	}
 }

@@ -5,7 +5,6 @@ export default defineConfig([
 		format: ['esm'],
 		dts: true,
 		clean: true,
-		entry: ['./src/class.ts', './src/nullable.ts', './src/primitives.ts'],
-		tsconfig: '../../tsconfig.json',
+		entry: ['./src/index.ts', './src/ploc.memory.ts', './src/ploc.memory-hook.ts', './src/ploc.react.ts'],
 	},
 ]);

@@ -21,35 +21,65 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-value-object.mjs",
-	"umd:main": "./dist/hexadrop-value-object.umd.min.js",
-	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"browser": "./dist/hexadrop-value-object.umd.min.js",
-			"default": "./dist/hexadrop-value-object.mjs"
+		"./boolean": {
+			"import": {
+				"types": "./dist/boolean.value-object.d.ts",
+				"default": "./dist/boolean.value-object.js"
+			}
+		},
+		"./date": {
+			"import": {
+				"types": "./dist/date.value-object.d.ts",
+				"default": "./distdate.value-objectobject.js"
+			}
+		},
+		"./number": {
+			"import": {
+				"types": "./dist/number.value-object.d.ts",
+				"default": "./dist/number.value-object.js"
+			}
+		},
+		"./string": {
+			"import": {
+				"types": "./dist/string.value-object.d.ts",
+				"default": "./dist/string.value-object.js"
+			}
+		},
+		"./uuii": {
+			"import": {
+				"types": "./dist/uuii.value-object.d.ts",
+				"default": "./distuuii.value-object.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
-			".": [
-				"./dist/index.d.ts"
+			"./boolean": [
+				"./dist/boolean.value-object.d.ts"
+			],
+			"./date": [
+				"./dist/date.value-object.d.ts"
+			],
+			"./number": [
+				"./dist/number.value-object.d.ts"
+			],
+			"./string": [
+				"./dist/string.value-object.d.ts"
+			],
+			"./uuii": [
+				"./dist/uuii.value-object.d.ts"
 			]
 		}
 	},
 	"scripts": {
 		"typecheck": "tsc --noEmit"
 	},
-	"dependencies": {
-		"uuid": "9.0.0"
-	},
 	"peerDependencies": {
 		"@hexadrop/error": "^1.0.1"
 	},
 	"devDependencies": {
-		"@hexadrop/error": "1.0.1",
-		"@hexadrop/testing": "1.0.1",
-		"@types/uuid": "9.0.3"
+		"@hexadrop/error": "1.0.1"
 	}
 }

@@ -1,11 +1,17 @@
-export type ChangePlocStateSubscription<S> = (state: S) => void;
+type ChangePlocStateSubscription<S> = (state: S) => void;
 
-export interface Ploc<S> {
+interface PlocInterface<S> {
 	readonly state: S;
 
 	changeState(state: S): void;
-
-	subscribe(listener: ChangePlocStateSubscription<S>): void;
-
-	unsubscribe(listener: ChangePlocStateSubscription<S>): void;
 }
+
+abstract class Ploc<S> implements PlocInterface<S> {
+	abstract readonly state: S;
+
+	abstract changeState(state: S): void;
+}
+
+export type { ChangePlocStateSubscription, PlocInterface };
+
+export default Ploc;

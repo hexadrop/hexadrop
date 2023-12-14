@@ -1,4 +1,4 @@
-import { UuidMother, WordMother } from '@hexadrop/testing';
+import { faker } from '@faker-js/faker';
 
 import DomainNotFoundError from './not-found';
 
@@ -8,24 +8,24 @@ export default class DomainNotFoundErrorMother {
 	}
 
 	static random(): DomainNotFoundError {
-		const domain = WordMother.random();
-		const id = UuidMother.random();
-		const param = WordMother.random();
+		const domain = faker.lorem.word();
+		const id = crypto.randomUUID();
+		const param = faker.lorem.word();
 
 		return this.create(domain, id, param);
 	}
 
 	static randomWithCode(code: string): DomainNotFoundError {
-		const domain = WordMother.random();
-		const id = UuidMother.random();
-		const param = WordMother.random();
+		const domain = faker.lorem.word();
+		const id = crypto.randomUUID();
+		const param = faker.lorem.word();
 
 		return this.create(domain, id, param, undefined, code);
 	}
 
 	static randomWithOutParam(): DomainNotFoundError {
-		const domain = WordMother.random();
-		const id = UuidMother.random();
+		const domain = faker.lorem.word();
+		const id = crypto.randomUUID();
 
 		return this.create(domain, id);
 	}
