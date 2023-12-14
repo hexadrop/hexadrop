@@ -21,24 +21,23 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-either.mjs",
-	"umd:main": "./dist/hexadrop-either.umd.min.js",
-	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"browser": "./dist/hexadrop-either.umd.min.js",
-			"default": "./dist/hexadrop-either.mjs"
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
-			".": [
+			"*": [
 				"./dist/index.d.ts"
 			]
 		}
 	},
 	"scripts": {
-		"typecheck": "tsc --noEmit"
+		"prepublishOnly": "tsup"
 	}
 }

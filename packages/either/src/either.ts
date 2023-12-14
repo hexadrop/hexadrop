@@ -1,9 +1,15 @@
-type Left<L> = { kind: 'left'; leftValue: L };
-type Right<R> = { kind: 'right'; rightValue: R };
+interface Left<L> {
+	kind: 'left';
+	leftValue: L;
+}
+interface Right<R> {
+	kind: 'right';
+	rightValue: R;
+}
 
 type EitherValue<L, R> = Left<L> | Right<R>;
 
-export class Either<L, R> {
+export default class Either<L, R> {
 	private constructor(private readonly value: EitherValue<L, R>) {}
 
 	static left<L, R>(value: L): Either<L, R> {
@@ -39,9 +45,7 @@ export class Either<L, R> {
 
 	getLeft(errorMessage?: string): L {
 		const throwFn = () => {
-			throw Error(
-				errorMessage ? errorMessage : `The value is right: ${JSON.stringify(this.value)}`
-			);
+			throw Error(errorMessage ? errorMessage : `The value is right: ${JSON.stringify(this.value)}`);
 		};
 
 		return this.fold(
@@ -59,9 +63,7 @@ export class Either<L, R> {
 
 	getRight(errorMessage?: string): R {
 		const throwFn = () => {
-			throw Error(
-				errorMessage ? errorMessage : `The value is left: ${JSON.stringify(this.value)}`
-			);
+			throw Error(errorMessage ? errorMessage : `The value is left: ${JSON.stringify(this.value)}`);
 		};
 
 		return this.fold(
