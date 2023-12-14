@@ -1,0 +1,73 @@
+{
+	"name": "@hexadrop/event",
+	"version": "2.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		},
+		"./decorator": {
+			"import": {
+				"types": "./dist/decorator.d.ts",
+				"default": "./dist/decorator.js"
+			}
+		},
+		"./bus": {
+			"import": {
+				"types": "./dist/event-bus.d.ts",
+				"default": "./dist/event-bus.js"
+			}
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/index.d.ts"
+			],
+			"./decorator": [
+				"./dist/decorator.d.ts"
+			],
+			"./bus": [
+				"./dist/event-bus.d.ts"
+			]
+		}
+	},
+	"scripts": {
+		"prepublishOnly": "tsup"
+	},
+	"peerDependencies": {
+		"@abraham/reflection": "^0.12.0",
+		"@hexadrop/types": "^1.0.3",
+		"@hexadrop/either": "^1.0.1",
+		"@hexadrop/error": "^1.0.1"
+	},
+	"devDependencies": {
+		"@abraham/reflection": "0.12.0",
+		"@hexadrop/types": "1.0.3",
+		"@hexadrop/either": "1.0.1",
+		"@hexadrop/error": "1.0.1"
+	}
+}
