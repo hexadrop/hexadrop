@@ -57,8 +57,5 @@
 	},
 	"scripts": {
 		"prepublishOnly": "tsup"
-	},
-	"engines": {
-		"node": ">=20"
 	}
 }
