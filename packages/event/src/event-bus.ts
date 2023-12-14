@@ -1,5 +1,5 @@
-import { Either } from '@hexadrop/either';
-import { DomainError } from '@hexadrop/error';
+import Either from '@hexadrop/either';
+import DomainError from '@hexadrop/error';
 
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
