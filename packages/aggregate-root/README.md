@@ -1,0 +1,82 @@
+<h1 align="center">
+  @hexadrop/aggregate-root
+</h1>
+
+<p align="center">
+  Opinionated aggregate root base class for DDD
+</p>
+
+## Installation
+
+> This package depends on [@hexadrop/event](../event/README.md) and [@hexadrop/types](../types/README.md).
+
+```bash
+npm install --save @hexadrop/aggregate-root
+```
+
+**Using bun**
+
+```bash
+bun add @hexadrop/aggregate-root
+```
+
+## What it does
+
+- Provides a `record(...events: DomainEvent[])` method to record events.
+- Provides a `pullDomainEvents(): DomainEvent[]` method to get uncommitted events.
+- Provides an abstract `toPrimitives(): Primitives<this>` method to convert the aggregate root to primitives.
+
+## How to use
+
+```typescript
+import AggregateRoot from '@hexadrop/aggregate-root';
+import type { DomainEventParams } from '@hexadrop/event';
+import DomainEvent from '@hexadrop/event';
+import type { Primitives } from '@hexadrop/types/primitives';
+
+class MockEvent extends DomainEvent {
+	static override EVENT_NAME = 'event';
+	
+	readonly foo: string;
+
+	constructor({ foo, ...params }: DomainEventParams<MockEvent>) {
+		super(MockEvent.EVENT_NAME, params);
+		this.foo = foo;
+	}
+}
+
+class MockAggregateRoot extends AggregateRoot {
+    
+    readonly foo: string;
+    
+    constructor(primitives: Primitives<MockAggregateRoot>) {
+        super();
+        this.foo = primitives.foo;
+    }
+
+    static create(foo: string): MockAggregateRoot {
+        const aggregateRoot = new MockAggregateRoot({ foo });
+        aggregateRoot.record(new MockEvent({ foo }));
+        
+        return aggregateRoot;
+    }
+
+    override toPrimitives(): Primitives<MockAggregateRoot> {
+        return {
+            foo: this.foo,
+        };
+    }
+}
+
+```
+
+## Hexatool Code Quality Standards
+
+Publishing this package we are committing ourselves to the following code quality standards:
+
+- Respect **Semantic Versioning**: No breaking changes in patch or minor versions
+- No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
+- **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
+- **Tests** as documentation and usage examples
+- **Well documented ReadMe** showing how to install and use
+- **License favoring Open Source** and collaboration
