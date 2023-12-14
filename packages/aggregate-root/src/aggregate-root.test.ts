@@ -1,12 +1,17 @@
-import { DomainEvent } from '@hexadrop/bus';
+import type { DomainEventParams } from '@hexadrop/event';
+import DomainEvent from '@hexadrop/event';
 import type { Primitives } from '@hexadrop/types/primitives';
 import { describe, expect, test } from 'bun:test';
 
 import AggregateRoot from './aggregate-root';
 
 class MockEvent extends DomainEvent {
-	constructor(id: string) {
-		super('event', '1', id);
+	static override EVENT_NAME = 'event';
+	readonly foo: string;
+
+	constructor({ foo, ...params }: DomainEventParams<MockEvent>) {
+		super(MockEvent.EVENT_NAME, params);
+		this.foo = foo;
 	}
 }
 
@@ -26,9 +31,9 @@ class MockAggregateRoot extends AggregateRoot {
 
 describe('AggregateRoot', () => {
 	test('should record and pullDomainEvents works as expected', () => {
-		const event1 = new MockEvent('afa');
-		const event2 = new MockEvent('afa2');
-		const event3 = new MockEvent('afa3');
+		const event1 = new MockEvent({ aggregateId: '1', foo: 'afa' });
+		const event2 = new MockEvent({ aggregateId: '1', foo: 'afa2' });
+		const event3 = new MockEvent({ aggregateId: '1', foo: 'afa3' });
 		const entity = new MockAggregateRoot({ value: 'value' });
 
 		entity.record(event1, event2);

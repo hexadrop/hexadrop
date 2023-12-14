@@ -41,11 +41,11 @@
 		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
-		"@hexadrop/bus": "^1.0.3",
+		"@hexadrop/event": "^2.0.0",
 		"@hexadrop/types": "^1.0.3"
 	},
 	"devDependencies": {
-		"@hexadrop/bus": "1.0.3",
+		"@hexadrop/event": "2.0.0",
 		"@hexadrop/types": "1.0.3"
 	}
 }
