@@ -24,9 +24,6 @@
 
 		"esModuleInterop": true,
 
-		// Bun
-		"types": ["bun-types"],
-
 		"paths": {
 			"@hexadrop/error/*": [
 				"packages/error/src/*"
