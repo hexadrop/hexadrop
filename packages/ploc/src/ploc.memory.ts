@@ -17,9 +17,9 @@ export default abstract class InMemoryPloc<S> implements PlocInterface<S> {
 		this.internalState = state;
 
 		if (this.listeners.length > 0) {
-			this.listeners.forEach(listener => {
+			for (const listener of this.listeners) {
 				listener(this.state);
-			});
+			}
 		}
 	}
 

@@ -8,12 +8,12 @@ export default class UuiiValueObjectMother {
 	}
 
 	static invalid(): UuiiValueObject {
-		return this.create('s');
+		return UuiiValueObjectMother.create('s');
 	}
 
 	static random(): UuiiValueObject {
 		const value = crypto.randomUUID();
 
-		return this.create(value);
+		return UuiiValueObjectMother.create(value);
 	}
 }

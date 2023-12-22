@@ -16,6 +16,6 @@ describe('UuiiValueObject', () => {
 	});
 	test('should throw an error if invalid', () => {
 		const fn = () => UuiiValueObjectMother.invalid();
-		expect(fn).toThrow(new InvalidUuiiValueError(undefined, 's'));
+		expect(fn).toThrow(new InvalidUuiiValueError('s'));
 	});
 });

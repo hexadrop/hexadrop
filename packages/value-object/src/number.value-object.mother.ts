@@ -34,6 +34,6 @@ export default class NumberValueObjectMother {
 	static random(): NumberValueObject {
 		const value = faker.number.int();
 
-		return this.create(value);
+		return NumberValueObjectMother.create(value);
 	}
 }

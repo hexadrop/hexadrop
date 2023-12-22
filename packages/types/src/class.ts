@@ -1,6 +1,4 @@
 export type Class<CtorArgs extends any[] = any[], InstanceType = unknown, StaticType = unknown> = (new (
-	...args: CtorArgs
+	..._args: CtorArgs
 ) => InstanceType) &
 	StaticType;
-
-export {};

@@ -6,13 +6,32 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"all": true,
+			"complexity": {
+				"noStaticOnlyClass": "off",
+				"noBannedTypes": "off"
+			},
+			"nursery": {
+				"noDefaultExport": "off"
+			},
+			"style": {
+				"noParameterProperties": "off"
+			},
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noConfusingVoidType": "off"
+			}
 		}
+	},
+	"formatter": {
+		"lineWidth": 120
 	},
 	"javascript": {
 		"formatter": {
+			"arrowParentheses": "asNeeded",
+			"jsxQuoteStyle": "single",
 			"quoteStyle": "single",
-			"jsxQuoteStyle": "single"
+			"trailingComma": "es5"
 		}
 	}
 }

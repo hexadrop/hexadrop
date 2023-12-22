@@ -14,11 +14,7 @@ abstract class DomainError extends Error {
 	 * @param code - [Optional] The error code. Must follow the next Regexp `/[A-Z][A-Z][A-Z]\((\d{3}|\d{6})\)/`.
 	 *    For example FNL(123) or RPA(435678)
 	 */
-	protected constructor(
-		name: string,
-		message: string,
-		readonly code: string
-	) {
+	protected constructor(name: string, message: string, readonly code: string) {
 		allowedValues(code);
 		super(message);
 		this.name = name || 'DomainError';

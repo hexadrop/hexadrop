@@ -8,5 +8,3 @@ type PartialNullable<T> = {
 };
 
 export type { Nullable, PartialNullable };
-
-export {};

@@ -15,7 +15,7 @@ export default abstract class UuiiValueObject extends StringValueObject {
 
 	private static ensureIsValidUuid(id: string, property?: string): void {
 		if (!REGEXP.test(id)) {
-			throw new InvalidUuiiValueError(property, id);
+			throw new InvalidUuiiValueError(id, property);
 		}
 	}
 }

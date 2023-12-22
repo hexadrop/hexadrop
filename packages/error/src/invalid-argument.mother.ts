@@ -11,6 +11,6 @@ export default class InvalidArgumentErrorMother {
 		const message = faker.lorem.word();
 		const name = faker.lorem.word();
 
-		return this.create(message, name, 'TST(400)');
+		return InvalidArgumentErrorMother.create(message, name, 'TST(400)');
 	}
 }

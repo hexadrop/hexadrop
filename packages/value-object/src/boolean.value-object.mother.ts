@@ -32,6 +32,6 @@ export default class BooleanValueObjectMother {
 	static random(): BooleanValueObject {
 		const value = Math.random() > 0.5;
 
-		return this.create(value);
+		return BooleanValueObjectMother.create(value);
 	}
 }

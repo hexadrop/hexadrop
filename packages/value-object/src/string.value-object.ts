@@ -23,7 +23,7 @@ export default abstract class StringValueObject<S extends string = string> {
 
 	private static allowedValues(value: string, values?: string[], property?: string) {
 		if (values && !values.includes(value)) {
-			throw new InvalidStringValueError(property, value);
+			throw new InvalidStringValueError(value, property);
 		}
 	}
 

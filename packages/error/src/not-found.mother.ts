@@ -12,7 +12,7 @@ export default class DomainNotFoundErrorMother {
 		const id = crypto.randomUUID();
 		const param = faker.lorem.word();
 
-		return this.create(domain, id, param);
+		return DomainNotFoundErrorMother.create(domain, id, param);
 	}
 
 	static randomWithCode(code: string): DomainNotFoundError {
@@ -20,13 +20,13 @@ export default class DomainNotFoundErrorMother {
 		const id = crypto.randomUUID();
 		const param = faker.lorem.word();
 
-		return this.create(domain, id, param, undefined, code);
+		return DomainNotFoundErrorMother.create(domain, id, param, undefined, code);
 	}
 
 	static randomWithOutParam(): DomainNotFoundError {
 		const domain = faker.lorem.word();
 		const id = crypto.randomUUID();
 
-		return this.create(domain, id);
+		return DomainNotFoundErrorMother.create(domain, id);
 	}
 }

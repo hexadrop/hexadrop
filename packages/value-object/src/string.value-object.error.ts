@@ -6,7 +6,7 @@ class EmptyStringValueError extends InvalidArgumentError {
 	}
 }
 class InvalidStringValueError extends InvalidArgumentError {
-	constructor(property = 'StringValueObject', value: string) {
+	constructor(value: string, property = 'StringValueObject') {
 		super(`${property} can not contains '${value}' value`, 'InvalidStringValueError', 'HEX(400)');
 	}
 }

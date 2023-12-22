@@ -45,6 +45,6 @@ export default class StringValueObjectMother {
 	static random(): StringValueObject {
 		const value = faker.lorem.word();
 
-		return this.create(value);
+		return StringValueObjectMother.create(value);
 	}
 }

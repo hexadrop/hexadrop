@@ -28,6 +28,6 @@ describe('StringValueObject', () => {
 	});
 	test('should throw an error if invalid value', () => {
 		const fn = () => StringValueObjectMother.invalidValue();
-		expect(fn).toThrow(new InvalidStringValueError(undefined, 'melon'));
+		expect(fn).toThrow(new InvalidStringValueError('melon'));
 	});
 });

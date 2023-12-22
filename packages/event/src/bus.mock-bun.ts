@@ -69,15 +69,15 @@ export default class MockEventBus extends EventBus {
 
 	subscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		HandlerOrCallback: EventBusCallback<D> | EventHandler<D>
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
 	): Promise<void> | void {
-		return this.subscribeSpy(event, HandlerOrCallback);
+		return this.subscribeSpy(event, handlerOrCallback);
 	}
 
 	unsubscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		HandlerOrCallback: EventBusCallback<D> | EventHandler<D>
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
 	): Promise<void> | void {
-		return this.unsubscribeSpy(event, HandlerOrCallback);
+		return this.unsubscribeSpy(event, handlerOrCallback);
 	}
 }

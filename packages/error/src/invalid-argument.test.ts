@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
 import { describe, expect, test } from 'bun:test';
+import { faker } from '@faker-js/faker';
 
 import InvalidArgumentErrorMother from './invalid-argument.mother';
 

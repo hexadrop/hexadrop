@@ -1,5 +1,5 @@
-import { faker } from '@faker-js/faker';
 import { describe, expect, test } from 'bun:test';
+import { faker } from '@faker-js/faker';
 
 import { EmptyDateValueError, InvalidDateValueTypeError } from './date.value-object.error';
 import DateValueObjectMother from './date.value-object.mother';
