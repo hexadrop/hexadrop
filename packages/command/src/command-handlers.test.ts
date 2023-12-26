@@ -4,6 +4,7 @@ import DomainError from '@hexadrop/error';
 import type { CommandBusCallback, CommandHandler } from './bus';
 import Command from './command';
 import CommandHandlers from './command-handlers';
+import { CommandNotRegisteredError } from './error';
 
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';
@@ -90,7 +91,7 @@ class Command56Handler implements CommandHandler<Command5 | Command6> {
 	}
 }
 
-describe('HandlersInformation', () => {
+describe('CommandHandlers', () => {
 	test('should works as expected', () => {
 		const c1 = new Command1();
 		const c2 = new Command2();
@@ -125,8 +126,9 @@ describe('HandlersInformation', () => {
 		expect(h3).toBeDefined();
 		expect(h3).toStrictEqual([expectedCommand23Handler.run]);
 
-		const fn = info.search(c4);
-		expect(fn).toStrictEqual([]);
+		const expectedError = new CommandNotRegisteredError(Command4.COMMAND_NAME);
+		expect(() => info.search(c4)).toThrow(expectedError);
+		expect(expectedError.message).toBe(`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`);
 
 		info.register(Command4, expectedCommand4Handler);
 		info.register(Command5, expectedCommand56Handler);

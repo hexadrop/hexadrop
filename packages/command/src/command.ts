@@ -17,8 +17,7 @@ abstract class Command {
 	}
 }
 
-type CommandParams<D extends Command> = Omit<Primitives<D>, 'commandId' | 'commandName'> &
-	Partial<Pick<D, 'commandId'>>;
+type CommandParams<D extends Command> = Omit<Primitives<D>, 'commandName'>;
 
 type CommandClass<
 	DomainInstanceType extends Command = Command,

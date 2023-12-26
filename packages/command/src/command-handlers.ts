@@ -1,5 +1,6 @@
 import type { CommandBusCallback, CommandHandler } from './bus';
 import Command, { type CommandClass } from './command';
+import { CommandNotRegisteredError, InvalidCommandError } from './error';
 
 export default class CommandHandlers {
 	private readonly commandHandlersMap: Map<string, CommandBusCallback<any>[]>;
@@ -29,7 +30,7 @@ export default class CommandHandlers {
 	}
 
 	public search<C extends Command>(command: C | CommandClass<C>): CommandBusCallback<C>[] {
-		let handler: CommandBusCallback<C>[] = [];
+		let handler: CommandBusCallback<C>[] | undefined = [];
 		let commandName: string | undefined = undefined;
 		if ('COMMAND_NAME' in command) {
 			commandName = command.COMMAND_NAME;
@@ -38,10 +39,14 @@ export default class CommandHandlers {
 		}
 
 		if (!commandName) {
-			return handler;
+			throw new InvalidCommandError();
 		}
 
-		handler = this.commandHandlersMap.get(commandName) ?? [];
+		handler = this.commandHandlersMap.get(commandName);
+
+		if (!handler) {
+			throw new CommandNotRegisteredError(commandName);
+		}
 
 		return handler;
 	}
