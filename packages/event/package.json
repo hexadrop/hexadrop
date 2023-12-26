@@ -59,7 +59,7 @@
 		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
-		"@abraham/reflection": "^0.12.0",
+		"@abraham/reflection": "^0",
 		"@hexadrop/types": "^1.0.3",
 		"@hexadrop/either": "^1.0.1",
 		"@hexadrop/error": "^1.0.1"
