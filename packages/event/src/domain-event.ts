@@ -17,7 +17,10 @@ abstract class DomainEvent {
 	readonly occurredOn: Date;
 	readonly relatedId: Nullable<string>;
 
-	constructor(eventName: string, { aggregateId, eventId, occurredOn, relatedId }: DomainEventConstructorParams) {
+	protected constructor(
+		eventName: string,
+		{ aggregateId, eventId, occurredOn, relatedId }: DomainEventConstructorParams
+	) {
 		this.aggregateId = aggregateId;
 		this.eventId = eventId ?? crypto.randomUUID();
 		this.occurredOn = occurredOn ?? new Date();

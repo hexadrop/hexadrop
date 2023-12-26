@@ -5,17 +5,15 @@ import EventBus from './bus';
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
-jest.fn();
-
 export default class MockEventBus extends EventBus {
-	publishSpy = jest.fn((..._events: DomainEvent[]) => Promise.resolve());
+	readonly publishSpy = jest.fn((..._events: DomainEvent[]) => Promise.resolve());
 
-	subscribeSpy = jest.fn((_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) =>
-		Promise.resolve()
+	readonly subscribeSpy = jest.fn(
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
 	);
 
-	unsubscribeSpy = jest.fn((_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) =>
-		Promise.resolve()
+	readonly unsubscribeSpy = jest.fn(
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
 	);
 
 	private static getDataFromDomainEvent(event: DomainEvent) {
