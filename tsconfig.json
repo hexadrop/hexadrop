@@ -29,7 +29,7 @@
 				"packages/error/src/*"
 			],
 			"@hexadrop/event/*": [
-				"packages/types/src/*"
+				"packages/event/src/*"
 			],
 			"@hexadrop/types/*": [
 				"packages/types/src/*"
