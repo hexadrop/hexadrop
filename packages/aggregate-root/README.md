@@ -8,8 +8,6 @@
 
 ## Installation
 
-> This package depends on [@hexadrop/event](../event/README.md) and [@hexadrop/types](../types/README.md).
-
 ```bash
 npm install --save @hexadrop/aggregate-root
 ```
@@ -22,9 +20,10 @@ bun add @hexadrop/aggregate-root
 
 ## What it does
 
-- Provides a `record(...events: DomainEvent[])` method to record events.
-- Provides a `pullDomainEvents(): DomainEvent[]` method to get uncommitted events.
-- Provides an abstract `toPrimitives(): Primitives<this>` method to convert the aggregate root to primitives.
+- Default export is an abstract class `AggregateRoot`. This class provides the following:
+  - A `record(...events: DomainEvent[])` method to record events.
+  - A `pullDomainEvents(): DomainEvent[]` method to get uncommitted events.
+  - An abstract `toPrimitives(): Primitives<this>` method to convert the aggregate root to primitives.
 
 ## How to use
 
@@ -78,5 +77,5 @@ Publishing this package we are committing ourselves to the following code qualit
 - No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
 - **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
 - **Tests** as documentation and usage examples
-- **Well documented ReadMe** showing how to install and use
+- **Well documented README** showing how to install and use
 - **License favoring Open Source** and collaboration
