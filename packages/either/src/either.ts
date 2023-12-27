@@ -1,14 +1,16 @@
-interface Left<L> {
-	kind: 'left';
-	leftValue: L;
-}
-interface Right<R> {
-	kind: 'right';
-	rightValue: R;
-}
+import type { EitherValue } from './either.types';
 
-type EitherValue<L, R> = Left<L> | Right<R>;
-
+/**
+ * The `Either` class represents a value of one of two possible types (a disjoint union).
+ * An instance of `Either` is either an instance of `Left` or `Right`.
+ *
+ * `Either` is often used as an alternative to `Option` for dealing with possible missing values.
+ * In this usage, `Nothing` is replaced with a `Left` which can contain useful information.
+ * `Right` takes the place of `Just` and represents the result of computations that do not fail.
+ *
+ * @template L The type of the left value.
+ * @template R The type of the right value.
+ */
 export default class Either<L, R> {
 	private constructor(private readonly value: EitherValue<L, R>) {}
 
