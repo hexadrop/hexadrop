@@ -22,18 +22,20 @@
 		"packages/*"
 	],
 	"scripts": {
-		"lint": "biome lint .",
-		"lint:fix": "biome check --apply .",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix .",
 		"publish": "changeset publish",
 		"typecheck": "tsc --noEmit",
 		"version": "changeset version && $npm_execpath install"
 	},
 	"devDependencies": {
 		"@types/bun": "1.0.0",
-		"@biomejs/biome": "1.4.1",
 		"@changesets/cli": "2.26.2",
+		"@hexatool/eslint-config": "2.3.0",
 		"@hexatool/tsconfig": "20.0.1",
 		"@faker-js/faker": "8.3.1",
+		"@swc/core": "1.3.101",
+		"eslint": "8.56.0",
 		"typescript": "5.2.2",
 		"tsup": "7.2.0"
 	}
