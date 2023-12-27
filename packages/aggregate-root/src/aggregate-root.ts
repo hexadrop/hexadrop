@@ -1,22 +1,20 @@
-import DomainEvent from '@hexadrop/event';
+import type DomainEvent from '@hexadrop/event';
 import type { Primitives } from '@hexadrop/types/primitives';
 
 export default abstract class AggregateRoot {
-	private domainEvents: DomainEvent[];
+	readonly #domainEvents: DomainEvent[];
 
 	protected constructor() {
-		this.domainEvents = [];
+		this.#domainEvents = [];
 	}
 
 	pullDomainEvents(): DomainEvent[] {
-		const domainEvents = this.domainEvents.slice();
-		this.domainEvents = [];
-
-		return domainEvents;
+		const length = this.#domainEvents.length;
+		return this.#domainEvents.splice(0, length);
 	}
 
 	record(...event: DomainEvent[]): void {
-		this.domainEvents.push(...event);
+		this.#domainEvents.push(...event);
 	}
 
 	abstract toPrimitives(): Primitives<unknown>;

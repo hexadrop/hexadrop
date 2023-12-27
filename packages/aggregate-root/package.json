@@ -40,11 +40,7 @@
 	"scripts": {
 		"prepublishOnly": "tsup"
 	},
-	"peerDependencies": {
-		"@hexadrop/event": "^2.0.0",
-		"@hexadrop/types": "^1.0.3"
-	},
-	"devDependencies": {
+	"dependencies": {
 		"@hexadrop/event": "2.0.0",
 		"@hexadrop/types": "1.0.3"
 	}

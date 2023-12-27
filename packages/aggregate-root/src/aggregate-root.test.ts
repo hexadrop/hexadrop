@@ -30,26 +30,28 @@ class MockAggregateRoot extends AggregateRoot {
 }
 
 describe('AggregateRoot', () => {
-	test('should record and pullDomainEvents works as expected', () => {
-		const event1 = new MockEvent({ aggregateId: '1', foo: 'afa' });
-		const event2 = new MockEvent({ aggregateId: '1', foo: 'afa2' });
-		const event3 = new MockEvent({ aggregateId: '1', foo: 'afa3' });
-		const entity = new MockAggregateRoot({ value: 'value' });
+	describe('record() and pullDomainEvents()', () => {
+		test('should works as expected', () => {
+			const event1 = new MockEvent({ aggregateId: '1', foo: 'afa' });
+			const event2 = new MockEvent({ aggregateId: '1', foo: 'afa2' });
+			const event3 = new MockEvent({ aggregateId: '1', foo: 'afa3' });
+			const entity = new MockAggregateRoot({ value: 'value' });
 
-		entity.record(event1, event2);
+			entity.record(event1, event2);
 
-		const pulled = entity.pullDomainEvents();
+			const pulled = entity.pullDomainEvents();
 
-		expect(pulled).toStrictEqual([event1, event2]);
+			expect(pulled).toStrictEqual([event1, event2]);
 
-		const pulled2 = entity.pullDomainEvents();
+			const pulled2 = entity.pullDomainEvents();
 
-		expect(pulled2).toStrictEqual([]);
+			expect(pulled2).toStrictEqual([]);
 
-		entity.record(event3);
+			entity.record(event3);
 
-		const pulled3 = entity.pullDomainEvents();
+			const pulled3 = entity.pullDomainEvents();
 
-		expect(pulled3).toStrictEqual([event3]);
+			expect(pulled3).toStrictEqual([event3]);
+		});
 	});
 });
