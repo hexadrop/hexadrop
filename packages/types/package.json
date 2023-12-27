@@ -23,10 +23,28 @@
 	"type": "module",
 	"sideEffects": false,
 	"exports": {
+		"./abstract": {
+			"import": {
+				"types": "./dist/abstract.d.ts",
+				"default": "./dist/abstract.js"
+			}
+		},
 		"./class": {
 			"import": {
 				"types": "./dist/class.d.ts",
 				"default": "./dist/class.js"
+			}
+		},
+		"./instance": {
+			"import": {
+				"types": "./dist/instance.d.ts",
+				"default": "./dist/instance.js"
+			}
+		},
+		"./newable": {
+			"import": {
+				"types": "./dist/newable.d.ts",
+				"default": "./dist/newable.js"
 			}
 		},
 		"./nullable": {
@@ -44,8 +62,17 @@
 	},
 	"typesVersions": {
 		"*": {
+			"./abstract": [
+				"./dist/abstract.d.ts"
+			],
 			"./class": [
 				"./dist/class.d.ts"
+			],
+			"./instance": [
+				"./dist/instance.d.ts"
+			],
+			"./newable": [
+				"./dist/newable.d.ts"
 			],
 			"./nullable": [
 				"./dist/nullable.d.ts"
