@@ -3,7 +3,6 @@ import { describe, expect, test } from 'bun:test';
 import Either from './either';
 
 describe('Either', () => {
-
 	describe('flatMapLeft()', () => {
 		test('should works as expected', () => {
 			const either = Either.right<number, boolean>(true);
