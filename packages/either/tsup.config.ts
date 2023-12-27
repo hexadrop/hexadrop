@@ -5,7 +5,7 @@ export default defineConfig([
 		format: ['esm'],
 		dts: true,
 		clean: true,
-		entry: ['./src/index.ts'],
+		entry: ['./src/either.ts'],
 		minify: true,
 	},
 ]);
