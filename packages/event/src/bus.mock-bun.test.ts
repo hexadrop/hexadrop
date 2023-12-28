@@ -1,6 +1,6 @@
-import { describe, expect, jest, test } from 'bun:test';
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
+import { describe, expect, jest, test } from 'bun:test';
 
 import type { EventHandler } from './bus';
 import MockEventBus from './bus.mock-bun';

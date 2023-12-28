@@ -1,12 +1,13 @@
 import '@abraham/reflection';
+
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
-
 import { describe, expect, jest, test } from 'bun:test';
-import type { EventHandler } from './bus';
 
+import type { EventHandler } from './bus';
 import EventHandlerDecorator from './decorator';
-import DomainEvent, { type DomainEventParams } from './domain-event';
+import type { DomainEventParams } from './domain-event';
+import DomainEvent from './domain-event';
 
 const handler1Spy = jest.fn((_: DomainEvent) => Either.left<void, DomainError>(undefined));
 
