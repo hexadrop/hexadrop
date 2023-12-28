@@ -1,5 +1,5 @@
-import { describe, expect, test } from 'bun:test';
 import { faker } from '@faker-js/faker';
+import { describe, expect, test } from 'bun:test';
 
 import { EmptyDateValueError, InvalidDateValueTypeError } from './date.value-object.error';
 import DateValueObjectMother from './date.value-object.mother';
@@ -55,7 +55,6 @@ describe('DateValueObject', () => {
 			const vo2 = DateValueObjectMother.create(voValue);
 
 			expect(vo1.isEqualsTo(vo2)).toBeTruthy();
-
 		});
 		test('should return false if value object is equals', () => {
 			const vo1Value = new Date(1659011272040);
@@ -64,7 +63,6 @@ describe('DateValueObject', () => {
 			const vo2 = DateValueObjectMother.create(vo2Value);
 
 			expect(vo1.isEqualsTo(vo2)).toBeFalsy();
-
 		});
 	});
 	describe('toString()', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
-import UuiiValueObject from './uuii.value-object';
 
+import UuiiValueObject from './uuii.value-object';
 import InvalidUuiiValueError from './uuii.value-object.error';
 import UuiiValueObjectMother from './uuii.value-object.mother';
 
