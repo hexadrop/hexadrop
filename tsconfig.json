@@ -35,13 +35,16 @@
 				"packages/types/src/*"
 			],
 			"@hexadrop/either": [
-				"packages/either/src"
+				"packages/either/src/either"
 			],
 			"@hexadrop/error": [
-				"packages/error/src"
+				"packages/error/src/domain-error"
 			],
 			"@hexadrop/event": [
 				"packages/event/src"
+			],
+			"@hexadrop/ioc": [
+				"packages/ioc/src/container"
 			],
 			"@hexadrop/*": [
 				"packages/*/src"
