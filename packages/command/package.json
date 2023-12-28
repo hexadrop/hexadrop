@@ -25,8 +25,8 @@
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
+				"types": "./dist/command.d.ts",
+				"default": "./dist/command.js"
 			}
 		},
 		"./bus": {
@@ -35,44 +35,94 @@
 				"default": "./dist/bus.js"
 			}
 		},
+		"./bus/mock/bun": {
+			"import": {
+				"types": "./dist/bus.mock-bun.d.ts",
+				"default": "./dist/bus.mock-bun.js"
+			}
+		},
+		"./bus/sync": {
+			"import": {
+				"types": "./dist/bus.sync.d.ts",
+				"default": "./dist/bus.sync.js"
+			}
+		},
 		"./decorator": {
 			"import": {
 				"types": "./dist/decorator.d.ts",
 				"default": "./dist/decorator.js"
+			}
+		},
+		"./handlers": {
+			"import": {
+				"types": "./dist/command-handlers.d.ts",
+				"default": "./dist/command-handlers.js"
+			}
+		},
+		"./handlers/memory": {
+			"import": {
+				"types": "./dist/in-memory.command-handlers.d.ts",
+				"default": "./dist/in-memory.command-handlers.js"
+			}
+		},
+		"./handlers/ioc": {
+			"import": {
+				"types": "./dist/ioc.command-handlers.d.ts",
+				"default": "./dist/ioc.command-handlers.js"
 			}
 		}
 	},
 	"typesVersions": {
 		"*": {
 			"*": [
-				"./dist/index.d.ts"
+				"./dist/command.d.ts"
 			],
 			"./bus": [
 				"./dist/bus.d.ts"
 			],
+			"./bus/mock/bun": [
+				"./dist/bus.mock-bun.d.ts"
+			],
+			"./bus/sync": [
+				"./dist/bus.sync.d.ts"
+			],
 			"./decorator": [
 				"./dist/decorator.d.ts"
+			],
+			"./handlers": [
+				"./dist/command-handlers.d.ts"
+			],
+			"./handlers/memory": [
+				"./dist/in-memory.command-handlers.d.ts"
+			],
+			"./handlers/ioc": [
+				"./dist/ioc.command-handlers.d.ts"
 			]
 		}
 	},
 	"scripts": {
 		"prepublishOnly": "tsup"
 	},
+	"dependencies": {
+		"@hexadrop/either": "1.0.1",
+		"@hexadrop/error": "1.0.1",
+		"@hexadrop/types": "1.0.3"
+	},
 	"peerDependencies": {
 		"@abraham/reflection": "^0",
-		"@hexadrop/types": "^1.0.3",
-		"@hexadrop/either": "^1.0.1",
-		"@hexadrop/error": "^1.0.1"
+		"@hexadrop/ioc": "^2"
 	},
 	"peerDependenciesMeta": {
 		"@abraham/reflection": {
+			"optional": true
+		},
+		"@hexadrop/ioc": {
 			"optional": true
 		}
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
-		"@hexadrop/types": "1.0.3",
-		"@hexadrop/either": "1.0.1",
-		"@hexadrop/error": "1.0.1"
+		"@hexadrop/ioc": "2.0.0",
+		"diod": "2.0.0"
 	}
 }
