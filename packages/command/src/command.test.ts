@@ -14,31 +14,27 @@ class MockCommand extends Command {
 }
 
 describe('Command', () => {
-	test('should instantiate with command id', () => {
-		const command = new MockCommand({
-			commandId: 'commandId',
-			foo: 'foo',
+	describe('constructor()', () => {
+		test('should instantiate with command id', () => {
+			const command = new MockCommand({
+				commandId: 'commandId',
+				foo: 'foo',
+			});
+			expect(command.commandName).toBe('command');
+			expect(command.commandId).toBe('commandId');
+			expect(command.foo).toBe('foo');
+			expect(Object.getPrototypeOf(command)).toStrictEqual(MockCommand.prototype);
+			expect(command.constructor).toStrictEqual(MockCommand);
 		});
-		expect(command.commandName).toBe('command');
-		expect(command.commandId).toBe('commandId');
-		expect(command.foo).toBe('foo');
-	});
-	test('should instantiate with occurredOn', () => {
-		const command = new MockCommand({
-			commandId: 'commandId',
-			foo: 'foo',
+		test('should instantiate without command id', () => {
+			const command = new MockCommand({
+				foo: 'foo',
+			});
+			expect(command.commandName).toBe('command');
+			expect(command.commandId).toBeDefined();
+			expect(command.foo).toBe('foo');
+			expect(Object.getPrototypeOf(command)).toStrictEqual(MockCommand.prototype);
+			expect(command.constructor).toStrictEqual(MockCommand);
 		});
-		expect(command.commandName).toBe('command');
-		expect(command.commandId).toBe('commandId');
-		expect(command.foo).toBe('foo');
-	});
-	test('should instantiate with relatedId', () => {
-		const command = new MockCommand({
-			commandId: 'commandId',
-			foo: 'foo',
-		});
-		expect(command.commandName).toBe('command');
-		expect(command.commandId).toBe('commandId');
-		expect(command.foo).toBe('foo');
 	});
 });
