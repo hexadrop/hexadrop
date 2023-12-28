@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
-import MockCommandBus from './bus.mock-bun';
+
+import MockBunCommandBus from './bus.mock-bun';
 import Command from './command';
 
 class Command1 extends Command {
@@ -18,39 +19,45 @@ class Command2 extends Command {
 	}
 }
 
-describe('MockCommandBus', () => {
-	test('should assertLastDispatchedCommand works as expected', async () => {
-		const command1 = new Command1('1');
-		const command2 = new Command2('2');
-		const bus = new MockCommandBus();
+describe('MockBunCommandBus', () => {
+	describe('assertDispatchedCommands()', () => {
+		test('should works as expected', async () => {
+			const command1 = new Command1('1');
+			const command2 = new Command2('2');
+			const bus = new MockBunCommandBus();
 
-		await bus.dispatch(command1);
-		await bus.dispatch(command2);
+			await bus.dispatch(command1);
+			await bus.dispatch(command2);
 
-		expect(() => bus.assertLastDispatchedCommand(command1)).toThrow();
-		expect(() => bus.assertLastDispatchedCommand(command2)).not.toThrow();
+			expect(() => bus.assertDispatchedCommands(command1)).toThrow();
+			expect(() => bus.assertDispatchedCommands(command1, command2)).not.toThrow();
+		});
 	});
-	test('should assertDispatchedCommands works as expected', async () => {
-		const command1 = new Command1('1');
-		const command2 = new Command2('2');
-		const bus = new MockCommandBus();
+	describe('assertLastDispatchedCommand()', () => {
+		test('should works as expected', async () => {
+			const command1 = new Command1('1');
+			const command2 = new Command2('2');
+			const bus = new MockBunCommandBus();
 
-		await bus.dispatch(command1);
-		await bus.dispatch(command2);
+			await bus.dispatch(command1);
+			await bus.dispatch(command2);
 
-		expect(() => bus.assertDispatchedCommands(command1)).toThrow();
-		expect(() => bus.assertDispatchedCommands(command1, command2)).not.toThrow();
+			expect(() => bus.assertLastDispatchedCommand(command1)).toThrow();
+			expect(() => bus.assertLastDispatchedCommand(command2)).not.toThrow();
+		});
 	});
-	test('should assertNotDispatchedCommand works as expected', async () => {
-		const command1 = new Command1('1');
-		const command2 = new Command2('2');
-		const bus = new MockCommandBus();
+	describe('assertNotDispatchedCommand()', () => {
+		test('should works as expected', async () => {
+			const command1 = new Command1('1');
+			const command2 = new Command2('2');
+			const bus = new MockBunCommandBus();
 
-		expect(() => bus.assertNotDispatchedCommand()).not.toThrow();
+			expect(() => bus.assertNotDispatchedCommand()).not.toThrow();
 
-		await bus.dispatch(command1);
-		await bus.dispatch(command2);
+			await bus.dispatch(command1);
+			await bus.dispatch(command2);
 
-		expect(() => bus.assertNotDispatchedCommand()).toThrow();
+			expect(() => bus.assertNotDispatchedCommand()).toThrow();
+		});
 	});
 });
