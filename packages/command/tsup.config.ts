@@ -16,5 +16,6 @@ export default defineConfig([
 			'./src/ioc.command-handlers.ts',
 		],
 		minify: true,
+		external: ['bun:test'],
 	},
 ]);
