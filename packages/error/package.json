@@ -25,8 +25,8 @@
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
+				"types": "./dist/domain-error.d.ts",
+				"default": "./dist/domain-error.js"
 			}
 		},
 		"./invalid-argument": {
@@ -45,7 +45,7 @@
 	"typesVersions": {
 		"*": {
 			".": [
-				"./dist/index.d.ts"
+				"./dist/domain-error.d.ts"
 			],
 			"./invalid-argument": [
 				"./dist/invalid-argument.d.ts"
@@ -56,6 +56,6 @@
 		}
 	},
 	"scripts": {
-		"typecheck": "tsc --noEmit"
+		"prepublishOnly": "tsup"
 	}
 }

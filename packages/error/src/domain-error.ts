@@ -56,6 +56,4 @@ function allowedValues(code: string) {
 	}
 }
 
-export { EmptyErrorCodeError, InvalidErrorCodeError };
-
 export default DomainError;
