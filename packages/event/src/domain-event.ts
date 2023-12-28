@@ -2,6 +2,14 @@ import type { Class } from '@hexadrop/types/class';
 import type { Nullable } from '@hexadrop/types/nullable';
 import type { Primitives } from '@hexadrop/types/primitives';
 
+/**
+ * Interface for the constructor parameters of DomainEvent
+ * @interface
+ * @property {string} aggregateId - The aggregate ID
+ * @property {Nullable<string>} eventId - The event ID (optional)
+ * @property {Nullable<Date>} occurredOn - The date the event occurred on (optional)
+ * @property {Nullable<string>} relatedId - The related ID (optional)
+ */
 interface DomainEventConstructorParams {
 	readonly aggregateId: string;
 	readonly eventId?: Nullable<string>;
@@ -9,6 +17,16 @@ interface DomainEventConstructorParams {
 	readonly relatedId?: Nullable<string>;
 }
 
+/**
+ * Abstract class for DomainEvent
+ * @abstract
+ * @property {string} EVENT_NAME - The static event name
+ * @property {string} aggregateId - The aggregate ID
+ * @property {string} eventId - The event ID
+ * @property {string} eventName - The event name
+ * @property {Date} occurredOn - The date the event occurred on
+ * @property {Nullable<string>} relatedId - The related ID (optional)
+ */
 abstract class DomainEvent {
 	static EVENT_NAME: string;
 	readonly aggregateId: string;
@@ -17,6 +35,12 @@ abstract class DomainEvent {
 	readonly occurredOn: Date;
 	readonly relatedId: Nullable<string>;
 
+	/**
+	 * Constructor for DomainEvent
+	 * @constructor
+	 * @param {string} eventName - The event name
+	 * @param {DomainEventConstructorParams} params - The constructor parameters
+	 */
 	protected constructor(
 		eventName: string,
 		{ aggregateId, eventId, occurredOn, relatedId }: DomainEventConstructorParams
