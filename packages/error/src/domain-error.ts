@@ -24,6 +24,11 @@ abstract class DomainError extends Error {
 		this.name = name || 'DomainError';
 	}
 
+	/**
+	 * Gets the numeric part of the error code.
+	 *
+	 * @returns {number} The numeric part of the error code.
+	 */
 	get errorCode(): number {
 		const code = this.code.substring(4).replace(')', '');
 
@@ -31,7 +36,14 @@ abstract class DomainError extends Error {
 	}
 }
 
+/**
+ * Class representing an InvalidErrorCodeError.
+ * @extends DomainError
+ */
 class InvalidErrorCodeError extends DomainError {
+	/**
+	 * Creates a new InvalidErrorCodeError.
+	 */
 	constructor() {
 		super(
 			'InvalidErrorCodeError',
@@ -41,12 +53,26 @@ class InvalidErrorCodeError extends DomainError {
 	}
 }
 
+/**
+ * Class representing an EmptyErrorCodeError.
+ * @extends DomainError
+ */
 class EmptyErrorCodeError extends DomainError {
+	/**
+	 * Creates a new EmptyErrorCodeError.
+	 */
 	constructor() {
 		super('EmptyErrorCodeError', 'DomainError code can not be null or empty', 'HEX(400)');
 	}
 }
 
+/**
+ * Checks if the provided code is allowed.
+ *
+ * @param {string} code - The code to be checked.
+ * @throws {EmptyErrorCodeError} If the provided code is null or empty.
+ * @throws {InvalidErrorCodeError} If the provided code does not follow the pattern /[A-Z][A-Z][A-Z]\((\d{3}|\d{6})\)/.
+ */
 function allowedValues(code: string) {
 	if (!code) {
 		throw new EmptyErrorCodeError();
