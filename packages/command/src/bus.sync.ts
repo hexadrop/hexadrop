@@ -1,52 +1,40 @@
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
-import CommandBus, { type CommandBusCallback, type CommandHandler } from './bus';
 
-import Command, { type CommandClass } from './command';
-import CommandHandlers from './command-handlers';
+import CommandBus from './bus';
+import Command from './command';
+import type { CommandHandlers } from './command-handlers';
 
-export class SyncCommandBus extends CommandBus {
+/**
+ * @class SyncCommandBus
+ * @extends CommandBus
+ * @description Class representing a synchronous command bus.
+ */
+export default class SyncCommandBus extends CommandBus {
+	/**
+	 * @property {CommandHandlers} info - The command handler information.
+	 */
 	private readonly info: CommandHandlers;
-	constructor(info?: CommandHandlers) {
+
+	/**
+	 * @constructor
+	 * @param {CommandHandlers} info - The command handler information.
+	 */
+	constructor(info: CommandHandlers) {
 		super();
-		this.info = info ?? new CommandHandlers();
+		this.info = info;
 	}
 
+	/**
+	 * @method dispatch
+	 * @description Method to dispatch a command.
+	 * @param {C} command - The command to be dispatched.
+	 * @returns {Promise<Either<void, DomainError>>} - The result of the command dispatch.
+	 * @template C - The type of the command.
+	 */
 	async dispatch<C extends Command>(command: C): Promise<Either<void, DomainError>> {
-		const promises = [];
 		const callbacks = this.info.search(command);
-		for (const handler of callbacks) {
-			promises.push(
-				new Promise<void>((resolve, reject) => {
-					try {
-						const returnValue = handler(command);
-						if (returnValue instanceof Promise) {
-							void returnValue.then(e => (e.isRight() ? reject(e.getRight()) : resolve())).catch(e => reject(e));
-						} else {
-							returnValue.isRight() ? reject(returnValue.getRight()) : resolve();
-						}
-					} catch (e) {
-						reject(e);
-					}
-				})
-			);
-		}
 
-		return Promise.all(promises)
-			.then(() => Either.left<void, DomainError>(undefined))
-			.catch(e => Either.right(e));
-	}
-
-	register<C extends Command>(command: CommandClass<C>, useCase: CommandHandler<C>): void;
-	register<C extends Command>(command: CommandClass<C>, callback: CommandBusCallback<C>): void;
-	register<C extends Command>(
-		command: CommandClass<C>,
-		useCaseOrCallback: CommandBusCallback<C> | CommandHandler<C>
-	): void {
-		this.info.register(command, useCaseOrCallback);
-	}
-
-	unregister<C extends Command>(command: CommandClass<C>): void {
-		this.info.unregister(command);
+		return callbacks(command);
 	}
 }

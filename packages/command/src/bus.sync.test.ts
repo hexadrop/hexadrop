@@ -1,19 +1,23 @@
-import { describe, expect, jest, test } from 'bun:test';
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
-import type { CommandBusCallback, CommandHandler } from './bus';
-import { SyncCommandBus } from './bus.sync';
+import { beforeEach, describe, expect, jest, test } from 'bun:test';
+
+import type { CommandHandler } from './bus';
+import SyncCommandBus from './bus.sync';
 import Command from './command';
-import CommandHandlers from './command-handlers';
+import InMemoryCommandHandlers from './in-memory.command-handlers';
+
+class Service {
+	hello(): string {
+		return 'world';
+	}
+}
 
 class CustomError extends DomainError {
 	constructor() {
 		super('CustomError', 'msg', 'HEX(123)');
 	}
 }
-
-const handler1Spy = jest.fn(() => Either.left<void, DomainError>(undefined));
-const handler2Spy = jest.fn(() => Either.right<void, DomainError>(new CustomError()));
 
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';
@@ -25,9 +29,14 @@ class Command1 extends Command {
 	}
 }
 
+const handler1Spy = jest.fn((_cmd: Command1, _msg: string) => Either.left<void, DomainError>(undefined));
+
 class Command1Handler implements CommandHandler<Command1> {
-	run(): Either<void, DomainError> {
-		return handler1Spy();
+	constructor(private readonly service: Service) {}
+	run(cmd: Command1): Either<void, DomainError> {
+		const hello = this.service.hello();
+
+		return handler1Spy(cmd, hello);
 	}
 }
 
@@ -39,38 +48,54 @@ class Command2 extends Command {
 	}
 }
 
+const handler2Spy = jest.fn((_cmd: Command2) => Either.right<void, DomainError>(new CustomError()));
+
 class Command2Handler implements CommandHandler<Command2> {
-	run(): Either<void, DomainError> {
-		return handler2Spy();
+	run(cmd: Command2): Either<void, DomainError> {
+		return handler2Spy(cmd);
 	}
 }
 
 describe('InMemoryCommandBus', () => {
-	test('should works as expected', async () => {
-		const command1 = new Command1();
-		const command2 = new Command2();
-		const handler1 = new Command1Handler();
-		const handler2 = new Command2Handler();
+	let c1: Command;
+	let c2: Command;
+	let svc: Service;
+	let handler1: CommandHandler;
+	let handler2: CommandHandler;
+	let info: InMemoryCommandHandlers;
+	let bus: SyncCommandBus;
 
-		const map = new Map<string, CommandBusCallback[]>();
-		map.set(Command1.COMMAND_NAME, [handler1.run.bind(handler1)]);
-		map.set(Command2.COMMAND_NAME, [handler2.run.bind(handler2)]);
-		const info = new CommandHandlers(map);
+	beforeEach(() => {
+		c1 = new Command1();
+		c2 = new Command2();
+		svc = new Service();
+		handler1 = new Command1Handler(svc);
+		handler2 = new Command2Handler();
 
-		const bus = new SyncCommandBus(info);
+		info = new InMemoryCommandHandlers();
+		info.register(Command1, handler1);
+		info.register(Command2, handler2);
 
-		const either1 = await bus.dispatch(command1);
+		bus = new SyncCommandBus(info);
+	});
 
-		expect(handler1Spy).toHaveBeenCalledTimes(1);
-		expect(either1).toBeDefined();
-		expect(either1.isLeft()).toBeTruthy();
+	describe('dispatch()', () => {
+		test('should works as expected', async () => {
+			const either1 = await bus.dispatch(c1);
 
-		const either2 = await bus.dispatch(command2);
+			expect(either1).toBeDefined();
+			expect(either1.isLeft()).toBeTruthy();
+			expect(handler1Spy).toHaveBeenCalledTimes(1);
+			expect(handler1Spy).toHaveBeenCalledWith(c1, 'world');
 
-		expect(handler2Spy).toHaveBeenCalledTimes(1);
-		expect(either2).toBeDefined();
-		expect(either2.isRight()).toBeTruthy();
-		expect(either2.getRight().message).toBe('msg');
-		expect(either2.getRight().name).toBe('CustomError');
+			const either2 = await bus.dispatch(c2);
+
+			expect(either2).toBeDefined();
+			expect(either2.isRight()).toBeTruthy();
+			expect(either2.getRight().message).toBe('msg');
+			expect(either2.getRight().name).toBe('CustomError');
+			expect(handler2Spy).toHaveBeenCalledTimes(1);
+			expect(handler2Spy).toHaveBeenCalledWith(c2);
+		});
 	});
 });
