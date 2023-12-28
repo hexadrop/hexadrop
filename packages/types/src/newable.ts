@@ -2,6 +2,4 @@
  * Represents a newable class.
  * @typeParam T Class type.
  */
-export interface Newable<T> extends Function {
-	new (...args: any[]): T;
-}
+export type Newable<T> = new (...args: any[]) => T;
