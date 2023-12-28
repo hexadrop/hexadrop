@@ -13,6 +13,6 @@ export default defineConfig([
 			'./src/nullable.ts',
 			'./src/primitives.ts',
 		],
-		tsconfig: '../../tsconfig.json',
+		minify: true,
 	},
 ]);
