@@ -29,11 +29,11 @@ class Command1 extends Command {
 	}
 }
 
-const handler1Spy = jest.fn((_cmd: Command1, _msg: string) => Either.left<void, DomainError>(undefined));
+const handler1Spy = jest.fn((_cmd: Command1, _msg: string) => Either.right<DomainError, void>(undefined));
 
 class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
-	run(cmd: Command1): Either<void, DomainError> {
+	run(cmd: Command1): Either<DomainError, void> {
 		const hello = this.service.hello();
 
 		return handler1Spy(cmd, hello);
@@ -48,10 +48,10 @@ class Command2 extends Command {
 	}
 }
 
-const handler2Spy = jest.fn((_cmd: Command2) => Either.right<void, DomainError>(new CustomError()));
+const handler2Spy = jest.fn((_cmd: Command2) => Either.left<DomainError, void>(new CustomError()));
 
 class Command2Handler implements CommandHandler<Command2> {
-	run(cmd: Command2): Either<void, DomainError> {
+	run(cmd: Command2): Either<DomainError, void> {
 		return handler2Spy(cmd);
 	}
 }
@@ -84,16 +84,16 @@ describe('InMemoryCommandBus', () => {
 			const either1 = await bus.dispatch(c1);
 
 			expect(either1).toBeDefined();
-			expect(either1.isLeft()).toBeTruthy();
+			expect(either1.isRight()).toBeTruthy();
 			expect(handler1Spy).toHaveBeenCalledTimes(1);
 			expect(handler1Spy).toHaveBeenCalledWith(c1, 'world');
 
 			const either2 = await bus.dispatch(c2);
 
 			expect(either2).toBeDefined();
-			expect(either2.isRight()).toBeTruthy();
-			expect(either2.getRight().message).toBe('msg');
-			expect(either2.getRight().name).toBe('CustomError');
+			expect(either2.isLeft()).toBeTruthy();
+			expect(either2.getLeft().message).toBe('msg');
+			expect(either2.getLeft().name).toBe('CustomError');
 			expect(handler2Spy).toHaveBeenCalledTimes(1);
 			expect(handler2Spy).toHaveBeenCalledWith(c2);
 		});

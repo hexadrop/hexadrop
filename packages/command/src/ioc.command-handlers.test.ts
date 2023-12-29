@@ -54,17 +54,17 @@ class Service {
 class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
 
-	async run(): Promise<Either<void, DomainError>> {
+	async run(): Promise<Either<DomainError, void>> {
 		this.service.hello();
 
-		return Promise.resolve(Either.left(undefined));
+		return Promise.resolve(Either.right(undefined));
 	}
 }
 
 @CommandHandlerDecorator(Command2, Command3)
 class Command23Handler implements CommandHandler<Command2 | Command3> {
-	async run(): Promise<Either<void, DomainError>> {
-		return Promise.resolve(Either.left(undefined));
+	async run(): Promise<Either<DomainError, void>> {
+		return Promise.resolve(Either.right(undefined));
 	}
 }
 

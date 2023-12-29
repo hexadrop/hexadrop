@@ -1,5 +1,5 @@
 import Either from '@hexadrop/either';
-import CommandError from '@hexadrop/error';
+import DomainError from '@hexadrop/error';
 import { expect, jest } from 'bun:test';
 
 import type CommandBus from './bus';
@@ -14,7 +14,9 @@ export default class MockBunCommandBus implements CommandBus {
 	/**
 	 * @property {jest.Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
-	readonly dispatchSpy = jest.fn((..._commands: Command[]) => Promise.resolve(Either.left(undefined)));
+	readonly dispatchSpy = jest.fn((..._commands: Command[]) =>
+		Promise.resolve(Either.right<DomainError, void>(undefined))
+	);
 
 	/**
 	 * @private
@@ -74,9 +76,9 @@ export default class MockBunCommandBus implements CommandBus {
 	 * @method dispatch
 	 * @description Method to dispatch a command.
 	 * @param {Command} command - The command to be dispatched.
-	 * @returns {Either<void, CommandError> | Promise<Either<void, CommandError>>} - The result of the command dispatch.
+	 * @returns {Either<DomainError, void> | Promise<Either<DomainError, void>>} - The result of the command dispatch.
 	 */
-	dispatch(command: Command): Either<void, CommandError> | Promise<Either<void, CommandError>> {
-		return this.dispatchSpy(command) as Either<void, CommandError> | Promise<Either<void, CommandError>>;
+	dispatch(command: Command): Either<DomainError, void> | Promise<Either<DomainError, void>> {
+		return this.dispatchSpy(command) as Either<DomainError, void> | Promise<Either<DomainError, void>>;
 	}
 }

@@ -7,12 +7,12 @@ import type Command from './command';
 /**
  * @callback CommandBusCallback
  * @param {CommandType} command - The command to be executed.
- * @returns {Either<void, DomainError> | Promise<Either<void, DomainError>>} - The result of the command execution.
+ * @returns {Either<DomainError, void> | Promise<Either<DomainError, void>>} - The result of the command execution.
  * @template CommandType - The type of the command.
  */
 type CommandBusCallback<CommandType extends Command = Command> = (
 	command: CommandType
-) => Either<void, DomainError> | Promise<Either<void, DomainError>>;
+) => Either<DomainError, void> | Promise<Either<DomainError, void>>;
 
 /**
  * @interface CommandHandler
@@ -35,9 +35,9 @@ abstract class CommandBus {
 	 * @abstract
 	 * @method dispatch
 	 * @param {Command} command - The command to be dispatched.
-	 * @returns {Either<void, DomainError> | Promise<Either<void, DomainError>>} - The result of the command dispatch.
+	 * @returns {Either<DomainError, void> | Promise<Either<DomainError, void>>} - The result of the command dispatch.
 	 */
-	abstract dispatch(command: Command): Either<void, DomainError> | Promise<Either<void, DomainError>>;
+	abstract dispatch(command: Command): Either<DomainError, void> | Promise<Either<DomainError, void>>;
 }
 
 export type { CommandBusCallback, CommandHandler, CommandHandlerClass };

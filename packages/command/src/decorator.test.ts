@@ -8,7 +8,7 @@ import type { CommandHandler } from './bus';
 import Command from './command';
 import Decorator from './decorator';
 
-const handler1Spy = jest.fn(() => Either.left<void, DomainError>(undefined));
+const handler1Spy = jest.fn(() => Either.right<DomainError, void>(undefined));
 
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';
@@ -21,13 +21,13 @@ class Command1 extends Command {
 }
 
 class Command1Handler implements CommandHandler<Command1> {
-	run(): Either<void, DomainError> {
+	run(): Either<DomainError, void> {
 		return handler1Spy();
 	}
 }
 
 class Command2Handler {
-	booz(): Either<void, DomainError> {
+	booz(): Either<DomainError, void> {
 		return handler1Spy();
 	}
 }

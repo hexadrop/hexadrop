@@ -64,25 +64,25 @@ class Service {
 class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
 
-	async run(): Promise<Either<void, DomainError>> {
+	async run(): Promise<Either<DomainError, void>> {
 		this.service.hello();
 
-		return Promise.resolve(Either.left(undefined));
+		return Promise.resolve(Either.right(undefined));
 	}
 }
 
 class Command23Handler implements CommandHandler<Command2 | Command3> {
-	async run(): Promise<Either<void, DomainError>> {
-		return Promise.resolve(Either.left(undefined));
+	async run(): Promise<Either<DomainError, void>> {
+		return Promise.resolve(Either.right(undefined));
 	}
 }
 
 class Command4Handler implements CommandHandler<Command4> {
 	constructor(private readonly service: Service) {}
-	async run(): Promise<Either<void, DomainError>> {
+	async run(): Promise<Either<DomainError, void>> {
 		this.service.hello();
 
-		return Promise.resolve(Either.left(undefined));
+		return Promise.resolve(Either.right(undefined));
 	}
 }
 
@@ -116,8 +116,8 @@ describe('InMemoryCommandHandlers', () => {
 		expectedCommand1Handler = new Command1Handler(svc);
 		expectedCommand23Handler = new Command23Handler();
 		expectedCommand4Handler = new Command4Handler(svc);
-		expectedCommand56Handler = async function expectedCommand56Handler(): Promise<Either<void, DomainError>> {
-			return Promise.resolve(Either.left(undefined));
+		expectedCommand56Handler = async function expectedCommand56Handler(): Promise<Either<DomainError, void>> {
+			return Promise.resolve(Either.right(undefined));
 		};
 
 		info = new InMemoryCommandHandlers();
