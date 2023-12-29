@@ -5,7 +5,7 @@ import DomainError from '@hexadrop/error';
 import { describe, expect, jest, test } from 'bun:test';
 
 import type { EventHandler } from './bus';
-import EventHandlerDecorator from './decorator';
+import Decorator from './decorator';
 import type { DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 
@@ -27,7 +27,7 @@ class Event1Handler implements EventHandler<Event1> {
 
 describe('@EventHandler()', () => {
 	test('should decorate a event handler', () => {
-		const target = EventHandlerDecorator(Event1)(Event1Handler);
+		const target = Decorator(Event1)(Event1Handler);
 		expect(target).toBe(Event1Handler);
 		const handler = Reflect.getMetadata('event-handler', Event1);
 		expect(handler).toStrictEqual([Event1Handler]);
