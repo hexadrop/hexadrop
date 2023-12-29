@@ -25,11 +25,21 @@ class Event1Handler implements EventHandler<Event1> {
 	}
 }
 
+class Event2Handler {
+	booz(event: Event1): Either<void, DomainError> {
+		return handler1Spy(event);
+	}
+}
+
 describe('@EventHandler()', () => {
 	test('should decorate a event handler', () => {
 		const target = Decorator(Event1)(Event1Handler);
 		expect(target).toBe(Event1Handler);
 		const handler = Reflect.getMetadata('event-handler', Event1);
 		expect(handler).toStrictEqual([Event1Handler]);
+	});
+	test('should throw an exception if command handler has `run()` method', () => {
+		const expectedError = new Error('EventHandler must implements a `run()` method');
+		expect(() => Decorator(Event1)(Event2Handler)).toThrow(expectedError);
 	});
 });
