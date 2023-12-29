@@ -1,14 +1,12 @@
-import type { EventBusCallback, EventHandler } from './bus';
 import EventBus from './bus';
-import EventBusHandlers from './bus.handlers';
-import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
+import type { EventHandlers } from './event-handlers';
 
 export default class SyncEventBus extends EventBus {
-	private readonly info: EventBusHandlers;
-	constructor(info?: EventBusHandlers) {
+	private readonly info: EventHandlers;
+	constructor(info: EventHandlers) {
 		super();
-		this.info = info ?? new EventBusHandlers();
+		this.info = info;
 	}
 
 	async publish(...events: DomainEvent[]): Promise<void> {
