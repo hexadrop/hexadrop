@@ -6,7 +6,7 @@ import { describe, expect, jest, test } from 'bun:test';
 
 import type { CommandHandler } from './bus';
 import Command from './command';
-import CommandHandlerDecorator from './decorator';
+import Decorator from './decorator';
 
 const handler1Spy = jest.fn(() => Either.left<void, DomainError>(undefined));
 
@@ -34,13 +34,13 @@ class Command2Handler {
 
 describe('@CommandHandler()', () => {
 	test('should decorate a command handler', () => {
-		const target = CommandHandlerDecorator(Command1)(Command1Handler);
+		const target = Decorator(Command1)(Command1Handler);
 		expect(target).toBe(Command1Handler);
 		const handler = Reflect.getMetadata('command-handler', Command1);
 		expect(handler).toStrictEqual(Command1Handler);
 	});
 	test('should throw an exception if command handler has `run()` method', () => {
 		const expectedError = new Error('CommandHandler must implements a `run()` method');
-		expect(() => CommandHandlerDecorator(Command1)(Command2Handler)).toThrow(expectedError);
+		expect(() => Decorator(Command1)(Command2Handler)).toThrow(expectedError);
 	});
 });
