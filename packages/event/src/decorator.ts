@@ -1,15 +1,20 @@
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
-function EventHandler<E extends DomainEvent>(event: DomainEventClass<E>): ClassDecorator {
-	return <ClassType extends Function>(target: ClassType): ClassType => {
-		Reflect.defineMetadata('event-handler', true, target);
+const EVENT_HANDLER_METADATA_KEY = 'event-handler';
 
-		const handlers = Reflect.getMetadata<ClassType[]>('event-handlers', event);
-		if (handlers) {
-			handlers.push(target);
+function EventHandler<EventType extends DomainEvent>(...events: DomainEventClass<EventType>[]): ClassDecorator {
+	return <ClassType extends Function>(target: ClassType): ClassType => {
+		if ('run' in target.prototype) {
+			for (const event of events) {
+				const handlers = Reflect.getMetadata<ClassType[]>(EVENT_HANDLER_METADATA_KEY, event) ?? [];
+				if (!handlers.some(handler => handler === target)) {
+					handlers.push(target);
+				}
+				Reflect.defineMetadata<ClassType[]>(EVENT_HANDLER_METADATA_KEY, handlers, event);
+			}
 		} else {
-			Reflect.defineMetadata('event-handlers', [target], event);
+			throw new Error('EventHandler must implements a `run()` method');
 		}
 
 		return target;
