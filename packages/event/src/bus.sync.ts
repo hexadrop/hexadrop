@@ -36,18 +36,4 @@ export default class SyncEventBus extends EventBus {
 		}
 		await Promise.all(promises);
 	}
-
-	subscribe<E extends DomainEvent>(
-		event: DomainEventClass<E>,
-		handlerOrCallback: EventBusCallback<E> | EventHandler<E>
-	): Promise<void> | void {
-		this.info.register(event, handlerOrCallback);
-	}
-
-	unsubscribe<E extends DomainEvent>(
-		event: DomainEventClass<E>,
-		handlerOrCallback: EventBusCallback<E> | EventHandler<E>
-	): Promise<void> | void {
-		this.info.unregister(event, handlerOrCallback);
-	}
 }
