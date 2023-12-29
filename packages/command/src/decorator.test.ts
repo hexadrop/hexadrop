@@ -34,7 +34,8 @@ class Command2Handler {
 
 describe('@CommandHandler()', () => {
 	test('should decorate a command handler', () => {
-		CommandHandlerDecorator(Command1)(Command1Handler);
+		const target = CommandHandlerDecorator(Command1)(Command1Handler);
+		expect(target).toBe(Command1Handler);
 		const handler = Reflect.getMetadata('command-handler', Command1);
 		expect(handler).toStrictEqual(Command1Handler);
 	});
