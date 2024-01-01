@@ -1,5 +1,6 @@
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
+import type { Class } from '@hexadrop/types/class';
 
 import type Query from './query';
 
@@ -26,6 +27,8 @@ interface QueryHandler<Response, QueryType extends Query<Response> = Query<Respo
 	run: QueryBusCallback<Response, QueryType>;
 }
 
+type QueryHandlerClass<Response, QueryType extends Query<Response>> = Class<any[], QueryHandler<Response, QueryType>>;
+
 /**
  * Abstract class representing a QueryBus
  */
@@ -42,6 +45,6 @@ abstract class QueryBus {
 	): Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>>;
 }
 
-export type { QueryBusCallback, QueryHandler };
+export type { QueryBusCallback, QueryHandler, QueryHandlerClass };
 
 export default QueryBus;

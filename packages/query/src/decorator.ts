@@ -30,4 +30,6 @@ function QueryHandler<ResponseType>(...queries: QueryClass<ResponseType, Query<R
 	};
 }
 
+export { QUERY_HANDLER_METADATA_KEY };
+
 export default QueryHandler;
