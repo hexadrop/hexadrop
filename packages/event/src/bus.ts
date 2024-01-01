@@ -1,19 +1,20 @@
 import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
+import type { Class } from '@hexadrop/types/class';
 
 import DomainEvent from './domain-event';
 
 /**
  * EventBusCallback is a type alias for a function that handles a domain event.
- * It takes a domain event and returns either an Either<void, DomainError> or a Promise that resolves to an Either<void, DomainError>.
+ * It takes a domain event and returns either an Either<DomainError, void> or a Promise that resolves to an Either<DomainError, void>.
  *
  * @template Event - The type of the domain event. It must extend DomainEvent.
  * @param {Event} event - The domain event to handle.
- * @returns {Either<void, DomainError> | Promise<Either<void, DomainError>>} - Either an Either<void, DomainError> or a Promise that resolves to an Either<void, DomainError>.
+ * @returns {Either<DomainError, void> | Promise<Either<DomainError, void>>} - Either an Either<DomainError, void> or a Promise that resolves to an Either<DomainError, void>.
  */
 type EventBusCallback<Event extends DomainEvent = DomainEvent> = (
 	event: Event
-) => Either<void, DomainError> | Promise<Either<void, DomainError>>;
+) => Either<DomainError, void> | Promise<Either<DomainError, void>>;
 
 /**
  * EventHandler is an interface that defines the contract for an event handler.
@@ -33,9 +34,11 @@ interface EventHandler<Event extends DomainEvent = DomainEvent> {
 	run: EventBusCallback<Event>;
 }
 
+type EventHandlerClass<EventType extends DomainEvent> = Class<any[], EventHandler<EventType>>;
+
 /**
  * EventBus is an abstract class that defines the contract for a domain event bus.
- * It provides methods to publish, subscribe, and unsubscribe from domain events.
+ * It provides a method to publish domain events.
  *
  * @abstract
  */
@@ -45,11 +48,11 @@ abstract class EventBus {
 	 *
 	 * @abstract
 	 * @param {...DomainEvent[]} events - The domain events to publish.
-	 * @returns {Promise<void> | void} - The method can return a Promise that resolves to void, or void directly.
+	 * @returns {Promise<Either<DomainError, void>> | Either<DomainError, void>} - The method can return a Promise that resolves to an Either<DomainError, void>, or an Either<DomainError, void> directly.
 	 */
-	abstract publish(...events: DomainEvent[]): Promise<void> | void;
+	abstract publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> | Either<DomainError, void>;
 }
 
-export type { EventBusCallback, EventHandler };
+export type { EventBusCallback, EventHandler, EventHandlerClass };
 
 export default EventBus;
