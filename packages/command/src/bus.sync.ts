@@ -3,7 +3,7 @@ import DomainError from '@hexadrop/error';
 
 import CommandBus from './bus';
 import Command from './command';
-import type { CommandHandlers } from './command-handlers';
+import CommandHandlers from './command-handlers';
 import CommandHandlerError from './error/command-handler.error';
 
 /**
