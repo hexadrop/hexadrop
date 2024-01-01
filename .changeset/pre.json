@@ -13,5 +13,7 @@
     "@hexadrop/types": "1.0.3",
     "@hexadrop/value-object": "1.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "six-suits-look"
+  ]
 }
