@@ -3,7 +3,7 @@ import DomainError from '@hexadrop/error';
 import { describe, expect, jest, test } from 'bun:test';
 
 import type { EventHandler } from './bus';
-import MockEventBus from './bus.mock-bun';
+import BunMockEventBus from './bus.mock-bun';
 import type { DomainEventClass, DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 
@@ -60,7 +60,7 @@ describe('MockEventBus', () => {
 	test('should assertIsSubscribed works as expected', async () => {
 		const handler1 = new Event1Handler();
 		const handler4 = new Event4Handler();
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertIsSubscribed(Event1, handler1)).toThrow();
 		expect(() => bus.assertIsSubscribed(Event4, handler4)).toThrow();
@@ -78,7 +78,7 @@ describe('MockEventBus', () => {
 	test('should assertSubscriptionsLength works as expected', async () => {
 		const handler1 = new Event1Handler();
 		const handler4 = new Event4Handler();
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertSubscriptionsLength(1)).toThrow();
 
@@ -94,7 +94,7 @@ describe('MockEventBus', () => {
 	test('should assertIsUnsubscribed works as expected', async () => {
 		const handler1 = new Event1Handler();
 		const handler4 = new Event4Handler();
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertIsUnsubscribed(Event1, handler1)).toThrow();
 		expect(() => bus.assertIsUnsubscribed(Event4, handler4)).toThrow();
@@ -112,7 +112,7 @@ describe('MockEventBus', () => {
 	test('should assertUnsubscriptionLength works as expected', async () => {
 		const handler1 = new Event1Handler();
 		const handler4 = new Event4Handler();
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertUnsubscriptionLength(1)).toThrow();
 
@@ -133,7 +133,7 @@ describe('MockEventBus', () => {
 			foo: 'foo',
 			occurredOn: date,
 		});
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertNotPublishEvent()).not.toThrow();
 
@@ -159,7 +159,7 @@ describe('MockEventBus', () => {
 			aggregateId: 'id3',
 			buzz: 'buzz',
 		});
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		await bus.publish(event1);
 		await bus.publish(event2, event4);
@@ -191,7 +191,7 @@ describe('MockEventBus', () => {
 			aggregateId: 'id3',
 			buzz: 'buzz',
 		});
-		const bus = new MockEventBus();
+		const bus = new BunMockEventBus();
 
 		await bus.publish(event1);
 		await bus.publish(event2, event4);
