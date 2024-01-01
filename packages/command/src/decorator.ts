@@ -1,5 +1,6 @@
 import type { CommandClass } from './command';
 import Command from './command';
+import CommandHandlerError from './error/command-handler.error';
 
 /**
  * @constant
@@ -23,7 +24,7 @@ function CommandHandlerDecorator<CommandType extends Command>(
 				Reflect.defineMetadata<ClassType>(COMMAND_HANDLER_METADATA_KEY, target, command);
 			}
 		} else {
-			throw new Error('CommandHandler must implements a `run()` method');
+			throw new CommandHandlerError('CommandHandler must implements a `run()` method');
 		}
 
 		return target;
