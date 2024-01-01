@@ -1,5 +1,6 @@
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
+import EventHandlerError from './error/event-handler.error';
 
 const EVENT_HANDLER_METADATA_KEY = 'event-handler';
 
@@ -24,7 +25,7 @@ function EventHandler<EventType extends DomainEvent>(...events: DomainEventClass
 				Reflect.defineMetadata<ClassType[]>(EVENT_HANDLER_METADATA_KEY, handlers, event);
 			}
 		} else {
-			throw new Error('EventHandler must implements a `run()` method');
+			throw new EventHandlerError('EventHandler must implements a `run()` method');
 		}
 
 		// Return the class
