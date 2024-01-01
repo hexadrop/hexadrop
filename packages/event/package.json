@@ -103,21 +103,26 @@
 	"scripts": {
 		"prepublishOnly": "tsup"
 	},
+	"dependencies": {
+		"@hexadrop/either": "1.0.1",
+		"@hexadrop/error": "1.0.1",
+		"@hexadrop/types": "1.0.3"
+	},
 	"peerDependencies": {
 		"@abraham/reflection": "^0",
-		"@hexadrop/types": "^1.0.3",
-		"@hexadrop/either": "^1.0.1",
-		"@hexadrop/error": "^1.0.1"
+		"@hexadrop/ioc": "^2"
 	},
 	"peerDependenciesMeta": {
 		"@abraham/reflection": {
+			"optional": true
+		},
+		"@hexadrop/ioc": {
 			"optional": true
 		}
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
-		"@hexadrop/types": "1.0.3",
-		"@hexadrop/either": "1.0.1",
-		"@hexadrop/error": "1.0.1"
+		"@hexadrop/ioc": "2.0.0",
+		"diod": "2.0.0"
 	}
 }
