@@ -24,8 +24,8 @@
 	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
+			"types": "./dist/ploc.d.ts",
+			"default": "./dist/ploc.js"
 		},
 		"./memory": {
 			"types": "./dist/ploc.memory.d.ts",
@@ -43,7 +43,7 @@
 	"typesVersions": {
 		"*": {
 			".": [
-				"./dist/index.d.ts"
+				"./dist/ploc.d.ts"
 			],
 			"./memory": [
 				"./dist/memory.d.ts"
