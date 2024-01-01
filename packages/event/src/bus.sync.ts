@@ -4,7 +4,7 @@ import type DomainError from '@hexadrop/error';
 import EventBus from './bus';
 import DomainEvent from './domain-event';
 import { EventHandlerError } from './error';
-import type { EventHandlers } from './event-handlers';
+import EventHandlers from './event-handlers';
 
 /**
  * SyncEventBus is a class that extends the abstract EventBus class.
