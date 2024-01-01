@@ -1,12 +1,12 @@
 import type { EventBusCallback, EventHandler } from './bus';
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
-import type { EventHandlers } from './event-handlers';
+import EventHandlers from './event-handlers';
 /**
  * The InMemoryEventHandlers class implements the EventHandlers interface.
  * It provides in-memory storage and management of event handlers.
  */
-export default class InMemoryEventHandlers implements EventHandlers {
+export default class InMemoryEventHandlers extends EventHandlers {
 	/**
 	 * A private map that stores event handlers.
 	 */
@@ -16,6 +16,7 @@ export default class InMemoryEventHandlers implements EventHandlers {
 	 * The constructor initializes the map.
 	 */
 	constructor() {
+		super();
 		this.map = new Map<string, EventBusCallback[]>();
 	}
 

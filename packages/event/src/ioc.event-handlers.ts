@@ -5,18 +5,20 @@ import { EVENT_HANDLER_METADATA_KEY } from './decorator';
 import type DomainEvent from './domain-event';
 import type { DomainEventClass } from './domain-event';
 import { EventNotRegisteredError, InvalidEventError } from './error';
-import type { EventHandlers } from './event-handlers';
+import EventHandlers from './event-handlers';
 
 /**
  * IoCEventHandlers is a class that implements the EventHandlers interface.
  * It is used to search for event handlers in the IoC container.
  */
-export default class IoCEventHandlers implements EventHandlers {
+export default class IoCEventHandlers extends EventHandlers {
 	/**
 	 * Constructor for the IoCEventHandlers class.
 	 * @param {Container} container - The IoC container.
 	 */
-	constructor(private readonly container: Container) {}
+	constructor(private readonly container: Container) {
+		super();
+	}
 
 	/**
 	 * The search method is used to find event handlers for a specific event.
