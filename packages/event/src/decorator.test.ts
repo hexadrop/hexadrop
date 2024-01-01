@@ -9,7 +9,7 @@ import Decorator from './decorator';
 import type { DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 
-const handler1Spy = jest.fn((_: DomainEvent) => Either.left<void, DomainError>(undefined));
+const handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>(undefined));
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
@@ -26,7 +26,7 @@ class Event1Handler implements EventHandler<Event1> {
 }
 
 class Event2Handler {
-	booz(event: Event1): Either<void, DomainError> {
+	booz(event: Event1): Either<DomainError, void> {
 		return handler1Spy(event);
 	}
 }
