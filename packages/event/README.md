@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  Opinionated package to create and dispatch events for CQRS applications.
+  Opinionated package to create and dispatch events for DDD applications.
 </p>
 
 ```bash
