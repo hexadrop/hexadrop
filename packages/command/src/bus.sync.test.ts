@@ -56,7 +56,7 @@ class Command2Handler implements CommandHandler<Command2> {
 	}
 }
 
-describe('InMemoryCommandBus', () => {
+describe('SyncCommandBus', () => {
 	let c1: Command;
 	let c2: Command;
 	let svc: Service;
