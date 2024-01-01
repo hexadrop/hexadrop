@@ -1,6 +1,6 @@
-import type { EventBusCallback } from '@hexadrop/event/bus';
-import type { DomainEventClass } from '@hexadrop/event/domain-event';
-import DomainEvent from '@hexadrop/event/domain-event';
+import type { EventBusCallback } from './bus';
+import type { DomainEventClass } from './domain-event';
+import DomainEvent from './domain-event';
 /**
  * The EventHandlers interface defines the structure for event handlers.
  * It contains a single method 'search' which is used to search for event handlers.

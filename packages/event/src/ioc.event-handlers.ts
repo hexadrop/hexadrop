@@ -1,7 +1,7 @@
-import { EVENT_HANDLER_METADATA_KEY } from '@hexadrop/event/decorator';
 import type { Container } from '@hexadrop/ioc';
 
 import type { EventBusCallback, EventHandler, EventHandlerClass } from './bus';
+import { EVENT_HANDLER_METADATA_KEY } from './decorator';
 import type DomainEvent from './domain-event';
 import type { DomainEventClass } from './domain-event';
 import { EventNotRegisteredError, InvalidEventError } from './error';
