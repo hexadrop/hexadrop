@@ -32,4 +32,6 @@ function EventHandler<EventType extends DomainEvent>(...events: DomainEventClass
 	};
 }
 
+export { EVENT_HANDLER_METADATA_KEY };
+
 export default EventHandler;
