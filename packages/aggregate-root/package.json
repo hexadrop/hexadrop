@@ -41,7 +41,7 @@
 		"prepublishOnly": "tsup"
 	},
 	"dependencies": {
-		"@hexadrop/event": "2.0.0",
+		"@hexadrop/event": "1.0.0",
 		"@hexadrop/types": "1.0.3"
 	}
 }

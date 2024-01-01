@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/command",
-	"version": "2.0.0",
+	"version": "1.0.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -110,7 +110,7 @@
 	},
 	"peerDependencies": {
 		"@abraham/reflection": "^0",
-		"@hexadrop/ioc": "^2"
+		"@hexadrop/ioc": "^1"
 	},
 	"peerDependenciesMeta": {
 		"@abraham/reflection": {
@@ -122,7 +122,7 @@
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
-		"@hexadrop/ioc": "2.0.0",
+		"@hexadrop/ioc": "1.0.0",
 		"diod": "2.0.0"
 	}
 }
