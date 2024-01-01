@@ -15,5 +15,7 @@ export default defineConfig([
 			'./src/in-memory.event-handlers.ts',
 			'./src/ioc.event-handlers.ts',
 		],
+		minify: true,
+		external: ['bun:test'],
 	},
 ]);
