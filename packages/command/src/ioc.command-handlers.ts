@@ -3,7 +3,7 @@ import type { Container } from '@hexadrop/ioc';
 import type { CommandBusCallback, CommandHandler, CommandHandlerClass } from './bus';
 import type { CommandClass } from './command';
 import Command from './command';
-import type { CommandHandlers } from './command-handlers';
+import CommandHandlers from './command-handlers';
 import { COMMAND_HANDLER_METADATA_KEY } from './decorator';
 import { CommandNotRegisteredError, InvalidCommandError } from './error';
 
@@ -11,12 +11,14 @@ import { CommandNotRegisteredError, InvalidCommandError } from './error';
  * IoCCommandHandlers class implements CommandHandlers interface.
  * It uses inversion of control to manage command handlers.
  */
-export default class IoCCommandHandlers implements CommandHandlers {
+export default class IoCCommandHandlers extends CommandHandlers {
 	/**
 	 * IoCCommandHandlers constructor.
 	 * @param {Container} container - The IoC container.
 	 */
-	constructor(private readonly container: Container) {}
+	constructor(private readonly container: Container) {
+		super();
+	}
 
 	/**
 	 * Searches for a command handler in the IoC container.

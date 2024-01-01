@@ -1,7 +1,7 @@
 import type { CommandBusCallback, CommandHandler } from './bus';
 import type { CommandClass } from './command';
 import Command from './command';
-import type { CommandHandlers } from './command-handlers';
+import CommandHandlers from './command-handlers';
 import { CommandNotRegisteredError, InvalidCommandError } from './error';
 
 /**
@@ -9,7 +9,7 @@ import { CommandNotRegisteredError, InvalidCommandError } from './error';
  * @implements CommandHandlers
  * @description Class representing in-memory command handlers.
  */
-export default class InMemoryCommandHandlers implements CommandHandlers {
+export default class InMemoryCommandHandlers extends CommandHandlers {
 	/**
 	 * @property {Map<string, CommandBusCallback>} commandHandlersMap - The map of command handlers.
 	 */
@@ -20,6 +20,7 @@ export default class InMemoryCommandHandlers implements CommandHandlers {
 	 * @description Constructs an instance of InMemoryCommandHandlers.
 	 */
 	constructor() {
+		super();
 		this.commandHandlersMap = new Map<string, CommandBusCallback>();
 	}
 
