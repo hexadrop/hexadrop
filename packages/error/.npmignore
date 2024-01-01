@@ -1,4 +1,2 @@
-.eslintignore
-tsconfig.json
-vite.config.ts
-vite.config.umd.ts
+src
+tsup.config.ts

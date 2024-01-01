@@ -3,15 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludePattern pattern=".*" />
-      <excludePattern pattern="LICENSE" />
-      <excludePattern pattern="tsconfig.*" />
-      <excludePattern pattern="vite.*" />
-      <excludePattern pattern="vitest.*" />
-      <excludePattern pattern="babel.*" />
-      <excludePattern pattern="*.lock" />
-      <excludePattern pattern="renovate.json" />
-      <excludePattern pattern="coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/.changeset" />
+      <excludeFolder url="file://$MODULE_DIR$/.github" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludePattern pattern="dist" />
     </content>
     <orderEntry type="inheritedJdk" />

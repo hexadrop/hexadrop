@@ -2,19 +2,54 @@
 	"extends": "@hexatool/tsconfig",
 	"compilerOptions": {
 		"baseUrl": ".",
+		// Enable latest features
+		"lib": ["dom", "ESNext"],
+		"module": "esnext",
+		"target": "esnext",
+
+		// If TS 5.x+
+		"moduleResolution": "bundler",
+		"moduleDetection": "force",
+
+		// React
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+
+		// JSON
+		"resolveJsonModule": true,
+
+		// Annotations
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+
+		"esModuleInterop": true,
+
 		"paths": {
-			"@hexadrop/*/test": [
-				"packages/*/src/test"
+			"@hexadrop/error/*": [
+				"packages/error/src/*"
 			],
-			"@hexadrop/*/memory": [
-				"packages/*/src/memory"
+			"@hexadrop/event/*": [
+				"packages/event/src/*"
 			],
-			"@hexadrop/*/react": [
-				"packages/*/src/react"
+			"@hexadrop/types/*": [
+				"packages/types/src/*"
+			],
+			"@hexadrop/either": [
+				"packages/either/src/either"
+			],
+			"@hexadrop/error": [
+				"packages/error/src/domain-error"
+			],
+			"@hexadrop/event": [
+				"packages/event/src/domain-event"
+			],
+			"@hexadrop/ioc": [
+				"packages/ioc/src/container"
 			],
 			"@hexadrop/*": [
 				"packages/*/src"
 			]
 		}
-	}
+	},
+	"exclude": ["dist", "node_modules"]
 }

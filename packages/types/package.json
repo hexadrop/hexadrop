@@ -21,24 +21,68 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-types.mjs",
-	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/hexadrop-types.mjs"
+		"./abstract": {
+			"import": {
+				"types": "./dist/abstract.d.ts",
+				"default": "./dist/abstract.js"
+			}
+		},
+		"./class": {
+			"import": {
+				"types": "./dist/class.d.ts",
+				"default": "./dist/class.js"
+			}
+		},
+		"./instance": {
+			"import": {
+				"types": "./dist/instance.d.ts",
+				"default": "./dist/instance.js"
+			}
+		},
+		"./newable": {
+			"import": {
+				"types": "./dist/newable.d.ts",
+				"default": "./dist/newable.js"
+			}
+		},
+		"./nullable": {
+			"import": {
+				"types": "./dist/nullable.d.ts",
+				"default": "./dist/nullable.js"
+			}
+		},
+		"./primitives": {
+			"import": {
+				"types": "./dist/primitives.d.ts",
+				"default": "./dist/primitives.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
-			".": [
-				"./dist/index.d.ts"
+			"./abstract": [
+				"./dist/abstract.d.ts"
+			],
+			"./class": [
+				"./dist/class.d.ts"
+			],
+			"./instance": [
+				"./dist/instance.d.ts"
+			],
+			"./newable": [
+				"./dist/newable.d.ts"
+			],
+			"./nullable": [
+				"./dist/nullable.d.ts"
+			],
+			"./primitives": [
+				"./dist/primitives.d.ts"
 			]
 		}
 	},
 	"scripts": {
-		"build": "vite build",
-		"prepare": "yarn build",
-		"typecheck": "tsc --noEmit"
+		"prepublishOnly": "tsup"
 	}
 }

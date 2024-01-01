@@ -1,0 +1,17 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@hexadrop/aggregate-root": "1.0.1",
+    "@hexadrop/command": "1.0.0",
+    "@hexadrop/either": "1.0.1",
+    "@hexadrop/error": "1.0.1",
+    "@hexadrop/event": "1.0.0",
+    "@hexadrop/ioc": "1.0.0",
+    "@hexadrop/ploc": "1.0.1",
+    "@hexadrop/query": "1.0.0",
+    "@hexadrop/types": "1.0.3",
+    "@hexadrop/value-object": "1.0.1"
+  },
+  "changesets": []
+}

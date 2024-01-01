@@ -1,38 +1,11 @@
 {
 	"extends": [
-		"@hexatool/eslint-config-typescript"
+		"@hexatool/eslint-config"
 	],
-	"overrides": [
-		{
-			"files": [
-				"**/spec/**/*.ts",
-				"**/spec/**/*.tsx"
-			],
-			"parserOptions": {
-				"project": [
-					"./tsconfig.json"
-				]
-			},
-			"rules": {
-				"@typescript-eslint/ban-ts-comment": "warn",
-				"import/no-unresolved": "off"
-			}
-		},
-		{
-			"files": [
-				"*.ts",
-				"*.tsx"
-			],
-			"parserOptions": {
-				"project": [
-					"./tsconfig.json"
-				]
-			},
-			"rules": {
-				"@typescript-eslint/unbound-method": "warn",
-				"import/no-unresolved": "off",
-				"no-use-before-define": "warn"
-			}
-		}
-	]
+	"rules": {
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-invalid-void-type": "off"
+	}
 }

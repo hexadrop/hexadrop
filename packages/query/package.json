@@ -1,0 +1,128 @@
+{
+	"name": "@hexadrop/query",
+	"version": "1.0.0",
+	"description": "Hexagonal architecture utils library",
+	"keywords": [
+		"hexadrop",
+		"DDD",
+		"Hexagonal",
+		"Architecture"
+	],
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/query.d.ts",
+				"default": "./dist/query.js"
+			}
+		},
+		"./bus": {
+			"import": {
+				"types": "./dist/bus.d.ts",
+				"default": "./dist/bus.js"
+			}
+		},
+		"./bus/mock/bun": {
+			"import": {
+				"types": "./dist/bus.mock-bun.d.ts",
+				"default": "./dist/bus.mock-bun.js"
+			}
+		},
+		"./bus/sync": {
+			"import": {
+				"types": "./dist/bus.sync.d.ts",
+				"default": "./dist/bus.sync.js"
+			}
+		},
+		"./decorator": {
+			"import": {
+				"types": "./dist/decorator.d.ts",
+				"default": "./dist/decorator.js"
+			}
+		},
+		"./handlers": {
+			"import": {
+				"types": "./dist/query-handlers.d.ts",
+				"default": "./dist/query-handlers.js"
+			}
+		},
+		"./handlers/memory": {
+			"import": {
+				"types": "./dist/in-memory.query-handlers.d.ts",
+				"default": "./dist/in-memory.query-handlers.js"
+			}
+		},
+		"./handlers/ioc": {
+			"import": {
+				"types": "./dist/ioc.query-handlers.d.ts",
+				"default": "./dist/ioc.query-handlers.js"
+			}
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/query.d.ts"
+			],
+			"./bus": [
+				"./dist/bus.d.ts"
+			],
+			"./bus/mock/bun": [
+				"./dist/bus.mock-bun.d.ts"
+			],
+			"./bus/sync": [
+				"./dist/bus.sync.d.ts"
+			],
+			"./decorator": [
+				"./dist/decorator.d.ts"
+			],
+			"./handlers": [
+				"./dist/query-handlers.d.ts"
+			],
+			"./handlers/memory": [
+				"./dist/in-memory.query-handlers.d.ts"
+			],
+			"./handlers/ioc": [
+				"./dist/ioc.query-handlers.d.ts"
+			]
+		}
+	},
+	"scripts": {
+		"prepublishOnly": "tsup"
+	},
+	"dependencies": {
+		"@hexadrop/either": "1.0.1",
+		"@hexadrop/error": "1.0.1",
+		"@hexadrop/types": "1.0.3"
+	},
+	"peerDependencies": {
+		"@abraham/reflection": "^0",
+		"@hexadrop/ioc": "^1"
+	},
+	"peerDependenciesMeta": {
+		"@abraham/reflection": {
+			"optional": true
+		},
+		"@hexadrop/ioc": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@abraham/reflection": "0.12.0",
+		"@hexadrop/ioc": "1.0.0",
+		"diod": "2.0.0"
+	}
+}

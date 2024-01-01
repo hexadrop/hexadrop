@@ -21,46 +21,42 @@
 		"dist"
 	],
 	"type": "module",
-	"module": "./dist/hexadrop-ploc.mjs",
-	"umd:main": "./dist/hexadrop-ploc.umd.min.js",
-	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"browser": "./dist/hexadrop-ploc.umd.min.js",
-			"default": "./dist/hexadrop-ploc.mjs"
+			"types": "./dist/ploc.d.ts",
+			"default": "./dist/ploc.js"
 		},
 		"./memory": {
-			"types": "./dist/memory.d.ts",
-			"browser": "./dist/hexadrop-ploc-memory.umd.min.js",
-			"default": "./dist/hexadrop-ploc-memory.mjs"
+			"types": "./dist/ploc.memory.d.ts",
+			"default": "./dist/ploc.memory.js"
 		},
 		"./react": {
-			"types": "./dist/react.d.ts",
-			"browser": "./dist/hexadrop-ploc-react.umd.min.js",
-			"default": "./dist/hexadrop-ploc-react.mjs"
+			"types": "./dist/ploc.react.d.ts",
+			"default": "./dist/ploc.react.js"
+		},
+		"./hook": {
+			"types": "./dist/ploc.memory-hook.d.ts",
+			"default": "./dist/ploc.memory-hook.js"
 		}
 	},
 	"typesVersions": {
 		"*": {
 			".": [
-				"./dist/index.d.ts"
+				"./dist/ploc.d.ts"
 			],
-			"memory": [
+			"./memory": [
 				"./dist/memory.d.ts"
 			],
-			"react": [
+			"./react": [
 				"./dist/react.d.ts"
+			],
+			"./hook": [
+				"./dist/ploc.memory-hook.d.ts"
 			]
 		}
 	},
 	"scripts": {
-		"build": "yarn build:esm && yarn build:umd && yarn build:umd:memory && yarn build:umd:react",
-		"build:esm": "vite build",
-		"build:umd": "vite build --config vite.config.umd.ts",
-		"build:umd:memory": "vite build --config vite.config.umd.memory.ts",
-		"build:umd:react": "vite build --config vite.config.umd.react.ts",
-		"prepare": "yarn build",
 		"typecheck": "tsc --noEmit"
 	},
 	"peerDependencies": {
