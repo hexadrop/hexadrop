@@ -41,7 +41,7 @@
 				"packages/error/src/domain-error"
 			],
 			"@hexadrop/event": [
-				"packages/event/src"
+				"packages/event/src/domain-event"
 			],
 			"@hexadrop/ioc": [
 				"packages/ioc/src/container"
