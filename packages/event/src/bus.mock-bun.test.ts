@@ -7,8 +7,8 @@ import MockEventBus from './bus.mock-bun';
 import type { DomainEventClass, DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 
-const handler1Spy = jest.fn((_event: DomainEvent) => Either.left<void, DomainError>(undefined));
-const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.left<void, DomainError>(undefined)));
+const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError, void>(undefined));
+const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.right<DomainError, void>(undefined)));
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
@@ -21,7 +21,7 @@ class Event1 extends DomainEvent {
 }
 
 class Event1Handler implements EventHandler<Event1> {
-	run(event: Event1): Either<void, DomainError> {
+	run(event: Event1): Either<DomainError, void> {
 		return handler1Spy(event);
 	}
 }
@@ -47,7 +47,7 @@ class Event4 extends DomainEvent {
 }
 
 class Event4Handler implements EventHandler<Event4> {
-	async run(event: Event4): Promise<Either<void, DomainError>> {
+	async run(event: Event4): Promise<Either<DomainError, void>> {
 		return handler4Spy(event);
 	}
 
