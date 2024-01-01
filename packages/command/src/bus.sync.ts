@@ -4,6 +4,7 @@ import DomainError from '@hexadrop/error';
 import CommandBus from './bus';
 import Command from './command';
 import type { CommandHandlers } from './command-handlers';
+import CommandHandlerError from './error/command-handler.error';
 
 /**
  * @class SyncCommandBus
@@ -34,7 +35,10 @@ export default class SyncCommandBus extends CommandBus {
 	 */
 	async dispatch<C extends Command>(command: C): Promise<Either<DomainError, void>> {
 		const callbacks = this.info.search(command);
-
-		return callbacks(command);
+		try {
+			return callbacks(command);
+		} catch (error) {
+			return Either.left(new CommandHandlerError(error as Error));
+		}
 	}
 }
