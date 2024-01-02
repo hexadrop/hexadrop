@@ -16,3 +16,4 @@ Publishing this package we are committing ourselves to the following code qualit
 - **Tests** as documentation and usage examples
 - **Well documented README** showing how to install and use
 - **License favoring Open Source** and collaboration
+
