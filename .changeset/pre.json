@@ -14,6 +14,7 @@
     "@hexadrop/value-object": "1.0.1"
   },
   "changesets": [
+    "lovely-apricots-hunt",
     "six-suits-look"
   ]
 }
