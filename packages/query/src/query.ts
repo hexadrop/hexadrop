@@ -26,7 +26,7 @@ type QueryResponse<ResponseType> = Class<any[], ResponseType>;
  * @property {string} queryId - Unique identifier for the Query
  * @property {string} queryName - Name of the Query
  */
-abstract class Query<ResponseType = unknown> {
+abstract class Query<_ResponseType = unknown> {
 	static QUERY_NAME: string;
 	readonly queryId: string;
 	readonly queryName: string;
@@ -44,13 +44,6 @@ abstract class Query<ResponseType = unknown> {
 		this.queryId = queryId ?? crypto.randomUUID();
 		this.queryName = queryName;
 	}
-
-	/**
-	 * Abstract getter for the response of the Query
-	 * @abstract
-	 * @type {QueryResponse<ResponseType>}
-	 */
-	abstract get response(): QueryResponse<ResponseType>;
 }
 
 /**

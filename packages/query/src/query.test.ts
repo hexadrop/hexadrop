@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import type { QueryParams, QueryResponse } from './query';
+import type { QueryParams } from './query';
 import Query from './query';
 
 class Query1Response {
@@ -13,10 +13,6 @@ class MockQuery1 extends Query<Query1Response> {
 	constructor({ foo, ...params }: QueryParams<Query1Response, MockQuery1>) {
 		super(MockQuery1.QUERY_NAME, params);
 		this.foo = foo;
-	}
-
-	override get response(): QueryResponse<Query1Response> {
-		return Query1Response;
 	}
 }
 
