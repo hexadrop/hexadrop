@@ -36,15 +36,13 @@ the properties that will be passed to the command handler.
 // src/commands/create-user.command.ts
 class CreateUserCommand extends Command {
   static override COMMAND_NAME = 'user.create';
-  readonly id: string;
-  readonly name: string;
-  readonly age: number;
 
-  constructor({ id, name, age, ...params }: CommandParams<CreateUserCommand>) {
-    super(CreateUserCommand.COMMAND_NAME, params);
-    this.id = id;
-    this.name = name;
-    this.age = age;
+  constructor(
+    readonly id: string,
+    readonly name: string,
+    readonly age: number
+  ) {
+    super(CreateUserCommand.COMMAND_NAME);
   }
 }
 ```
@@ -53,11 +51,11 @@ class CreateUserCommand extends Command {
 // src/commands/delete-user.command.ts
 class DeleteUserCommand extends Command {
   static override COMMAND_NAME = 'user.delete';
-  readonly id: string;
 
-  constructor({ id, ...params }: CommandParams<DeleteUserCommand>) {
-    super(DeleteUserCommand.COMMAND_NAME, params);
-    this.id = id;
+  constructor(
+    readonly id: string
+  ) {
+    super(CreateUserCommand.COMMAND_NAME);
   }
 }
 ```
@@ -119,8 +117,8 @@ handlers.register(DeleteUserCommand, deleteUserHandler);
 
 const commandBus: CommandBus = new SyncCommandBus(handlers);'
 
-commandBus.dispatch(new CreateUserCommand({ id: '1', name: 'John', age: 30 }));
-commandBus.dispatch(new DeleteUserCommand({ id: '1' }));
+commandBus.dispatch(new CreateUserCommand('1', 'John' 30));
+commandBus.dispatch(new DeleteUserCommand('1'));
 ```
 
 ## Hexatool Code Quality Standards

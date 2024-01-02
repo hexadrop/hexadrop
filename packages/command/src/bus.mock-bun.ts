@@ -12,21 +12,24 @@ import type Command from './command';
  */
 export default class MockBunCommandBus implements CommandBus {
 	/**
-	 * @property {jest.Mock} dispatchSpy - A mock function for the dispatch method.
+	 * @property {Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
 	readonly dispatchSpy = jest.fn((..._commands: Command[]) =>
 		Promise.resolve(Either.right<DomainError, void>(undefined))
 	);
 
 	/**
-	 * @private
-	 * @static
-	 * @method getDataFromCommand
-	 * @description Method to extract data from a command.
-	 * @param {Command} command - The command to extract data from.
-	 * @returns {Object} - The extracted data.
+	 * This is a private static method that extracts data from a command.
+	 * It omits the 'commandId' property from the command object and returns the remaining properties.
+	 * If no command is provided, it returns an empty object.
+	 *
+	 * @template CommandType - A type that extends the Command interface.
+	 * @param {CommandType} command - The command object from which to extract data. This is optional.
+	 * @returns {Omit<CommandType, 'commandId'> | {}} - An object that contains the properties of the command object, excluding 'commandId'. If no command is provided, an empty object is returned.
 	 */
-	private static getDataFromCommand(command?: Command): object {
+	private static getDataFromCommand<CommandType extends Command>(
+		command?: CommandType
+	): Omit<CommandType, 'commandId'> | {} {
 		if (!command) {
 			return {};
 		}

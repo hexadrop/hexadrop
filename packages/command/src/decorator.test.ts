@@ -13,10 +13,8 @@ const handler1Spy = jest.fn(() => Either.right<DomainError, void>(undefined));
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';
 
-	constructor() {
-		super(Command1.COMMAND_NAME, {
-			commandId: 'id',
-		});
+	constructor(readonly foo: string) {
+		super(Command1.COMMAND_NAME, 'id');
 	}
 }
 

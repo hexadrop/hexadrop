@@ -1,13 +1,4 @@
 import type { Class } from '@hexadrop/types/class';
-import type { Nullable } from '@hexadrop/types/nullable';
-import type { Primitives } from '@hexadrop/types/primitives';
-
-/**
- * @property {Nullable<string>} commandId - The ID of the command.
- */
-interface CommandConstructorParams {
-	commandId?: Nullable<string>;
-}
 
 /**
  * @abstract
@@ -32,36 +23,24 @@ abstract class Command {
 	readonly commandName: string;
 
 	/**
-	 * Constructs a new instance of the Command class.
+	 * Constructs a new Command instance.
 	 *
-	 * @param commandName - The name of the command.
-	 * @param params - An optional object containing additional parameters for the command.
-	 * @property commandId - The ID of the command. If not provided in the params, a random UUID will be generated.
-	 * @property commandName - The name of the command, as provided in the commandName parameter.
+	 * @protected
+	 * @param {string} commandName - The name of the command instance.
+	 * @param {string} [commandId] - The unique identifier of the command instance. If not provided, a random UUID will be generated.
 	 */
-	protected constructor(commandName: string, params?: CommandConstructorParams) {
-		const { commandId } = params ?? {};
-		this.commandId = commandId ?? crypto.randomUUID();
+	protected constructor(commandName: string, commandId?: string) {
 		this.commandName = commandName;
+		this.commandId = commandId ?? crypto.randomUUID();
 	}
 }
-
-/**
- * @type {Omit<Primitives<D>, 'commandId' | 'commandName'> & Partial<Pick<D, 'commandId'>>}
- * @template D - The type of the command.
- */
-type CommandParams<D extends Command> = Omit<Primitives<D>, 'commandId' | 'commandName'> &
-	Partial<Pick<D, 'commandId'>>;
 
 /**
  * @type {Class<CtorArgs, DomainInstanceType, { COMMAND_NAME: string; }>}
  * @template DomainInstanceType - The type of the command.
  * @template CtorArgs - The constructor arguments.
  */
-type CommandClass<
-	DomainInstanceType extends Command = Command,
-	CtorArgs extends any[] = [CommandParams<DomainInstanceType>],
-> = Class<
+type CommandClass<DomainInstanceType extends Command = Command, CtorArgs extends any[] = any[]> = Class<
 	CtorArgs,
 	DomainInstanceType,
 	{
@@ -69,6 +48,6 @@ type CommandClass<
 	}
 >;
 
-export type { CommandClass, CommandParams };
+export type { CommandClass };
 
 export default Command;

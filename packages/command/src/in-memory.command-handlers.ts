@@ -27,13 +27,13 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	/**
 	 * @method register
 	 * @description Method to register a command handler.
-	 * @param {CommandClass<C>} command - The command class.
-	 * @param {CommandBusCallback<C> | CommandHandler<C>} handlerOrCallback - The command bus callback or command handler.
-	 * @template C - The type of the command.
+	 * @param {CommandClass<CommandType>} command - The command class.
+	 * @param {CommandBusCallback<CommandType> | CommandHandler<CommandType>} handlerOrCallback - The command bus callback or command handler.
+	 * @template CommandType - The type of the command.
 	 */
-	register<C extends Command>(
-		command: CommandClass<C>,
-		handlerOrCallback: CommandBusCallback<C> | CommandHandler<C>
+	register<CommandType extends Command>(
+		command: CommandClass<CommandType>,
+		handlerOrCallback: CommandBusCallback<CommandType> | CommandHandler<CommandType>
 	): void {
 		if ('run' in handlerOrCallback) {
 			this.commandHandlersMap.set(
@@ -48,14 +48,16 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	/**
 	 * @method search
 	 * @description Method to search for a command handler.
-	 * @param {C | CommandClass<C>} command - The command or command class to search for.
-	 * @returns {CommandBusCallback<C>} - The command bus callback for the command.
+	 * @param {CommandType | CommandClass<CommandType>} command - The command or command class to search for.
+	 * @returns {CommandBusCallback<CommandType>} - The command bus callback for the command.
 	 * @throws {InvalidCommandError} - Throws an error if the command is invalid.
 	 * @throws {CommandNotRegisteredError} - Throws an error if the command is not registered.
-	 * @template C - The type of the command.
+	 * @template CommandType - The type of the command.
 	 */
-	search<C extends Command>(command: C | CommandClass<C>): CommandBusCallback<C> {
-		let handler: CommandBusCallback<C> | undefined = undefined;
+	search<CommandType extends Command>(
+		command: CommandType | CommandClass<CommandType>
+	): CommandBusCallback<CommandType> {
+		let handler: CommandBusCallback<CommandType> | undefined = undefined;
 		let commandName: string | undefined = undefined;
 		if ('COMMAND_NAME' in command) {
 			commandName = command.COMMAND_NAME;
@@ -79,10 +81,10 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	/**
 	 * @method unregister
 	 * @description Method to unregister a command handler.
-	 * @param {CommandClass<C>} command - The command class to unregister.
-	 * @template C - The type of the command.
+	 * @param {CommandClass<CommandType>} command - The command class to unregister.
+	 * @template CommandType - The type of the command.
 	 */
-	unregister<C extends Command>(command: CommandClass<C>): void {
+	unregister<CommandType extends Command>(command: CommandClass<CommandType>): void {
 		this.commandHandlersMap.delete(command.COMMAND_NAME);
 	}
 }

@@ -23,9 +23,7 @@ class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';
 
 	constructor() {
-		super(Command1.COMMAND_NAME, {
-			commandId: 'id',
-		});
+		super(Command1.COMMAND_NAME, 'id');
 	}
 }
 
@@ -44,7 +42,7 @@ class Command2 extends Command {
 	static override COMMAND_NAME = 'Command2';
 
 	constructor() {
-		super(Command2.COMMAND_NAME, { commandId: 'id' });
+		super(Command2.COMMAND_NAME, 'id');
 	}
 }
 
