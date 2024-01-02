@@ -35,12 +35,12 @@ import type { Primitives } from '@hexadrop/types/primitives';
 
 class MockEvent extends DomainEvent {
 	static override EVENT_NAME = 'event';
-	
-	readonly foo: string;
 
-	constructor({ foo, ...params }: DomainEventParams<MockEvent>) {
-		super(MockEvent.EVENT_NAME, params);
-		this.foo = foo;
+	constructor(
+		readonly foo: string,
+		aggregateId: string
+	) {
+		super(MockEvent.EVENT_NAME, aggregateId);
 	}
 }
 
@@ -55,7 +55,7 @@ class MockAggregateRoot extends AggregateRoot {
 
     static create(foo: string): MockAggregateRoot {
         const aggregateRoot = new MockAggregateRoot({ foo });
-        aggregateRoot.record(new MockEvent({ foo }));
+        aggregateRoot.record(new MockEvent(foo, 'aggregateId'));
         
         return aggregateRoot;
     }
