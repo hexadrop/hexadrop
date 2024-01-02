@@ -32,11 +32,15 @@ abstract class Query<ResponseType = unknown> {
 	readonly queryName: string;
 
 	/**
-	 * Constructor for the Query class
-	 * @param {string} queryName - The name of the Query
-	 * @param {QueryConstructorParams} params - The parameters for the Query constructor
+	 * Constructs a new instance of the Query class.
+	 *
+	 * @param queryName - The name of the query.
+	 * @param params - An optional object containing additional parameters for the query.
+	 * @property queryId - The ID of the query. If not provided in the params, a random UUID will be generated.
+	 * @property queryName - The name of the query, as provided in the queryName parameter.
 	 */
-	protected constructor(queryName: string, { queryId }: QueryConstructorParams) {
+	protected constructor(queryName: string, params?: QueryConstructorParams) {
+		const { queryId } = params ?? {};
 		this.queryId = queryId ?? crypto.randomUUID();
 		this.queryName = queryName;
 	}
@@ -71,7 +75,7 @@ type QueryParams<ResponseType, QueryType extends Query<ResponseType>> = Omit<
 type QueryClass<
 	ResponseType,
 	DomainInstanceType extends Query<ResponseType> = Query<ResponseType>,
-	CtorArgs extends any[] = [QueryParams<ResponseType, DomainInstanceType>],
+	CtorArgs extends any[] = [QueryParams<ResponseType, DomainInstanceType>?],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,
