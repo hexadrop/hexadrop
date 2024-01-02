@@ -60,7 +60,7 @@ type CommandParams<D extends Command> = Omit<Primitives<D>, 'commandId' | 'comma
  */
 type CommandClass<
 	DomainInstanceType extends Command = Command,
-	CtorArgs extends any[] = [CommandParams<DomainInstanceType>?],
+	CtorArgs extends any[] = [CommandParams<DomainInstanceType>],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,

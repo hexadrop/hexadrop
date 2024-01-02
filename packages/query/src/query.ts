@@ -75,7 +75,7 @@ type QueryParams<ResponseType, QueryType extends Query<ResponseType>> = Omit<
 type QueryClass<
 	ResponseType,
 	DomainInstanceType extends Query<ResponseType> = Query<ResponseType>,
-	CtorArgs extends any[] = [QueryParams<ResponseType, DomainInstanceType>?],
+	CtorArgs extends any[] = [QueryParams<ResponseType, DomainInstanceType>],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,
