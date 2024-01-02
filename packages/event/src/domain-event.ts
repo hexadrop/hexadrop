@@ -34,17 +34,22 @@ abstract class DomainEvent {
 	readonly eventName: string;
 	readonly occurredOn: Date;
 	readonly relatedId: Nullable<string>;
-
 	/**
-	 * Constructor for DomainEvent
-	 * @constructor
-	 * @param {string} eventName - The event name
-	 * @param {DomainEventConstructorParams} params - The constructor parameters
+	 * Constructs a new instance of the DomainEvent class.
+	 *
+	 * @param eventName - The name of the event.
+	 * @param paramsOrAggregateId - Either an object of type DomainEventConstructorParams or a string representing the aggregateId.
+	 * @property aggregateId - The ID of the aggregate. If paramsOrAggregateId is a string, it is used as the aggregateId.
+	 * @property eventId - The ID of the event. If not provided in the params, a random UUID will be generated.
+	 * @property occurredOn - The date the event occurred on. If not provided in the params, the current date and time will be used.
+	 * @property eventName - The name of the event, as provided in the eventName parameter.
+	 * @property relatedId - The related ID. Optional parameter.
 	 */
-	protected constructor(
-		eventName: string,
-		{ aggregateId, eventId, occurredOn, relatedId }: DomainEventConstructorParams
-	) {
+	protected constructor(eventName: string, paramsOrAggregateId: DomainEventConstructorParams | string) {
+		const { aggregateId, eventId, occurredOn, relatedId } =
+			typeof paramsOrAggregateId === 'string'
+				? ({ aggregateId: paramsOrAggregateId } as DomainEventConstructorParams)
+				: paramsOrAggregateId;
 		this.aggregateId = aggregateId;
 		this.eventId = eventId ?? crypto.randomUUID();
 		this.occurredOn = occurredOn ?? new Date();
@@ -62,7 +67,7 @@ type DomainEventParams<D extends DomainEvent> = Omit<
 
 type DomainEventClass<
 	DomainInstanceType extends DomainEvent = DomainEvent,
-	CtorArgs extends any[] = [DomainEventParams<DomainInstanceType>],
+	CtorArgs extends any[] = [DomainEventParams<DomainInstanceType> | string],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,
