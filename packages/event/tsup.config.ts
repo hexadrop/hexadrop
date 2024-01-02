@@ -6,7 +6,7 @@ export default defineConfig([
 		dts: true,
 		clean: true,
 		entry: [
-			'./src/event.ts',
+			'./src/domain-event.ts',
 			'./src/bus.mock-bun.ts',
 			'./src/bus.sync.ts',
 			'./src/bus.ts',

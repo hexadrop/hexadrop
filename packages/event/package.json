@@ -25,8 +25,8 @@
 	"exports": {
 		".": {
 			"import": {
-				"types": "./dist/event.d.ts",
-				"default": "./dist/event.js"
+				"types": "./dist/domain-event.d.ts",
+				"default": "./dist/domain-event.js"
 			}
 		},
 		"./bus": {
@@ -75,7 +75,7 @@
 	"typesVersions": {
 		"*": {
 			"*": [
-				"./dist/event.d.ts"
+				"./dist/domain-event.d.ts"
 			],
 			"./bus": [
 				"./dist/bus.d.ts"
