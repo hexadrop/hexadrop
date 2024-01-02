@@ -4,7 +4,7 @@ import { describe, expect, jest, test } from 'bun:test';
 
 import type { EventHandler } from './bus';
 import BunMockEventBus from './bus.mock-bun';
-import type { DomainEventClass, DomainEventParams } from './domain-event';
+import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
 const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError, void>(undefined));
@@ -12,11 +12,20 @@ const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.righ
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
-	readonly foo: string;
 
-	constructor({ aggregateId, eventId, occurredOn, relatedId, foo }: DomainEventParams<Event1>) {
-		super(Event1.EVENT_NAME, { aggregateId, eventId, occurredOn, relatedId });
-		this.foo = foo;
+	constructor(
+		readonly foo: string,
+		aggregateId: string,
+		occurredOn?: Date,
+		eventId?: string,
+		relatedId?: string
+	) {
+		super(Event1.EVENT_NAME, {
+			aggregateId,
+			occurredOn,
+			eventId,
+			relatedId,
+		});
 	}
 }
 
@@ -28,21 +37,39 @@ class Event1Handler implements EventHandler<Event1> {
 
 class Event2 extends DomainEvent {
 	static override EVENT_NAME = 'Event2';
-	readonly bar: string;
 
-	constructor({ aggregateId, eventId, occurredOn, relatedId, bar }: DomainEventParams<Event2>) {
-		super(Event2.EVENT_NAME, { aggregateId, eventId, occurredOn, relatedId });
-		this.bar = bar;
+	constructor(
+		readonly bar: string,
+		aggregateId: string,
+		occurredOn?: Date,
+		eventId?: string,
+		relatedId?: string
+	) {
+		super(Event2.EVENT_NAME, {
+			aggregateId,
+			occurredOn,
+			eventId,
+			relatedId,
+		});
 	}
 }
 
 class Event4 extends DomainEvent {
 	static override EVENT_NAME = 'Event4';
-	readonly buzz: string;
 
-	constructor({ aggregateId, eventId, occurredOn, relatedId, buzz }: DomainEventParams<Event4>) {
-		super(Event4.EVENT_NAME, { aggregateId, eventId, occurredOn, relatedId });
-		this.buzz = buzz;
+	constructor(
+		readonly buzz: string,
+		aggregateId: string,
+		occurredOn?: Date,
+		eventId?: string,
+		relatedId?: string
+	) {
+		super(Event4.EVENT_NAME, {
+			aggregateId,
+			occurredOn,
+			eventId,
+			relatedId,
+		});
 	}
 }
 
@@ -127,12 +154,7 @@ describe('MockEventBus', () => {
 	});
 	test('should assertNotPublishEvent works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1({
-			eventId: 'eventId',
-			aggregateId: 'id',
-			foo: 'foo',
-			occurredOn: date,
-		});
+		const event1 = new Event1('foo', 'id', date, 'eventId');
 		const bus = new BunMockEventBus();
 
 		expect(() => bus.assertNotPublishEvent()).not.toThrow();
@@ -143,22 +165,9 @@ describe('MockEventBus', () => {
 	});
 	test('should assertLastPublishedEvents works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1({
-			eventId: 'eventId',
-			aggregateId: 'id',
-			foo: 'foo',
-			occurredOn: date,
-		});
-		const event2 = new Event2({
-			eventId: 'eventId',
-			aggregateId: 'id2',
-			bar: 'bar',
-		});
-		const event4 = new Event4({
-			eventId: 'eventId',
-			aggregateId: 'id3',
-			buzz: 'buzz',
-		});
+		const event1 = new Event1('foo', 'id', date, 'eventId');
+		const event2 = new Event2('bar', 'id2', undefined, 'eventId');
+		const event4 = new Event4('buzz', 'id3', undefined, 'eventId');
 		const bus = new BunMockEventBus();
 
 		await bus.publish(event1);
@@ -170,27 +179,10 @@ describe('MockEventBus', () => {
 	});
 	test('should assertPublishedEvents works as expected', async () => {
 		const date = new Date();
-		const event1 = new Event1({
-			eventId: 'eventId',
-			aggregateId: 'id',
-			foo: 'foo',
-			occurredOn: date,
-		});
-		const event2 = new Event2({
-			eventId: 'eventId',
-			aggregateId: 'id2',
-			bar: 'bar',
-		});
-		const event4 = new Event4({
-			eventId: 'eventId',
-			aggregateId: 'id3',
-			buzz: 'buzz',
-		});
-		const event44 = new Event4({
-			eventId: 'eventId',
-			aggregateId: 'id3',
-			buzz: 'buzz',
-		});
+		const event1 = new Event1('foo', 'id', date, 'eventId');
+		const event2 = new Event2('bar', 'id2', undefined, 'eventId');
+		const event4 = new Event4('buzz', 'id3', undefined, 'eventId');
+		const event44 = new Event4('buzz', 'id3', undefined, 'eventId');
 		const bus = new BunMockEventBus();
 
 		await bus.publish(event1);

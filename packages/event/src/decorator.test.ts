@@ -6,7 +6,6 @@ import { describe, expect, jest, test } from 'bun:test';
 
 import type { EventHandler } from './bus';
 import Decorator from './decorator';
-import type { DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 
 const handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>(undefined));
@@ -14,8 +13,8 @@ const handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>(
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
 
-	constructor({ eventId, occurredOn, relatedId, aggregateId }: DomainEventParams<Event1>) {
-		super(Event1.EVENT_NAME, { eventId, aggregateId, occurredOn, relatedId });
+	constructor(aggregateId: string) {
+		super(Event1.EVENT_NAME, aggregateId);
 	}
 }
 

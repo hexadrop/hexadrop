@@ -5,7 +5,6 @@ import { beforeEach, describe, expect, jest, test } from 'bun:test';
 import type { EventHandler } from './bus';
 import EventBus from './bus';
 import SyncEventBus from './bus.sync';
-import type { DomainEventParams } from './domain-event';
 import DomainEvent from './domain-event';
 import { EventHandlerError } from './error';
 import InMemoryEventHandlers from './in-memory.event-handlers';
@@ -26,8 +25,8 @@ const event1Handler4Spy = jest.fn((_: DomainEvent) => {
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
 
-	constructor({ eventId, occurredOn, relatedId, aggregateId }: DomainEventParams<Event1>) {
-		super(Event1.EVENT_NAME, { eventId, aggregateId, occurredOn, relatedId });
+	constructor(aggregateId: string) {
+		super(Event1.EVENT_NAME, aggregateId);
 	}
 }
 
@@ -50,7 +49,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, new Event1Handler());
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler1Spy).toHaveBeenCalledTimes(1);
 			expect(either.isRight()).toBe(true);
@@ -60,7 +59,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, event1Handler2Spy);
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler2Spy).toHaveBeenCalledTimes(1);
 			expect(either.isRight()).toBe(true);
@@ -71,7 +70,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, event1Handler2Spy);
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler1Spy).toHaveBeenCalledTimes(1);
 			expect(event1Handler2Spy).toHaveBeenCalledTimes(1);
@@ -82,7 +81,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, event1Handler3Spy);
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler3Spy).toHaveBeenCalledTimes(1);
 			expect(either.isLeft()).toBe(true);
@@ -94,7 +93,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, event1Handler3Spy);
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler2Spy).toHaveBeenCalledTimes(1);
 			expect(event1Handler3Spy).toHaveBeenCalledTimes(1);
@@ -106,7 +105,7 @@ describe('SyncEventBus', () => {
 			info.register(Event1, event1Handler4Spy);
 			bus = new SyncEventBus(info);
 
-			const either = await bus.publish(new Event1({ aggregateId: '1' }));
+			const either = await bus.publish(new Event1('1'));
 
 			expect(event1Handler4Spy).toHaveBeenCalledTimes(1);
 			expect(either.isLeft()).toBe(true);

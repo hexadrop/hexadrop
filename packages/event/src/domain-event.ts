@@ -1,6 +1,5 @@
 import type { Class } from '@hexadrop/types/class';
 import type { Nullable } from '@hexadrop/types/nullable';
-import type { Primitives } from '@hexadrop/types/primitives';
 
 /**
  * Interface for the constructor parameters of DomainEvent
@@ -58,17 +57,7 @@ abstract class DomainEvent {
 	}
 }
 
-type DomainEventParams<D extends DomainEvent> = Omit<
-	Primitives<D>,
-	'aggregateId' | 'eventId' | 'eventName' | 'occurredOn' | 'relatedId'
-> &
-	Partial<Pick<D, 'occurredOn' | 'relatedId' | 'eventId'>> &
-	Pick<D, 'aggregateId'>;
-
-type DomainEventClassWithParams<
-	DomainInstanceType extends DomainEvent = DomainEvent,
-	CtorArgs extends any[] = [DomainEventParams<DomainInstanceType>],
-> = Class<
+type DomainEventClass<DomainInstanceType extends DomainEvent = DomainEvent, CtorArgs extends any[] = any[]> = Class<
 	CtorArgs,
 	DomainInstanceType,
 	{
@@ -76,21 +65,6 @@ type DomainEventClassWithParams<
 	}
 >;
 
-type DomainEventClassWithAggregateId<
-	DomainInstanceType extends DomainEvent = DomainEvent,
-	CtorArgs extends any[] = [string],
-> = Class<
-	CtorArgs,
-	DomainInstanceType,
-	{
-		EVENT_NAME: string;
-	}
->;
-
-type DomainEventClass<DomainInstanceType extends DomainEvent = DomainEvent> =
-	| DomainEventClassWithAggregateId<DomainInstanceType>
-	| DomainEventClassWithParams<DomainInstanceType>;
-
-export type { DomainEventClass, DomainEventParams };
+export type { DomainEventClass };
 
 export default DomainEvent;
