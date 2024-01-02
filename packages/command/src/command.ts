@@ -32,11 +32,15 @@ abstract class Command {
 	readonly commandName: string;
 
 	/**
-	 * @constructor
-	 * @param {string} commandName - The name of the command.
-	 * @param {CommandConstructorParams} commandId - The ID of the command.
+	 * Constructs a new instance of the Command class.
+	 *
+	 * @param commandName - The name of the command.
+	 * @param params - An optional object containing additional parameters for the command.
+	 * @property commandId - The ID of the command. If not provided in the params, a random UUID will be generated.
+	 * @property commandName - The name of the command, as provided in the commandName parameter.
 	 */
-	protected constructor(commandName: string, { commandId }: CommandConstructorParams) {
+	protected constructor(commandName: string, params?: CommandConstructorParams) {
+		const { commandId } = params ?? {};
 		this.commandId = commandId ?? crypto.randomUUID();
 		this.commandName = commandName;
 	}
@@ -56,7 +60,7 @@ type CommandParams<D extends Command> = Omit<Primitives<D>, 'commandId' | 'comma
  */
 type CommandClass<
 	DomainInstanceType extends Command = Command,
-	CtorArgs extends any[] = [CommandParams<DomainInstanceType>],
+	CtorArgs extends any[] = [CommandParams<DomainInstanceType>?],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,
