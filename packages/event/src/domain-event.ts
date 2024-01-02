@@ -65,9 +65,9 @@ type DomainEventParams<D extends DomainEvent> = Omit<
 	Partial<Pick<D, 'occurredOn' | 'relatedId' | 'eventId'>> &
 	Pick<D, 'aggregateId'>;
 
-type DomainEventClass<
+type DomainEventClassWithParams<
 	DomainInstanceType extends DomainEvent = DomainEvent,
-	CtorArgs extends any[] = [DomainEventParams<DomainInstanceType> | string],
+	CtorArgs extends any[] = [DomainEventParams<DomainInstanceType>],
 > = Class<
 	CtorArgs,
 	DomainInstanceType,
@@ -75,6 +75,21 @@ type DomainEventClass<
 		EVENT_NAME: string;
 	}
 >;
+
+type DomainEventClassWithAggregateId<
+	DomainInstanceType extends DomainEvent = DomainEvent,
+	CtorArgs extends any[] = [string],
+> = Class<
+	CtorArgs,
+	DomainInstanceType,
+	{
+		EVENT_NAME: string;
+	}
+>;
+
+type DomainEventClass<DomainInstanceType extends DomainEvent = DomainEvent> =
+	| DomainEventClassWithAggregateId<DomainInstanceType>
+	| DomainEventClassWithParams<DomainInstanceType>;
 
 export type { DomainEventClass, DomainEventParams };
 
