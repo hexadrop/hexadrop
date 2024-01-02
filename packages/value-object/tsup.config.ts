@@ -12,6 +12,6 @@ export default defineConfig([
 			'./src/string.value-object.ts',
 			'./src/uuii.value-object.ts',
 		],
-		tsconfig: '../../tsconfig.json',
+		minify: true,
 	},
 ]);
