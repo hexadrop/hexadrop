@@ -3,9 +3,9 @@ import DomainError from '@hexadrop/error';
 import { beforeEach, describe, expect, jest, test } from 'bun:test';
 
 import type { QueryHandler } from './bus';
+import QueryBus from './bus';
 import SyncQueryBus from './bus.sync';
 import InMemoryQueryHandlers from './in-memory.query-handlers';
-import type { QueryResponse } from './query';
 import Query from './query';
 
 class CustomError extends DomainError {
@@ -29,10 +29,10 @@ class Query1 extends Query<Query1Response> {
 	static override QUERY_NAME = 'Query1';
 
 	constructor() {
-		super(Query1.QUERY_NAME, { queryId: 'id' });
+		super(Query1.QUERY_NAME, 'id');
 	}
 
-	get response(): QueryResponse<Query1Response> {
+	override get response(): typeof Query1Response {
 		return Query1Response;
 	}
 }
@@ -47,10 +47,10 @@ class Query2 extends Query<Query2Response> {
 	static override QUERY_NAME = 'Query2';
 
 	constructor() {
-		super(Query2.QUERY_NAME, { queryId: 'id' });
+		super(Query2.QUERY_NAME, 'id');
 	}
 
-	get response(): QueryResponse<Query2Response> {
+	override get response(): typeof Query2Response {
 		return Query2Response;
 	}
 }
@@ -62,12 +62,12 @@ class Query2Handler implements QueryHandler<Query2Response, Query2> {
 }
 
 describe('SyncQueryBus', () => {
-	let query1: Query;
-	let query2: Query;
+	let query1: Query1;
+	let query2: Query2;
 	let handler1: QueryHandler<Query1Response, Query1>;
 	let handler2: QueryHandler<Query2Response, Query2>;
 	let info: InMemoryQueryHandlers;
-	let bus: SyncQueryBus;
+	let bus: QueryBus;
 
 	beforeEach(() => {
 		query1 = new Query1();

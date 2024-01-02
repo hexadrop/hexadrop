@@ -1,6 +1,7 @@
 import type { QueryBusCallback } from './bus';
 import type { QueryClass } from './query';
 import Query from './query';
+
 /**
  * This is an abstract class named QueryHandlers.
  * It provides a structure for handling queries in the application.

@@ -6,7 +6,6 @@ import { describe, expect, jest, test } from 'bun:test';
 
 import type { QueryHandler } from './bus';
 import Decorator from './decorator';
-import type { QueryResponse } from './query';
 import Query from './query';
 
 class Query1Response {
@@ -16,11 +15,11 @@ class Query1Response {
 class Query1 extends Query<Query1Response> {
 	static override QUERY_NAME = 'Query1';
 
-	constructor() {
-		super(Query1.QUERY_NAME, { queryId: 'id' });
+	constructor(readonly foo: string) {
+		super(Query1.QUERY_NAME, 'id');
 	}
 
-	get response(): QueryResponse<Query1Response> {
+	override get response(): typeof Query1Response {
 		return Query1Response;
 	}
 }
