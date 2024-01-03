@@ -32,7 +32,7 @@
 		"./date": {
 			"import": {
 				"types": "./dist/date.value-object.d.ts",
-				"default": "./distdate.value-objectobject.js"
+				"default": "./dist/date.value-objectobject.js"
 			}
 		},
 		"./number": {
@@ -50,7 +50,7 @@
 		"./uuii": {
 			"import": {
 				"types": "./dist/uuii.value-object.d.ts",
-				"default": "./distuuii.value-object.js"
+				"default": "./dist/uuii.value-object.js"
 			}
 		}
 	},
