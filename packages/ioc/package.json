@@ -29,12 +29,21 @@
 				"types": "./dist/container.d.ts",
 				"default": "./dist/container.js"
 			}
+		},
+		"./decorator/service": {
+			"import": {
+				"types": "./dist/service.decorator.d.ts",
+				"default": "./dist/service.decorator.js"
+			}
 		}
 	},
 	"typesVersions": {
 		"*": {
 			"*": [
 				"./dist/container.d.ts"
+			],
+			"./decorator/service": [
+				"./dist/service.decorator.d.ts"
 			]
 		}
 	},
