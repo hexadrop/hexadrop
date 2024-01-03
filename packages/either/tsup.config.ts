@@ -7,5 +7,6 @@ export default defineConfig([
 		clean: true,
 		entry: ['./src/either.ts'],
 		minify: true,
+		sourcemap: true,
 	},
 ]);

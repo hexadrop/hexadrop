@@ -7,5 +7,6 @@ export default defineConfig([
 		clean: true,
 		entry: ['./src/domain-error.ts', './src/invalid-argument.ts', './src/not-found.ts'],
 		minify: true,
+		sourcemap: true,
 	},
 ]);

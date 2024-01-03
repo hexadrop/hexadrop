@@ -14,5 +14,6 @@ export default defineConfig([
 			'./src/primitives.ts',
 		],
 		minify: true,
+		sourcemap: true,
 	},
 ]);

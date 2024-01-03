@@ -13,5 +13,6 @@ export default defineConfig([
 			'./src/uuii.value-object.ts',
 		],
 		minify: true,
+		sourcemap: true,
 	},
 ]);

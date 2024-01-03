@@ -7,5 +7,6 @@ export default defineConfig([
 		clean: true,
 		entry: ['./src/container.ts'],
 		minify: true,
+		sourcemap: true,
 	},
 ]);
