@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/value-object",
-	"version": "2.0.0-beta.4",
+	"version": "2.0.0-beta.5",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -78,6 +78,6 @@
 		"prepublishOnly": "tsup"
 	},
 	"dependencies": {
-		"@hexadrop/error": "2.0.0-beta.1"
+		"@hexadrop/error": "2.0.0-beta.2"
 	}
 }

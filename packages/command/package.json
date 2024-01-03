@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/command",
-	"version": "2.0.0-beta.5",
+	"version": "2.0.0-beta.6",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -105,12 +105,12 @@
 		"prepublishOnly": "tsup"
 	},
 	"dependencies": {
-		"@hexadrop/either": "2.0.0-beta.1",
-		"@hexadrop/error": "2.0.0-beta.1",
-		"@hexadrop/types": "2.0.0-beta.1"
+		"@hexadrop/either": "2.0.0-beta.2",
+		"@hexadrop/error": "2.0.0-beta.2",
+		"@hexadrop/types": "2.0.0-beta.2"
 	},
 	"peerDependencies": {
-		"@hexadrop/ioc": "^2.0.0-beta.1"
+		"@hexadrop/ioc": "^2.0.0-beta.2"
 	},
 	"peerDependenciesMeta": {
 		"@hexadrop/ioc": {
@@ -119,7 +119,7 @@
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
-		"@hexadrop/ioc": "2.0.0-beta.1",
+		"@hexadrop/ioc": "2.0.0-beta.2",
 		"diod": "2.0.0"
 	}
 }
