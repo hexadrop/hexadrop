@@ -32,7 +32,7 @@
 		"./date": {
 			"import": {
 				"types": "./dist/date.value-object.d.ts",
-				"default": "./dist/date.value-objectobject.js"
+				"default": "./dist/date.value-object.js"
 			}
 		},
 		"./number": {
