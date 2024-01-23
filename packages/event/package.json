@@ -110,10 +110,14 @@
 		"@hexadrop/types": "2.0.0-beta.2"
 	},
 	"peerDependencies": {
+		"@google-cloud/pubsub": "^4",
 		"@hexadrop/ioc": "^2.0.0-beta.3",
 		"p-queue": "^8"
 	},
 	"peerDependenciesMeta": {
+		"@google-cloud/pubsub": {
+			"optional": true
+		},
 		"@hexadrop/ioc": {
 			"optional": true
 		},
@@ -122,6 +126,7 @@
 		}
 	},
 	"devDependencies": {
+		"@google-cloud/pubsub": "4.1.1",
 		"@abraham/reflection": "0.12.0",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
