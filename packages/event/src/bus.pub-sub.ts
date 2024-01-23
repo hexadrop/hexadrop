@@ -32,9 +32,13 @@ export default class PubSubEventBus extends EventBus {
 	async publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> {
 		const promises: Promise<string>[] = [];
 		for (const e of events) {
-			const topic = this.getTopic(e);
-			const data = Buffer.from(JSON.stringify(e));
-			promises.push(topic.publishMessage({ data }));
+			const fn = async () => {
+				const topic = await this.getTopic(e);
+				const data = Buffer.from(JSON.stringify(e));
+
+				return topic.publishMessage({ data });
+			};
+			promises.push(fn());
 		}
 
 		await Promise.all(promises);
@@ -42,13 +46,18 @@ export default class PubSubEventBus extends EventBus {
 		return Either.right(undefined);
 	}
 
-	private getTopic(e: DomainEvent): Topic {
+	private async getTopic(e: DomainEvent): Promise<Topic> {
 		const eventName = e.eventName;
 		let topic = this.topics.get(eventName);
 		if (topic) {
 			return topic;
 		}
 		topic = this.pubSub.topic(eventName);
+		const [exists] = await topic.exists();
+		if (!exists) {
+			await topic.create();
+		}
+
 		this.topics.set(eventName, topic);
 
 		return topic;
