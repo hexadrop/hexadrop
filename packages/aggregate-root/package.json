@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/aggregate-root",
-	"version": "2.0.0-beta.6",
+	"version": "2.0.0-beta.7",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -42,7 +42,7 @@
 		"prepublishOnly": "tsup"
 	},
 	"dependencies": {
-		"@hexadrop/event": "2.0.0-beta.6",
+		"@hexadrop/event": "2.0.0-beta.7",
 		"@hexadrop/types": "2.0.0-beta.2"
 	}
 }
