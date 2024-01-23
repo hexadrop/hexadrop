@@ -44,6 +44,15 @@ describe('SyncEventBus', () => {
 		event1Handler3Spy.mockClear();
 	});
 	describe('publish()', () => {
+		test('should works with no registered event handler', async () => {
+			const info = new InMemoryEventHandlers();
+			bus = new SyncEventBus(info);
+
+			const either = await bus.publish(new Event1('1'));
+
+			expect(event1Handler1Spy).toHaveBeenCalledTimes(0);
+			expect(either.isRight()).toBe(true);
+		});
 		test('should works with simple registered event handler', async () => {
 			const info = new InMemoryEventHandlers();
 			info.register(Event1, new Event1Handler());
@@ -100,7 +109,7 @@ describe('SyncEventBus', () => {
 			expect(either.isLeft()).toBe(true);
 			expect(either.getLeft()).toStrictEqual(new HandlerError());
 		});
-		test('should works with un handle error', async () => {
+		test('should works with an un handle error', async () => {
 			const info = new InMemoryEventHandlers();
 			info.register(Event1, event1Handler4Spy);
 			bus = new SyncEventBus(info);

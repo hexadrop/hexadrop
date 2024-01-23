@@ -1,3 +1,5 @@
+import { InvalidEventError } from '@hexadrop/event/error';
+
 import type { EventBusCallback, EventHandler } from './bus';
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
@@ -52,7 +54,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 		}
 
 		if (!eventName) {
-			return [];
+			throw new InvalidEventError();
 		}
 
 		handler = this.map.get(eventName) ?? [];

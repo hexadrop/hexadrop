@@ -4,7 +4,7 @@ import type { EventBusCallback, EventHandler, EventHandlerClass } from './bus';
 import { EVENT_HANDLER_METADATA_KEY } from './decorator';
 import type DomainEvent from './domain-event';
 import type { DomainEventClass } from './domain-event';
-import { EventNotRegisteredError, InvalidEventError } from './error';
+import { InvalidEventError } from './error';
 import EventHandlers from './event-handlers';
 
 /**
@@ -52,9 +52,9 @@ export default class IoCEventHandlers extends EventHandlers {
 			throw new InvalidEventError();
 		}
 
-		// If the event handler is not registered, throw an error
+		// If the event handler is not registered, return an empty array
 		if (!handlers) {
-			throw new EventNotRegisteredError(eventName);
+			return [];
 		}
 
 		// Get the event handlers instances from the IoC container
