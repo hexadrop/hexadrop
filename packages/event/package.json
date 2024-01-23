@@ -36,10 +36,22 @@
 				"default": "./dist/bus.js"
 			}
 		},
+		"./bus/async": {
+			"import": {
+				"types": "./dist/bus.async.d.ts",
+				"default": "./dist/bus.async.js"
+			}
+		},
 		"./bus/mock/bun": {
 			"import": {
 				"types": "./dist/bus.mock-bun.d.ts",
 				"default": "./dist/bus.mock-bun.js"
+			}
+		},
+		"./bus/pub-sub": {
+			"import": {
+				"types": "./dist/bus.pub-sub.d.ts",
+				"default": "./dist/bus.pub-sub.js"
 			}
 		},
 		"./bus/sync": {
@@ -81,8 +93,14 @@
 			"./bus": [
 				"./dist/bus.d.ts"
 			],
+			"./bus/async": [
+				"./dist/bus.async.d.ts"
+			],
 			"./bus/mock/bun": [
 				"./dist/bus.mock-bun.d.ts"
+			],
+			"./bus/pub-sub": [
+				"./dist/bus.pub-sub.d.ts"
 			],
 			"./bus/sync": [
 				"./dist/bus.sync.d.ts"
