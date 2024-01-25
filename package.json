@@ -33,7 +33,7 @@
 		"@changesets/cli": "2.27.1",
 		"@hexatool/eslint-config": "2.3.0",
 		"@hexatool/tsconfig": "20.0.1",
-		"@faker-js/faker": "8.3.1",
+		"@faker-js/faker": "8.4.0",
 		"eslint": "8.56.0",
 		"typescript": "5.3.3",
 		"tsup": "8.0.1"
