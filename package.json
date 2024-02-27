@@ -29,7 +29,7 @@
 		"version": "changeset version && $npm_execpath install"
 	},
 	"devDependencies": {
-		"@types/bun": "1.0.4",
+		"@types/bun": "1.0.8",
 		"@changesets/cli": "2.27.1",
 		"@hexatool/eslint-config": "2.3.0",
 		"@hexatool/tsconfig": "20.0.1",
