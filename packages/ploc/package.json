@@ -58,7 +58,7 @@
 		}
 	},
 	"scripts": {
-		"typecheck": "tsc --noEmit"
+		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
 		"react": ">= 16"
