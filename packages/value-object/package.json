@@ -53,6 +53,12 @@
 				"types": "./dist/uuii.value-object.d.ts",
 				"default": "./dist/uuii.value-object.js"
 			}
+		},
+		"./ulid": {
+			"import": {
+				"types": "./dist/ulid.value-object.d.ts",
+				"default": "./dist/ulid.value-object.js"
+			}
 		}
 	},
 	"typesVersions": {
@@ -71,6 +77,9 @@
 			],
 			"./uuii": [
 				"./dist/uuii.value-object.d.ts"
+			],
+			"./ulid": [
+				"./dist/ulid.value-object.d.ts"
 			]
 		}
 	},
@@ -79,5 +88,16 @@
 	},
 	"dependencies": {
 		"@hexadrop/error": "2.0.0-beta.2"
+	},
+	"peerDependencies": {
+		"ulid": "^2"
+	},
+	"peerDependenciesMeta": {
+		"ulid": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"ulid": "2.3.0"
 	}
 }

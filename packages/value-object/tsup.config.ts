@@ -11,6 +11,7 @@ export default defineConfig([
 			'./src/number.value-object.ts',
 			'./src/string.value-object.ts',
 			'./src/uuii.value-object.ts',
+			'./src/ulid.value-object.ts',
 		],
 		minify: true,
 		sourcemap: true,
