@@ -69,7 +69,7 @@
 		}
 	},
 	"devDependencies": {
-		"@types/react": "18.2.64",
+		"@types/react": "18.2.65",
 		"react": "18.2.0"
 	}
 }
