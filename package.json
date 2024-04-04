@@ -35,7 +35,7 @@
 		"@hexatool/tsconfig": "20.0.1",
 		"@faker-js/faker": "8.4.1",
 		"eslint": "8.57.0",
-		"typescript": "5.4.3",
+		"typescript": "5.4.4",
 		"tsup": "8.0.2"
 	}
 }
