@@ -7,8 +7,8 @@ import BunMockEventBus from './bus.mock-bun';
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
-const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError, void>());
-const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.right<DomainError, void>()));
+const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError>());
+const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.right<DomainError>()));
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';

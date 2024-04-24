@@ -15,8 +15,8 @@ class HandlerError extends DomainError {
 	}
 }
 
-const event1Handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>());
-const event1Handler2Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>());
+const event1Handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError>());
+const event1Handler2Spy = jest.fn((_: DomainEvent) => Either.right<DomainError>());
 const event1Handler3Spy = jest.fn((_: DomainEvent) => Either.left<DomainError, void>(new HandlerError()));
 const event1Handler4Spy = jest.fn((_: DomainEvent) => {
 	throw new HandlerError();

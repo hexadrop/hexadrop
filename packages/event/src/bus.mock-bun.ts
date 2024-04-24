@@ -21,7 +21,7 @@ export default class BunMockEventBus extends EventBus {
 	 *
 	 * @readonly
 	 */
-	readonly publishSpy = jest.fn((..._events: DomainEvent[]) => Promise.resolve(Either.right<DomainError, void>()),
+	readonly publishSpy = jest.fn((..._events: DomainEvent[]) => Promise.resolve(Either.right<DomainError>()),
 	);
 
 	/**

@@ -23,8 +23,14 @@ export default class Either<L, R> {
 	 * @template L The type of the left value.
 	 * @template R The type of the right value.
 	 */
-	static left<L, R>(value: L): Either<L, R> {
-		return new Either<L, R>({ kind: 'left', leftValue: value });
+	static left<R>(): Either<never, R>;
+	static left<L, R>(value: L): Either<L, R>;
+	static left<L, R>(value?: L): Either<L, R> | Either<never, R> {
+		if (value) {
+			return new Either<L, R>({ kind: 'left', leftValue: value });
+		}
+
+		return new Either<never, R>({ kind: 'left', leftValue: undefined as never });
 	}
 
 	/**
@@ -36,8 +42,14 @@ export default class Either<L, R> {
 	 * @template L The type of the left value.
 	 * @template R The type of the right value.
 	 */
-	static right<L, R>(value: R): Either<L, R> {
-		return new Either<L, R>({ kind: 'right', rightValue: value });
+	static right<L>(): Either<L, never>;
+	static right<L, R>(value: R): Either<L, R>;
+	static right<L, R>(value?: R): Either<L, R> | Either<L, never> {
+		if (value) {
+			return new Either<L, R>({ kind: 'right', rightValue: value });
+		}
+
+		return new Either<L, never>({ kind: 'right', rightValue: undefined as never });
 	}
 
 	/**

@@ -15,7 +15,7 @@ export default class MockBunCommandBus implements CommandBus {
 	 * @property {Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
 	readonly dispatchSpy = jest.fn(
-		(..._commands: Command[]) => Promise.resolve(Either.right<DomainError, undefined>()),
+		(..._commands: Command[]) => Promise.resolve(Either.right<DomainError>()),
 	);
 
 	/**
