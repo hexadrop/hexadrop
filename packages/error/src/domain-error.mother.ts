@@ -8,6 +8,7 @@ class EmptyErrorCodeError extends DomainError {
 
 class UndefinedErrorCodeError extends DomainError {
 	constructor() {
+		// @ts-expect-error Test undefined error code
 		super(
 			'UndefinedErrorCodeError',
 			'undefined error message',
