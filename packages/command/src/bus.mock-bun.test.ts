@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import MockBunCommandBus from './bus.mock-bun';
+import BunMockCommandBus from './bus.mock-bun';
 import Command from './command';
 
 class Command1 extends Command {
@@ -19,12 +19,12 @@ class Command2 extends Command {
 	}
 }
 
-describe('MockBunCommandBus', () => {
+describe('BunMockCommandBus', () => {
 	describe('assertDispatchedCommands()', () => {
 		test('should works as expected', async () => {
 			const command1 = new Command1('1');
 			const command2 = new Command2('2');
-			const bus = new MockBunCommandBus();
+			const bus = new BunMockCommandBus();
 
 			await bus.dispatch(command1);
 			await bus.dispatch(command2);
@@ -37,7 +37,7 @@ describe('MockBunCommandBus', () => {
 		test('should works as expected', async () => {
 			const command1 = new Command1('1');
 			const command2 = new Command2('2');
-			const bus = new MockBunCommandBus();
+			const bus = new BunMockCommandBus();
 
 			await bus.dispatch(command1);
 			await bus.dispatch(command2);
@@ -50,7 +50,7 @@ describe('MockBunCommandBus', () => {
 		test('should works as expected', async () => {
 			const command1 = new Command1('1');
 			const command2 = new Command2('2');
-			const bus = new MockBunCommandBus();
+			const bus = new BunMockCommandBus();
 
 			expect(() => bus.assertNotDispatchedCommand()).not.toThrow();
 

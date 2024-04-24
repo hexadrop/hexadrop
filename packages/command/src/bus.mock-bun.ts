@@ -6,11 +6,11 @@ import type CommandBus from './bus';
 import type Command from './command';
 
 /**
- * @class MockBunCommandBus
+ * @class BunMockCommandBus
  * @implements CommandBus
  * @description Class representing a mock command bus for testing in Bun.
  */
-export default class MockBunCommandBus implements CommandBus {
+export default class BunMockCommandBus implements CommandBus {
 	/**
 	 * @property {Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
@@ -47,8 +47,8 @@ export default class MockBunCommandBus implements CommandBus {
 		expect(this.dispatchSpy).toHaveBeenCalled();
 		const commandsArray = this.dispatchSpy.mock.calls.flat();
 		expect(commandsArray.length).toEqual(expectedCommands.length);
-		expect(commandsArray.map(command => MockBunCommandBus.getDataFromCommand(command))).toStrictEqual(
-			expectedCommands.map(command => MockBunCommandBus.getDataFromCommand(command)),
+		expect(commandsArray.map(command => BunMockCommandBus.getDataFromCommand(command))).toStrictEqual(
+			expectedCommands.map(command => BunMockCommandBus.getDataFromCommand(command)),
 		);
 	}
 
@@ -62,8 +62,8 @@ export default class MockBunCommandBus implements CommandBus {
 		const commandsArray = this.dispatchSpy.mock.calls.at(-1) ?? [];
 		const command = commandsArray[0];
 		expect(command).toBeDefined();
-		expect(MockBunCommandBus.getDataFromCommand(command)).toStrictEqual(
-			MockBunCommandBus.getDataFromCommand(expectedCommand),
+		expect(BunMockCommandBus.getDataFromCommand(command)).toStrictEqual(
+			BunMockCommandBus.getDataFromCommand(expectedCommand),
 		);
 	}
 

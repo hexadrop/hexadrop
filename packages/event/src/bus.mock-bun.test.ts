@@ -83,7 +83,7 @@ class Event4Handler implements EventHandler<Event4> {
 	}
 }
 
-describe('MockEventBus', () => {
+describe('BunMockEventBus', () => {
 	test('should assertIsSubscribed works as expected', async () => {
 		const handler1 = new Event1Handler();
 		const handler4 = new Event4Handler();
