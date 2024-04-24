@@ -1,5 +1,3 @@
-import EventHandlerError from './event-handler.error';
-import EventNotRegisteredError from './event-not-registered.error';
-import InvalidEventError from './invalid-event.error';
-
-export { EventHandlerError, EventNotRegisteredError, InvalidEventError };
+export { default as EventHandlerError } from './event-handler.error';
+export { default as EventNotRegisteredError } from './event-not-registered.error';
+export { default as InvalidEventError } from './invalid-event.error';

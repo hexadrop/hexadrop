@@ -11,8 +11,6 @@ class UndefinedErrorCodeError extends DomainError {
 		super(
 			'UndefinedErrorCodeError',
 			'undefined error message',
-			// @ts-expect-error Expect not undefined
-			undefined
 		);
 	}
 }
@@ -35,7 +33,7 @@ class UndefinedNameError extends DomainError {
 			// @ts-expect-error Expect not undefined
 			undefined,
 			'undefined error message',
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

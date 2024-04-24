@@ -11,12 +11,12 @@ describe('BooleanValueObject', () => {
 			expect(vo.value).toBe(true);
 		});
 		test('should throw an error if undefined', () => {
-			const fn = () => BooleanValueObjectMother.invalidWithUndefined();
-			expect(fn).toThrow(new EmptyBooleanValueError());
+			const invalid = () => BooleanValueObjectMother.invalidWithUndefined();
+			expect(invalid).toThrow(new EmptyBooleanValueError());
 		});
 		test('should throw an error if invalid type', () => {
-			const fn = () => BooleanValueObjectMother.invalidWithString();
-			expect(fn).toThrow(new InvalidBooleanValueTypeError());
+			const invalid = () => BooleanValueObjectMother.invalidWithString();
+			expect(invalid).toThrow(new InvalidBooleanValueTypeError());
 		});
 	});
 	describe('isEqualsTo()', () => {

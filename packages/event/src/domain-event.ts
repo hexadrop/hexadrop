@@ -9,7 +9,7 @@ import type { Nullable } from '@hexadrop/types/nullable';
  * @property {Nullable<Date>} occurredOn - The date the event occurred on (optional)
  * @property {Nullable<string>} relatedId - The related ID (optional)
  */
-interface DomainEventConstructorParams {
+interface DomainEventConstructorParameters {
 	readonly aggregateId: string;
 	readonly eventId?: Nullable<string>;
 	readonly occurredOn?: Nullable<Date>;
@@ -44,11 +44,11 @@ abstract class DomainEvent {
 	 * @property eventName - The name of the event, as provided in the eventName parameter.
 	 * @property relatedId - The related ID. Optional parameter.
 	 */
-	protected constructor(eventName: string, paramsOrAggregateId: DomainEventConstructorParams | string) {
-		const { aggregateId, eventId, occurredOn, relatedId } =
-			typeof paramsOrAggregateId === 'string'
-				? ({ aggregateId: paramsOrAggregateId } as DomainEventConstructorParams)
-				: paramsOrAggregateId;
+	protected constructor(eventName: string, parametersOrAggregateId: DomainEventConstructorParameters | string) {
+		const { aggregateId, eventId, occurredOn, relatedId }
+			= typeof parametersOrAggregateId === 'string'
+				? ({ aggregateId: parametersOrAggregateId } as DomainEventConstructorParameters)
+				: parametersOrAggregateId;
 		this.aggregateId = aggregateId;
 		this.eventId = eventId ?? crypto.randomUUID();
 		this.occurredOn = occurredOn ?? new Date();
@@ -57,8 +57,11 @@ abstract class DomainEvent {
 	}
 }
 
-type DomainEventClass<DomainInstanceType extends DomainEvent = DomainEvent, CtorArgs extends any[] = any[]> = Class<
-	CtorArgs,
+type DomainEventClass<
+	DomainInstanceType extends DomainEvent = DomainEvent,
+	CtorArguments extends any[] = any[],
+> = Class<
+	CtorArguments,
 	DomainInstanceType,
 	{
 		EVENT_NAME: string;

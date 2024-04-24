@@ -5,4 +5,4 @@ import type { Newable } from '@hexadrop/types/newable';
  * Service identifier. Can be a concrete implementation or an abstraction.
  * @typeParam T Class type.
  */
-export type Identifier<T> = Newable<T> | Abstract<T>;
+export type Identifier<T> = Abstract<T> | Newable<T>;

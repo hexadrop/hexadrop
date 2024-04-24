@@ -8,7 +8,7 @@ import type { EventHandler } from './bus';
 import Decorator from './decorator';
 import DomainEvent from './domain-event';
 
-const handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>(undefined));
+const handler1Spy = jest.fn((_: DomainEvent) => Either.right<DomainError, void>());
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';

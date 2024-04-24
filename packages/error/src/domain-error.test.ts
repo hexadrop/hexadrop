@@ -5,20 +5,20 @@ import InvalidDomainErrorMother from './domain-error.mother';
 
 describe('DomainError', () => {
 	test('should throw an error if undefined code', () => {
-		const fn = () => InvalidDomainErrorMother.undefinedErrorCode();
-		expect(fn).toThrow(new EmptyErrorCodeError());
+		const invalid = () => InvalidDomainErrorMother.undefinedErrorCode();
+		expect(invalid).toThrow(new EmptyErrorCodeError());
 	});
 	test('should throw an error if empty code', () => {
-		const fn = () => InvalidDomainErrorMother.emptyErrorCode();
-		expect(fn).toThrow(new EmptyErrorCodeError());
+		const invalid = () => InvalidDomainErrorMother.emptyErrorCode();
+		expect(invalid).toThrow(new EmptyErrorCodeError());
 	});
 	test('should throw an error if invaliKKd code', () => {
-		const fn = () => InvalidDomainErrorMother.invalidErrorCode();
-		expect(fn).toThrow(new InvalidErrorCodeError());
+		const invalid = () => InvalidDomainErrorMother.invalidErrorCode();
+		expect(invalid).toThrow(new InvalidErrorCodeError());
 	});
 	test('should throw an error if empty name', () => {
-		const fn = () => InvalidDomainErrorMother.invalidErrorCode();
-		expect(fn).toThrow(new InvalidErrorCodeError());
+		const invalid = () => InvalidDomainErrorMother.invalidErrorCode();
+		expect(invalid).toThrow(new InvalidErrorCodeError());
 	});
 	test('name should be equals to DomainError if empty name', () => {
 		const error = InvalidDomainErrorMother.emptyName();
@@ -43,7 +43,7 @@ describe('DomainError', () => {
 		test('should create from string', () => {
 			const expectedError = new InvalidErrorCodeError();
 			expect(expectedError.message).toBe(
-				`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`
+				`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`,
 			);
 			expect(expectedError.errorCode).toBe(400);
 			expect(expectedError.code).toBe('HEX(400)');

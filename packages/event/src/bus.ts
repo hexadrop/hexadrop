@@ -50,7 +50,7 @@ abstract class EventBus {
 	 * @param {...DomainEvent[]} events - The domain events to publish.
 	 * @returns {Promise<Either<DomainError, void>> | Either<DomainError, void>} - The method can return a Promise that resolves to an Either<DomainError, void>, or an Either<DomainError, void> directly.
 	 */
-	abstract publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> | Either<DomainError, void>;
+	abstract publish(...events: DomainEvent[]): Either<DomainError, void> | Promise<Either<DomainError, void>>;
 }
 
 export type { EventBusCallback, EventHandler, EventHandlerClass };

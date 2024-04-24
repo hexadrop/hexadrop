@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { PlocInterface } from './ploc';
+
 /**
  * `ReactPloc` is an abstract class that implements the `PlocInterface`.
  * It is designed to manage state in a React context.
@@ -15,7 +16,6 @@ export default abstract class ReactPloc<S> implements PlocInterface<S> {
 	 * @type {Dispatch<SetStateAction<S>>}
 	 */
 	readonly changeState: Dispatch<SetStateAction<S>>;
-
 	/**
 	 * The internal state of the `ReactPloc`.
 	 *
@@ -27,9 +27,13 @@ export default abstract class ReactPloc<S> implements PlocInterface<S> {
 	/**
 	 * Constructs a new instance of `ReactPloc`.
 	 *
-	 * @param {[S, Dispatch<SetStateAction<S>>]} initialState The initial state and dispatch function.
+	 * @param {[S, Dispatch<SetStateAction<S>>]} parameters The initial state and dispatch function.
 	 */
-	constructor([initialState, dispatch]: [S, Dispatch<SetStateAction<S>>]) {
+	constructor(parameters: [S, Dispatch<SetStateAction<S>>]) {
+		const [
+			initialState,
+			dispatch,
+		] = parameters;
 		this.internalState = initialState;
 		this.changeState = dispatch;
 	}

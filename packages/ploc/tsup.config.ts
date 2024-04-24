@@ -2,10 +2,15 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
-		entry: ['./src/ploc.ts', './src/ploc.memory.ts', './src/ploc.memory-hook.ts', './src/ploc.react.ts'],
+		dts: true,
+		entry: [
+			'./src/ploc.ts',
+			'./src/ploc.memory.ts',
+			'./src/ploc.memory-hook.ts',
+			'./src/ploc.react.ts',
+		],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
 	},

@@ -2,9 +2,8 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
+		dts: true,
 		entry: [
 			'./src/query.ts',
 			'./src/bus.mock-bun.ts',
@@ -15,8 +14,9 @@ export default defineConfig([
 			'./src/in-memory.query-handlers.ts',
 			'./src/ioc.query-handlers.ts',
 		],
+		external: ['bun:test'],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
-		external: ['bun:test'],
 	},
 ]);

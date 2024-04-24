@@ -16,9 +16,9 @@ describe('DomainNotFoundError', () => {
 	test('should create from domain, id, param', () => {
 		const domain = 'User';
 		const id = crypto.randomUUID();
-		const param = 'code';
-		const expectedError = DomainNotFoundErrorMother.create(domain, id, param);
-		expect(expectedError.message).toBe(`${domain} with ${param} '${id}' was not found`);
+		const parameter = 'code';
+		const expectedError = DomainNotFoundErrorMother.create(domain, id, parameter);
+		expect(expectedError.message).toBe(`${domain} with ${parameter} '${id}' was not found`);
 		expect(expectedError.errorCode).toBe(404);
 		expect(expectedError.code).toBe('HEX(404)');
 		expect(expectedError.name).toBe('DomainNotFoundError');
@@ -27,10 +27,10 @@ describe('DomainNotFoundError', () => {
 	test('should create from domain, id, param and code', () => {
 		const domain = 'User';
 		const id = crypto.randomUUID();
-		const param = 'code';
-		const expectedError = DomainNotFoundErrorMother.create(domain, id, param, undefined, 'HEX(500404)');
-		expect(expectedError.message).toBe(`${domain} with ${param} '${id}' was not found`);
-		expect(expectedError.errorCode).toBe(500404);
+		const parameter = 'code';
+		const expectedError = DomainNotFoundErrorMother.create(domain, id, parameter, undefined, 'HEX(500404)');
+		expect(expectedError.message).toBe(`${domain} with ${parameter} '${id}' was not found`);
+		expect(expectedError.errorCode).toBe(500_404);
 		expect(expectedError.code).toBe('HEX(500404)');
 		expect(expectedError.name).toBe('DomainNotFoundError');
 		expect(expectedError.stack).toBeDefined();

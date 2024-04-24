@@ -27,7 +27,7 @@ class Command1 extends Command {
 	}
 }
 
-const handler1Spy = jest.fn((_cmd: Command1, _msg: string) => Either.right<DomainError, void>(undefined));
+const handler1Spy = jest.fn((_cmd: Command1, _message: string) => Either.right<DomainError, void>());
 
 class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}

@@ -2,9 +2,8 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
+		dts: true,
 		entry: [
 			'./src/abstract.ts',
 			'./src/class.ts',
@@ -13,6 +12,7 @@ export default defineConfig([
 			'./src/nullable.ts',
 			'./src/primitives.ts',
 		],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
 	},

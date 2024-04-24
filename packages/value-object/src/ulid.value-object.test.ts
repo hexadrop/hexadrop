@@ -15,8 +15,8 @@ describe('UlidValueObject', () => {
 			expect(vo.toString()).toBe('0000004JFG1173F69NQYBPC4QN');
 		});
 		test('should throw an error if invalid format', () => {
-			const fn = () => UlidValueObjectMother.invalid();
-			expect(fn).toThrow(new InvalidUlidValueError('s'));
+			const invalid = () => UlidValueObjectMother.invalid();
+			expect(invalid).toThrow(new InvalidUlidValueError('s'));
 		});
 	});
 	describe('isEqualsTo()', () => {

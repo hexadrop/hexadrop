@@ -27,7 +27,7 @@ class InvalidBooleanValueTypeError extends InvalidArgumentError {
 		super(
 			`${property ?? 'BooleanValueObject'} must only contains boolean values`,
 			'InvalidBooleanValueTypeError',
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

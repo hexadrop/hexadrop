@@ -40,8 +40,8 @@ abstract class Command {
  * @template DomainInstanceType - The type of the command.
  * @template CtorArgs - The constructor arguments.
  */
-type CommandClass<DomainInstanceType extends Command = Command, CtorArgs extends any[] = any[]> = Class<
-	CtorArgs,
+type CommandClass<DomainInstanceType extends Command = Command, CtorArguments extends any[] = any[]> = Class<
+	CtorArguments,
 	DomainInstanceType,
 	{
 		COMMAND_NAME: string;

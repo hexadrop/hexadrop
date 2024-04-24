@@ -23,6 +23,6 @@ export default abstract class QueryHandlers {
 	 * @template ResponseType - The type of the response to be returned.
 	 */
 	public abstract search<ResponseType, QueryType extends Query<ResponseType>>(
-		query: QueryType | QueryClass<ResponseType, QueryType>
+		query: QueryClass<ResponseType, QueryType> | QueryType
 	): QueryBusCallback<ResponseType, QueryType>;
 }

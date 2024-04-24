@@ -12,9 +12,10 @@ class InvalidStringDateValueObject extends DateValueObject {
 }
 
 class UndefinedStringDateValueObject extends DateValueObject {
+	// eslint-disable-next-line typescript/no-useless-constructor -- Testing purposes
 	constructor() {
 		// @ts-expect-error - Testing purposes
-		super(undefined);
+		super();
 	}
 }
 

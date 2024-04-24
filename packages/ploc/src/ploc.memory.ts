@@ -1,4 +1,5 @@
 import type { ChangePlocStateSubscription, PlocInterface } from './ploc';
+
 /**
  * `InMemoryPloc` is an abstract class that implements the `PlocInterface`.
  * It manages state in memory and allows for state change subscriptions.
@@ -14,7 +15,6 @@ export default abstract class InMemoryPloc<S> implements PlocInterface<S> {
 	 * @template S The type of the state that this `InMemoryPloc` will manage.
 	 */
 	private internalState: S;
-
 	/**
 	 * A list of listeners that are subscribed to state changes.
 	 *

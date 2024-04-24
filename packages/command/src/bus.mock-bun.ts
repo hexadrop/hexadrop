@@ -14,8 +14,8 @@ export default class MockBunCommandBus implements CommandBus {
 	/**
 	 * @property {Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
-	readonly dispatchSpy = jest.fn((..._commands: Command[]) =>
-		Promise.resolve(Either.right<DomainError, void>(undefined))
+	readonly dispatchSpy = jest.fn(
+		(..._commands: Command[]) => Promise.resolve(Either.right<DomainError, undefined>()),
 	);
 
 	/**
@@ -28,8 +28,8 @@ export default class MockBunCommandBus implements CommandBus {
 	 * @returns {Omit<CommandType, 'commandId'> | {}} - An object that contains the properties of the command object, excluding 'commandId'. If no command is provided, an empty object is returned.
 	 */
 	private static getDataFromCommand<CommandType extends Command>(
-		command?: CommandType
-	): Omit<CommandType, 'commandId'> | {} {
+		command?: CommandType,
+	): Omit<CommandType, 'commandId'> | Record<string, never> {
 		if (!command) {
 			return {};
 		}
@@ -45,10 +45,10 @@ export default class MockBunCommandBus implements CommandBus {
 	 */
 	assertDispatchedCommands(...expectedCommands: Command[]): void {
 		expect(this.dispatchSpy).toHaveBeenCalled();
-		const commandsArr = this.dispatchSpy.mock.calls.flat();
-		expect(commandsArr.length).toEqual(expectedCommands.length);
-		expect(commandsArr.map(e => MockBunCommandBus.getDataFromCommand(e))).toStrictEqual(
-			expectedCommands.map(e => MockBunCommandBus.getDataFromCommand(e))
+		const commandsArray = this.dispatchSpy.mock.calls.flat();
+		expect(commandsArray.length).toEqual(expectedCommands.length);
+		expect(commandsArray.map(command => MockBunCommandBus.getDataFromCommand(command))).toStrictEqual(
+			expectedCommands.map(command => MockBunCommandBus.getDataFromCommand(command)),
 		);
 	}
 
@@ -59,11 +59,11 @@ export default class MockBunCommandBus implements CommandBus {
 	 */
 	assertLastDispatchedCommand(expectedCommand: Command): void {
 		expect(this.dispatchSpy).toHaveBeenCalled();
-		const commandsArr = this.dispatchSpy.mock.calls[this.dispatchSpy.mock.calls.length - 1] ?? [];
-		const command = commandsArr[0];
+		const commandsArray = this.dispatchSpy.mock.calls.at(-1) ?? [];
+		const command = commandsArray[0];
 		expect(command).toBeDefined();
 		expect(MockBunCommandBus.getDataFromCommand(command)).toStrictEqual(
-			MockBunCommandBus.getDataFromCommand(expectedCommand)
+			MockBunCommandBus.getDataFromCommand(expectedCommand),
 		);
 	}
 

@@ -55,7 +55,7 @@ describe('InMemoryPloc', () => {
 	});
 	describe('subscribe()', () => {
 		test('should works as expected', () => {
-			const spy = jest.fn((_s: PlocState) => {});
+			const spy = jest.fn<(state: PlocState) => void >();
 			const subscription = (state: PlocState) => spy(state);
 			const ploc = new CounterInMemoryPloc({
 				kind: 'LoadedState',

@@ -1,4 +1,2 @@
-import CommandNotRegisteredError from './command-not-registered.error';
-import InvalidCommandError from './invalid-command.error';
-
-export { CommandNotRegisteredError, InvalidCommandError };
+export { default as CommandNotRegisteredError } from './command-not-registered.error';
+export { default as InvalidCommandError } from './invalid-command.error';

@@ -2,10 +2,10 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
+		dts: true,
 		entry: ['./src/aggregate-root.ts'],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
 	},

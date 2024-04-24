@@ -39,9 +39,9 @@ abstract class Query<ResponseType> {
 type QueryClass<
 	ResponseType,
 	QueryInstanceType extends Query<ResponseType> = Query<ResponseType>,
-	CtorArgs extends any[] = any[],
+	CtorArguments extends any[] = any[],
 > = Class<
-	CtorArgs,
+	CtorArguments,
 	QueryInstanceType,
 	{
 		QUERY_NAME: string;

@@ -2,7 +2,7 @@ import StringValueObject from './string.value-object';
 import InvalidUuiiValueError from './uuii.value-object.error';
 
 // Regular expression for validating UUID format
-const REGEXP = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const REGEXP = /^[\da-f]{8}-[\da-f]{4}-[1-5][\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12}$/i;
 
 /**
  * UuiiValueObject is an abstract class that represents a UUID value object.

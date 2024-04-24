@@ -1,4 +1,4 @@
-const DOMAIN_ERROR_CODE = /[A-Z][A-Z][A-Z]\((?:\d{3}|\d{6})\)/;
+const DOMAIN_ERROR_CODE = /[A-Z]{3}\((?:\d{3}|\d{6})\)/;
 
 /**
  * The base class for all domain errors.
@@ -17,7 +17,7 @@ abstract class DomainError extends Error {
 	protected constructor(
 		name: string,
 		message: string,
-		readonly code: string
+		readonly code: string,
 	) {
 		allowedValues(code);
 		super(message);
@@ -30,7 +30,7 @@ abstract class DomainError extends Error {
 	 * @returns {number} The numeric part of the error code.
 	 */
 	get errorCode(): number {
-		const code = this.code.substring(4).replace(')', '');
+		const code = this.code.slice(4).replace(')', '');
 
 		return Number(code);
 	}
@@ -48,7 +48,7 @@ class InvalidErrorCodeError extends DomainError {
 		super(
 			'InvalidErrorCodeError',
 			`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`,
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

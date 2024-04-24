@@ -9,7 +9,7 @@ export default class EventHandlerError extends DomainError {
 	 * Constructor for the EventHandlerError class.
 	 * @param {string | Error} message - The error message. If an Error object is passed, its message property is used.
 	 */
-	constructor(message: string | Error) {
+	constructor(message: Error | string) {
 		super('EventHandlerError', typeof message === 'string' ? message : message.message, 'HEX(500)');
 	}
 }

@@ -13,11 +13,11 @@ export default class DomainNotFoundError extends DomainError {
 	 * @param {string} [name='DomainNotFoundError'] - The name of the error.
 	 * @param {string} [code='HEX(404)'] - The error code.
 	 */
-	constructor(domain: string, id: string, param?: string, name?: string, code?: string) {
+	constructor(domain: string, id: string, parameter?: string, name?: string, code?: string) {
 		super(
 			name ?? 'DomainNotFoundError',
-			`${domain} with ${param ?? 'id'} '${id}' was not found`,
-			code ?? 'HEX(404)'
+			`${domain} with ${parameter ?? 'id'} '${id}' was not found`,
+			code ?? 'HEX(404)',
 		);
 	}
 }

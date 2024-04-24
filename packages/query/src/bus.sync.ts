@@ -33,7 +33,7 @@ export default class SyncQueryBus implements QueryBus {
 	 * @template ResponseType - The type of the response that the query handler should return.
 	 */
 	ask<const ResponseType>(
-		query: Query<ResponseType>
+		query: Query<ResponseType>,
 	): Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>> {
 		const handler = this.info.search<ResponseType, Query<ResponseType>>(query);
 

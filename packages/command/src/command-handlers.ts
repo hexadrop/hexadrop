@@ -22,6 +22,6 @@ export default abstract class CommandHandlers {
 	 * @template CommandType - The type of the command.
 	 */
 	abstract search<CommandType extends Command>(
-		command: CommandType | CommandClass<CommandType>
+		command: CommandClass<CommandType> | CommandType
 	): CommandBusCallback<CommandType>;
 }

@@ -2,10 +2,13 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
-		entry: ['./src/container.ts', './src/service.decorator.ts'],
+		dts: true,
+		entry: [
+			'./src/container.ts',
+			'./src/service.decorator.ts',
+		],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
 	},

@@ -10,7 +10,7 @@ class MockEvent extends DomainEvent {
 		aggregateId: string,
 		eventId?: string,
 		occurredOn?: Date,
-		relatedId?: string
+		relatedId?: string,
 	) {
 		super(MockEvent.EVENT_NAME, {
 			aggregateId,

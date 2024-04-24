@@ -9,7 +9,7 @@ export default class CommandHandlerError extends DomainError {
 	 * Constructor for the CommandHandlerError class.
 	 * @param {string | Error} message - The error message. If an Error object is passed, its message property is used.
 	 */
-	constructor(message: string | Error) {
+	constructor(message: Error | string) {
 		super('CommandHandlerError', typeof message === 'string' ? message : message.message, 'HEX(500)');
 	}
 }

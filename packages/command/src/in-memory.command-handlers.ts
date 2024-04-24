@@ -33,12 +33,12 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	 */
 	register<CommandType extends Command>(
 		command: CommandClass<CommandType>,
-		handlerOrCallback: CommandBusCallback<CommandType> | CommandHandler<CommandType>
+		handlerOrCallback: CommandBusCallback<CommandType> | CommandHandler<CommandType>,
 	): void {
 		if ('run' in handlerOrCallback) {
 			this.commandHandlersMap.set(
 				command.COMMAND_NAME,
-				handlerOrCallback.run.bind(handlerOrCallback) as CommandBusCallback
+				handlerOrCallback.run.bind(handlerOrCallback) as CommandBusCallback,
 			);
 		} else {
 			this.commandHandlersMap.set(command.COMMAND_NAME, handlerOrCallback as CommandBusCallback);
@@ -55,10 +55,9 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	 * @template CommandType - The type of the command.
 	 */
 	search<CommandType extends Command>(
-		command: CommandType | CommandClass<CommandType>
+		command: CommandClass<CommandType> | CommandType,
 	): CommandBusCallback<CommandType> {
-		let handler: CommandBusCallback<CommandType> | undefined = undefined;
-		let commandName: string | undefined = undefined;
+		let commandName: string | undefined;
 		if ('COMMAND_NAME' in command) {
 			commandName = command.COMMAND_NAME;
 		} else if ('commandName' in command) {
@@ -69,7 +68,7 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 			throw new InvalidCommandError();
 		}
 
-		handler = this.commandHandlersMap.get(commandName);
+		const handler = this.commandHandlersMap.get(commandName);
 
 		if (!handler) {
 			throw new CommandNotRegisteredError(commandName);

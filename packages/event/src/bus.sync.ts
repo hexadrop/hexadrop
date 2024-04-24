@@ -47,29 +47,29 @@ export default class SyncEventBus extends EventBus {
 	 */
 	async publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> {
 		const promises = [];
-		for (const e of events) {
-			const handlers = this.info.search(e);
+		for (const event of events) {
+			const handlers = this.info.search(event);
 			for (const handler of handlers) {
 				promises.push(
-					new Promise<Either<DomainError, void>>(resolve => {
+					new Promise<Either<DomainError, void>>((resolve) => {
 						try {
-							const returnValue = handler(e);
+							const returnValue = handler(event);
 							if (returnValue instanceof Promise) {
-								void returnValue.then(e => resolve(e));
+								void returnValue.then(either => resolve(either));
 							} else {
 								resolve(returnValue);
 							}
-						} catch (e) {
-							resolve(Either.left(new EventHandlerError(e as Error)));
+						} catch (error) {
+							resolve(Either.left(new EventHandlerError(error as Error)));
 						}
-					})
+					}),
 				);
 			}
 		}
 
 		const results = await Promise.all(promises);
-		const someError = results.find(e => e.isLeft());
+		const someError = results.find(either => either.isLeft());
 
-		return someError ?? Either.right(undefined);
+		return someError ?? Either.right();
 	}
 }

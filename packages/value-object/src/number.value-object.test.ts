@@ -11,12 +11,12 @@ describe('NumberValueObject', () => {
 			expect(vo.value).toBe(5);
 		});
 		test('should throw an error if undefined', () => {
-			const fn = () => NumberValueObjectMother.invalidWithUndefined();
-			expect(fn).toThrow(new EmptyNumberValueError());
+			const invalid = () => NumberValueObjectMother.invalidWithUndefined();
+			expect(invalid).toThrow(new EmptyNumberValueError());
 		});
 		test('should throw an error if invalid type', () => {
-			const fn = () => NumberValueObjectMother.invalidWithString();
-			expect(fn).toThrow(new InvalidNumberValueTypeError());
+			const invalid = () => NumberValueObjectMother.invalidWithString();
+			expect(invalid).toThrow(new InvalidNumberValueTypeError());
 		});
 	});
 	describe('isBiggerThan()', () => {

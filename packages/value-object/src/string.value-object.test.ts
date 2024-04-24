@@ -20,16 +20,16 @@ describe('StringValueObject', () => {
 			expect(vo.isEqualsTo(less)).toBeFalsy();
 		});
 		test('should throw an error if arg is undefined', () => {
-			const fn = () => StringValueObjectMother.invalidWithUndefined();
-			expect(fn).toThrow(new EmptyStringValueError());
+			const invalid = () => StringValueObjectMother.invalidWithUndefined();
+			expect(invalid).toThrow(new EmptyStringValueError());
 		});
 		test('should throw an error if arg has an invalid type', () => {
-			const fn = () => StringValueObjectMother.invalidWithNumber();
-			expect(fn).toThrow(new InvalidStringValueTypeError());
+			const invalid = () => StringValueObjectMother.invalidWithNumber();
+			expect(invalid).toThrow(new InvalidStringValueTypeError());
 		});
 		test('should throw an error if arg is invalid value', () => {
-			const fn = () => StringValueObjectMother.invalidValue();
-			expect(fn).toThrow(new InvalidStringValueError('melon'));
+			const invalid = () => StringValueObjectMother.invalidValue();
+			expect(invalid).toThrow(new InvalidStringValueError('melon'));
 		});
 	});
 });

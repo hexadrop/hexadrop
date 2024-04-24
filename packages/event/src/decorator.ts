@@ -19,7 +19,7 @@ function EventHandler<EventType extends DomainEvent>(...events: DomainEventClass
 		if ('run' in target.prototype) {
 			for (const event of events) {
 				const handlers = Reflect.getMetadata<ClassType[]>(EVENT_HANDLER_METADATA_KEY, event) ?? [];
-				if (!handlers.some(handler => handler === target)) {
+				if (!handlers.includes(target)) {
 					handlers.push(target);
 				}
 				Reflect.defineMetadata<ClassType[]>(EVENT_HANDLER_METADATA_KEY, handlers, event);

@@ -45,8 +45,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 	 * @returns An array of 'EventBusCallback' which are the handlers for the provided event.
 	 */
 	search<E extends DomainEvent>(event: DomainEventClass<E> | E): EventBusCallback<E>[] {
-		let handler: (EventBusCallback<E> | EventHandler<E>)[] = [];
-		let eventName: string | undefined = undefined;
+		let eventName: string | undefined;
 		if ('EVENT_NAME' in event) {
 			eventName = event.EVENT_NAME;
 		} else if ('eventName' in event) {
@@ -57,9 +56,9 @@ export default class InMemoryEventHandlers extends EventHandlers {
 			throw new InvalidEventError();
 		}
 
-		handler = this.map.get(eventName) ?? [];
+		const handler = this.map.get(eventName) ?? [];
 
-		return handler.map(ch => {
+		return handler.map((ch) => {
 			if ('run' in ch) {
 				return ch.run.bind(ch);
 			}
@@ -76,7 +75,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 	 */
 	unregister<E extends DomainEvent>(
 		event: DomainEventClass<E>,
-		handler: EventBusCallback<E> | EventHandler<E>
+		handler: EventBusCallback<E> | EventHandler<E>,
 	): void {
 		let callbacks: (EventBusCallback<E> | EventHandler<E>)[] = this.map.get(event.EVENT_NAME) ?? [];
 		if (callbacks.length === 0) {

@@ -27,7 +27,7 @@ class InvalidDateValueTypeError extends InvalidArgumentError {
 		super(
 			`${property ?? 'DateValueObject'} must only contains date values`,
 			'InvalidDateValueTypeError',
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

@@ -2,9 +2,8 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
+		dts: true,
 		entry: [
 			'./src/domain-event.ts',
 			'./src/bus.mock-bun.ts',
@@ -17,8 +16,9 @@ export default defineConfig([
 			'./src/in-memory.event-handlers.ts',
 			'./src/ioc.event-handlers.ts',
 		],
+		external: ['bun:test'],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
-		external: ['bun:test'],
 	},
 ]);

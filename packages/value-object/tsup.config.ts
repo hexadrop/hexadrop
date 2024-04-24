@@ -2,9 +2,8 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig([
 	{
-		format: ['esm'],
-		dts: true,
 		clean: true,
+		dts: true,
 		entry: [
 			'./src/boolean.value-object.ts',
 			'./src/date.value-object.ts',
@@ -13,6 +12,7 @@ export default defineConfig([
 			'./src/uuii.value-object.ts',
 			'./src/ulid.value-object.ts',
 		],
+		format: ['esm'],
 		minify: true,
 		sourcemap: true,
 	},

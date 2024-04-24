@@ -15,8 +15,8 @@ describe('UuiiValueObject', () => {
 			expect(vo.toString()).toBe('f3cf177a-437b-408a-a967-607891add1df');
 		});
 		test('should throw an error if invalid format', () => {
-			const fn = () => UuiiValueObjectMother.invalid();
-			expect(fn).toThrow(new InvalidUuiiValueError('s'));
+			const invalidIdentifierValueObjectFunction = () => UuiiValueObjectMother.invalid();
+			expect(invalidIdentifierValueObjectFunction).toThrow(new InvalidUuiiValueError('s'));
 		});
 	});
 	describe('isEqualsTo()', () => {

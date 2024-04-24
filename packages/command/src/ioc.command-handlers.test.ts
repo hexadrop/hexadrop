@@ -45,8 +45,8 @@ class Command4 extends Command {
 
 @ServiceDecorator()
 class Service {
-	hello(): string {
-		return 'world';
+	async hello(): Promise<string> {
+		return await Promise.resolve('world');
 	}
 }
 
@@ -55,16 +55,16 @@ class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
 
 	async run(): Promise<Either<DomainError, void>> {
-		this.service.hello();
+		await this.service.hello();
 
-		return Promise.resolve(Either.right(undefined));
+		return Either.right();
 	}
 }
 
 @CommandHandlerDecorator(Command2, Command3)
 class Command23Handler implements CommandHandler<Command2 | Command3> {
-	async run(): Promise<Either<DomainError, void>> {
-		return Promise.resolve(Either.right(undefined));
+	run(): Either<DomainError, void> {
+		return Either.right();
 	}
 }
 
@@ -111,7 +111,7 @@ describe('IoCCommandHandlers', () => {
 			expect(() => info.search(c4)).toThrow(expectedError);
 			expect(() => info.search(Command4)).toThrow(expectedError);
 			expect(expectedError.message).toBe(
-				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`
+				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`,
 			);
 		});
 	});

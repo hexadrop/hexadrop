@@ -31,12 +31,12 @@ export default class InMemoryQueryHandlers extends QueryHandlers {
 	 */
 	public register<ResponseType, QueryType extends Query<ResponseType>>(
 		query: QueryClass<ResponseType, QueryType>,
-		handlerOrCallback: QueryBusCallback<ResponseType, QueryType> | QueryHandler<ResponseType, QueryType>
+		handlerOrCallback: QueryBusCallback<ResponseType, QueryType> | QueryHandler<ResponseType, QueryType>,
 	): void {
 		if ('run' in handlerOrCallback) {
 			this.queryHandlersMap.set(
 				query.QUERY_NAME,
-				handlerOrCallback.run.bind(handlerOrCallback) as QueryBusCallback
+				handlerOrCallback.run.bind(handlerOrCallback) as QueryBusCallback,
 			);
 		} else {
 			this.queryHandlersMap.set(query.QUERY_NAME, handlerOrCallback as QueryBusCallback);
@@ -56,10 +56,9 @@ export default class InMemoryQueryHandlers extends QueryHandlers {
 	 * @template QueryType - The type of the Query that extends Query<ResponseType>.
 	 */
 	public search<ResponseType, QueryType extends Query<ResponseType>>(
-		query: QueryType | QueryClass<ResponseType, QueryType>
+		query: QueryClass<ResponseType, QueryType> | QueryType,
 	): QueryBusCallback<ResponseType, QueryType> {
-		let handler: QueryBusCallback<ResponseType, QueryType> | undefined = undefined;
-		let queryName: string | undefined = undefined;
+		let queryName: string | undefined;
 		if ('QUERY_NAME' in query) {
 			queryName = query.QUERY_NAME;
 		} else if ('queryName' in query) {
@@ -68,7 +67,7 @@ export default class InMemoryQueryHandlers extends QueryHandlers {
 		if (!queryName) {
 			throw new InvalidQueryError();
 		}
-		handler = this.queryHandlersMap.get(queryName) as QueryBusCallback<ResponseType, QueryType> | undefined;
+		const handler = this.queryHandlersMap.get(queryName) as QueryBusCallback<ResponseType, QueryType> | undefined;
 		if (!handler) {
 			throw new QueryNotRegisteredError(queryName);
 		}

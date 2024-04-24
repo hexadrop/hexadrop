@@ -7,24 +7,24 @@ import DateValueObjectMother from './date.value-object.mother';
 describe('DateValueObject', () => {
 	describe('constructor()', () => {
 		test('should instantiate', () => {
-			const voValue = new Date(1659011272040);
+			const voValue = new Date(1_659_011_272_040);
 			const vo = DateValueObjectMother.create(voValue);
 
 			expect(vo).toBeDefined();
 			expect(vo.value).toBe(voValue);
 		});
 		test('should throw an error if arg is undefined', () => {
-			const fn = () => DateValueObjectMother.invalidWithUndefined();
-			expect(fn).toThrow(new EmptyDateValueError());
+			const invalid = () => DateValueObjectMother.invalidWithUndefined();
+			expect(invalid).toThrow(new EmptyDateValueError());
 		});
 		test('should throw an error if arg is invalid value', () => {
-			const fn = () => DateValueObjectMother.invalidWithString();
-			expect(fn).toThrow(new InvalidDateValueTypeError());
+			const invalid = () => DateValueObjectMother.invalidWithString();
+			expect(invalid).toThrow(new InvalidDateValueTypeError());
 		});
 	});
 	describe('isAfterThan()', () => {
 		test('should return true if value object is after that', () => {
-			const voValue = new Date(1659011272040);
+			const voValue = new Date(1_659_011_272_040);
 			const soonValue = faker.date.soon(undefined, voValue);
 			const recentValue = faker.date.recent(undefined, voValue);
 			const vo = DateValueObjectMother.create(voValue);
@@ -37,7 +37,7 @@ describe('DateValueObject', () => {
 	});
 	describe('isBeforeThan()', () => {
 		test('should return true if value object is before that', () => {
-			const voValue = new Date(1659011272040);
+			const voValue = new Date(1_659_011_272_040);
 			const soonValue = faker.date.soon(undefined, voValue);
 			const recentValue = faker.date.recent(undefined, voValue);
 			const vo = DateValueObjectMother.create(voValue);
@@ -50,15 +50,15 @@ describe('DateValueObject', () => {
 	});
 	describe('isEqualsTo()', () => {
 		test('should return true if value object is equals', () => {
-			const voValue = new Date(1659011272040);
+			const voValue = new Date(1_659_011_272_040);
 			const vo1 = DateValueObjectMother.create(voValue);
 			const vo2 = DateValueObjectMother.create(voValue);
 
 			expect(vo1.isEqualsTo(vo2)).toBeTruthy();
 		});
 		test('should return false if value object is equals', () => {
-			const vo1Value = new Date(1659011272040);
-			const vo2Value = new Date(1659011273040);
+			const vo1Value = new Date(1_659_011_272_040);
+			const vo2Value = new Date(1_659_011_273_040);
 			const vo1 = DateValueObjectMother.create(vo1Value);
 			const vo2 = DateValueObjectMother.create(vo2Value);
 
@@ -67,7 +67,7 @@ describe('DateValueObject', () => {
 	});
 	describe('toString()', () => {
 		test('should works as expected', () => {
-			const voValue = new Date(1659011272040);
+			const voValue = new Date(1_659_011_272_040);
 			const vo = DateValueObjectMother.create(voValue);
 			expect(vo.toString()).toBe('2022-07-28T12:27:52.040Z');
 		});

@@ -18,17 +18,17 @@ bun add @hexadrop/either
 
 ## What it does
 
-It provides an implementation of the Either monad in TypeScript. The Either monad is a popular 
-functional programming concept used to handle computations that can result in two possible outcomes: 
-a successful result (Right) or an error (Left). This is useful for handling computations that can fail, 
+It provides an implementation of the Either monad in TypeScript. The Either monad is a popular
+functional programming concept used to handle computations that can result in two possible outcomes:
+a successful result (Right) or an error (Left). This is useful for handling computations that can fail,
 providing a way to chain operations while keeping error handling separate.
 
 ## How to use
 
-The `@hexadrop/either` package default exports a class `Either` with methods to create an instance 
-representing a left or right value (`Either.left` and `Either.right`), 
-check the type of the value (`isLeft` and `isRight`), 
-retrieve the value (`getLeft`, `getRight`, `getLeftOrElse`, `getRightOrElse`), 
+The `@hexadrop/either` package default exports a class `Either` with methods to create an instance
+representing a left or right value (`Either.left` and `Either.right`),
+check the type of the value (`isLeft` and `isRight`),
+retrieve the value (`getLeft`, `getRight`, `getLeftOrElse`, `getRightOrElse`),
 and transform the value (`mapLeft`, `mapRight`, `flatMapLeft`, `flatMapRight`).
 
 ### Creating an instance
@@ -75,9 +75,9 @@ console.log(flatMappedLeft.getLeft()); // 19
 
 Publishing this package we are committing ourselves to the following code quality standards:
 
-- Respect **Semantic Versioning**: No breaking changes in patch or minor versions
-- No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
-- **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
-- **Tests** as documentation and usage examples
-- **Well documented README** showing how to install and use
-- **License favoring Open Source** and collaboration
+-   Respect **Semantic Versioning**: No breaking changes in patch or minor versions
+-   No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
+-   **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
+-   **Tests** as documentation and usage examples
+-   **Well documented README** showing how to install and use
+-   **License favoring Open Source** and collaboration

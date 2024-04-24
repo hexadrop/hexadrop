@@ -13,7 +13,7 @@ class InvalidNumberValueTypeError extends InvalidArgumentError {
 		super(
 			`${property ?? 'NumberValueObject'} must only contains number values`,
 			'InvalidNumberValueTypeError',
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

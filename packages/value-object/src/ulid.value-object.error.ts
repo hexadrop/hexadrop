@@ -14,7 +14,7 @@ export default class InvalidUlidValueError extends InvalidArgumentError {
 		super(
 			`${property ?? 'UlidValueObject'} can not contains '${value}' value`,
 			'InvalidUlidValueError',
-			'HEX(400)'
+			'HEX(400)',
 		);
 	}
 }

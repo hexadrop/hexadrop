@@ -12,9 +12,10 @@ class InvalidStringNumberValueObject extends NumberValueObject {
 }
 
 class UndefinedStringNumberValueObject extends NumberValueObject {
+	// eslint-disable-next-line typescript/no-useless-constructor -- Testing purposes
 	constructor() {
 		// @ts-expect-error - Testing purposes
-		super(undefined);
+		super();
 	}
 }
 

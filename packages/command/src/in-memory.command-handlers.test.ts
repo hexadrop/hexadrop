@@ -56,8 +56,8 @@ class Command6 extends Command {
 }
 
 class Service {
-	hello(): string {
-		return 'world';
+	async hello(): Promise<string> {
+		return await Promise.resolve('world');
 	}
 }
 
@@ -65,24 +65,24 @@ class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
 
 	async run(): Promise<Either<DomainError, void>> {
-		this.service.hello();
+		await this.service.hello();
 
-		return Promise.resolve(Either.right(undefined));
+		return Either.right();
 	}
 }
 
 class Command23Handler implements CommandHandler<Command2 | Command3> {
-	async run(): Promise<Either<DomainError, void>> {
-		return Promise.resolve(Either.right(undefined));
+	run(): Either<DomainError, void> {
+		return Either.right();
 	}
 }
 
 class Command4Handler implements CommandHandler<Command4> {
 	constructor(private readonly service: Service) {}
 	async run(): Promise<Either<DomainError, void>> {
-		this.service.hello();
+		await this.service.hello();
 
-		return Promise.resolve(Either.right(undefined));
+		return Either.right();
 	}
 }
 
@@ -116,8 +116,8 @@ describe('InMemoryCommandHandlers', () => {
 		expectedCommand1Handler = new Command1Handler(svc);
 		expectedCommand23Handler = new Command23Handler();
 		expectedCommand4Handler = new Command4Handler(svc);
-		expectedCommand56Handler = async function expectedCommand56Handler(): Promise<Either<DomainError, void>> {
-			return Promise.resolve(Either.right(undefined));
+		expectedCommand56Handler = function expectedCommand56Handler(): Either<DomainError, void> {
+			return Either.right();
 		};
 
 		info = new InMemoryCommandHandlers();
@@ -147,7 +147,7 @@ describe('InMemoryCommandHandlers', () => {
 			expect(() => info.search(c4)).toThrow(expectedError);
 			expect(() => info.search(Command4)).toThrow(expectedError);
 			expect(expectedError.message).toBe(
-				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`
+				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`,
 			);
 		});
 	});

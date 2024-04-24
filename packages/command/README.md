@@ -17,19 +17,21 @@ bun add @hexadrop/command
 ```
 
 ## What it does
-This package is an opinionated utility designed to streamline the creation and dispatching 
-commands in CQRS (Command Query Responsibility Segregation) applications. 
 
-It provides a set of abstractions and utilities that allow developers to handle commands in a structured and efficient way.
+This package is an opinionated utility designed to streamline the creation and dispatching
+commands in CQRS (Command Query Responsibility Segregation) applications.
+
+It provides a set of abstractions and utilities that allow developers to handle commands in a structured and efficient
+way.
 Key features include:
 
-- **Command Creation**: Simplifies the process of creating new commands.
-- **Command Dispatching**: Provides mechanisms to dispatch commands to their respective handlers.
-- **Command Handler Decorators**: Provides decorators to define command handlers.
+-   **Command Creation**: Simplifies the process of creating new commands.
+-   **Command Dispatching**: Provides mechanisms to dispatch commands to their respective handlers.
+-   **Command Handler Decorators**: Provides decorators to define command handlers.
 
 ## How to use
 
-First of all define your commands. A command is a simple class that extends the `Command` class and defines 
+First of all define your commands. A command is a simple class that extends the `Command` class and defines
 the properties that will be passed to the command handler.
 
 ```typescript
@@ -72,7 +74,7 @@ class CreateUserHandler implements CommandHandler<CreateUserCommand> {
   async handle(command: CreateUserCommand): Promise<Either<DomainError, void>> {
     const { id, name, age } = command;
     await this.usersRepository.create({ id, name, age });
-    
+
     return Either.right(undefined);
   }
 }
@@ -88,13 +90,14 @@ class DeleteUserHandler implements CommandHandler<DeleteUserCommand> {
   async handle(command: DeleteUserCommand): Promise<Either<DomainError, void>> {
     const { id } = command;
     await this.usersRepository.delete(id);
-    
+
     return Either.right(undefined);
   }
 }
 ```
 
-Finally, you can dispatch your commands. To do so you need to create a `CommandBus` instance and register your command handlers.
+Finally, you can dispatch your commands. To do so you need to create a `CommandBus` instance and register your command
+handlers.
 
 ```typescript
 // src/index.ts
@@ -115,7 +118,7 @@ const handlers = new InMemoryCommandHandlers();
 handlers.register(CreateUserCommand, createUserHandler);
 handlers.register(DeleteUserCommand, deleteUserHandler);
 
-const commandBus: CommandBus = new SyncCommandBus(handlers);'
+const commandBus: CommandBus = new SyncCommandBus(handlers);
 
 commandBus.dispatch(new CreateUserCommand('1', 'John' 30));
 commandBus.dispatch(new DeleteUserCommand('1'));
@@ -125,9 +128,9 @@ commandBus.dispatch(new DeleteUserCommand('1'));
 
 Publishing this package we are committing ourselves to the following code quality standards:
 
-- Respect **Semantic Versioning**: No breaking changes in patch or minor versions
-- No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
-- **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
-- **Tests** as documentation and usage examples
-- **Well documented README** showing how to install and use
-- **License favoring Open Source** and collaboration
+-   Respect **Semantic Versioning**: No breaking changes in patch or minor versions
+-   No surprises in transitive dependencies: Use the **bare minimum dependencies** needed to meet the purpose
+-   **One specific purpose** to meet without having to carry a bunch of unnecessary other utilities
+-   **Tests** as documentation and usage examples
+-   **Well documented README** showing how to install and use
+-   **License favoring Open Source** and collaboration

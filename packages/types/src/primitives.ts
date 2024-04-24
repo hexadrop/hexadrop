@@ -25,7 +25,7 @@ type Properties<T> = Omit<MethodsAndProperties<T>, Methods<T>>;
  * Type definition for PrimitiveTypes.
  * @type { Date | boolean | number | string | null | undefined } The type can be Date, boolean, number, string, null, or undefined.
  */
-type PrimitiveTypes = Date | boolean | number | string | null | undefined;
+type PrimitiveTypes = Date | boolean | null | number | string | undefined;
 
 /**
  * Type definition for ValueObjectValue.

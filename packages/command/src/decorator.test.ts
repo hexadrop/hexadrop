@@ -8,7 +8,7 @@ import type { CommandHandler } from './bus';
 import Command from './command';
 import Decorator from './decorator';
 
-const handler1Spy = jest.fn(() => Either.right<DomainError, void>(undefined));
+const handler1Spy = jest.fn(() => Either.right<DomainError, void>());
 
 class Command1 extends Command {
 	static override COMMAND_NAME = 'Command1';

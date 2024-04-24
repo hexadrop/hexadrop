@@ -8,13 +8,13 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/hexatool/hexadrop",
-	"bugs": {
-		"url": "https://github.com/hexatool/hexadrop/issues"
-	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hexatool/hexadrop"
+	},
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
 	},
 	"license": "MIT",
 	"private": true,
@@ -30,16 +30,16 @@
 		"version": "changeset version && $npm_execpath install"
 	},
 	"devDependencies": {
-		"@types/bun": "1.1.0",
 		"@changesets/cli": "2.27.1",
-		"@hexatool/eslint-config": "4.0.0-beta.1",
-		"@hexatool/tsconfig": "20.0.1",
 		"@faker-js/faker": "8.4.1",
+		"@hexatool/eslint-config": "4.0.0-beta.6",
+		"@hexatool/tsconfig": "20.0.1",
+		"@types/bun": "1.1.0",
 		"eslint": "9.1.1",
 		"eslint-plugin-react": "7.34.1",
 		"eslint-plugin-react-hooks": "4.6.0",
 		"eslint-plugin-react-refresh": "0.4.6",
-		"typescript": "5.4.5",
-		"tsup": "8.0.2"
+		"tsup": "8.0.2",
+		"typescript": "5.4.5"
 	}
 }

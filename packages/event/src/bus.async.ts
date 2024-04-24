@@ -49,27 +49,26 @@ export default class AsyncEventBus extends EventBus {
 	 * @returns {Either<DomainError, void>}
 	 */
 	publish(...events: DomainEvent[]): Either<DomainError, void> {
-		for (const e of events) {
-			const handlers = this.info.search(e);
+		for (const event of events) {
+			const handlers = this.info.search(event);
 			for (const handler of handlers) {
 				void this.queue.add(
-					() =>
-						new Promise<Either<DomainError, void>>(resolve => {
-							try {
-								const returnValue = handler(e);
-								if (returnValue instanceof Promise) {
-									void returnValue.then(e => resolve(e));
-								} else {
-									resolve(returnValue);
-								}
-							} catch (e) {
-								resolve(Either.left(new EventHandlerError(e as Error)));
+					() => new Promise<Either<DomainError, void>>((resolve) => {
+						try {
+							const returnValue = handler(event);
+							if (returnValue instanceof Promise) {
+								void returnValue.then(either => resolve(either));
+							} else {
+								resolve(returnValue);
 							}
-						})
+						} catch (error) {
+							resolve(Either.left(new EventHandlerError(error as Error)));
+						}
+					}),
 				);
 			}
 		}
 
-		return Either.right(undefined);
+		return Either.right();
 	}
 }

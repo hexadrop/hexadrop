@@ -9,7 +9,7 @@ class MockEvent extends DomainEvent {
 
 	constructor(
 		readonly foo: string,
-		aggregateId: string
+		aggregateId: string,
 	) {
 		super(MockEvent.EVENT_NAME, aggregateId);
 	}
@@ -41,7 +41,10 @@ describe('AggregateRoot', () => {
 
 			const pulled = entity.pullDomainEvents();
 
-			expect(pulled).toStrictEqual([event1, event2]);
+			expect(pulled).toStrictEqual([
+				event1,
+				event2,
+			]);
 
 			const pulled2 = entity.pullDomainEvents();
 

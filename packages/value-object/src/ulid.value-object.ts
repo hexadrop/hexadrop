@@ -4,7 +4,7 @@ import StringValueObject from './string.value-object';
 import InvalidUlidValueError from './ulid.value-object.error';
 
 // Regular expression for validating ULID format
-const REGEXP = /^[0-9A-Z]{26}$/;
+const REGEXP = /^[\dA-Z]{26}$/;
 
 /**
  * UlidValueObject is an abstract class that represents a ULID value object.

@@ -21,8 +21,7 @@ export default class BunMockEventBus extends EventBus {
 	 *
 	 * @readonly
 	 */
-	readonly publishSpy = jest.fn((..._events: DomainEvent[]) =>
-		Promise.resolve(Either.right<DomainError, void>(undefined))
+	readonly publishSpy = jest.fn((..._events: DomainEvent[]) => Promise.resolve(Either.right<DomainError, void>()),
 	);
 
 	/**
@@ -31,7 +30,7 @@ export default class BunMockEventBus extends EventBus {
 	 * @readonly
 	 */
 	readonly subscribeSpy = jest.fn(
-		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve(),
 	);
 
 	/**
@@ -40,7 +39,7 @@ export default class BunMockEventBus extends EventBus {
 	 * @readonly
 	 */
 	readonly unsubscribeSpy = jest.fn(
-		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve(),
 	);
 
 	/**
@@ -52,7 +51,7 @@ export default class BunMockEventBus extends EventBus {
 	 * @returns {Object} - The data extracted from the domain event.
 	 */
 	private static getDataFromDomainEvent(event: DomainEvent) {
-		const { eventId: _e, occurredOn: _o, ...attributes } = event;
+		const { eventId, occurredOn: _o, ...attributes } = event;
 
 		return attributes;
 	}
@@ -65,7 +64,10 @@ export default class BunMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsSubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.subscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
+		const some = this.subscribeSpy.mock.calls.some(([
+			c,
+			h,
+		]) => c === clazz && h === handler);
 		expect(some).toBe(true);
 	}
 
@@ -77,7 +79,10 @@ export default class BunMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsUnsubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.unsubscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
+		const some = this.unsubscribeSpy.mock.calls.some(([
+			c,
+			h,
+		]) => c === clazz && h === handler);
 		expect(some).toBe(true);
 	}
 
@@ -90,8 +95,8 @@ export default class BunMockEventBus extends EventBus {
 		expect(this.publishSpy).toHaveBeenCalled();
 		const lastSpyCall = this.publishSpy.mock.lastCall;
 		expect(lastSpyCall).toBeDefined();
-		expect(lastSpyCall?.map(e => BunMockEventBus.getDataFromDomainEvent(e))).toStrictEqual(
-			expectedEvents.map(e => BunMockEventBus.getDataFromDomainEvent(e))
+		expect(lastSpyCall?.map(event => BunMockEventBus.getDataFromDomainEvent(event))).toStrictEqual(
+			expectedEvents.map(event => BunMockEventBus.getDataFromDomainEvent(event)),
 		);
 	}
 
@@ -109,9 +114,9 @@ export default class BunMockEventBus extends EventBus {
 	 */
 	assertPublishedEvents(...expectedEvents: DomainEvent[]): void {
 		expect(this.publishSpy).toHaveBeenCalled();
-		const eventsArr = this.publishSpy.mock.calls.flat();
-		expect(eventsArr.map(e => BunMockEventBus.getDataFromDomainEvent(e))).toStrictEqual(
-			expectedEvents.map(e => BunMockEventBus.getDataFromDomainEvent(e))
+		const eventsArray = this.publishSpy.mock.calls.flat();
+		expect(eventsArray.map(event => BunMockEventBus.getDataFromDomainEvent(event))).toStrictEqual(
+			expectedEvents.map(event => BunMockEventBus.getDataFromDomainEvent(event)),
 		);
 	}
 
@@ -140,7 +145,7 @@ export default class BunMockEventBus extends EventBus {
 	 * @param {...DomainEvent[]} events - The domain events to publish.
 	 * @returns {Promise<Either<DomainError, void>> | Either<DomainError, void>} - The result of the 'publishSpy' method.
 	 */
-	publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> | Either<DomainError, void> {
+	publish(...events: DomainEvent[]): Either<DomainError, void> | Promise<Either<DomainError, void>> {
 		return this.publishSpy(...events);
 	}
 
@@ -155,7 +160,7 @@ export default class BunMockEventBus extends EventBus {
 	 */
 	subscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>,
 	): Promise<void> | void {
 		return this.subscribeSpy(event, handlerOrCallback);
 	}
@@ -171,7 +176,7 @@ export default class BunMockEventBus extends EventBus {
 	 */
 	unsubscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>,
 	): Promise<void> | void {
 		return this.unsubscribeSpy(event, handlerOrCallback);
 	}

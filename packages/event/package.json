@@ -8,21 +8,21 @@
 		"Hexagonal",
 		"Architecture"
 	],
-	"homepage": "https://github.com/hexatool/hexadrop",
-	"bugs": {
-		"url": "https://github.com/hexatool/hexadrop/issues"
-	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hexatool/hexadrop"
 	},
+	"homepage": "https://github.com/hexatool/hexadrop",
+	"bugs": {
+		"url": "https://github.com/hexatool/hexadrop/issues"
+	},
 	"license": "MIT",
+	"type": "module",
+	"sideEffects": false,
 	"files": [
 		"dist",
 		"src"
 	],
-	"type": "module",
-	"sideEffects": false,
 	"exports": {
 		".": {
 			"import": {
@@ -122,11 +122,6 @@
 	"scripts": {
 		"prepublishOnly": "tsup"
 	},
-	"dependencies": {
-		"@hexadrop/either": "2.0.0-beta.2",
-		"@hexadrop/error": "2.0.0-beta.2",
-		"@hexadrop/types": "2.0.0-beta.2"
-	},
 	"peerDependencies": {
 		"@google-cloud/pubsub": "^4",
 		"@hexadrop/ioc": "^2.0.0-beta.3",
@@ -143,9 +138,14 @@
 			"optional": true
 		}
 	},
+	"dependencies": {
+		"@hexadrop/either": "2.0.0-beta.2",
+		"@hexadrop/error": "2.0.0-beta.2",
+		"@hexadrop/types": "2.0.0-beta.2"
+	},
 	"devDependencies": {
-		"@google-cloud/pubsub": "4.3.3",
 		"@abraham/reflection": "0.12.0",
+		"@google-cloud/pubsub": "4.3.3",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
 		"p-queue": "8.0.1"

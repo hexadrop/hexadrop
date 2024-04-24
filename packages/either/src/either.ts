@@ -44,16 +44,16 @@ export default class Either<L, R> {
 	 * Transforms the left value of the `Either` instance by applying a provided function and returns a new `Either` instance.
 	 * If the `Either` instance represents a right value, the original `Either` instance is returned.
 	 *
-	 * @param {(left: L) => Either<T, R>} fn The function to apply to the left value.
+	 * @param {(left: L) => Either<T, R>} leftFunction The function to apply to the left value.
 	 * @returns {Either<T, R>} A new `Either` instance with the transformed left value and the original right value, or the original `Either` instance if it represents a right value.
 	 * @template L - The type of the 'left' value.
 	 * @template R - The type of the 'right' value.
 	 * @template T The type of the transformed right value.
 	 */
-	flatMapLeft<T>(fn: (left: L) => Either<T, R>): Either<T, R> {
+	flatMapLeft<T>(leftFunction: (left: L) => Either<T, R>): Either<T, R> {
 		return this.fold(
-			leftValue => fn(leftValue),
-			rightValue => Either.right(rightValue)
+			leftValue => leftFunction(leftValue),
+			rightValue => Either.right(rightValue),
 		);
 	}
 
@@ -61,16 +61,16 @@ export default class Either<L, R> {
 	 * Transforms the right value of the `Either` instance by applying a provided function and returns a new `Either` instance.
 	 * If the `Either` instance represents a left value, the original `Either` instance is returned.
 	 *
-	 * @param {(right: R) => Either<L, T>} fn The function to apply to the right value.
+	 * @param {(right: R) => Either<L, T>} rightFunction The function to apply to the right value.
 	 * @returns {Either<L, T>} A new `Either` instance with the original left value and the transformed right value, or the original `Either` instance if it represents a left value.
 	 * @template L - The type of the 'left' value.
 	 * @template R - The type of the 'right' value.
 	 * @template T The type of the transformed right value.
 	 */
-	flatMapRight<T>(fn: (right: R) => Either<L, T>): Either<L, T> {
+	flatMapRight<T>(rightFunction: (right: R) => Either<L, T>): Either<L, T> {
 		return this.fold(
 			leftValue => Either.left(leftValue),
-			rightValue => fn(rightValue)
+			rightValue => rightFunction(rightValue),
 		);
 	}
 
@@ -78,19 +78,21 @@ export default class Either<L, R> {
 	 * Applies a function to the encapsulated value and returns the result.
 	 * The function to apply is determined by the kind of the value.
 	 *
-	 * @param {(left: L) => T} leftFn The function to apply if the value is of kind 'left'.
-	 * @param {(right: R) => T} rightFn The function to apply if the value is of kind 'right'.
+	 * @param {(left: L) => T} leftFunction The function to apply if the value is of kind 'left'.
+	 * @param {(right: R) => T} rightFunction The function to apply if the value is of kind 'right'.
 	 * @returns {T} The result of applying the appropriate function to the encapsulated value.
 	 * @template L - The type of the 'left' value.
 	 * @template R - The type of the 'right' value.
 	 * @template T The type of the result.
 	 */
-	fold<T>(leftFn: (left: L) => T, rightFn: (right: R) => T): T {
+	fold<T>(leftFunction: (left: L) => T, rightFunction: (right: R) => T): T {
 		switch (this.value.kind) {
-			case 'left':
-				return leftFn(this.value.leftValue);
-			case 'right':
-				return rightFn(this.value.rightValue);
+			case 'left': {
+				return leftFunction(this.value.leftValue);
+			}
+			case 'right': {
+				return rightFunction(this.value.rightValue);
+			}
 		}
 	}
 
@@ -105,13 +107,16 @@ export default class Either<L, R> {
 	 * @template L - The type of the 'left' value.
 	 */
 	getLeft(errorMessage?: string): L {
-		const throwFn = () => {
-			throw Error(errorMessage ? errorMessage : `The value is right: ${JSON.stringify(this.value)}`);
+		const throwFunction = () => {
+			if (errorMessage) {
+				throw new Error(errorMessage);
+			}
+			throw new Error(`The value is right: ${JSON.stringify(this.value)}`);
 		};
 
 		return this.fold(
 			leftValue => leftValue,
-			() => throwFn()
+			() => throwFunction(),
 		);
 	}
 
@@ -126,7 +131,7 @@ export default class Either<L, R> {
 	getLeftOrElse(defaultValue: L): L {
 		return this.fold(
 			someValue => someValue,
-			() => defaultValue
+			() => defaultValue,
 		);
 	}
 
@@ -141,13 +146,17 @@ export default class Either<L, R> {
 	 * @template R - The type of the 'right' value.
 	 */
 	getRight(errorMessage?: string): R {
-		const throwFn = () => {
-			throw Error(errorMessage ? errorMessage : `The value is left: ${JSON.stringify(this.value)}`);
+		const throwFunction = () => {
+			if (errorMessage) {
+				throw new Error(errorMessage);
+			}
+
+			throw new Error(`The value is left: ${JSON.stringify(this.value)}`);
 		};
 
 		return this.fold(
-			() => throwFn(),
-			rightValue => rightValue
+			() => throwFunction(),
+			rightValue => rightValue,
 		);
 	}
 
@@ -162,7 +171,7 @@ export default class Either<L, R> {
 	getRightOrElse(defaultValue: R): R {
 		return this.fold(
 			() => defaultValue,
-			someValue => someValue
+			someValue => someValue,
 		);
 	}
 
@@ -188,27 +197,27 @@ export default class Either<L, R> {
 	 * Transforms the left value of the `Either` instance by applying a provided function.
 	 * Returns a new `Either` instance with the transformed left value and the original right value.
 	 *
-	 * @param {(l: L) => T} fn The function to apply to the left value.
+	 * @param {(l: L) => T} leftFunction The function to apply to the left value.
 	 * @returns {Either<T, R>} A new `Either` instance with the transformed left value and the original right value.
 	 * @template L - The type of the 'left' value.
 	 * @template R - The type of the 'right' value.
 	 * @template T The type of the transformed left value.
 	 */
-	mapLeft<T>(fn: (l: L) => T): Either<T, R> {
-		return this.flatMapLeft(l => Either.left(fn(l)));
+	mapLeft<T>(leftFunction: (l: L) => T): Either<T, R> {
+		return this.flatMapLeft(l => Either.left(leftFunction(l)));
 	}
 
 	/**
 	 * Transforms the right value of the `Either` instance by applying a provided function.
 	 * Returns a new `Either` instance with the original left value and the transformed right value.
 	 *
-	 * @param {(r: R) => T} fn The function to apply to the right value.
+	 * @param {(r: R) => T} rightFunction The function to apply to the right value.
 	 * @returns {Either<L, T>} A new `Either` instance with the original left value and the transformed right value.
 	 * @template L - The type of the 'left' value.
 	 * @template R - The type of the 'right' value.
 	 * @template T The type of the transformed right value.
 	 */
-	mapRight<T>(fn: (r: R) => T): Either<L, T> {
-		return this.flatMapRight(r => Either.right(fn(r)));
+	mapRight<T>(rightFunction: (r: R) => T): Either<L, T> {
+		return this.flatMapRight(r => Either.right(rightFunction(r)));
 	}
 }

@@ -7,8 +7,8 @@ import BunMockEventBus from './bus.mock-bun';
 import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
-const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError, void>(undefined));
-const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.right<DomainError, void>(undefined)));
+const handler1Spy = jest.fn((_event: DomainEvent) => Either.right<DomainError, void>());
+const handler4Spy = jest.fn((_event: DomainEvent) => Promise.resolve(Either.right<DomainError, void>()));
 
 class Event1 extends DomainEvent {
 	static override EVENT_NAME = 'Event1';
@@ -18,12 +18,12 @@ class Event1 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string
+		relatedId?: string,
 	) {
 		super(Event1.EVENT_NAME, {
 			aggregateId,
-			occurredOn,
 			eventId,
+			occurredOn,
 			relatedId,
 		});
 	}
@@ -43,12 +43,12 @@ class Event2 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string
+		relatedId?: string,
 	) {
 		super(Event2.EVENT_NAME, {
 			aggregateId,
-			occurredOn,
 			eventId,
+			occurredOn,
 			relatedId,
 		});
 	}
@@ -62,12 +62,12 @@ class Event4 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string
+		relatedId?: string,
 	) {
 		super(Event4.EVENT_NAME, {
 			aggregateId,
-			occurredOn,
 			eventId,
+			occurredOn,
 			relatedId,
 		});
 	}

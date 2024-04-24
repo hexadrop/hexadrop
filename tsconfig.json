@@ -1,28 +1,22 @@
 {
 	"extends": "@hexatool/tsconfig",
 	"compilerOptions": {
-		"baseUrl": ".",
-		// Enable latest features
-		"lib": ["dom", "ESNext"],
-		"module": "esnext",
 		"target": "esnext",
-
-		// If TS 5.x+
-		"moduleResolution": "bundler",
-		"moduleDetection": "force",
 
 		// React
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
+		// Enable latest features
+		"lib": ["dom", "ESNext"],
+		"moduleDetection": "force",
 
-		// JSON
-		"resolveJsonModule": true,
-
+		"emitDecoratorMetadata": true,
 		// Annotations
 		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-
-		"esModuleInterop": true,
+		"baseUrl": ".",
+		"module": "esnext",
+		// If TS 5.x+
+		"moduleResolution": "bundler",
 
 		"paths": {
 			"@hexadrop/error/*": [
@@ -49,7 +43,10 @@
 			"@hexadrop/*": [
 				"packages/*/src"
 			]
-		}
+		},
+		// JSON
+		"resolveJsonModule": true,
+		"esModuleInterop": true
 	},
 	"exclude": ["**/dist/**", "node_modules"]
 }
