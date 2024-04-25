@@ -48,6 +48,12 @@
 				"default": "./dist/bus.mock-bun.js"
 			}
 		},
+		"./bus/mock/vitest": {
+			"import": {
+				"types": "./dist/bus.mock-vitest.d.ts",
+				"default": "./dist/bus.mock-vitest.js"
+			}
+		},
 		"./bus/pub-sub": {
 			"import": {
 				"types": "./dist/bus.pub-sub.d.ts",
@@ -99,6 +105,9 @@
 			"./bus/mock/bun": [
 				"./dist/bus.mock-bun.d.ts"
 			],
+			"./bus/mock/vitest": [
+				"./dist/bus.mock-vitest.d.ts"
+			],
 			"./bus/pub-sub": [
 				"./dist/bus.pub-sub.d.ts"
 			],
@@ -125,7 +134,8 @@
 	"peerDependencies": {
 		"@google-cloud/pubsub": "^4",
 		"@hexadrop/ioc": "^2.0.0-beta.3",
-		"p-queue": "^8"
+		"p-queue": "^8",
+		"vitest": "^1"
 	},
 	"peerDependenciesMeta": {
 		"@google-cloud/pubsub": {
@@ -135,6 +145,9 @@
 			"optional": true
 		},
 		"p-queue": {
+			"optional": true
+		},
+		"vitest": {
 			"optional": true
 		}
 	},
@@ -148,6 +161,7 @@
 		"@google-cloud/pubsub": "4.3.3",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
-		"p-queue": "8.0.1"
+		"p-queue": "8.0.1",
+		"vitest": "1.5.1"
 	}
 }
