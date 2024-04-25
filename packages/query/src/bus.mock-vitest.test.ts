@@ -19,7 +19,6 @@ class Query1 extends Query<Query1Response> {
 	}
 }
 
-
 class Query2Response {
 	constructor(public readonly bar: string) {}
 }

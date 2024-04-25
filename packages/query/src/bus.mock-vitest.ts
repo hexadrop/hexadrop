@@ -1,6 +1,7 @@
 import Either from '@hexadrop/either';
 import type DomainError from '@hexadrop/error';
 import { expect, vi } from 'vitest';
+
 import type QueryBus from './bus';
 import type Query from './query';
 
@@ -10,6 +11,12 @@ import type Query from './query';
  * @description Class representing a mock query bus for testing in Vitest.
  */
 export default class VitestMockQueryBus implements QueryBus {
+	/**
+	 * @property {Mock} askSpy - A mock function for the ask method.
+	 */
+	readonly askSpy = vi.fn(
+		<const ResponseType>(_query: Query<ResponseType>) => Promise.resolve(Either.right<DomainError>()),
+	);
 
 	/**
 	 * This is a private static method that extracts data from a query.
@@ -32,11 +39,17 @@ export default class VitestMockQueryBus implements QueryBus {
 	}
 
 	/**
-	 * @property {Mock} askSpy - A mock function for the ask method.
+	 * @method ask
+	 * @description A method that takes a Query and returns either a DomainError or the ResponseType type, or a Promise of that either
+	 * @param {Query<ResponseType>} query - The Query to be asked
+	 * @returns {Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>} - Either a DomainError or the ResponseType type, or a Promise of either
+	 * @template ResponseType - The type of the ResponseType
 	 */
-	readonly askSpy = vi.fn(
-		<const ResponseType>(_query: Query<ResponseType>) => Promise.resolve(Either.right<DomainError>()),
-	);
+	ask<const ResponseType>(query: Query<ResponseType>):
+		Either<DomainError, ResponseType> |
+		Promise<Either<DomainError, ResponseType>> {
+		return this.askSpy(query);
+	}
 
 	/**
 	 * @method assertAskedQueries
@@ -74,16 +87,4 @@ export default class VitestMockQueryBus implements QueryBus {
 	assertNotAskedQuery(): void {
 		expect(this.askSpy).not.toHaveBeenCalled();
 	}
-
-	/**
-	 * @method ask
-	 * @description A method that takes a Query and returns either a DomainError or the ResponseType type, or a Promise of that either
-	 * @param {Query<ResponseType>} query - The Query to be asked
-	 * @returns {Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>} - Either a DomainError or the ResponseType type, or a Promise of either
-	 * @template ResponseType - The type of the ResponseType
-	 */
-	ask<const ResponseType>(query: Query<ResponseType>): Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>> {
-		return this.askSpy(query);
-	}
-
 }
