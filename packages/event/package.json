@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/event",
-	"version": "2.0.0-beta.9",
+	"version": "2.0.0-beta.10",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -152,7 +152,7 @@
 		}
 	},
 	"dependencies": {
-		"@hexadrop/either": "2.0.0-beta.2",
+		"@hexadrop/either": "2.0.0-beta.3",
 		"@hexadrop/error": "2.0.0-beta.2",
 		"@hexadrop/types": "2.0.0-beta.2"
 	},
