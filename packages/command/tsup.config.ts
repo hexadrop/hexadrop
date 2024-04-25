@@ -7,6 +7,7 @@ export default defineConfig([
 		entry: [
 			'./src/command.ts',
 			'./src/bus.mock-bun.ts',
+			'./src/bus.mock-vitest.ts',
 			'./src/bus.sync.ts',
 			'./src/bus.ts',
 			'./src/decorator.ts',
