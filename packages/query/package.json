@@ -42,6 +42,12 @@
 				"default": "./dist/bus.mock-bun.js"
 			}
 		},
+		"./bus/mock/vitest": {
+			"import": {
+				"types": "./dist/bus.mock-vitest.d.ts",
+				"default": "./dist/bus.mock-vitest.js"
+			}
+		},
 		"./bus/sync": {
 			"import": {
 				"types": "./dist/bus.sync.d.ts",
@@ -83,6 +89,9 @@
 			],
 			"./bus/mock/bun": [
 				"./dist/bus.mock-bun.d.ts"
+			],
+			"./bus/mock/vitest": [
+				"./dist/bus.mock-vitest.d.ts"
 			],
 			"./bus/sync": [
 				"./dist/bus.sync.d.ts"
