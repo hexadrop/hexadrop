@@ -134,6 +134,6 @@
 		"@abraham/reflection": "0.12.0",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
-		"vitest": "1.5.3"
+		"vitest": "1.6.0"
 	}
 }
