@@ -45,8 +45,8 @@ abstract class DomainEvent {
 	 * @property relatedId - The related ID. Optional parameter.
 	 */
 	protected constructor(eventName: string, parametersOrAggregateId: DomainEventConstructorParameters | string) {
-		const { aggregateId, eventId, occurredOn, relatedId }
-			= typeof parametersOrAggregateId === 'string'
+		const { aggregateId, eventId, occurredOn, relatedId } =
+			typeof parametersOrAggregateId === 'string'
 				? ({ aggregateId: parametersOrAggregateId } as DomainEventConstructorParameters)
 				: parametersOrAggregateId;
 		this.aggregateId = aggregateId;

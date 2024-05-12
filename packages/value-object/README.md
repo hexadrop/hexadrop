@@ -94,7 +94,6 @@ class ProductPrice extends NumberValueObject {
     }
   }
 }
-
 ```
 
 ### StringValueObject

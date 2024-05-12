@@ -14,9 +14,7 @@ export default class BunMockCommandBus implements CommandBus {
 	/**
 	 * @property {Mock} dispatchSpy - A mock function for the dispatch method.
 	 */
-	readonly dispatchSpy = jest.fn(
-		(..._commands: Command[]) => Promise.resolve(Either.right<DomainError>()),
-	);
+	readonly dispatchSpy = jest.fn((..._commands: Command[]) => Promise.resolve(Either.right<DomainError>()));
 
 	/**
 	 * This is a private static method that extracts data from a command.
@@ -28,7 +26,7 @@ export default class BunMockCommandBus implements CommandBus {
 	 * @returns {Omit<CommandType, 'commandId'> | {}} - An object that contains the properties of the command object, excluding 'commandId'. If no command is provided, an empty object is returned.
 	 */
 	private static getDataFromCommand<CommandType extends Command>(
-		command?: CommandType,
+		command?: CommandType
 	): Omit<CommandType, 'commandId'> | Record<string, never> {
 		if (!command) {
 			return {};
@@ -48,7 +46,7 @@ export default class BunMockCommandBus implements CommandBus {
 		const commandsArray = this.dispatchSpy.mock.calls.flat();
 		expect(commandsArray.length).toEqual(expectedCommands.length);
 		expect(commandsArray.map(command => BunMockCommandBus.getDataFromCommand(command))).toStrictEqual(
-			expectedCommands.map(command => BunMockCommandBus.getDataFromCommand(command)),
+			expectedCommands.map(command => BunMockCommandBus.getDataFromCommand(command))
 		);
 	}
 
@@ -63,7 +61,7 @@ export default class BunMockCommandBus implements CommandBus {
 		const command = commandsArray[0];
 		expect(command).toBeDefined();
 		expect(BunMockCommandBus.getDataFromCommand(command)).toStrictEqual(
-			BunMockCommandBus.getDataFromCommand(expectedCommand),
+			BunMockCommandBus.getDataFromCommand(expectedCommand)
 		);
 	}
 

@@ -58,7 +58,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 
 		const handler = this.map.get(eventName) ?? [];
 
-		return handler.map((ch) => {
+		return handler.map(ch => {
 			if ('run' in ch) {
 				return ch.run.bind(ch);
 			}
@@ -75,7 +75,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 	 */
 	unregister<E extends DomainEvent>(
 		event: DomainEventClass<E>,
-		handler: EventBusCallback<E> | EventHandler<E>,
+		handler: EventBusCallback<E> | EventHandler<E>
 	): void {
 		let callbacks: (EventBusCallback<E> | EventHandler<E>)[] = this.map.get(event.EVENT_NAME) ?? [];
 		if (callbacks.length === 0) {

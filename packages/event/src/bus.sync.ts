@@ -51,7 +51,7 @@ export default class SyncEventBus extends EventBus {
 			const handlers = this.info.search(event);
 			for (const handler of handlers) {
 				promises.push(
-					new Promise<Either<DomainError, void>>((resolve) => {
+					new Promise<Either<DomainError, void>>(resolve => {
 						try {
 							const returnValue = handler(event);
 							if (returnValue instanceof Promise) {
@@ -62,7 +62,7 @@ export default class SyncEventBus extends EventBus {
 						} catch (error) {
 							resolve(Either.left(new EventHandlerError(error as Error)));
 						}
-					}),
+					})
 				);
 			}
 		}

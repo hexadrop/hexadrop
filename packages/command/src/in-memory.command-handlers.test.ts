@@ -147,7 +147,7 @@ describe('InMemoryCommandHandlers', () => {
 			expect(() => info.search(c4)).toThrow(expectedError);
 			expect(() => info.search(Command4)).toThrow(expectedError);
 			expect(expectedError.message).toBe(
-				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`,
+				`The command '${Command4.COMMAND_NAME}' hasn't a command handler associated`
 			);
 		});
 	});

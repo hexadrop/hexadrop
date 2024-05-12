@@ -10,7 +10,7 @@ class MockQuery1 extends Query<Query1Response> {
 
 	constructor(
 		readonly foo: string,
-		queryId?: string,
+		queryId?: string
 	) {
 		super(MockQuery1.QUERY_NAME, queryId);
 	}

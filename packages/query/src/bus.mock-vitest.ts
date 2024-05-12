@@ -14,8 +14,8 @@ export default class VitestMockQueryBus implements QueryBus {
 	/**
 	 * @property {Mock} askSpy - A mock function for the ask method.
 	 */
-	readonly askSpy = vi.fn(
-		<const ResponseType>(_query: Query<ResponseType>) => Promise.resolve(Either.right<DomainError>()),
+	readonly askSpy = vi.fn(<const ResponseType>(_query: Query<ResponseType>) =>
+		Promise.resolve(Either.right<DomainError>())
 	);
 
 	/**
@@ -28,7 +28,7 @@ export default class VitestMockQueryBus implements QueryBus {
 	 * @returns {Omit<QueryType, 'queryId'> | {}} - An object that contains the properties of the query object, excluding 'queryId'. If no query is provided, an empty object is returned.
 	 */
 	private static getDataFromQuery<Response, QueryType extends Query<Response>>(
-		query?: QueryType,
+		query?: QueryType
 	): Omit<QueryType, 'queryId'> | Record<string, never> {
 		if (!query) {
 			return {};
@@ -45,9 +45,9 @@ export default class VitestMockQueryBus implements QueryBus {
 	 * @returns {Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>} - Either a DomainError or the ResponseType type, or a Promise of either
 	 * @template ResponseType - The type of the ResponseType
 	 */
-	ask<const ResponseType>(query: Query<ResponseType>):
-		Either<DomainError, ResponseType> |
-		Promise<Either<DomainError, ResponseType>> {
+	ask<const ResponseType>(
+		query: Query<ResponseType>
+	): Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>> {
 		return this.askSpy(query);
 	}
 
@@ -61,7 +61,7 @@ export default class VitestMockQueryBus implements QueryBus {
 		const queriesArray = this.askSpy.mock.calls.flat();
 		expect(queriesArray.length).toEqual(expectedQueries.length);
 		expect(queriesArray.map(query => VitestMockQueryBus.getDataFromQuery(query))).toStrictEqual(
-			expectedQueries.map(query => VitestMockQueryBus.getDataFromQuery(query)),
+			expectedQueries.map(query => VitestMockQueryBus.getDataFromQuery(query))
 		);
 	}
 
@@ -76,7 +76,7 @@ export default class VitestMockQueryBus implements QueryBus {
 		const query = queriesArray[0];
 		expect(query).toBeDefined();
 		expect(VitestMockQueryBus.getDataFromQuery(query)).toStrictEqual(
-			VitestMockQueryBus.getDataFromQuery(expectedQuery),
+			VitestMockQueryBus.getDataFromQuery(expectedQuery)
 		);
 	}
 

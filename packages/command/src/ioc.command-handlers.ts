@@ -29,7 +29,7 @@ export default class IoCCommandHandlers extends CommandHandlers {
 	 * @template CommandType - The command type.
 	 */
 	search<CommandType extends Command>(
-		command: CommandClass<CommandType> | CommandType,
+		command: CommandClass<CommandType> | CommandType
 	): CommandBusCallback<CommandType> {
 		let handler: CommandHandlerClass<CommandType> | undefined;
 		let commandName: string | undefined;
@@ -43,7 +43,7 @@ export default class IoCCommandHandlers extends CommandHandlers {
 			commandName = command.commandName;
 			handler = Reflect.getMetadata<CommandHandlerClass<CommandType>>(
 				COMMAND_HANDLER_METADATA_KEY,
-				command.constructor,
+				command.constructor
 			);
 		}
 

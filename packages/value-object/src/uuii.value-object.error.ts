@@ -14,7 +14,7 @@ export default class InvalidUuiiValueError extends InvalidArgumentError {
 		super(
 			`${property ?? 'UuiiValueObject'} can not contains '${value}' value`,
 			'InvalidUuiiValueError',
-			'HEX(400)',
+			'HEX(400)'
 		);
 	}
 }

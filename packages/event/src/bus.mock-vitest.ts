@@ -21,8 +21,7 @@ export default class VitestMockEventBus extends EventBus {
 	 *
 	 * @readonly
 	 */
-	readonly publishSpy = vi.fn((..._events: DomainEvent[]) => Promise.resolve(Either.right<DomainError>()),
-	);
+	readonly publishSpy = vi.fn((..._events: DomainEvent[]) => Promise.resolve(Either.right<DomainError>()));
 
 	/**
 	 * A spy function that mocks the 'subscribe' method of the bus.
@@ -30,7 +29,7 @@ export default class VitestMockEventBus extends EventBus {
 	 * @readonly
 	 */
 	readonly subscribeSpy = vi.fn(
-		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve(),
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
 	);
 
 	/**
@@ -39,7 +38,7 @@ export default class VitestMockEventBus extends EventBus {
 	 * @readonly
 	 */
 	readonly unsubscribeSpy = vi.fn(
-		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve(),
+		(_event: DomainEventClass<any>, _handler: EventBusCallback<any> | EventHandler<any>) => Promise.resolve()
 	);
 
 	/**
@@ -64,10 +63,7 @@ export default class VitestMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsSubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.subscribeSpy.mock.calls.some(([
-			c,
-			h,
-		]) => c === clazz && h === handler);
+		const some = this.subscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
 		expect(some).toBe(true);
 	}
 
@@ -79,10 +75,7 @@ export default class VitestMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsUnsubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.unsubscribeSpy.mock.calls.some(([
-			c,
-			h,
-		]) => c === clazz && h === handler);
+		const some = this.unsubscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
 		expect(some).toBe(true);
 	}
 
@@ -96,7 +89,7 @@ export default class VitestMockEventBus extends EventBus {
 		const lastSpyCall = this.publishSpy.mock.lastCall;
 		expect(lastSpyCall).toBeDefined();
 		expect(lastSpyCall?.map(event => VitestMockEventBus.getDataFromDomainEvent(event))).toStrictEqual(
-			expectedEvents.map(event => VitestMockEventBus.getDataFromDomainEvent(event)),
+			expectedEvents.map(event => VitestMockEventBus.getDataFromDomainEvent(event))
 		);
 	}
 
@@ -116,7 +109,7 @@ export default class VitestMockEventBus extends EventBus {
 		expect(this.publishSpy).toHaveBeenCalled();
 		const eventsArray = this.publishSpy.mock.calls.flat();
 		expect(eventsArray.map(event => VitestMockEventBus.getDataFromDomainEvent(event))).toStrictEqual(
-			expectedEvents.map(event => VitestMockEventBus.getDataFromDomainEvent(event)),
+			expectedEvents.map(event => VitestMockEventBus.getDataFromDomainEvent(event))
 		);
 	}
 
@@ -160,7 +153,7 @@ export default class VitestMockEventBus extends EventBus {
 	 */
 	subscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		handlerOrCallback: EventBusCallback<D> | EventHandler<D>,
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
 	): Promise<void> | void {
 		return this.subscribeSpy(event, handlerOrCallback);
 	}
@@ -176,7 +169,7 @@ export default class VitestMockEventBus extends EventBus {
 	 */
 	unsubscribe<D extends DomainEvent>(
 		event: DomainEventClass<D>,
-		handlerOrCallback: EventBusCallback<D> | EventHandler<D>,
+		handlerOrCallback: EventBusCallback<D> | EventHandler<D>
 	): Promise<void> | void {
 		return this.unsubscribeSpy(event, handlerOrCallback);
 	}

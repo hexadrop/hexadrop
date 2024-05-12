@@ -65,7 +65,7 @@ export default class Either<L, R> {
 	flatMapLeft<T>(leftFunction: (left: L) => Either<T, R>): Either<T, R> {
 		return this.fold(
 			leftValue => leftFunction(leftValue),
-			rightValue => Either.right(rightValue),
+			rightValue => Either.right(rightValue)
 		);
 	}
 
@@ -82,7 +82,7 @@ export default class Either<L, R> {
 	flatMapRight<T>(rightFunction: (right: R) => Either<L, T>): Either<L, T> {
 		return this.fold(
 			leftValue => Either.left(leftValue),
-			rightValue => rightFunction(rightValue),
+			rightValue => rightFunction(rightValue)
 		);
 	}
 
@@ -128,7 +128,7 @@ export default class Either<L, R> {
 
 		return this.fold(
 			leftValue => leftValue,
-			() => throwFunction(),
+			() => throwFunction()
 		);
 	}
 
@@ -143,7 +143,7 @@ export default class Either<L, R> {
 	getLeftOrElse(defaultValue: L): L {
 		return this.fold(
 			someValue => someValue,
-			() => defaultValue,
+			() => defaultValue
 		);
 	}
 
@@ -168,7 +168,7 @@ export default class Either<L, R> {
 
 		return this.fold(
 			() => throwFunction(),
-			rightValue => rightValue,
+			rightValue => rightValue
 		);
 	}
 
@@ -183,7 +183,7 @@ export default class Either<L, R> {
 	getRightOrElse(defaultValue: R): R {
 		return this.fold(
 			() => defaultValue,
-			someValue => someValue,
+			someValue => someValue
 		);
 	}
 

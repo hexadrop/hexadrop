@@ -54,9 +54,7 @@ class CreateUserCommand extends Command {
 class DeleteUserCommand extends Command {
   static override COMMAND_NAME = 'user.delete';
 
-  constructor(
-    readonly id: string
-  ) {
+  constructor(readonly id: string) {
     super(CreateUserCommand.COMMAND_NAME);
   }
 }
@@ -72,10 +70,10 @@ class CreateUserHandler implements CommandHandler<CreateUserCommand> {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async handle(command: CreateUserCommand): Promise<Either<DomainError, void>> {
-    const { id, name, age } = command;
-    await this.usersRepository.create({ id, name, age });
+    const { age, id, name } = command;
+    await this.usersRepository.create({ age, id, name });
 
-    return Either.right(undefined);
+    return Either.right();
   }
 }
 ```
@@ -91,7 +89,7 @@ class DeleteUserHandler implements CommandHandler<DeleteUserCommand> {
     const { id } = command;
     await this.usersRepository.delete(id);
 
-    return Either.right(undefined);
+    return Either.right();
   }
 }
 ```
@@ -120,7 +118,7 @@ handlers.register(DeleteUserCommand, deleteUserHandler);
 
 const commandBus: CommandBus = new SyncCommandBus(handlers);
 
-commandBus.dispatch(new CreateUserCommand('1', 'John' 30));
+commandBus.dispatch(new CreateUserCommand('1', 'John', 30));
 commandBus.dispatch(new DeleteUserCommand('1'));
 ```
 

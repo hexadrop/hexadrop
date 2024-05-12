@@ -53,18 +53,19 @@ export default class AsyncEventBus extends EventBus {
 			const handlers = this.info.search(event);
 			for (const handler of handlers) {
 				void this.queue.add(
-					() => new Promise<Either<DomainError, void>>((resolve) => {
-						try {
-							const returnValue = handler(event);
-							if (returnValue instanceof Promise) {
-								void returnValue.then(either => resolve(either));
-							} else {
-								resolve(returnValue);
+					() =>
+						new Promise<Either<DomainError, void>>(resolve => {
+							try {
+								const returnValue = handler(event);
+								if (returnValue instanceof Promise) {
+									void returnValue.then(either => resolve(either));
+								} else {
+									resolve(returnValue);
+								}
+							} catch (error) {
+								resolve(Either.left(new EventHandlerError(error as Error)));
 							}
-						} catch (error) {
-							resolve(Either.left(new EventHandlerError(error as Error)));
-						}
-					}),
+						})
 				);
 			}
 		}

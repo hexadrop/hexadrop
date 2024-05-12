@@ -48,13 +48,13 @@ describe('Either', () => {
 			const either = Either.right<Error, boolean>(true);
 			const fold = either.fold(
 				v => v.message,
-				() => 'true',
+				() => 'true'
 			);
 			expect(fold).toBe('true');
 			const either2 = Either.left<Error, boolean>(new Error('MSG'));
 			const fold2 = either2.fold(
 				v => v.message,
-				() => 'true',
+				() => 'true'
 			);
 			expect(fold2).toBe('MSG');
 		});

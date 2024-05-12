@@ -17,7 +17,7 @@ abstract class DomainError extends Error {
 	protected constructor(
 		name: string,
 		message: string,
-		readonly code: string,
+		readonly code: string
 	) {
 		allowedValues(code);
 		super(message);
@@ -48,7 +48,7 @@ class InvalidErrorCodeError extends DomainError {
 		super(
 			'InvalidErrorCodeError',
 			`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`,
-			'HEX(400)',
+			'HEX(400)'
 		);
 	}
 }

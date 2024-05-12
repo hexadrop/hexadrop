@@ -9,10 +9,7 @@ class EmptyErrorCodeError extends DomainError {
 class UndefinedErrorCodeError extends DomainError {
 	constructor() {
 		// @ts-expect-error Test undefined error code
-		super(
-			'UndefinedErrorCodeError',
-			'undefined error message',
-		);
+		super('UndefinedErrorCodeError', 'undefined error message');
 	}
 }
 
@@ -34,7 +31,7 @@ class UndefinedNameError extends DomainError {
 			// @ts-expect-error Expect not undefined
 			undefined,
 			'undefined error message',
-			'HEX(400)',
+			'HEX(400)'
 		);
 	}
 }

@@ -14,10 +14,7 @@ class InvalidNumberStringValueObject extends StringValueObject {
 class InvalidStringValueObject extends StringValueObject<'pera' | 'sandia'> {
 	constructor() {
 		// @ts-expect-error - Testing purposes
-		super('melon', [
-			'sandia',
-			'pera',
-		]);
+		super('melon', ['sandia', 'pera']);
 	}
 }
 

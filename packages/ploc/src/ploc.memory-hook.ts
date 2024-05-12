@@ -15,10 +15,7 @@ export default function usePlocState<S>(ploc: InMemoryPloc<S>): S {
 	 * @type {[S, Dispatch<SetStateAction<S>>]}
 	 * @template S The type of the state that the `InMemoryPloc` manages.
 	 */
-	const [
-		state,
-		setState,
-	] = useState(ploc.state);
+	const [state, setState] = useState(ploc.state);
 
 	/**
 	 * A side effect that runs after render.

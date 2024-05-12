@@ -29,7 +29,7 @@ export default class IoCEventHandlers extends EventHandlers {
 	 * @template EventType - The type of the event.
 	 */
 	search<EventType extends DomainEvent>(
-		event: DomainEventClass<EventType> | EventType,
+		event: DomainEventClass<EventType> | EventType
 	): EventBusCallback<EventType>[] {
 		let handlers: EventHandlerClass<EventType>[] | undefined;
 		let eventName: string | undefined;
@@ -43,7 +43,7 @@ export default class IoCEventHandlers extends EventHandlers {
 			eventName = event.eventName;
 			handlers = Reflect.getMetadata<EventHandlerClass<EventType>[]>(
 				EVENT_HANDLER_METADATA_KEY,
-				event.constructor,
+				event.constructor
 			);
 		}
 

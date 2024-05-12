@@ -17,7 +17,7 @@ export default class DomainNotFoundError extends DomainError {
 		super(
 			name ?? 'DomainNotFoundError',
 			`${domain} with ${parameter ?? 'id'} '${id}' was not found`,
-			code ?? 'HEX(404)',
+			code ?? 'HEX(404)'
 		);
 	}
 }

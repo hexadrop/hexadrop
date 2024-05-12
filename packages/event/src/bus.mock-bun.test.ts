@@ -18,7 +18,7 @@ class Event1 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string,
+		relatedId?: string
 	) {
 		super(Event1.EVENT_NAME, {
 			aggregateId,
@@ -43,7 +43,7 @@ class Event2 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string,
+		relatedId?: string
 	) {
 		super(Event2.EVENT_NAME, {
 			aggregateId,
@@ -62,7 +62,7 @@ class Event4 extends DomainEvent {
 		aggregateId: string,
 		occurredOn?: Date,
 		eventId?: string,
-		relatedId?: string,
+		relatedId?: string
 	) {
 		super(Event4.EVENT_NAME, {
 			aggregateId,

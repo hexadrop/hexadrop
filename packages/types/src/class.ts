@@ -8,6 +8,4 @@
  * @template StaticType The type of the static, defaults to unknown.
  */
 export type Class<CtorArguments extends any[] = any[], InstanceType = unknown, StaticType = unknown> = StaticType &
-	(new (
-		..._arguments: CtorArguments
-	) => InstanceType);
+	(new (..._arguments: CtorArguments) => InstanceType);

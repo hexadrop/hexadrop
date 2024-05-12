@@ -28,7 +28,7 @@ class InvalidStringValueError extends InvalidArgumentError {
 		super(
 			`${property ?? 'StringValueObject'} can not contains '${value}' value`,
 			'InvalidStringValueError',
-			'HEX(400)',
+			'HEX(400)'
 		);
 	}
 }
@@ -46,7 +46,7 @@ class InvalidStringValueTypeError extends InvalidArgumentError {
 		super(
 			`${property ?? 'StringValueObject'} must only contains string values`,
 			'InvalidStringValueTypeError',
-			'HEX(400)',
+			'HEX(400)'
 		);
 	}
 }

@@ -43,7 +43,7 @@ describe('DomainError', () => {
 		test('should create from string', () => {
 			const expectedError = new InvalidErrorCodeError();
 			expect(expectedError.message).toBe(
-				`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`,
+				`DomainError code must follow the next Regexp '/[A-Z][A-Z][A-Z]((d{3}|d{6}))/'`
 			);
 			expect(expectedError.errorCode).toBe(400);
 			expect(expectedError.code).toBe('HEX(400)');

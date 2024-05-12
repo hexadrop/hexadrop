@@ -38,7 +38,7 @@ export default class IoCQueryHandlers extends QueryHandlers {
 	 * @template QueryType - The type of the Query that extends Query<ResponseType>.
 	 */
 	public search<ResponseType, QueryType extends Query<ResponseType>>(
-		query: QueryClass<ResponseType, QueryType> | QueryType,
+		query: QueryClass<ResponseType, QueryType> | QueryType
 	): QueryBusCallback<ResponseType, QueryType> {
 		let handler: QueryHandlerClass<ResponseType, QueryType> | undefined;
 		let queryName: string | undefined;
@@ -48,14 +48,14 @@ export default class IoCQueryHandlers extends QueryHandlers {
 			queryName = query.QUERY_NAME;
 			handler = Reflect.getMetadata<QueryHandlerClass<ResponseType, QueryType>>(
 				QUERY_HANDLER_METADATA_KEY,
-				query,
+				query
 			);
 		} else if ('queryName' in query) {
 			// Check if the query has a queryName property
 			queryName = query.queryName;
 			handler = Reflect.getMetadata<QueryHandlerClass<ResponseType, QueryType>>(
 				QUERY_HANDLER_METADATA_KEY,
-				query.constructor,
+				query.constructor
 			);
 		}
 

@@ -29,44 +29,41 @@ bun add @hexadrop/aggregate-root
 
 ```typescript
 import AggregateRoot from '@hexadrop/aggregate-root';
-import type { DomainEventParams } from '@hexadrop/event';
 import DomainEvent from '@hexadrop/event';
 import type { Primitives } from '@hexadrop/types/primitives';
 
 class MockEvent extends DomainEvent {
-	static override EVENT_NAME = 'event';
+  static override EVENT_NAME = 'event';
 
-	constructor(
-		readonly foo: string,
-		aggregateId: string
-	) {
-		super(MockEvent.EVENT_NAME, aggregateId);
-	}
+  constructor(
+    readonly foo: string,
+    aggregateId: string
+  ) {
+    super(MockEvent.EVENT_NAME, aggregateId);
+  }
 }
 
 class MockAggregateRoot extends AggregateRoot {
+  readonly foo: string;
 
-    readonly foo: string;
+  constructor(primitives: Primitives<MockAggregateRoot>) {
+    super();
+    this.foo = primitives.foo;
+  }
 
-    constructor(primitives: Primitives<MockAggregateRoot>) {
-        super();
-        this.foo = primitives.foo;
-    }
+  static create(foo: string): MockAggregateRoot {
+    const aggregateRoot = new MockAggregateRoot({ foo });
+    aggregateRoot.record(new MockEvent(foo, 'aggregateId'));
 
-    static create(foo: string): MockAggregateRoot {
-        const aggregateRoot = new MockAggregateRoot({ foo });
-        aggregateRoot.record(new MockEvent(foo, 'aggregateId'));
+    return aggregateRoot;
+  }
 
-        return aggregateRoot;
-    }
-
-    override toPrimitives(): Primitives<MockAggregateRoot> {
-        return {
-            foo: this.foo,
-        };
-    }
+  override toPrimitives(): Primitives<MockAggregateRoot> {
+    return {
+      foo: this.foo,
+    };
+  }
 }
-
 ```
 
 ## Hexatool Code Quality Standards

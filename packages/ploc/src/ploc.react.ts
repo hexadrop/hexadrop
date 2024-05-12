@@ -30,10 +30,7 @@ export default abstract class ReactPloc<S> implements PlocInterface<S> {
 	 * @param {[S, Dispatch<SetStateAction<S>>]} parameters The initial state and dispatch function.
 	 */
 	constructor(parameters: [S, Dispatch<SetStateAction<S>>]) {
-		const [
-			initialState,
-			dispatch,
-		] = parameters;
+		const [initialState, dispatch] = parameters;
 		this.internalState = initialState;
 		this.changeState = dispatch;
 	}

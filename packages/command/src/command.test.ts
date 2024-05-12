@@ -7,7 +7,7 @@ class MockCommand extends Command {
 
 	constructor(
 		readonly foo: string,
-		commandId?: string,
+		commandId?: string
 	) {
 		super(MockCommand.COMMAND_NAME, commandId);
 	}
