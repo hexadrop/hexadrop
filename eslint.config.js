@@ -1,3 +1,9 @@
-import { default as hexatool } from '@hexatool/eslint-config';
+import hexatool from '@hexatool/eslint-config';
 
-export default hexatool();
+export default hexatool({
+	rules: {
+		'typescript/ban-types': 'off',
+		'typescript/no-explicit-any': 'off',
+		'typescript/no-invalid-void-type': 'off',
+	},
+});
