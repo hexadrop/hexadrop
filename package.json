@@ -25,9 +25,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"publish": "changeset publish",
-		"typecheck": "tsc --noEmit",
-		"version": "changeset version && $npm_execpath install"
+		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.27.1",
