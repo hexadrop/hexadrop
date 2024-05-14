@@ -18,12 +18,20 @@ export default class Either<L, R> {
 	 * Creates a new `Either` instance representing a left value.
 	 *
 	 * @static
-	 * @param {L} value The left value.
 	 * @returns {Either<L, R>} A new `Either` instance encapsulating the left value.
 	 * @template L The type of the left value.
 	 * @template R The type of the right value.
 	 */
 	static left<R>(): Either<never, R>;
+	/**
+	 * Creates a new `Either` instance representing a left value.
+	 *
+	 * @static
+	 * @param {L} value The left value.
+	 * @returns {Either<L, R>} A new `Either` instance encapsulating the left value.
+	 * @template L The type of the left value.
+	 * @template R The type of the right value.
+	 */
 	static left<L, R>(value: L): Either<L, R>;
 	static left<L, R>(value?: L): Either<L, R> | Either<never, R> {
 		if (value) {
@@ -37,12 +45,20 @@ export default class Either<L, R> {
 	 * Creates a new `Either` instance representing a right value.
 	 *
 	 * @static
-	 * @param {R} value The right value.
 	 * @returns {Either<L, R>} A new `Either` instance encapsulating the right value.
 	 * @template L The type of the left value.
 	 * @template R The type of the right value.
 	 */
 	static right<L>(): Either<L, never>;
+	/**
+	 * Creates a new `Either` instance representing a right value.
+	 *
+	 * @static
+	 * @param {R} value The right value.
+	 * @returns {Either<L, R>} A new `Either` instance encapsulating the right value.
+	 * @template L The type of the left value.
+	 * @template R The type of the right value.
+	 */
 	static right<L, R>(value: R): Either<L, R>;
 	static right<L, R>(value?: R): Either<L, R> | Either<L, never> {
 		if (value) {
