@@ -28,7 +28,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@changesets/cli": "2.27.1",
+		"@changesets/cli": "2.27.2",
 		"@faker-js/faker": "8.4.1",
 		"@hexatool/eslint-config": "4.1.6",
 		"@hexatool/tsconfig": "20.0.1",
