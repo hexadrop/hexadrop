@@ -2,6 +2,9 @@
 	"extends": "@hexadrop/tsconfig",
 	"compilerOptions": {
 		"baseUrl": ".",
+		// Cant remove, because bun and reflect-metadata not working without this
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
 		"paths": {
 			"@hexadrop/error/*": [
 				"packages/error/src/*"
