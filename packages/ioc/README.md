@@ -26,7 +26,7 @@ You can use it as a base for your own implementation or use one of the following
 
 -   [DIOD](https://github.com/artberri/diod): A simple and lightweight IoC container for TypeScript.
 
-## Hexatool Code Quality Standards
+## Hexadrop Code Quality Standards
 
 Publishing this package we are committing ourselves to the following code quality standards:
 

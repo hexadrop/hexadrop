@@ -6,7 +6,7 @@
   Opinionated set of tools for building web applications
 </p>
 
-## Hexatool Code Quality Standards
+## Hexadrop Code Quality Standards
 
 Publishing this package we are committing ourselves to the following code quality standards:
 

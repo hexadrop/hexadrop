@@ -133,7 +133,7 @@ export default class RequestId extends UuiiValueObject {
 }
 ```
 
-## Hexatool Code Quality Standards
+## Hexadrop Code Quality Standards
 
 Publishing this package we are committing ourselves to the following code quality standards:
 

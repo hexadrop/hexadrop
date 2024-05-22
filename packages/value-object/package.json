@@ -10,11 +10,11 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hexatool/hexadrop"
+		"url": "https://github.com/hexadrop/hexadrop"
 	},
-	"homepage": "https://github.com/hexatool/hexadrop",
+	"homepage": "https://github.com/hexadrop/hexadrop",
 	"bugs": {
-		"url": "https://github.com/hexatool/hexadrop/issues"
+		"url": "https://github.com/hexadrop/hexadrop/issues"
 	},
 	"license": "MIT",
 	"type": "module",
@@ -98,6 +98,8 @@
 		"@hexadrop/error": "2.0.0-beta.2"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "8.4.1",
+		"tsup": "8.0.2",
 		"ulid": "2.3.0"
 	}
 }

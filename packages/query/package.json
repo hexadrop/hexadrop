@@ -10,11 +10,11 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hexatool/hexadrop"
+		"url": "https://github.com/hexadrop/hexadrop"
 	},
-	"homepage": "https://github.com/hexatool/hexadrop",
+	"homepage": "https://github.com/hexadrop/hexadrop",
 	"bugs": {
-		"url": "https://github.com/hexatool/hexadrop/issues"
+		"url": "https://github.com/hexadrop/hexadrop/issues"
 	},
 	"license": "MIT",
 	"type": "module",
@@ -114,10 +114,14 @@
 		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
-		"@hexadrop/ioc": "^2.0.0-beta.3"
+		"@hexadrop/ioc": "^2.0.0-beta.3",
+		"vitest": "^1"
 	},
 	"peerDependenciesMeta": {
 		"@hexadrop/ioc": {
+			"optional": true
+		},
+		"vitest": {
 			"optional": true
 		}
 	},
@@ -129,6 +133,8 @@
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
 		"@hexadrop/ioc": "2.0.0-beta.3",
-		"diod": "2.0.0"
+		"diod": "2.0.0",
+		"tsup": "8.0.2",
+		"vitest": "1.6.0"
 	}
 }
