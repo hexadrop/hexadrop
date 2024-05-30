@@ -15,6 +15,7 @@
   },
   "changesets": [
     "big-buttons-pull",
+    "big-buttons-pulled",
     "big-fishes-speak",
     "clever-points-collect",
     "curly-bikes-protect",
