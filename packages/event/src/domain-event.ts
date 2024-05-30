@@ -1,5 +1,6 @@
 import type { Class } from '@hexadrop/types/class';
 import type { Nullable } from '@hexadrop/types/nullable';
+import type { Primitives } from '@hexadrop/types/primitives';
 
 /**
  * Interface for the constructor parameters of DomainEvent
@@ -9,7 +10,7 @@ import type { Nullable } from '@hexadrop/types/nullable';
  * @property {Nullable<Date>} occurredOn - The date the event occurred on (optional)
  * @property {Nullable<string>} relatedId - The related ID (optional)
  */
-interface DomainEventConstructorParameters {
+interface DomainEventParameters {
 	readonly aggregateId: string;
 	readonly eventId?: Nullable<string>;
 	readonly occurredOn?: Nullable<Date>;
@@ -37,17 +38,17 @@ abstract class DomainEvent {
 	 * Constructs a new instance of the DomainEvent class.
 	 *
 	 * @param eventName - The name of the event.
-	 * @param paramsOrAggregateId - Either an object of type DomainEventConstructorParams or a string representing the aggregateId.
+	 * @param parametersOrAggregateId - Either an object of type DomainEventConstructorParams or a string representing the aggregateId.
 	 * @property aggregateId - The ID of the aggregate. If paramsOrAggregateId is a string, it is used as the aggregateId.
 	 * @property eventId - The ID of the event. If not provided in the params, a random UUID will be generated.
 	 * @property occurredOn - The date the event occurred on. If not provided in the params, the current date and time will be used.
 	 * @property eventName - The name of the event, as provided in the eventName parameter.
 	 * @property relatedId - The related ID. Optional parameter.
 	 */
-	protected constructor(eventName: string, parametersOrAggregateId: DomainEventConstructorParameters | string) {
+	protected constructor(eventName: string, parametersOrAggregateId: DomainEventParameters | string) {
 		const { aggregateId, eventId, occurredOn, relatedId } =
 			typeof parametersOrAggregateId === 'string'
-				? ({ aggregateId: parametersOrAggregateId } as DomainEventConstructorParameters)
+				? ({ aggregateId: parametersOrAggregateId } as DomainEventParameters)
 				: parametersOrAggregateId;
 		this.aggregateId = aggregateId;
 		this.eventId = eventId ?? crypto.randomUUID();
@@ -56,6 +57,10 @@ abstract class DomainEvent {
 		this.relatedId = relatedId;
 	}
 }
+
+type DomainEventConstructorParameters<T extends DomainEvent> = Primitives<
+	Omit<T, 'aggregateId' | 'eventId' | 'eventName' | 'occurredOn' | 'relatedId'>
+>;
 
 type DomainEventClass<
 	DomainInstanceType extends DomainEvent = DomainEvent,
@@ -68,6 +73,6 @@ type DomainEventClass<
 	}
 >;
 
-export type { DomainEventClass };
+export type { DomainEventClass, DomainEventConstructorParameters };
 
 export default DomainEvent;
