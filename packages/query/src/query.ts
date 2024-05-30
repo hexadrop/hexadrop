@@ -1,4 +1,5 @@
 import type { Class } from '@hexadrop/types/class';
+import type { Primitives } from '@hexadrop/types/primitives.ts';
 
 /**
  * Query is an abstract class that represents a query with a unique id and name.
@@ -48,6 +49,8 @@ type QueryClass<
 	}
 >;
 
-export type { QueryClass };
+type QueryConstructorParameters<T extends Query<unknown>> = Primitives<Omit<T, 'queryId' | 'queryName'>>;
+
+export type { QueryClass, QueryConstructorParameters };
 
 export default Query;
