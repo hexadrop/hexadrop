@@ -1,5 +1,5 @@
 import type { Class } from '@hexadrop/types/class';
-import type { Primitives } from '@hexadrop/types/primitives.ts';
+import type { Primitives } from '@hexadrop/types/primitives';
 
 /**
  * @abstract
