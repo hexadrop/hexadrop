@@ -10,7 +10,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/hexadrop/hexadrop"
+		"url": "git+https://github.com/hexadrop/hexadrop.git"
 	},
 	"homepage": "https://github.com/hexadrop/hexadrop",
 	"bugs": {
