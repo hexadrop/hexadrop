@@ -15,6 +15,8 @@
   },
   "changesets": [
     "big-buttons-pull",
+    "big-buttons-pulled-2",
+    "big-buttons-pulled-3",
     "big-buttons-pulled",
     "big-fishes-speak",
     "clever-points-collect",
