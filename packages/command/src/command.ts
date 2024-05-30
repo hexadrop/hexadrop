@@ -1,4 +1,5 @@
 import type { Class } from '@hexadrop/types/class';
+import type { Primitives } from '@hexadrop/types/primitives.ts';
 
 /**
  * @abstract
@@ -48,6 +49,8 @@ type CommandClass<DomainInstanceType extends Command = Command, CtorArguments ex
 	}
 >;
 
-export type { CommandClass };
+type CommandConstructorParameters<T extends Command> = Primitives<Omit<T, 'commandId' | 'commandName'>>;
+
+export type { CommandClass, CommandConstructorParameters };
 
 export default Command;
