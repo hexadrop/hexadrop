@@ -6,6 +6,7 @@ export default defineConfig([
 		dts: true,
 		entry: [
 			'./src/abstract.ts',
+			'./src/awaitable.ts',
 			'./src/class.ts',
 			'./src/instance.ts',
 			'./src/newable.ts',

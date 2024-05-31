@@ -30,6 +30,12 @@
 				"default": "./dist/abstract.js"
 			}
 		},
+		"./awaitable": {
+			"import": {
+				"types": "./dist/awaitable.d.ts",
+				"default": "./dist/awaitable.js"
+			}
+		},
 		"./class": {
 			"import": {
 				"types": "./dist/class.d.ts",
@@ -65,6 +71,9 @@
 		"*": {
 			"./abstract": [
 				"./dist/abstract.d.ts"
+			],
+			"./awaitable": [
+				"./dist/awaitable.d.ts"
 			],
 			"./class": [
 				"./dist/class.d.ts"
