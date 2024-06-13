@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { describe, expect, test } from 'bun:test';
 
-import { EmptyDateValueError, InvalidDateValueTypeError } from './date.value-object.error';
+import { EmptyDateValueError } from './date.value-object.error';
 import DateValueObjectMother from './date.value-object.mother';
 
 describe('DateValueObject', () => {
@@ -11,15 +11,25 @@ describe('DateValueObject', () => {
 			const vo = DateValueObjectMother.create(voValue);
 
 			expect(vo).toBeDefined();
-			expect(vo.value).toBe(voValue);
+			expect(vo.value).toStrictEqual(voValue);
+		});
+		test('should instantiate from number', () => {
+			const voValue = new Date(1_659_011_272_040);
+			const vo = DateValueObjectMother.create(1_659_011_272_040);
+
+			expect(vo).toBeDefined();
+			expect(vo.value).toStrictEqual(voValue);
+		});
+		test('should instantiate from string', () => {
+			const voValue = new Date(1_659_011_272_040);
+			const vo = DateValueObjectMother.create('2022-07-28T12:27:52.040Z');
+
+			expect(vo).toBeDefined();
+			expect(vo.value).toStrictEqual(voValue);
 		});
 		test('should throw an error if arg is undefined', () => {
 			const invalid = () => DateValueObjectMother.invalidWithUndefined();
 			expect(invalid).toThrow(new EmptyDateValueError());
-		});
-		test('should throw an error if arg is invalid value', () => {
-			const invalid = () => DateValueObjectMother.invalidWithString();
-			expect(invalid).toThrow(new InvalidDateValueTypeError());
 		});
 	});
 	describe('isAfterThan()', () => {

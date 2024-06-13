@@ -4,13 +4,6 @@ import DateValueObject from './date.value-object';
 
 class FakeDateValueObject extends DateValueObject {}
 
-class InvalidStringDateValueObject extends DateValueObject {
-	constructor() {
-		// @ts-expect-error - Testing purposes
-		super('a');
-	}
-}
-
 class UndefinedStringDateValueObject extends DateValueObject {
 	// eslint-disable-next-line typescript/no-useless-constructor -- Testing purposes
 	constructor() {
@@ -20,12 +13,8 @@ class UndefinedStringDateValueObject extends DateValueObject {
 }
 
 export default class DateValueObjectMother {
-	static create(value: Date): DateValueObject {
+	static create(value: Date | number | string): DateValueObject {
 		return new FakeDateValueObject(value);
-	}
-
-	static invalidWithString(): DateValueObject {
-		return new InvalidStringDateValueObject();
 	}
 
 	static invalidWithUndefined(): DateValueObject {

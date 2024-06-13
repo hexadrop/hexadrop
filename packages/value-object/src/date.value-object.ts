@@ -12,15 +12,15 @@ export default class DateValueObject {
 
 	/**
 	 * Constructs a new DateValueObject instance.
-	 * @param {Date} value - The value of the date.
+	 * @param {Date | string | number} value - The value of the date.
 	 * @param {string} [property] - The property name (optional).
 	 * @throws {InvalidDateValueTypeError} If the value is not a Date instance.
 	 * @throws {EmptyDateValueError} If the value is null or undefined.
 	 */
-	constructor(value: Date, property?: string) {
+	constructor(value: Date | number | string, property?: string) {
 		DateValueObject.notEmpty(value, property);
 		DateValueObject.allowedValue(value, property);
-		this.value = value;
+		this.value = new Date(value);
 	}
 
 	/**
@@ -30,7 +30,7 @@ export default class DateValueObject {
 	 * @throws {InvalidDateValueTypeError} If the value is not a Date instance.
 	 */
 	private static allowedValue(value: unknown, property?: string) {
-		if (!(value instanceof Date)) {
+		if (!(value instanceof Date) && typeof value !== 'string' && typeof value !== 'number') {
 			throw new InvalidDateValueTypeError(property);
 		}
 	}
