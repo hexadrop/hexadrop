@@ -7,6 +7,7 @@ export default defineConfig([
 		entry: [
 			'./src/boolean.value-object.ts',
 			'./src/date.value-object.ts',
+			'./src/email.value-object.ts',
 			'./src/number.value-object.ts',
 			'./src/string.value-object.ts',
 			'./src/uuii.value-object.ts',

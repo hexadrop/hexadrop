@@ -36,6 +36,12 @@
 				"default": "./dist/date.value-object.js"
 			}
 		},
+		"./email": {
+			"import": {
+				"types": "./dist/email.value-object.d.ts",
+				"default": "./dist/email.value-object.js"
+			}
+		},
 		"./number": {
 			"import": {
 				"types": "./dist/number.value-object.d.ts",
@@ -68,6 +74,9 @@
 			],
 			"./date": [
 				"./dist/date.value-object.d.ts"
+			],
+			"./email": [
+				"./dist/email.value-object.d.ts"
 			],
 			"./number": [
 				"./dist/number.value-object.d.ts"
