@@ -48,6 +48,12 @@
 				"default": "./dist/number.value-object.js"
 			}
 		},
+		"./spanish/phone-number": {
+			"import": {
+				"types": "./dist/spanish-phone-number.value-object.d.ts",
+				"default": "./dist/spanish-phone-number.value-object.js"
+			}
+		},
 		"./string": {
 			"import": {
 				"types": "./dist/string.value-object.d.ts",
@@ -80,6 +86,9 @@
 			],
 			"./number": [
 				"./dist/number.value-object.d.ts"
+			],
+			"./spanish/phone-number": [
+				"./dist/spanish-phone-number.value-object.d.ts"
 			],
 			"./string": [
 				"./dist/string.value-object.d.ts"
