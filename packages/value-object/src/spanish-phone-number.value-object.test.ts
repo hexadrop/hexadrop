@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import InvalidSpanishValueObjectError from './spanish-phone-number.value-object.error';
+import InvalidSpanishPhoneNumberValueObjectError from './spanish-phone-number.value-object.error';
 import SpanishPhoneNumberValueObjectMother from './spanish-phone-number.value-object.mother';
 
 describe('InvalidSpanishPhoneNumberValue', () => {
@@ -17,7 +17,7 @@ describe('InvalidSpanishPhoneNumberValue', () => {
 		});
 		test('should throw an error if arg is invalid value', () => {
 			const invalid = () => SpanishPhoneNumberValueObjectMother.invalidValue();
-			expect(invalid).toThrow(new InvalidSpanishValueObjectError('melon'));
+			expect(invalid).toThrow(new InvalidSpanishPhoneNumberValueObjectError('melon'));
 		});
 	});
 });
