@@ -2,7 +2,9 @@ import Either from '@hexadrop/either';
 import type DomainError from '@hexadrop/error';
 import PQueue from 'p-queue';
 
+import type { EventBusCallback, EventHandler } from './bus';
 import EventBus from './bus';
+import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 import { EventHandlerError } from './error';
 import EventHandlers from './event-handlers';
@@ -71,5 +73,24 @@ export default class AsyncEventBus extends EventBus {
 		}
 
 		return Either.right();
+	}
+
+	/*
+	 * Subscribes to a domain event.
+	 *
+	 * @abstract
+	 * @param {DomainEventClass<Event>} event - The domain event to subscribe to.
+	 * @param {EventBusCallback<Event> | EventHandler<Event>} useCaseOrCallback - The use case or callback to be executed when the event is triggered.
+	 */
+	async subscribe<Event extends DomainEvent>(
+		event: DomainEventClass<Event>,
+		useCaseOrCallback: EventBusCallback<Event> | EventHandler<Event>
+	): Promise<void> {
+		if ('run' in useCaseOrCallback) {
+			await this.info.register(event, useCaseOrCallback.run.bind(useCaseOrCallback));
+
+			return;
+		}
+		await this.info.register(event, useCaseOrCallback);
 	}
 }

@@ -21,6 +21,19 @@ export default class IoCEventHandlers extends EventHandlers {
 	}
 
 	/**
+	 * The 'register' method registers an event handler for a specific event.
+	 *
+	 * @param _event - The event for which to register the handler.
+	 * @param _handler - The handler to be registered for the event. It can be an 'EventBusCallback' or an instance of 'EventHandler'.
+	 */
+	register<E extends DomainEvent>(
+		_event: DomainEventClass<E>,
+		_handler: EventBusCallback<E> | EventHandler<E>
+	): void {
+		throw new Error('Method not implemented.');
+	}
+
+	/**
 	 * The search method is used to find event handlers for a specific event.
 	 * @param {EventType | DomainEventClass<EventType>} event - The event or the class of the event.
 	 * @returns {EventBusCallback<EventType>[]} An array of event handler callbacks.

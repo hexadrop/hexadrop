@@ -2,6 +2,7 @@ import Either from '@hexadrop/either';
 import DomainError from '@hexadrop/error';
 import type { Class } from '@hexadrop/types/class';
 
+import type { DomainEventClass } from './domain-event';
 import DomainEvent from './domain-event';
 
 /**
@@ -51,6 +52,18 @@ abstract class EventBus {
 	 * @returns {Promise<Either<DomainError, void>> | Either<DomainError, void>} - The method can return a Promise that resolves to an Either<DomainError, void>, or an Either<DomainError, void> directly.
 	 */
 	abstract publish(...events: DomainEvent[]): Either<DomainError, void> | Promise<Either<DomainError, void>>;
+
+	/*
+	 * Subscribes to a domain event.
+	 *
+	 * @abstract
+	 * @param {DomainEventClass<Event>} event - The domain event to subscribe to.
+	 * @param {EventBusCallback<Event> | EventHandler<Event>} useCaseOrCallback - The use case or callback to be executed when the event is triggered.
+	 */
+	abstract subscribe<Event extends DomainEvent>(
+		event: DomainEventClass<Event>,
+		useCaseOrCallback: EventBusCallback<Event> | EventHandler<Event>
+	): Promise<void> | void;
 }
 
 export type { EventBusCallback, EventHandler, EventHandlerClass };
