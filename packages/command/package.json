@@ -134,7 +134,7 @@
 		"@abraham/reflection": "0.12.0",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
-		"tsup": "8.2.1",
+		"tsup": "8.2.2",
 		"vitest": "1.6.0"
 	}
 }
