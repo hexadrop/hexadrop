@@ -3,7 +3,7 @@
  * @type {T | null | undefined} The type can be T, null, or undefined.
  * @template T The type of the value that can be null or undefined.
  */
-type Nullable<T> = T | null | undefined;
+type Nullable<T> = null | T | undefined;
 
 /**
  * Type definition for PartialNullable.
