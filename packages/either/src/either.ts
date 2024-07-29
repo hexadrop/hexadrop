@@ -60,7 +60,7 @@ export default class Either<L, R> {
 	 * @template R The type of the right value.
 	 */
 	static right<L, R>(value: R): Either<L, R>;
-	static right<L, R>(value?: R): Either<L, R> | Either<L, never> {
+	static right<L, R>(value?: R): Either<L, never> | Either<L, R> {
 		if (value) {
 			return new Either<L, R>({ kind: 'right', rightValue: value });
 		}
