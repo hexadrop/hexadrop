@@ -115,7 +115,7 @@
 	},
 	"peerDependencies": {
 		"@hexadrop/ioc": "^2.0.0-beta.3",
-		"vitest": "^1"
+		"vitest": "^1 || ^2.0.0"
 	},
 	"peerDependenciesMeta": {
 		"@hexadrop/ioc": {
@@ -135,6 +135,6 @@
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
 		"tsup": "8.2.3",
-		"vitest": "1.6.0"
+		"vitest": "2.0.4"
 	}
 }
