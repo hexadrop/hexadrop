@@ -29,14 +29,14 @@ export default class SyncCommandBus extends CommandBus {
 	/**
 	 * @method dispatch
 	 * @description Method to dispatch a command.
-	 * @param {C} command - The command to be dispatched.
+	 * @param {Command} command - The command to be dispatched.
 	 * @returns {Promise<Either<DomainError, void>>} - The result of the command dispatch.
 	 * @template CommandType - The type of the command.
 	 */
-	async dispatch<CommandType extends Command>(command: CommandType): Promise<Either<DomainError, void>> {
+	async dispatch(command: Command): Promise<Either<DomainError, void>> {
 		const callbacks = this.info.search(command);
 		try {
-			return callbacks(command);
+			return await callbacks(command);
 		} catch (error) {
 			return Either.left(new CommandHandlerError(error as Error));
 		}

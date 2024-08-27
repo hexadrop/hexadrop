@@ -5,5 +5,6 @@ export default hexadrop({
 		'typescript/ban-types': 'off',
 		'typescript/no-explicit-any': 'off',
 		'typescript/no-invalid-void-type': 'off',
+		'typescript/no-unsafe-function-type': 'off',
 	},
 });
