@@ -11,11 +11,15 @@ export default class SpanishPhoneNumberValueObject extends StringValueObject {
 	 */
 	constructor(value: string, property = 'SpanishPhoneNumberValueObject') {
 		super(value, undefined, property);
-		SpanishPhoneNumberValueObject.valueFormat(value, property);
+		SpanishPhoneNumberValueObject.checkForm(value, property);
 	}
 
-	private static valueFormat(value: string, property: string) {
-		if (!REGEX.test(value)) {
+	static isValid(value: string): boolean {
+		return REGEX.test(value);
+	}
+
+	private static checkForm(value: string, property: string) {
+		if (!SpanishPhoneNumberValueObject.isValid(value)) {
 			throw new SpanishPhoneNumberValueError(value, property);
 		}
 	}
