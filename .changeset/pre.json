@@ -14,6 +14,7 @@
     "@hexadrop/value-object": "1.0.1"
   },
   "changesets": [
+    "afraid-shirts-train",
     "big-buttons-pull",
     "big-buttons-pulled-2",
     "big-buttons-pulled-3",

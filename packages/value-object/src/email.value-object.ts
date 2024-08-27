@@ -14,8 +14,12 @@ export default class EmailValueObject extends StringValueObject {
 		EmailValueObject.valueFormat(value, property);
 	}
 
+	static isValid(value: string): boolean {
+		return REGEX.test(value);
+	}
+
 	private static valueFormat(value: string, property: string) {
-		if (!REGEX.test(value)) {
+		if (!EmailValueObject.isValid(value)) {
 			throw new InvalidEmailValueError(value, property);
 		}
 	}

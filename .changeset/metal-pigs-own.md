@@ -1,5 +1,5 @@
 ---
-"@hexadrop/value-object": major
+"@hexadrop/value-object": patch
 ---
 
 Created `isValid` static method to `SpanishPhoneNumberValueObject`
