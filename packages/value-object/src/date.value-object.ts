@@ -1,5 +1,9 @@
 import { EmptyDateValueError, InvalidDateValueTypeError } from './date.value-object.error';
 
+interface ToDateObject {
+	toDate(): Date;
+}
+
 /**
  * DateValueObject is a class that represents a date value object.
  * It provides methods to compare the date value with other DateValueObject instances.
@@ -17,10 +21,16 @@ export default class DateValueObject {
 	 * @throws {InvalidDateValueTypeError} If the value is not a Date instance.
 	 * @throws {EmptyDateValueError} If the value is null or undefined.
 	 */
-	constructor(value: Date | number | string, property?: string) {
+	constructor(value: Date | number | string | ToDateObject, property?: string) {
 		DateValueObject.notEmpty(value, property);
 		DateValueObject.allowedValue(value, property);
-		this.value = new Date(value);
+		if (typeof value === 'string' || typeof value === 'number') {
+			this.value = new Date(value);
+		} else if (value instanceof Date) {
+			this.value = value;
+		} else {
+			this.value = new Date(value.toDate());
+		}
 	}
 
 	/**
@@ -30,7 +40,15 @@ export default class DateValueObject {
 	 * @throws {InvalidDateValueTypeError} If the value is not a Date instance.
 	 */
 	private static allowedValue(value: unknown, property?: string) {
-		if (!(value instanceof Date) && typeof value !== 'string' && typeof value !== 'number') {
+		if (
+			!(value instanceof Date) &&
+			typeof value !== 'string' &&
+			typeof value !== 'number' &&
+			(value === null ||
+				typeof value !== 'object' ||
+				!('toDate' in value) ||
+				typeof (value as ToDateObject).toDate !== 'function')
+		) {
 			throw new InvalidDateValueTypeError(property);
 		}
 	}
