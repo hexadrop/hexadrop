@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/event",
-	"version": "2.0.0-beta.14",
+	"version": "2.0.0-beta.15",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",

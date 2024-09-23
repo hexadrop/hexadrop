@@ -1,5 +1,3 @@
-import { Buffer } from 'node:buffer';
-
 import { PubSub, Topic } from '@google-cloud/pubsub';
 import Either from '@hexadrop/either';
 import type DomainError from '@hexadrop/error';
@@ -34,11 +32,11 @@ export default class PubSubEventBus extends EventBus {
 	 * @returns {Promise<Either<DomainError, void>>}
 	 */
 	async publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> {
-		const promises: Promise<string>[] = [];
+		const promises: Promise<string | void>[] = [];
 		for (const event of events) {
 			const invalid = async () => {
 				const topic = await this.getTopic(event);
-				const data = Buffer.from(JSON.stringify(event));
+				const data = JSON.stringify(event);
 
 				return topic.publishMessage({ data });
 			};
