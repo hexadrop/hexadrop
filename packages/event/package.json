@@ -158,7 +158,7 @@
 	},
 	"devDependencies": {
 		"@abraham/reflection": "0.12.0",
-		"@google-cloud/pubsub": "4.7.2",
+		"@google-cloud/pubsub": "4.8.0",
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "2.0.0",
 		"p-queue": "8.0.1",
