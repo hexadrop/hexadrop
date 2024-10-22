@@ -12,6 +12,7 @@ export default defineConfig([
 			'./src/newable.ts',
 			'./src/nullable.ts',
 			'./src/primitives.ts',
+			'./src/recursive-partial.ts',
 		],
 		format: ['esm'],
 		minify: true,

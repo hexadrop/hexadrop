@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/types",
-	"version": "2.0.0-beta.3",
+	"version": "2.0.0-beta.4",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -65,6 +65,12 @@
 				"types": "./dist/primitives.d.ts",
 				"default": "./dist/primitives.js"
 			}
+		},
+		"./recursive-partial": {
+			"import": {
+				"types": "./dist/recursive-partial.d.ts",
+				"default": "./dist/recursive-partial.js"
+			}
 		}
 	},
 	"typesVersions": {
@@ -89,6 +95,9 @@
 			],
 			"./primitives": [
 				"./dist/primitives.d.ts"
+			],
+			"./recursive-partial": [
+				"./dist/recursive-partial.d.ts"
 			]
 		}
 	},

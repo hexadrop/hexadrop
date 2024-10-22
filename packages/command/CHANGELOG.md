@@ -1,5 +1,12 @@
 # @hexadrop/command
 
+## 2.0.0-beta.12
+
+### Patch Changes
+
+- Updated dependencies
+  - @hexadrop/types@2.0.0-beta.4
+
 ## 2.0.0-beta.11
 
 ### Patch Changes
