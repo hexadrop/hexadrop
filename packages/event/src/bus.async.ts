@@ -1,5 +1,5 @@
 import Either from '@hexadrop/either';
-import type DomainError from '@hexadrop/error';
+import DomainError from '@hexadrop/error';
 import PQueue from 'p-queue';
 
 import type { EventBusCallback, EventHandler } from './bus';
@@ -60,12 +60,24 @@ export default class AsyncEventBus extends EventBus {
 							try {
 								const returnValue = handler(event);
 								if (returnValue instanceof Promise) {
-									void returnValue.then(either => resolve(either));
+									void returnValue
+										.then(either => resolve(either))
+										.catch((error: unknown) => {
+											if (error instanceof DomainError) {
+												resolve(Either.left(error));
+											} else {
+												resolve(Either.left(new EventHandlerError(error)));
+											}
+										});
 								} else {
 									resolve(returnValue);
 								}
 							} catch (error) {
-								resolve(Either.left(new EventHandlerError(error as Error)));
+								if (error instanceof DomainError) {
+									resolve(Either.left(error));
+								} else {
+									resolve(Either.left(new EventHandlerError(error)));
+								}
 							}
 						})
 				);

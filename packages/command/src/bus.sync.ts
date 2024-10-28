@@ -38,7 +38,11 @@ export default class SyncCommandBus extends CommandBus {
 		try {
 			return await callbacks(command);
 		} catch (error) {
-			return Either.left(new CommandHandlerError(error as Error));
+			if (error instanceof DomainError) {
+				return Either.left(error);
+			}
+
+			return Either.left(new CommandHandlerError(error));
 		}
 	}
 }

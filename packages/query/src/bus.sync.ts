@@ -40,7 +40,11 @@ export default class SyncQueryBus implements QueryBus {
 		try {
 			return handler(query);
 		} catch (error) {
-			return Either.left(new QueryHandlerError(error as Error));
+			if (error instanceof DomainError) {
+				return Either.left(error);
+			}
+
+			return Either.left(new QueryHandlerError(error));
 		}
 	}
 }

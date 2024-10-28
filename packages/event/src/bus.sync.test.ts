@@ -6,7 +6,6 @@ import type { EventHandler } from './bus';
 import EventBus from './bus';
 import SyncEventBus from './bus.sync';
 import DomainEvent from './domain-event';
-import { EventHandlerError } from './error';
 import InMemoryEventHandlers from './in-memory.event-handlers';
 
 class HandlerError extends DomainError {
@@ -118,7 +117,7 @@ describe('SyncEventBus', () => {
 
 			expect(event1Handler4Spy).toHaveBeenCalledTimes(1);
 			expect(either.isLeft()).toBe(true);
-			expect(either.getLeft()).toStrictEqual(new EventHandlerError('msg mondongo'));
+			expect(either.getLeft()).toStrictEqual(new HandlerError());
 		});
 	});
 });
