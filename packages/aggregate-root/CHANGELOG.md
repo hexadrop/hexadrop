@@ -1,5 +1,12 @@
 # @hexadrop/aggregate-root
 
+## 2.0.0-beta.17
+
+### Patch Changes
+
+- Updated dependencies [f44e88f]
+  - @hexadrop/event@2.0.0-beta.17
+
 ## 2.0.0-beta.16
 
 ### Patch Changes

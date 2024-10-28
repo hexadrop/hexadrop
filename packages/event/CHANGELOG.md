@@ -1,5 +1,11 @@
 # @hexadrop/event
 
+## 2.0.0-beta.17
+
+### Minor Changes
+
+- f44e88f: Improve error handling
+
 ## 2.0.0-beta.16
 
 ### Patch Changes

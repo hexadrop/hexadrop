@@ -1,5 +1,11 @@
 # @hexadrop/query
 
+## 2.0.0-beta.14
+
+### Minor Changes
+
+- f44e88f: Improve error handling
+
 ## 2.0.0-beta.13
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @hexadrop/command
 
+## 2.0.0-beta.13
+
+### Minor Changes
+
+- f44e88f: Improve error handling
+
 ## 2.0.0-beta.12
 
 ### Patch Changes
