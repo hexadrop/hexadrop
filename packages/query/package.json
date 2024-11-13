@@ -135,6 +135,6 @@
 		"@hexadrop/ioc": "2.0.0-beta.3",
 		"diod": "3.0.0",
 		"tsup": "8.3.5",
-		"vitest": "2.1.4"
+		"vitest": "2.1.5"
 	}
 }
