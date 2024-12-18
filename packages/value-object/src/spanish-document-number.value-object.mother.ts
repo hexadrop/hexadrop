@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/better-regex */
 import { fakerES } from '@faker-js/faker';
 
 import SpanishDocumentNumberValueObject from './spanish-document-number.value-object';

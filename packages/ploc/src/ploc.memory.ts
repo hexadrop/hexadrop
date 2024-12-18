@@ -73,7 +73,7 @@ export default abstract class InMemoryPloc<S> implements PlocInterface<S> {
 	 */
 	unsubscribe(listener: ChangePlocStateSubscription<S>): void {
 		const index = this.listeners.indexOf(listener);
-		if (index > -1) {
+		if (index !== -1) {
 			this.listeners.splice(index, 1);
 		}
 	}

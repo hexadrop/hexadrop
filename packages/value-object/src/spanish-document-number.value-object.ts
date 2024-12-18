@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/better-regex */
 import SpanishDocumentNumberError from './spanish-document-number.value-object.error';
 import StringValueObject from './string.value-object';
 
