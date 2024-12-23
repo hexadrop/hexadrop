@@ -34,7 +34,7 @@ export default class Either<L, R> {
 	 */
 	static left<L, R>(value: L): Either<L, R>;
 	static left<L, R>(value?: L): Either<L, R> | Either<never, R> {
-		if (value) {
+		if (value || value === 0) {
 			return new Either<L, R>({ kind: 'left', leftValue: value });
 		}
 
@@ -61,7 +61,7 @@ export default class Either<L, R> {
 	 */
 	static right<L, R>(value: R): Either<L, R>;
 	static right<L, R>(value?: R): Either<L, never> | Either<L, R> {
-		if (value) {
+		if (value || value === 0) {
 			return new Either<L, R>({ kind: 'right', rightValue: value });
 		}
 

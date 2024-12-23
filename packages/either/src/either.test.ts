@@ -163,4 +163,19 @@ describe('Either', () => {
 			expect(either2.getRightOrElse(false)).toBe(true);
 		});
 	});
+
+	describe('should 0 works as expected', () => {
+		test('with left', () => {
+			const expected = Either.left(0);
+			expect(expected.isLeft()).toBeTruthy();
+			expect(expected.isRight()).toBeFalsy();
+			expect(expected.getLeft()).toBe(0);
+		});
+		test('with right', () => {
+			const expected = Either.right(0);
+			expect(expected.isLeft()).toBeFalsy();
+			expect(expected.isRight()).toBeTruthy();
+			expect(expected.getRight()).toBe(0);
+		});
+	});
 });
