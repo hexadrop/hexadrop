@@ -29,7 +29,7 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "2.27.11",
-		"@faker-js/faker": "9.3.0",
+		"@faker-js/faker": "9.4.0",
 		"@hexadrop/eslint-config": "0.0.2",
 		"@hexadrop/tsconfig": "0.0.5",
 		"@types/bun": "1.1.16",
