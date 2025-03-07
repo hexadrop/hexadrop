@@ -33,7 +33,7 @@
 		"@hexadrop/eslint-config": "0.1.0",
 		"@hexadrop/tsconfig": "0.0.5",
 		"@types/bun": "1.2.4",
-		"eslint": "9.21.0",
+		"eslint": "9.22.0",
 		"tsup": "8.4.0",
 		"typescript": "5.8.2"
 	}
