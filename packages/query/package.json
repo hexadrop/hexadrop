@@ -131,7 +131,7 @@
 		"@hexadrop/types": "2.0.0"
 	},
 	"devDependencies": {
-		"@abraham/reflection": "0.12.0",
+		"@abraham/reflection": "0.13.0",
 		"@hexadrop/ioc": "2.0.0",
 		"diod": "3.0.0",
 		"tsup": "8.4.0",
