@@ -114,7 +114,7 @@
 		"prepublishOnly": "tsup"
 	},
 	"peerDependencies": {
-		"ulid": "^2"
+		"ulid": "^2 || ^3.0.0"
 	},
 	"peerDependenciesMeta": {
 		"ulid": {
@@ -127,6 +127,6 @@
 	"devDependencies": {
 		"@faker-js/faker": "9.7.0",
 		"tsup": "8.4.0",
-		"ulid": "2.4.0"
+		"ulid": "3.0.0"
 	}
 }
