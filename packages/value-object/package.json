@@ -125,8 +125,8 @@
 		"@hexadrop/error": "2.0.0"
 	},
 	"devDependencies": {
-		"@faker-js/faker": "9.3.0",
-		"tsup": "8.3.5",
-		"ulid": "2.3.0"
+		"@faker-js/faker": "9.7.0",
+		"tsup": "8.4.0",
+		"ulid": "2.4.0"
 	}
 }
