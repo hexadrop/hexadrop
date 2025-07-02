@@ -60,7 +60,7 @@
 		"prepublishOnly": "tsup"
 	},
 	"devDependencies": {
-		"@faker-js/faker": "9.8.0",
+		"@faker-js/faker": "9.9.0",
 		"tsup": "8.5.0"
 	}
 }
