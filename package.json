@@ -32,7 +32,7 @@
 		"@faker-js/faker": "9.9.0",
 		"@hexadrop/eslint-config": "0.1.4",
 		"@hexadrop/tsconfig": "0.0.5",
-		"@types/bun": "1.2.18",
+		"@types/bun": "1.2.19",
 		"eslint": "9.31.0",
 		"tsup": "8.5.0",
 		"typescript": "5.8.3"
