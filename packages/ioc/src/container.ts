@@ -20,5 +20,3 @@ export interface Container {
 	 */
 	get<T>(identifier: Identifier<T>): T;
 }
-
-export {};
