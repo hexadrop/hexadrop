@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/value-object",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
