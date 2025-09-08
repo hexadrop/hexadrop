@@ -5,7 +5,7 @@
       "name": "hexadrop",
       "devDependencies": {
         "@changesets/cli": "2.29.6",
-        "@faker-js/faker": "9.9.0",
+        "@faker-js/faker": "10.0.0",
         "@hexadrop/eslint-config": "0.1.5",
         "@hexadrop/tsconfig": "0.0.5",
         "@types/bun": "1.2.21",
@@ -60,7 +60,7 @@
       "name": "@hexadrop/error",
       "version": "2.0.0",
       "devDependencies": {
-        "@faker-js/faker": "9.9.0",
+        "@faker-js/faker": "10.0.0",
         "tsup": "8.5.0",
       },
     },
@@ -154,7 +154,7 @@
         "@hexadrop/error": "2.0.0",
       },
       "devDependencies": {
-        "@faker-js/faker": "9.9.0",
+        "@faker-js/faker": "10.0.0",
         "tsup": "8.5.0",
         "ulid": "3.0.1",
       },
@@ -293,7 +293,7 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.3.5", "", { "dependencies": { "@eslint/core": "^0.15.2", "levn": "^0.4.1" } }, "sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w=="],
 
-    "@faker-js/faker": ["@faker-js/faker@9.9.0", "", {}, "sha512-OEl393iCOoo/z8bMezRlJu+GlRGlsKbUAN7jKB6LhnKoqKve5DXRpalbItIIcwnCjs1k/FOPjFzcA6Qn+H+YbA=="],
+    "@faker-js/faker": ["@faker-js/faker@10.0.0", "", {}, "sha512-UollFEUkVXutsaP+Vndjxar40Gs5JL2HeLcl8xO1QAjJgOdhc3OmBFWyEylS+RddWaaBiAzH+5/17PLQJwDiLw=="],
 
     "@google-cloud/paginator": ["@google-cloud/paginator@6.0.0", "", { "dependencies": { "extend": "^3.0.2" } }, "sha512-g5nmMnzC+94kBxOKkLGpK1ikvolTFCC3s2qtE4F+1EuArcJ7HHC23RDQVt3Ra3CqpUYZ+oXNKZ8n5Cn5yug8DA=="],
 
