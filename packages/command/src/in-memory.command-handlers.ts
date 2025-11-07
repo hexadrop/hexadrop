@@ -25,6 +25,25 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 	}
 
 	/**
+	 * @static
+	 * @method merge
+	 * @description Combines multiple InMemoryCommandHandlers instances into one.
+	 * @param {...InMemoryCommandHandlers[]} handlers - The instances to combine.
+	 * @returns {InMemoryCommandHandlers} The combined InMemoryCommandHandlers instance.
+	 */
+	static merge(...handlers: InMemoryCommandHandlers[]): InMemoryCommandHandlers {
+		const merged = new InMemoryCommandHandlers();
+
+		for (const handler of handlers) {
+			for (const [commandName, callback] of handler.commandHandlersMap.entries()) {
+				merged.commandHandlersMap.set(commandName, callback);
+			}
+		}
+
+		return merged;
+	}
+
+	/**
 	 * @method register
 	 * @description Method to register a command handler.
 	 * @param {CommandClass<CommandType>} command - The command class.

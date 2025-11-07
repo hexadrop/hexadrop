@@ -127,6 +127,26 @@ describe('InMemoryCommandHandlers', () => {
 		info.register(Command3, expectedCommand23Handler);
 	});
 
+	describe('static merge()', () => {
+		test('should merge multiple InMemoryCommandHandlers instances', () => {
+			const info2 = new InMemoryCommandHandlers();
+			info2.register(Command4, expectedCommand4Handler);
+
+			const merged = InMemoryCommandHandlers.merge(info, info2);
+			const h1 = merged.search(c1);
+			expect(h1).toBeDefined();
+
+			const h2 = merged.search(c2);
+			expect(h2).toBeDefined();
+
+			const h3 = merged.search(c3);
+			expect(h3).toBeDefined();
+
+			const h4 = merged.search(c4);
+			expect(h4).toBeDefined();
+		});
+	});
+
 	describe('search()', () => {
 		test('should return a registered command handler', () => {
 			const h1 = info.search(c1);
