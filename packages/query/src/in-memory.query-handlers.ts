@@ -21,6 +21,25 @@ export default class InMemoryQueryHandlers extends QueryHandlers {
 	}
 
 	/**
+	 * @static
+	 * @method merge
+	 * @description Merges multiple InMemoryQueryHandlers instances into one.
+	 * @param {...InMemoryCommandHandlers[]} handlers - The instances to merge.
+	 * @returns {InMemoryCommandHandlers} The merged InMemoryQueryHandlers instance.
+	 */
+	static merge(...handlers: InMemoryQueryHandlers[]): InMemoryQueryHandlers {
+		const merged = new InMemoryQueryHandlers();
+
+		for (const handler of handlers) {
+			for (const [queryName, callback] of handler.queryHandlersMap.entries()) {
+				merged.queryHandlersMap.set(queryName, callback);
+			}
+		}
+
+		return merged;
+	}
+
+	/**
 	 * This method is used to register a query handler.
 	 * It stores the handler in the queryHandlersMap with the query's QUERY_NAME as the key.
 	 *
