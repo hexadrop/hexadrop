@@ -23,6 +23,26 @@ export default class InMemoryEventHandlers extends EventHandlers {
 	}
 
 	/**
+	 * @static
+	 * @method merge
+	 * @description Merges multiple InMemoryEventHandlers instances into one.
+	 * @param {...InMemoryEventHandlers[]} handlers - The instances to merge.
+	 * @returns {InMemoryEventHandlers} The merged InMemoryEventHandlers instance.
+	 */
+	static merge(...handlers: InMemoryEventHandlers[]): InMemoryEventHandlers {
+		const merged = new InMemoryEventHandlers();
+
+		for (const handler of handlers) {
+			for (const [eventName, callbacks] of handler.map.entries()) {
+				const existingCallbacks = merged.map.get(eventName) ?? [];
+				merged.map.set(eventName, [...existingCallbacks, ...callbacks]);
+			}
+		}
+
+		return merged;
+	}
+
+	/**
 	 * The 'register' method registers an event handler for a specific event.
 	 *
 	 * @param event - The event for which to register the handler.
