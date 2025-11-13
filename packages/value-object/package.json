@@ -126,7 +126,7 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "10.1.0",
-		"tsup": "8.5.0",
+		"tsup": "8.5.1",
 		"ulid": "3.0.1"
 	}
 }
