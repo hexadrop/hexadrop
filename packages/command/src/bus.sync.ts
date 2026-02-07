@@ -34,7 +34,7 @@ export default class SyncCommandBus extends CommandBus {
 	 * @template CommandType - The type of the command.
 	 */
 	async dispatch(command: Command): Promise<Either<DomainError, void>> {
-		const callbacks = this.info.search(command);
+		const callbacks = await this.info.search(command);
 		try {
 			return await callbacks(command);
 		} catch (error) {

@@ -18,10 +18,10 @@ export default abstract class CommandHandlers {
 	 *
 	 * @abstract
 	 * @param {CommandType | CommandClass<CommandType>} command - The command to be searched.
-	 * @returns {CommandBusCallback<CommandType>} - The callback function to be executed when the command is found.
+	 * @returns {CommandBusCallback<CommandType> | Promise<CommandBusCallback<CommandType>>} - The callback function to be executed when the command is found.
 	 * @template CommandType - The type of the command.
 	 */
 	abstract search<CommandType extends Command>(
 		command: CommandClass<CommandType> | CommandType
-	): CommandBusCallback<CommandType>;
+	): CommandBusCallback<CommandType> | Promise<CommandBusCallback<CommandType>>;
 }

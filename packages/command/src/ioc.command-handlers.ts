@@ -25,12 +25,12 @@ export default class IoCCommandHandlers extends CommandHandlers {
 	 * @param {CommandType | CommandClass<CommandType>} command - The command to search for.
 	 * @throws {InvalidCommandError} If the command does not have a name.
 	 * @throws {CommandNotRegisteredError} If the command handler is not registered in the IoC container.
-	 * @returns {CommandBusCallback<CommandType>} The command handler callback.
+	 * @returns {Promise<CommandBusCallback<CommandType>>} The command handler callback.
 	 * @template CommandType - The command type.
 	 */
-	search<CommandType extends Command>(
+	async search<CommandType extends Command>(
 		command: CommandClass<CommandType> | CommandType
-	): CommandBusCallback<CommandType> {
+	): Promise<CommandBusCallback<CommandType>> {
 		let handler: CommandHandlerClass<CommandType> | undefined;
 		let commandName: string | undefined;
 
@@ -58,7 +58,7 @@ export default class IoCCommandHandlers extends CommandHandlers {
 		}
 
 		// Get the command handler instance from the IoC container
-		const instance = this.container.get<CommandHandler<CommandType>>(handler);
+		const instance = await this.container.get<CommandHandler<CommandType>>(handler);
 
 		// Return the command handler callback
 		return instance.run.bind(instance);
