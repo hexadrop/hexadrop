@@ -48,11 +48,12 @@ export default class AsyncEventBus extends EventBus {
 	/**
 	 * @async
 	 * @param {...DomainEvent[]} events - The domain events to publish.
-	 * @returns {Either<DomainError, void>}
+	 * @returns {Promise<Either<DomainError, void>>}
 	 */
-	publish(...events: DomainEvent[]): Either<DomainError, void> {
+	async publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> {
 		for (const event of events) {
-			const handlers = this.info.search(event);
+			// eslint-disable-next-line no-await-in-loop
+			const handlers = await this.info.search(event);
 			for (const handler of handlers) {
 				void this.queue.add(
 					() =>

@@ -36,5 +36,7 @@ export default abstract class EventHandlers {
 	 * @param {E | DomainEventClass<E>} event - The event to be searched.
 	 * @returns {EventBusCallback<E>[]} - The array of callback functions to be executed when the event is found.
 	 */
-	abstract search<E extends DomainEvent>(event: DomainEventClass<E> | E): EventBusCallback<E>[];
+	abstract search<E extends DomainEvent>(
+		event: DomainEventClass<E> | E
+	): EventBusCallback<E>[] | Promise<EventBusCallback<E>[]>;
 }

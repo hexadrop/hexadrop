@@ -50,7 +50,8 @@ export default class SyncEventBus extends EventBus {
 	async publish(...events: DomainEvent[]): Promise<Either<DomainError, void>> {
 		const promises = [];
 		for (const event of events) {
-			const handlers = this.info.search(event);
+			// eslint-disable-next-line no-await-in-loop
+			const handlers = await this.info.search(event);
 			for (const handler of handlers) {
 				promises.push(
 					new Promise<Either<DomainError, void>>(resolve => {

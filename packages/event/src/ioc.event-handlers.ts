@@ -41,9 +41,9 @@ export default class IoCEventHandlers extends EventHandlers {
 	 * @throws {EventNotRegisteredError} If the event handler is not registered.
 	 * @template EventType - The type of the event.
 	 */
-	search<EventType extends DomainEvent>(
+	async search<EventType extends DomainEvent>(
 		event: DomainEventClass<EventType> | EventType
-	): EventBusCallback<EventType>[] {
+	): Promise<EventBusCallback<EventType>[]> {
 		let handlers: EventHandlerClass<EventType>[] | undefined;
 		let eventName: string | undefined;
 
@@ -71,7 +71,16 @@ export default class IoCEventHandlers extends EventHandlers {
 		}
 
 		// Get the event handlers instances from the IoC container
-		const instances = handlers.map(handler => this.container.get<EventHandler<EventType>>(handler));
+		const results = handlers.map(handler => this.container.get<EventHandler<EventType>>(handler));
+
+		const nonPromiseInstances = results.filter(
+			handler => !(handler instanceof Promise)
+		) as EventHandler<EventType>[];
+		const promises = results.filter(handler => handler instanceof Promise);
+
+		const promisesInstances = await Promise.all(promises);
+
+		const instances = [...nonPromiseInstances, ...promisesInstances];
 
 		// Return the event handler callbacks
 		return instances.map(handler => handler.run.bind(handler));
