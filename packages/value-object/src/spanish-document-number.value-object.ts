@@ -41,7 +41,7 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 
 	// Método para validar la letra de control de un CIF
 	private static validateCifLetter(cif: string) {
-		if (!cif || cif.length !== 9) {
+		if (cif.length !== 9) {
 			return false;
 		}
 
