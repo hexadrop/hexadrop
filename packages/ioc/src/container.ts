@@ -10,5 +10,5 @@ export interface Container {
 	 * @typeParam T The type of the service.
 	 * @returns
 	 */
-	get<T>(identifier: Identifier<T>): T;
+	get<T>(identifier: Identifier<T>): Promise<T> | T;
 }
