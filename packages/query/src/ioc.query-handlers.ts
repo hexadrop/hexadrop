@@ -37,9 +37,9 @@ export default class IoCQueryHandlers extends QueryHandlers {
 	 * @template ResponseType - The type of the response.
 	 * @template QueryType - The type of the Query that extends Query<ResponseType>.
 	 */
-	public search<ResponseType, QueryType extends Query<ResponseType>>(
+	public async search<ResponseType, QueryType extends Query<ResponseType>>(
 		query: QueryClass<ResponseType, QueryType> | QueryType
-	): QueryBusCallback<ResponseType, QueryType> {
+	): Promise<QueryBusCallback<ResponseType, QueryType>> {
 		let handler: QueryHandlerClass<ResponseType, QueryType> | undefined;
 		let queryName: string | undefined;
 
@@ -70,7 +70,7 @@ export default class IoCQueryHandlers extends QueryHandlers {
 		}
 
 		// Get the query handler instance from the IoC container
-		const instance = this.container.get<QueryHandler<ResponseType, QueryType>>(handler);
+		const instance = await this.container.get<QueryHandler<ResponseType, QueryType>>(handler);
 
 		// Return the query handler callback
 		return instance.run.bind(instance);

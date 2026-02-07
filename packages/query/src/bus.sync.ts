@@ -29,16 +29,14 @@ export default class SyncQueryBus implements QueryBus {
 	 * If an error occurs during the execution of the handler, it returns a DomainError.
 	 *
 	 * @param {Query<ResponseType>} query - The query to be asked.
-	 * @returns {Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>>} - The response from the query handler or a DomainError.
+	 * @returns {Promise<Either<DomainError, ResponseType>>} - The response from the query handler or a DomainError.
 	 * @template ResponseType - The type of the response that the query handler should return.
 	 */
-	ask<const ResponseType>(
-		query: Query<ResponseType>
-	): Either<DomainError, ResponseType> | Promise<Either<DomainError, ResponseType>> {
-		const handler = this.info.search<ResponseType, Query<ResponseType>>(query);
+	async ask<const ResponseType>(query: Query<ResponseType>): Promise<Either<DomainError, ResponseType>> {
+		const handler = await this.info.search<ResponseType, Query<ResponseType>>(query);
 
 		try {
-			return handler(query);
+			return await handler(query);
 		} catch (error) {
 			if (error instanceof DomainError) {
 				return Either.left(error);

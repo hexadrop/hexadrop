@@ -24,5 +24,5 @@ export default abstract class QueryHandlers {
 	 */
 	public abstract search<ResponseType, QueryType extends Query<ResponseType>>(
 		query: QueryClass<ResponseType, QueryType> | QueryType
-	): QueryBusCallback<ResponseType, QueryType>;
+	): Promise<QueryBusCallback<ResponseType, QueryType>> | QueryBusCallback<ResponseType, QueryType>;
 }
