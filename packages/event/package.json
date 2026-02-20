@@ -1,6 +1,6 @@
 {
 	"name": "@hexadrop/event",
-	"version": "2.1.0",
+	"version": "3.0.0-beta.0",
 	"description": "Hexagonal architecture utils library",
 	"keywords": [
 		"hexadrop",
@@ -133,7 +133,7 @@
 	},
 	"peerDependencies": {
 		"@google-cloud/pubsub": "^4 || ^5.0.0",
-		"@hexadrop/ioc": "^2.0.0",
+		"@hexadrop/ioc": "^3.0.0-beta.0",
 		"p-queue": "^8 || ^9.0.0",
 		"vitest": "^1 || ^2.0.0 || ^3.0.0 || ^4.0.0"
 	},
@@ -159,7 +159,7 @@
 	"devDependencies": {
 		"@abraham/reflection": "0.13.0",
 		"@google-cloud/pubsub": "5.3.0",
-		"@hexadrop/ioc": "2.0.0",
+		"@hexadrop/ioc": "3.0.0-beta.0",
 		"diod": "3.0.0",
 		"p-queue": "9.1.0",
 		"tsup": "8.5.1",
