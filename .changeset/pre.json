@@ -13,5 +13,11 @@
     "@hexadrop/types": "2.0.0",
     "@hexadrop/value-object": "2.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "fast-places-exist",
+    "neat-cats-follow",
+    "shaky-wings-switch",
+    "smooth-plants-stay",
+    "wise-drinks-sneeze"
+  ]
 }
