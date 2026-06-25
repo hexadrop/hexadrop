@@ -116,8 +116,7 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 	// Método para validar la letra de control de un NIF
 	private static validateNifLetter(nif: string) {
 		const dniLetters = 'TRWAGMYFPDXBNJZSQVHLCKE';
-		const position = Math.trunc(Number(nif));
-		const letter = dniLetters.charAt(position % 23);
+		const letter = dniLetters.charAt(Number.parseInt(nif, 10) % 23);
 
 		return letter === nif.charAt(8);
 	}
