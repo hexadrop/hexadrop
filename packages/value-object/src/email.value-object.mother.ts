@@ -22,6 +22,6 @@ export default class EmailValueObjectMother {
 	static random(): InvalidEmailValueObject {
 		const value = faker.internet.email();
 
-		return EmailValueObjectMother.create(value);
+		return this.create(value);
 	}
 }

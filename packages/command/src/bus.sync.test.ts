@@ -27,14 +27,14 @@ class Command1 extends Command {
 	}
 }
 
-const handler1Spy = jest.fn((_cmd: Command1, _message: string) => Either.right<DomainError>());
+const handler1Spy = jest.fn((_command: Command1, _message: string) => Either.right<DomainError>());
 
 class Command1Handler implements CommandHandler<Command1> {
 	constructor(private readonly service: Service) {}
-	run(cmd: Command1): Either<DomainError, void> {
+	run(command: Command1): Either<DomainError, void> {
 		const hello = this.service.hello();
 
-		return handler1Spy(cmd, hello);
+		return handler1Spy(command, hello);
 	}
 }
 
@@ -46,11 +46,11 @@ class Command2 extends Command {
 	}
 }
 
-const handler2Spy = jest.fn((_cmd: Command2) => Either.left<DomainError, void>(new CustomError()));
+const handler2Spy = jest.fn((_command: Command2) => Either.left<DomainError, void>(new CustomError()));
 
 class Command2Handler implements CommandHandler<Command2> {
-	run(cmd: Command2): Either<DomainError, void> {
-		return handler2Spy(cmd);
+	run(command: Command2): Either<DomainError, void> {
+		return handler2Spy(command);
 	}
 }
 

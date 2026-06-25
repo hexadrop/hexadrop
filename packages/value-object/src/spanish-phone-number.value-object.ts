@@ -19,7 +19,7 @@ export default class SpanishPhoneNumberValueObject extends StringValueObject {
 	}
 
 	private static checkForm(value: string, property: string) {
-		if (!SpanishPhoneNumberValueObject.isValid(value)) {
+		if (!this.isValid(value)) {
 			throw new SpanishPhoneNumberValueError(value, property);
 		}
 	}

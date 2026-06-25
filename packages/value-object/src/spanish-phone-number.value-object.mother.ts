@@ -20,8 +20,8 @@ export default class InvalidSpanishPhoneNumberValueObjectMother {
 	}
 
 	static random(): InvalidSpanishPhoneNumberValueObject {
-		const value = fakerES.phone.number().replaceAll('-', '').replaceAll(' ', '').replaceAll('.', '');
+		const value = fakerES.phone.number().replaceAll(/[- .]/g, '');
 
-		return InvalidSpanishPhoneNumberValueObjectMother.create(value);
+		return this.create(value);
 	}
 }

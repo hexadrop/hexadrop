@@ -63,8 +63,8 @@ export default class VitestMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsSubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.subscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
-		expect(some).toBe(true);
+		const isSome = this.subscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
+		expect(isSome).toBe(true);
 	}
 
 	/**
@@ -75,8 +75,8 @@ export default class VitestMockEventBus extends EventBus {
 	 * @param {EventHandler<D>} handler - The handler to check.
 	 */
 	assertIsUnsubscribed<D extends DomainEvent>(clazz: DomainEventClass<D>, handler: EventHandler<D>): void {
-		const some = this.unsubscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
-		expect(some).toBe(true);
+		const isSome = this.unsubscribeSpy.mock.calls.some(([c, h]) => c === clazz && h === handler);
+		expect(isSome).toBe(true);
 	}
 
 	/**

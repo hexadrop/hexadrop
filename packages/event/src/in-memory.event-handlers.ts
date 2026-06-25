@@ -33,7 +33,7 @@ export default class InMemoryEventHandlers extends EventHandlers {
 		const merged = new InMemoryEventHandlers();
 
 		for (const handler of handlers) {
-			for (const [eventName, callbacks] of handler.map.entries()) {
+			for (const [eventName, callbacks] of handler.map) {
 				const existingCallbacks = merged.map.get(eventName) ?? [];
 				merged.map.set(eventName, [...existingCallbacks, ...callbacks]);
 			}
@@ -50,8 +50,8 @@ export default class InMemoryEventHandlers extends EventHandlers {
 	 */
 	register<E extends DomainEvent>(event: DomainEventClass<E>, handler: EventBusCallback<E> | EventHandler<E>): void {
 		const callbacks: (EventBusCallback<E> | EventHandler<E>)[] = this.map.get(event.EVENT_NAME) ?? [];
-		const exists = callbacks.find(v => v === handler);
-		if (!exists) {
+		const isExists = callbacks.includes(handler);
+		if (!isExists) {
 			callbacks.push(handler);
 		}
 

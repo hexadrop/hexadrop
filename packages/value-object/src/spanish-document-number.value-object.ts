@@ -13,14 +13,14 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 	}
 
 	public static isValidDocumentNumber(nifCif: string): boolean {
-		const esNif = NIF_REGEX.test(nifCif);
-		const esCif = CIF_REGEX.test(nifCif);
-		const esNie = NIE_REGEX.test(nifCif);
+		const isEsNif = NIF_REGEX.test(nifCif);
+		const isEsCif = CIF_REGEX.test(nifCif);
+		const isEsNie = NIE_REGEX.test(nifCif);
 
 		return (
-			(esNif && this.validateNifLetter(nifCif)) ||
-			(esCif && this.validateCifLetter(nifCif)) ||
-			(esNie && this.validateNieLetter(nifCif))
+			(isEsNif && this.validateNifLetter(nifCif)) ||
+			(isEsCif && this.validateCifLetter(nifCif)) ||
+			(isEsNie && this.validateNieLetter(nifCif))
 		);
 	}
 
@@ -36,7 +36,7 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 			throw new SpanishDocumentNumberError(value);
 		}
 
-		return value.toUpperCase().trim().replaceAll('_', '').replaceAll('-', '').padStart(9, '0');
+		return value.toUpperCase().trim().replaceAll(/[_-]/g, '').padStart(9, '0');
 	}
 
 	// Método para validar la letra de control de un CIF
@@ -48,14 +48,14 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 		const letters = ['J', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 		const digits = cif.slice(1, -1);
 		const letter = cif.slice(0, 1);
-		const control = cif.slice(Math.max(0, cif.length - 1));
-		let sum = 0;
-		let index;
-		let digit;
-
 		if (!/[A-Z]/.test(letter)) {
 			return false;
 		}
+		const control = cif.slice(Math.max(0, cif.length - 1));
+		let sum = 0;
+		let index;
+
+		let digit;
 
 		for (index = 0; index < digits.length; ++index) {
 			digit = Number(digits[index]);
@@ -116,7 +116,8 @@ class SpanishDocumentNumberValueObject extends StringValueObject {
 	// Método para validar la letra de control de un NIF
 	private static validateNifLetter(nif: string) {
 		const dniLetters = 'TRWAGMYFPDXBNJZSQVHLCKE';
-		const letter = dniLetters.charAt(Number.parseInt(nif, 10) % 23);
+		const position = Math.trunc(Number(nif));
+		const letter = dniLetters.charAt(position % 23);
 
 		return letter === nif.charAt(8);
 	}
