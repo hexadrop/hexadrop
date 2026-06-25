@@ -4,32 +4,32 @@
 		// Cant remove, because bun and reflect-metadata not working without this
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
-		"baseUrl": ".",
 		"paths": {
 			"@hexadrop/error/*": [
-				"packages/error/src/*"
+				"./packages/error/src/*"
 			],
 			"@hexadrop/event/*": [
-				"packages/event/src/*"
+				"./packages/event/src/*"
 			],
 			"@hexadrop/types/*": [
-				"packages/types/src/*"
+				"./packages/types/src/*"
 			],
 			"@hexadrop/either": [
-				"packages/either/src/either"
+				"./packages/either/src/either"
 			],
 			"@hexadrop/error": [
-				"packages/error/src/domain-error"
+				"./packages/error/src/domain-error"
 			],
 			"@hexadrop/event": [
-				"packages/event/src/domain-event"
+				"./packages/event/src/domain-event"
 			],
 			"@hexadrop/ioc": [
-				"packages/ioc/src/container"
+				"./packages/ioc/src/container"
 			],
 			"@hexadrop/*": [
-				"packages/*/src"
+				"./packages/*/src"
 			]
-		}
+		},
+		"types": ["bun"]
 	}
 }
