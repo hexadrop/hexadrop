@@ -35,7 +35,7 @@ export default class InMemoryCommandHandlers extends CommandHandlers {
 		const merged = new InMemoryCommandHandlers();
 
 		for (const handler of handlers) {
-			for (const [commandName, callback] of handler.commandHandlersMap.entries()) {
+			for (const [commandName, callback] of handler.commandHandlersMap) {
 				merged.commandHandlersMap.set(commandName, callback);
 			}
 		}

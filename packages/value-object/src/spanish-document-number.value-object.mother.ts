@@ -29,6 +29,6 @@ export default class InvalidSpanishDocumentNumberValueObjectMother {
 		const regex = fakerES.helpers.arrayElement(REGEXS);
 		const value = fakerES.helpers.fromRegExp(regex);
 
-		return InvalidSpanishDocumentNumberValueObjectMother.create(value);
+		return this.create(value);
 	}
 }

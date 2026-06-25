@@ -31,7 +31,7 @@ export default class InMemoryQueryHandlers extends QueryHandlers {
 		const merged = new InMemoryQueryHandlers();
 
 		for (const handler of handlers) {
-			for (const [queryName, callback] of handler.queryHandlersMap.entries()) {
+			for (const [queryName, callback] of handler.queryHandlersMap) {
 				merged.queryHandlersMap.set(queryName, callback);
 			}
 		}

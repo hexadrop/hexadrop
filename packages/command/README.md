@@ -67,11 +67,11 @@ Then define your command handlers. A command handler is a simple class that impl
 import Either from '@hexadrop/either';
 
 class CreateUserHandler implements CommandHandler<CreateUserCommand> {
-  constructor(private readonly usersRepository: UsersRepository) {}
+  constructor(private readonly usersRepo: UsersRepository) {}
 
   async handle(command: CreateUserCommand): Promise<Either<DomainError, void>> {
     const { age, id, name } = command;
-    await this.usersRepository.create({ age, id, name });
+    await this.usersRepo.create({ age, id, name });
 
     return Either.right();
   }
@@ -83,11 +83,11 @@ class CreateUserHandler implements CommandHandler<CreateUserCommand> {
 import Either from '@hexadrop/either';
 
 class DeleteUserHandler implements CommandHandler<DeleteUserCommand> {
-  constructor(private readonly usersRepository: UsersRepository) {}
+  constructor(private readonly usersRepo: UsersRepository) {}
 
   async handle(command: DeleteUserCommand): Promise<Either<DomainError, void>> {
     const { id } = command;
-    await this.usersRepository.delete(id);
+    await this.usersRepo.delete(id);
 
     return Either.right();
   }
@@ -106,10 +106,10 @@ import InMemoryCommandHandlers from '@hexadrop/command/handlers/memory';
 import { CreateUserCommand, DeleteUserCommand } from './commands';
 import { CreateUserHandler, DeleteUserHandler } from './handlers';
 
-const usersRepository; // Your users repository
+const usersRepo; // Your users repository
 
-const createUserHandler = new CreateUserHandler(usersRepository);
-const deleteUserHandler = new DeleteUserHandler(usersRepository);
+const createUserHandler = new CreateUserHandler(usersRepo);
+const deleteUserHandler = new DeleteUserHandler(usersRepo);
 
 const handlers = new InMemoryCommandHandlers();
 

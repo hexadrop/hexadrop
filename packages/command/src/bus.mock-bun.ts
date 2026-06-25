@@ -80,6 +80,6 @@ export default class BunMockCommandBus implements CommandBus {
 	 * @returns {Either<DomainError, void> | Promise<Either<DomainError, void>>} - The result of the command dispatch.
 	 */
 	dispatch(command: Command): Either<DomainError, void> | Promise<Either<DomainError, void>> {
-		return this.dispatchSpy(command) as Either<DomainError, void> | Promise<Either<DomainError, void>>;
+		return this.dispatchSpy(command);
 	}
 }

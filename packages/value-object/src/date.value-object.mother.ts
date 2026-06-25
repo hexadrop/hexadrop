@@ -24,6 +24,6 @@ export default class DateValueObjectMother {
 	static random(): DateValueObject {
 		const value = faker.date.recent();
 
-		return DateValueObjectMother.create(value);
+		return this.create(value);
 	}
 }

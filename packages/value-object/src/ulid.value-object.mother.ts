@@ -10,12 +10,12 @@ export default class UlidValueObjectMother {
 	}
 
 	static invalid(): UlidValueObject {
-		return UlidValueObjectMother.create('s');
+		return this.create('s');
 	}
 
 	static random(seedTime?: number): UlidValueObject {
 		const value = ulid(seedTime);
 
-		return UlidValueObjectMother.create(value);
+		return this.create(value);
 	}
 }

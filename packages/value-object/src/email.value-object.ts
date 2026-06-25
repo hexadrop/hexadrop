@@ -19,7 +19,7 @@ export default class EmailValueObject extends StringValueObject {
 	}
 
 	private static valueFormat(value: string, property: string) {
-		if (!EmailValueObject.isValid(value)) {
+		if (!this.isValid(value)) {
 			throw new InvalidEmailValueError(value, property);
 		}
 	}
