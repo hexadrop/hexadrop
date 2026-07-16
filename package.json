@@ -30,7 +30,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@changesets/cli": "2.31.0",
+		"@changesets/cli": "2.31.1",
 		"@faker-js/faker": "10.5.0",
 		"@hexadrop/eslint-config": "1.0.6",
 		"@hexadrop/tsconfig": "0.0.5",
