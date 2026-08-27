@@ -48,9 +48,9 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"devDependencies": {
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }

@@ -47,10 +47,10 @@
 				"./dist/ploc.d.ts"
 			],
 			"./memory": [
-				"./dist/memory.d.ts"
+				"./dist/ploc.memory.d.ts"
 			],
 			"./react": [
-				"./dist/react.d.ts"
+				"./dist/ploc.react.d.ts"
 			],
 			"./hook": [
 				"./dist/ploc.memory-hook.d.ts"
@@ -58,7 +58,7 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"peerDependencies": {
 		"react": ">= 16"
@@ -71,6 +71,6 @@
 	"devDependencies": {
 		"@types/react": "19.2.18",
 		"react": "19.2.8",
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }

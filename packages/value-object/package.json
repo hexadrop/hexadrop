@@ -111,7 +111,7 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"peerDependencies": {
 		"ulid": "^2 || ^3.0.0"
@@ -126,7 +126,7 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "10.6.0",
-		"tsup": "8.5.1",
+		"tsdown": "0.22.14",
 		"ulid": "3.0.2"
 	}
 }

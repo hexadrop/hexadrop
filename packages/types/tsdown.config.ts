@@ -1,0 +1,20 @@
+import { defineConfig } from 'tsdown';
+
+export default defineConfig({
+	clean: true,
+	dts: true,
+	entry: [
+		'./src/abstract.ts',
+		'./src/awaitable.ts',
+		'./src/class.ts',
+		'./src/instance.ts',
+		'./src/newable.ts',
+		'./src/nullable.ts',
+		'./src/primitives.ts',
+		'./src/recursive-partial.ts',
+	],
+	fixedExtension: false,
+	format: ['esm'],
+	minify: true,
+	sourcemap: true,
+});

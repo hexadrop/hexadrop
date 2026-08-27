@@ -39,13 +39,13 @@
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"dependencies": {
 		"@hexadrop/event": "2.1.0",
 		"@hexadrop/types": "2.0.0"
 	},
 	"devDependencies": {
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }
