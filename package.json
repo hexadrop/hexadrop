@@ -24,9 +24,9 @@
 	],
 	"scripts": {
 		"commitlint": "commitlint --edit",
-		"lint": "eslint .",
+		"lint": "eslint --cache .",
 		"lint:ci": "eslint --cache --cache-strategy content .",
-		"lint:fix": "eslint --fix .",
+		"lint:fix": "eslint --cache --fix .",
 		"prepare": "husky",
 		"test": "bun test",
 		"typecheck": "tsc --noEmit"
