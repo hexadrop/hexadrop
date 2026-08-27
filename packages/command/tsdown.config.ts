@@ -15,7 +15,6 @@ export default defineConfig({
 		'./src/in-memory.command-handlers.ts',
 		'./src/ioc.command-handlers.ts',
 	],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

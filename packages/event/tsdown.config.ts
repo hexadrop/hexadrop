@@ -17,7 +17,6 @@ export default defineConfig({
 		'./src/in-memory.event-handlers.ts',
 		'./src/ioc.event-handlers.ts',
 	],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

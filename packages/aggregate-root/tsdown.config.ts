@@ -4,7 +4,6 @@ export default defineConfig({
 	clean: true,
 	dts: true,
 	entry: ['./src/aggregate-root.ts'],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

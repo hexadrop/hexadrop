@@ -14,7 +14,6 @@ export default defineConfig({
 		'./src/uuii.value-object.ts',
 		'./src/ulid.value-object.ts',
 	],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

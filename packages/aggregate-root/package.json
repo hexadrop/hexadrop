@@ -20,22 +20,12 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/aggregate-root.d.ts",
-				"default": "./dist/aggregate-root.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/aggregate-root.d.ts"
-			]
+			"types": "./dist/aggregate-root.d.mts",
+			"default": "./dist/aggregate-root.mjs"
 		}
 	},
 	"scripts": {

@@ -13,7 +13,6 @@ export default defineConfig({
 		'./src/primitives.ts',
 		'./src/recursive-partial.ts',
 	],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

@@ -15,7 +15,6 @@ export default defineConfig({
 		'./src/in-memory.query-handlers.ts',
 		'./src/ioc.query-handlers.ts',
 	],
-	fixedExtension: false,
 	format: ['esm'],
 	minify: true,
 	sourcemap: true,

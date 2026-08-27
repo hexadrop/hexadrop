@@ -20,41 +20,24 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"types": "./dist/ploc.d.ts",
-			"default": "./dist/ploc.js"
+			"types": "./dist/ploc.d.mts",
+			"default": "./dist/ploc.mjs"
 		},
 		"./memory": {
-			"types": "./dist/ploc.memory.d.ts",
-			"default": "./dist/ploc.memory.js"
+			"types": "./dist/ploc.memory.d.mts",
+			"default": "./dist/ploc.memory.mjs"
 		},
 		"./react": {
-			"types": "./dist/ploc.react.d.ts",
-			"default": "./dist/ploc.react.js"
+			"types": "./dist/ploc.react.d.mts",
+			"default": "./dist/ploc.react.mjs"
 		},
 		"./hook": {
-			"types": "./dist/ploc.memory-hook.d.ts",
-			"default": "./dist/ploc.memory-hook.js"
-		}
-	},
-	"typesVersions": {
-		"*": {
-			".": [
-				"./dist/ploc.d.ts"
-			],
-			"./memory": [
-				"./dist/ploc.memory.d.ts"
-			],
-			"./react": [
-				"./dist/ploc.react.d.ts"
-			],
-			"./hook": [
-				"./dist/ploc.memory-hook.d.ts"
-			]
+			"types": "./dist/ploc.memory-hook.d.mts",
+			"default": "./dist/ploc.memory-hook.mjs"
 		}
 	},
 	"scripts": {
