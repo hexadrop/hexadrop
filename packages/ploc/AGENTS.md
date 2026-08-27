@@ -13,6 +13,5 @@ Ploc observable state container with React and in-memory adapters.
 - [Architecture](docs/agents/architecture.md) — public surfaces and build output.
 - [Conventions](docs/agents/conventions.md) — imports, build, and source-code conventions.
 - [Development](docs/agents/development.md) — targeted validation and build commands.
-- [Release process](docs/agents/release-process.md) — changesets, beta snapshots, stable releases.
 
 Top-level workflow rules (branches, commits, PR rules) live in the root [AGENTS.md](../../AGENTS.md).
