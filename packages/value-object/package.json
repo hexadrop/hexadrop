@@ -20,98 +20,48 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		"./boolean": {
-			"import": {
-				"types": "./dist/boolean.value-object.d.ts",
-				"default": "./dist/boolean.value-object.js"
-			}
+			"types": "./dist/boolean.value-object.d.mts",
+			"default": "./dist/boolean.value-object.mjs"
 		},
 		"./date": {
-			"import": {
-				"types": "./dist/date.value-object.d.ts",
-				"default": "./dist/date.value-object.js"
-			}
+			"types": "./dist/date.value-object.d.mts",
+			"default": "./dist/date.value-object.mjs"
 		},
 		"./email": {
-			"import": {
-				"types": "./dist/email.value-object.d.ts",
-				"default": "./dist/email.value-object.js"
-			}
+			"types": "./dist/email.value-object.d.mts",
+			"default": "./dist/email.value-object.mjs"
 		},
 		"./number": {
-			"import": {
-				"types": "./dist/number.value-object.d.ts",
-				"default": "./dist/number.value-object.js"
-			}
+			"types": "./dist/number.value-object.d.mts",
+			"default": "./dist/number.value-object.mjs"
 		},
 		"./spanish/document-number": {
-			"import": {
-				"types": "./dist/spanish-document-number.value-object.d.ts",
-				"default": "./dist/spanish-document-number.value-object.js"
-			}
+			"types": "./dist/spanish-document-number.value-object.d.mts",
+			"default": "./dist/spanish-document-number.value-object.mjs"
 		},
 		"./spanish/phone-number": {
-			"import": {
-				"types": "./dist/spanish-phone-number.value-object.d.ts",
-				"default": "./dist/spanish-phone-number.value-object.js"
-			}
+			"types": "./dist/spanish-phone-number.value-object.d.mts",
+			"default": "./dist/spanish-phone-number.value-object.mjs"
 		},
 		"./string": {
-			"import": {
-				"types": "./dist/string.value-object.d.ts",
-				"default": "./dist/string.value-object.js"
-			}
+			"types": "./dist/string.value-object.d.mts",
+			"default": "./dist/string.value-object.mjs"
 		},
 		"./uuii": {
-			"import": {
-				"types": "./dist/uuii.value-object.d.ts",
-				"default": "./dist/uuii.value-object.js"
-			}
+			"types": "./dist/uuii.value-object.d.mts",
+			"default": "./dist/uuii.value-object.mjs"
 		},
 		"./ulid": {
-			"import": {
-				"types": "./dist/ulid.value-object.d.ts",
-				"default": "./dist/ulid.value-object.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"./boolean": [
-				"./dist/boolean.value-object.d.ts"
-			],
-			"./date": [
-				"./dist/date.value-object.d.ts"
-			],
-			"./email": [
-				"./dist/email.value-object.d.ts"
-			],
-			"./number": [
-				"./dist/number.value-object.d.ts"
-			],
-			"./spanish/document-number": [
-				"./dist/spanish-document-number.value-object.d.ts"
-			],
-			"./spanish/phone-number": [
-				"./dist/spanish-phone-number.value-object.d.ts"
-			],
-			"./string": [
-				"./dist/string.value-object.d.ts"
-			],
-			"./uuii": [
-				"./dist/uuii.value-object.d.ts"
-			],
-			"./ulid": [
-				"./dist/ulid.value-object.d.ts"
-			]
+			"types": "./dist/ulid.value-object.d.mts",
+			"default": "./dist/ulid.value-object.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"peerDependencies": {
 		"ulid": "^2 || ^3.0.0"
@@ -126,7 +76,7 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "10.6.0",
-		"tsup": "8.5.1",
+		"tsdown": "0.22.14",
 		"ulid": "3.0.2"
 	}
 }

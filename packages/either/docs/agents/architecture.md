@@ -1,0 +1,11 @@
+# @hexadrop/either architecture
+
+## Public surfaces
+
+| Export | Location | Responsibility |
+| --- | --- | --- |
+| `.` | `./dist/either.mjs` | see README.md |
+
+## Build output
+
+`tsdown.config.ts` emits ESM-only artifacts (`*.mjs`, `*.d.mts`) into `dist/`.

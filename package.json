@@ -23,22 +23,26 @@
 		"packages/*"
 	],
 	"scripts": {
-		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
+		"commitlint": "commitlint --edit",
+		"lint": "eslint --cache .",
+		"lint:ci": "eslint --cache --cache-strategy content .",
+		"lint:fix": "eslint --cache --fix .",
 		"prepare": "husky",
 		"test": "bun test",
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@changesets/cli": "2.31.1",
+		"@changesets/cli": "3.0.1",
+		"@commitlint/cli": "21.2.2",
+		"@commitlint/config-conventional": "21.2.2",
 		"@faker-js/faker": "10.6.0",
-		"@hexadrop/eslint-config": "1.0.6",
+		"@hexadrop/eslint-config": "1.0.11",
 		"@hexadrop/tsconfig": "0.0.5",
 		"@types/bun": "1.4.0",
 		"eslint": "10.9.1",
 		"husky": "9.1.7",
-		"lint-staged": "17.3.0",
-		"tsup": "8.5.1",
+		"lint-staged": "17.4.1",
+		"tsdown": "0.22.14",
 		"typescript": "6.0.3"
 	}
 }
