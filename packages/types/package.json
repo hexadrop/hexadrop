@@ -20,91 +20,46 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		"./abstract": {
-			"import": {
-				"types": "./dist/abstract.d.ts",
-				"default": "./dist/abstract.js"
-			}
+			"types": "./dist/abstract.d.mts",
+			"default": "./dist/abstract.mjs"
 		},
 		"./awaitable": {
-			"import": {
-				"types": "./dist/awaitable.d.ts",
-				"default": "./dist/awaitable.js"
-			}
+			"types": "./dist/awaitable.d.mts",
+			"default": "./dist/awaitable.mjs"
 		},
 		"./class": {
-			"import": {
-				"types": "./dist/class.d.ts",
-				"default": "./dist/class.js"
-			}
+			"types": "./dist/class.d.mts",
+			"default": "./dist/class.mjs"
 		},
 		"./instance": {
-			"import": {
-				"types": "./dist/instance.d.ts",
-				"default": "./dist/instance.js"
-			}
+			"types": "./dist/instance.d.mts",
+			"default": "./dist/instance.mjs"
 		},
 		"./newable": {
-			"import": {
-				"types": "./dist/newable.d.ts",
-				"default": "./dist/newable.js"
-			}
+			"types": "./dist/newable.d.mts",
+			"default": "./dist/newable.mjs"
 		},
 		"./nullable": {
-			"import": {
-				"types": "./dist/nullable.d.ts",
-				"default": "./dist/nullable.js"
-			}
+			"types": "./dist/nullable.d.mts",
+			"default": "./dist/nullable.mjs"
 		},
 		"./primitives": {
-			"import": {
-				"types": "./dist/primitives.d.ts",
-				"default": "./dist/primitives.js"
-			}
+			"types": "./dist/primitives.d.mts",
+			"default": "./dist/primitives.mjs"
 		},
 		"./recursive-partial": {
-			"import": {
-				"types": "./dist/recursive-partial.d.ts",
-				"default": "./dist/recursive-partial.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"./abstract": [
-				"./dist/abstract.d.ts"
-			],
-			"./awaitable": [
-				"./dist/awaitable.d.ts"
-			],
-			"./class": [
-				"./dist/class.d.ts"
-			],
-			"./instance": [
-				"./dist/instance.d.ts"
-			],
-			"./newable": [
-				"./dist/newable.d.ts"
-			],
-			"./nullable": [
-				"./dist/nullable.d.ts"
-			],
-			"./primitives": [
-				"./dist/primitives.d.ts"
-			],
-			"./recursive-partial": [
-				"./dist/recursive-partial.d.ts"
-			]
+			"types": "./dist/recursive-partial.d.mts",
+			"default": "./dist/recursive-partial.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"devDependencies": {
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }

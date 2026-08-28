@@ -20,116 +20,56 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/domain-event.d.ts",
-				"default": "./dist/domain-event.js"
-			}
+			"types": "./dist/domain-event.d.mts",
+			"default": "./dist/domain-event.mjs"
 		},
 		"./bus": {
-			"import": {
-				"types": "./dist/bus.d.ts",
-				"default": "./dist/bus.js"
-			}
+			"types": "./dist/bus.d.mts",
+			"default": "./dist/bus.mjs"
 		},
 		"./bus/async": {
-			"import": {
-				"types": "./dist/bus.async.d.ts",
-				"default": "./dist/bus.async.js"
-			}
+			"types": "./dist/bus.async.d.mts",
+			"default": "./dist/bus.async.mjs"
 		},
 		"./bus/mock/bun": {
-			"import": {
-				"types": "./dist/bus.mock-bun.d.ts",
-				"default": "./dist/bus.mock-bun.js"
-			}
+			"types": "./dist/bus.mock-bun.d.mts",
+			"default": "./dist/bus.mock-bun.mjs"
 		},
 		"./bus/mock/vitest": {
-			"import": {
-				"types": "./dist/bus.mock-vitest.d.ts",
-				"default": "./dist/bus.mock-vitest.js"
-			}
+			"types": "./dist/bus.mock-vitest.d.mts",
+			"default": "./dist/bus.mock-vitest.mjs"
 		},
 		"./bus/pub-sub": {
-			"import": {
-				"types": "./dist/bus.pub-sub.d.ts",
-				"default": "./dist/bus.pub-sub.js"
-			}
+			"types": "./dist/bus.pub-sub.d.mts",
+			"default": "./dist/bus.pub-sub.mjs"
 		},
 		"./bus/sync": {
-			"import": {
-				"types": "./dist/bus.sync.d.ts",
-				"default": "./dist/bus.sync.js"
-			}
+			"types": "./dist/bus.sync.d.mts",
+			"default": "./dist/bus.sync.mjs"
 		},
 		"./decorator": {
-			"import": {
-				"types": "./dist/decorator.d.ts",
-				"default": "./dist/decorator.js"
-			}
+			"types": "./dist/decorator.d.mts",
+			"default": "./dist/decorator.mjs"
 		},
 		"./handlers": {
-			"import": {
-				"types": "./dist/event-handlers.d.ts",
-				"default": "./dist/event-handlers.js"
-			}
+			"types": "./dist/event-handlers.d.mts",
+			"default": "./dist/event-handlers.mjs"
 		},
 		"./handlers/memory": {
-			"import": {
-				"types": "./dist/in-memory.event-handlers.d.ts",
-				"default": "./dist/in-memory.event-handlers.js"
-			}
+			"types": "./dist/in-memory.event-handlers.d.mts",
+			"default": "./dist/in-memory.event-handlers.mjs"
 		},
 		"./handlers/ioc": {
-			"import": {
-				"types": "./dist/ioc.event-handlers.d.ts",
-				"default": "./dist/ioc.event-handlers.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/domain-event.d.ts"
-			],
-			"./bus": [
-				"./dist/bus.d.ts"
-			],
-			"./bus/async": [
-				"./dist/bus.async.d.ts"
-			],
-			"./bus/mock/bun": [
-				"./dist/bus.mock-bun.d.ts"
-			],
-			"./bus/mock/vitest": [
-				"./dist/bus.mock-vitest.d.ts"
-			],
-			"./bus/pub-sub": [
-				"./dist/bus.pub-sub.d.ts"
-			],
-			"./bus/sync": [
-				"./dist/bus.sync.d.ts"
-			],
-			"./decorator": [
-				"./dist/decorator.d.ts"
-			],
-			"./handlers": [
-				"./dist/event-handlers.d.ts"
-			],
-			"./handlers/memory": [
-				"./dist/in-memory.event-handlers.d.ts"
-			],
-			"./handlers/ioc": [
-				"./dist/ioc.event-handlers.d.ts"
-			]
+			"types": "./dist/ioc.event-handlers.d.mts",
+			"default": "./dist/ioc.event-handlers.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"peerDependencies": {
 		"@google-cloud/pubsub": "^4 || ^5.0.0",
@@ -162,7 +102,7 @@
 		"@hexadrop/ioc": "2.0.0",
 		"diod": "3.0.0",
 		"p-queue": "9.3.3",
-		"tsup": "8.5.1",
+		"tsdown": "0.22.14",
 		"vitest": "4.1.11"
 	}
 }

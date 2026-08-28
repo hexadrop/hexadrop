@@ -20,47 +20,27 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/domain-error.d.ts",
-				"default": "./dist/domain-error.js"
-			}
+			"types": "./dist/domain-error.d.mts",
+			"default": "./dist/domain-error.mjs"
 		},
 		"./invalid-argument": {
-			"import": {
-				"types": "./dist/invalid-argument.d.ts",
-				"default": "./dist/invalid-argument.js"
-			}
+			"types": "./dist/invalid-argument.d.mts",
+			"default": "./dist/invalid-argument.mjs"
 		},
 		"./not-found": {
-			"import": {
-				"types": "./dist/not-found.d.ts",
-				"default": "./dist/not-found.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			".": [
-				"./dist/domain-error.d.ts"
-			],
-			"./invalid-argument": [
-				"./dist/invalid-argument.d.ts"
-			],
-			"./not-found": [
-				"./dist/not-found.d.ts"
-			]
+			"types": "./dist/not-found.d.mts",
+			"default": "./dist/not-found.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"devDependencies": {
 		"@faker-js/faker": "10.6.0",
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }

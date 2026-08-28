@@ -20,98 +20,48 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/command.d.ts",
-				"default": "./dist/command.js"
-			}
+			"types": "./dist/command.d.mts",
+			"default": "./dist/command.mjs"
 		},
 		"./bus": {
-			"import": {
-				"types": "./dist/bus.d.ts",
-				"default": "./dist/bus.js"
-			}
+			"types": "./dist/bus.d.mts",
+			"default": "./dist/bus.mjs"
 		},
 		"./bus/mock/bun": {
-			"import": {
-				"types": "./dist/bus.mock-bun.d.ts",
-				"default": "./dist/bus.mock-bun.js"
-			}
+			"types": "./dist/bus.mock-bun.d.mts",
+			"default": "./dist/bus.mock-bun.mjs"
 		},
 		"./bus/mock/vitest": {
-			"import": {
-				"types": "./dist/bus.mock-vitest.d.ts",
-				"default": "./dist/bus.mock-vitest.js"
-			}
+			"types": "./dist/bus.mock-vitest.d.mts",
+			"default": "./dist/bus.mock-vitest.mjs"
 		},
 		"./bus/sync": {
-			"import": {
-				"types": "./dist/bus.sync.d.ts",
-				"default": "./dist/bus.sync.js"
-			}
+			"types": "./dist/bus.sync.d.mts",
+			"default": "./dist/bus.sync.mjs"
 		},
 		"./decorator": {
-			"import": {
-				"types": "./dist/decorator.d.ts",
-				"default": "./dist/decorator.js"
-			}
+			"types": "./dist/decorator.d.mts",
+			"default": "./dist/decorator.mjs"
 		},
 		"./handlers": {
-			"import": {
-				"types": "./dist/command-handlers.d.ts",
-				"default": "./dist/command-handlers.js"
-			}
+			"types": "./dist/command-handlers.d.mts",
+			"default": "./dist/command-handlers.mjs"
 		},
 		"./handlers/memory": {
-			"import": {
-				"types": "./dist/in-memory.command-handlers.d.ts",
-				"default": "./dist/in-memory.command-handlers.js"
-			}
+			"types": "./dist/in-memory.command-handlers.d.mts",
+			"default": "./dist/in-memory.command-handlers.mjs"
 		},
 		"./handlers/ioc": {
-			"import": {
-				"types": "./dist/ioc.command-handlers.d.ts",
-				"default": "./dist/ioc.command-handlers.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/command.d.ts"
-			],
-			"./bus": [
-				"./dist/bus.d.ts"
-			],
-			"./bus/mock/bun": [
-				"./dist/bus.mock-bun.d.ts"
-			],
-			"./bus/mock/vitest": [
-				"./dist/bus.mock-vitest.d.ts"
-			],
-			"./bus/sync": [
-				"./dist/bus.sync.d.ts"
-			],
-			"./decorator": [
-				"./dist/decorator.d.ts"
-			],
-			"./handlers": [
-				"./dist/command-handlers.d.ts"
-			],
-			"./handlers/memory": [
-				"./dist/in-memory.command-handlers.d.ts"
-			],
-			"./handlers/ioc": [
-				"./dist/ioc.command-handlers.d.ts"
-			]
+			"types": "./dist/ioc.command-handlers.d.mts",
+			"default": "./dist/ioc.command-handlers.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"peerDependencies": {
 		"@hexadrop/ioc": "^2.0.0",
@@ -134,7 +84,7 @@
 		"@abraham/reflection": "0.13.0",
 		"@hexadrop/ioc": "2.0.0",
 		"diod": "3.0.0",
-		"tsup": "8.5.1",
+		"tsdown": "0.22.14",
 		"vitest": "4.1.11"
 	}
 }

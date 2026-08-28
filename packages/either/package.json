@@ -20,28 +20,18 @@
 	"type": "module",
 	"sideEffects": false,
 	"files": [
-		"dist",
-		"src"
+		"dist"
 	],
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/either.d.ts",
-				"default": "./dist/either.js"
-			}
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/either.d.ts"
-			]
+			"types": "./dist/either.d.mts",
+			"default": "./dist/either.mjs"
 		}
 	},
 	"scripts": {
-		"prepublishOnly": "tsup"
+		"prepublishOnly": "tsdown"
 	},
 	"devDependencies": {
-		"tsup": "8.5.1"
+		"tsdown": "0.22.14"
 	}
 }
