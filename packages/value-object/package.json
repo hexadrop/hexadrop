@@ -76,7 +76,7 @@
 	},
 	"devDependencies": {
 		"@faker-js/faker": "10.6.0",
-		"tsdown": "0.22.14",
+		"tsdown": "0.23.0",
 		"ulid": "3.0.2"
 	}
 }
