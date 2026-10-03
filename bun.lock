@@ -79,7 +79,7 @@
       },
       "devDependencies": {
         "@abraham/reflection": "0.13.0",
-        "@google-cloud/pubsub": "6.0.1",
+        "@google-cloud/pubsub": "6.1.0",
         "@hexadrop/ioc": "2.0.0",
         "diod": "3.0.0",
         "p-queue": "9.3.3",
@@ -344,7 +344,7 @@
 
     "@google-cloud/promisify": ["@google-cloud/promisify@6.0.1", "", {}, "sha512-lpN2AtoQ/iimp7jjm5zJFWbpW7OJc5qWmQdt59CI4ENeoIRIx+yf2ShSR2kanQfjFOshA74eSbimXXuRaSCUVg=="],
 
-    "@google-cloud/pubsub": ["@google-cloud/pubsub@6.0.1", "", { "dependencies": { "@google-cloud/paginator": "^7.0.0", "@google-cloud/precise-date": "^6.0.0", "@google-cloud/projectify": "^6.0.0", "@google-cloud/promisify": "^6.0.0", "@google-cloud/pubsub-api": "^0.3.0", "@opentelemetry/api": "~1.9.0", "@opentelemetry/core": "^2.8.0", "@opentelemetry/semantic-conventions": "~1.39.0", "arrify": "^2.0.0", "extend": "^3.0.2", "google-auth-library": "^11.0.0", "google-gax": "^6.0.0", "google-logging-utils": "^2.0.0", "heap-js": "^2.6.0", "is-stream-ended": "^0.1.4", "lodash.snakecase": "^4.1.1", "long": "^5.3.1", "p-defer": "^3.0.0" } }, "sha512-Ms/cE5wyxWoHHj6IUWZO67j7nDhAKa7eAUkUYBJjRie0Yr1V82NclaaIntdqAmmpOgXbIzdDlrIyWXLVMeGSDg=="],
+    "@google-cloud/pubsub": ["@google-cloud/pubsub@6.1.0", "", { "dependencies": { "@google-cloud/paginator": "^7.0.0", "@google-cloud/precise-date": "^6.0.0", "@google-cloud/projectify": "^6.0.0", "@google-cloud/promisify": "^6.0.0", "@google-cloud/pubsub-api": "^0.3.0", "@opentelemetry/api": "~1.9.0", "@opentelemetry/core": "^2.8.0", "@opentelemetry/semantic-conventions": "~1.39.0", "arrify": "^2.0.0", "extend": "^3.0.2", "google-auth-library": "^11.0.0", "google-gax": "^6.0.0", "google-logging-utils": "^2.0.0", "heap-js": "^2.6.0", "is-stream-ended": "^0.1.4", "lodash.snakecase": "^4.1.1", "long": "^5.3.1", "p-defer": "^3.0.0" } }, "sha512-amPObGHTojTGLeaSTogY22vGkNc/cWaNXphS64Jmwkn2rcvIHnYnwsFwQaxYd+BfML48ninINn5gziRmcfOqPA=="],
 
     "@google-cloud/pubsub-api": ["@google-cloud/pubsub-api@0.3.0", "", { "dependencies": { "google-gax": "^6.0.0" } }, "sha512-x1L+lrIHgaMwN5fAhnNVS7rh0BZn9eKmqOBXnOUM3jkilF4GE4ooETS9SYnCtPCVHwQtByDTh5b7KIMUW7XAHQ=="],
 
