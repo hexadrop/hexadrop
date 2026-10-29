@@ -36,6 +36,6 @@
 		"@hexadrop/types": "2.0.0"
 	},
 	"devDependencies": {
-		"tsdown": "0.23.3"
+		"tsdown": "0.23.4"
 	}
 }

@@ -84,7 +84,7 @@
 		"@abraham/reflection": "0.13.0",
 		"@hexadrop/ioc": "2.0.0",
 		"diod": "3.0.0",
-		"tsdown": "0.23.3",
+		"tsdown": "0.23.4",
 		"vitest": "5.0.5"
 	}
 }
