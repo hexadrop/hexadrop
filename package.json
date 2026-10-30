@@ -36,7 +36,7 @@
 		"@commitlint/cli": "21.2.4",
 		"@commitlint/config-conventional": "21.2.4",
 		"@faker-js/faker": "10.6.0",
-		"@hexadrop/eslint-config": "1.0.11",
+		"@hexadrop/eslint-config": "1.1.0",
 		"@hexadrop/tsconfig": "0.0.5",
 		"@types/bun": "1.4.4",
 		"eslint": "10.13.0",
