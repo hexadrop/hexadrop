@@ -57,7 +57,9 @@ class Command6 extends Command {
 
 class Service {
 	async hello(): Promise<string> {
-		return await Promise.resolve('world');
+		const value = await Promise.resolve('world');
+
+		return value;
 	}
 }
 

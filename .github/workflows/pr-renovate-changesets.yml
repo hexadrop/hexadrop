@@ -1,0 +1,14 @@
+name: "Pull Request: Add changeset to renovate updates"
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions: {}
+
+jobs:
+  changeset:
+    name: Changeset
+    uses: hexadrop/github-workflows/.github/workflows/renovate-changesets.yml@v1.7.4
+    secrets:
+      app-private-key: ${{ secrets.HEXABOT_PRIVATE_KEY }}
