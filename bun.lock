@@ -39,7 +39,7 @@
         "@hexadrop/types": "2.0.0",
       },
       "devDependencies": {
-        "@abraham/reflection": "0.13.0",
+        "@abraham/reflection": "0.14.0",
         "@hexadrop/ioc": "2.0.0",
         "diod": "3.0.0",
         "tsdown": "0.23.4",
@@ -78,7 +78,7 @@
         "@hexadrop/types": "2.0.0",
       },
       "devDependencies": {
-        "@abraham/reflection": "0.13.0",
+        "@abraham/reflection": "0.14.0",
         "@google-cloud/pubsub": "6.3.2",
         "@hexadrop/ioc": "2.0.0",
         "diod": "3.0.0",
@@ -130,7 +130,7 @@
         "@hexadrop/types": "2.0.0",
       },
       "devDependencies": {
-        "@abraham/reflection": "0.13.0",
+        "@abraham/reflection": "0.14.0",
         "@hexadrop/ioc": "2.0.0",
         "diod": "3.0.0",
         "tsdown": "0.23.4",
@@ -172,7 +172,7 @@
     },
   },
   "packages": {
-    "@abraham/reflection": ["@abraham/reflection@0.13.0", "", {}, "sha512-sQYhhraGPPRP6zoqpqpSaoYL+XY5KNmQCcoB3IuQh1z1aWmkHXcxwyTxRkTJ60L2aUjrbiqIqoYkrB/1c7kjQA=="],
+    "@abraham/reflection": ["@abraham/reflection@0.14.0", "", {}, "sha512-fk3FHamRhh46mA61gTzCj01rij4Qi6Dny9EcfQOz+V0whD1KPyhP96JXQONYmqPYg67zbAWd62W3hq/xm6lT9g=="],
 
     "@astrojs/compiler": ["@astrojs/compiler@2.13.1", "", {}, "sha512-f3FN83d2G/v32ipNClRKgYv30onQlMZX1vCeZMjPsMMPl1mDpmbl0+N5BYo4S/ofzqJyS5hvwacEo0CCVDn/Qg=="],
 
