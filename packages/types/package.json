@@ -60,6 +60,6 @@
 		"prepublishOnly": "tsdown"
 	},
 	"devDependencies": {
-		"tsdown": "0.23.4"
+		"tsdown": "0.23.5"
 	}
 }
