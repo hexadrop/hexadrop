@@ -46,7 +46,9 @@ class Command4 extends Command {
 @ServiceDecorator()
 class Service {
 	async hello(): Promise<string> {
-		return await Promise.resolve('world');
+		const value = await Promise.resolve('world');
+
+		return value;
 	}
 }
 

@@ -40,15 +40,12 @@ export default class DateValueObject {
 	 * @throws {InvalidDateValueTypeError} If the value is not a Date instance.
 	 */
 	private static allowedValue(value: unknown, property?: string) {
-		if (
-			!(value instanceof Date) &&
-			typeof value !== 'string' &&
-			typeof value !== 'number' &&
-			(value === null ||
-				typeof value !== 'object' ||
-				!('toDate' in value) ||
-				typeof (value as ToDateObject).toDate !== 'function')
-		) {
+		const isToDateObject =
+			value &&
+			typeof value === 'object' &&
+			'toDate' in value &&
+			typeof (value as ToDateObject).toDate === 'function';
+		if (!isToDateObject && typeof value !== 'string' && typeof value !== 'number' && !(value instanceof Date)) {
 			throw new InvalidDateValueTypeError(property);
 		}
 	}
