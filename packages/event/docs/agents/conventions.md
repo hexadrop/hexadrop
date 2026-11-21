@@ -1,0 +1,13 @@
+# @hexadrop/event conventions
+
+## Imports
+
+Import with the package specifier `@hexadrop/event`; cross-workspace imports resolve through the root `tsconfig.json` paths to `../../src/`. Mock-bus helpers (`bun:test`, `vitest`) are marked neverBundle under `deps` in `tsdown.config.ts`.
+
+## Build
+
+`prepublishOnly` runs `tsdown` with `tsdown.config.ts`. It emits ESM-only artifacts (`*.mjs` plus `*.d.mts`) under `dist/`.
+
+## Tests
+
+Tests live next to sources under `src/*.test.ts` and run with `bun test`.
